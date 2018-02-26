@@ -7,9 +7,21 @@
 #,::Send {Media_Prev}
 #.::Send {Media_Next}
 #'::Send {Media_Play_Pause}
+
+#[::Send ^#{Left}
+#]::Send ^#{Right}
+#\::Send ^#d
+#;::Send ^#d
+#F4::Send ^#{F4}
+
 #Esc::Send !{F4}
+
+#`::Send !{Esc}
+
 #CapsLock::winset,AlwaysOnTop,, A
-#delete::Run ::{645FF040-5081-101B-9F08-00AA002F954E}
+
+#Delete::Run ::{645FF040-5081-101B-9F08-00AA002F954E}
+
 #/::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
 #a::
@@ -260,6 +272,8 @@ return
 #F1::
 If FileExist("F1.lnk")
 Run, F1.lnk
+else
+Send #{F1}
 return
 
 #F2::
@@ -270,11 +284,6 @@ return
 #F3::
 If FileExist("F3.lnk")
 Run, F3.lnk
-return
-
-#F4::
-If FileExist("F4.lnk")
-Run, F4.lnk
 return
 
 #F5::
