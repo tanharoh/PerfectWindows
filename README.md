@@ -34,8 +34,7 @@
 |**`<`<br><big>`"`</big>**（像极了暂停符号）**<br>`>`**|**上一首歌曲<br>暂停（继续）<br>下一首歌曲**
 |**`{`**<br>**`}`**<br>**`\|`** **`:`**（两者都可以）<br>**`F4`**|**上一个虚拟桌面<br>下一个虚拟桌面<br>新建虚拟桌面<br>关闭虚拟桌面**
 |**`Caps Lock`<br>`~`<br>`Esc`**|**（不再）将窗口锁定至最前<br>切换窗口<br>关闭窗口**
-|**`Delete`**|**打开回收站**
-|**`A` ~ `Z`   `0` ~ `9`   `F1` ~ `F12`<br>`Home` `End` `Space` `Enter`<br>`Backspace` `Print Screen`<br>`Scroll Lock` `Numpad Lock`**|**听您的！**
+|**`A` ~ `Z`   `0` ~ `9`   `F1` ~ `F12`<br>`Home` `End` `Space` `Enter`<br>`Backspace` `Print Screen`<br>`Delete` `Insert`<br>`Scroll Lock` `Numpad Lock`**|**听您的！**
 
 \* **为需要快速启动的应用程序（包括来自 Microsoft Store 的应用程序）、文件、文件夹、网站甚至命令指定全局热键的方法：**
 

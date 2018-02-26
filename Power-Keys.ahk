@@ -20,8 +20,6 @@
 
 #CapsLock::winset,AlwaysOnTop,, A
 
-#Delete::Run ::{645FF040-5081-101B-9F08-00AA002F954E}
-
 #/::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
 #a::
@@ -362,12 +360,22 @@ else
 Send #{Space}
 return
 
-#scrolllock::
-If FileExist("scroll lock.lnk")
-Run, "scroll lock.lnk"
+#Delete::
+If FileExist("Delete.lnk")
+Run, Delete.lnk
 return
 
-#numlock::
-If FileExist("numpad lock.lnk")
-Run, "numpad lock.lnk"
+#Insert::
+If FileExist("Insert.lnk")
+Run, Insert.lnk
+return
+
+#ScrollLock::
+If FileExist("Scroll Lock.lnk")
+Run, "Scroll Lock.lnk"
+return
+
+#NumLock::
+If FileExist("Numpad Lock.lnk")
+Run, "Numpad Lock.lnk"
 return
