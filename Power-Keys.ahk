@@ -1,16 +1,43 @@
-﻿#SingleInstance force
+#SingleInstance force
 #MaxHotkeysPerInterval 1000
 #Persistent
+SetWorkingDir %A_ScriptDir%
 
 Menu, tray, Tip, Power Keys
 Menu, tray, NoStandard
-Menu, tray, add, Config, Config
+Menu, tray, add, 开机自启, Autorun
+Menu, tray, add, 配置热键, Config
 Menu, tray, add
-Menu, tray, add, Help, Help
-Menu, tray, add, Feedback, Feedback
+Menu, tray, add, 帮助, Help
+Menu, tray, add, 反馈, Feedback
 Menu, tray, add
-Menu, tray, add, Exit, Exit
-Menu, tray, default, Config
+Menu, tray, add, 退出, Exit
+Menu, tray, default, 配置热键
+
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+if AutorunState=%A_ScriptFullPath%
+{
+	Menu,tray,check,开机自启
+}
+else
+{
+	Menu,tray,uncheck,开机自启
+}
+
+return
+
+Autorun:
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+if AutorunState=%A_ScriptFullPath%
+{
+	regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+	Menu,tray,uncheck,开机自启
+}
+else
+{
+	RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+	Menu,tray,check,开机自启
+}
 return
 
 Exit:
