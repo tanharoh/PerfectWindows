@@ -1,6 +1,33 @@
-#SingleInstance force
+﻿#SingleInstance force
 #MaxHotkeysPerInterval 1000
 #Persistent
+
+Menu, tray, Tip, Power Keys
+Menu, tray, NoStandard
+Menu, tray, add, Config, Config
+Menu, tray, add
+Menu, tray, add, Help, Help
+Menu, tray, add, Feedback, Feedback
+Menu, tray, add
+Menu, tray, add, Exit, Exit
+Menu, tray, default, Config
+return
+
+Exit:
+ExitApp
+return
+
+Config:
+Run,%A_ScriptDir%
+return
+
+Help:
+Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
+return
+
+Feedback:
+Run, https://github.com/szzhiyang/PerfectWindows/issues
+return
 
 #=::Send {Volume_Up}
 #-::Send {Volume_Down}
@@ -19,8 +46,6 @@
 #`::Send !{Esc}
 
 #CapsLock::winset,AlwaysOnTop,, A
-
-#/::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
 #a::
 If FileExist("a.lnk")
@@ -379,3 +404,4 @@ return
 If FileExist("Numpad Lock.lnk")
 Run, "Numpad Lock.lnk"
 return
+
