@@ -38,7 +38,7 @@
 
 \* **为需要快速启动的应用程序（包括来自 Microsoft Store 的应用程序）、文件、文件夹、网站甚至命令指定全局热键的方法：**
 
-1. **在 Power-Keys.exe <u>所处的文件夹中</u>建立指向需要快速启动的应用程序、文件、文件夹、网站或命令的快捷方式。**
+1. **在 Power-Keys.exe 的旁边建立指向需要快速启动的应用程序、文件、文件夹、网站或命令的快捷方式。**
 
 2. **将这个快捷方式重命名为您所需要的 `Win` 热键。**
 
@@ -60,9 +60,9 @@
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
 
-您可以从任务栏退出 **Power Keys**。
+**纵使 Power Keys 小巧玲珑，也不妨碍它有完整的菜单选项，如图所示：**
 
-您也可以为 **Power Keys** 添加计划任务以使其开机自启。
+![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo7.png)
 
 **Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 Power-Keys.ahk。
 
