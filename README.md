@@ -25,7 +25,7 @@
 
 # 要是我能<br><br>按 `Win + E` 秒开 最常用的文件夹<br>按 `Win + B` 秒开 浏览器<br>按 `Win + Z` 秒开 知乎<br>按 `Win + G` 秒开 GitHub<br>按 `Win + V` 秒开 VS Code<br>按 `Win + A` 秒开 Atom<br>按 `Win + S` 秒开 Steam<br>按 `Win + P` 秒开 PUBG<br>按 `Win + 1` 秒开 最爱的人的照片<br>……<br><br>那岂不是美滋滋？   :smile:
 
-真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 `Win` 徽标键的功能**，快来试试吧！
+真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.exe) 的软件可以**增强 `Win` 徽标键的功能**，快来试试吧！
 
 |随同 `Win` 按下|功能|
 |:-|:-|
@@ -85,7 +85,7 @@
 ---
 
 # 要是当我向上推动鼠标滚轮时，网页或文档的页面能一起向上移动，一切就像我使用触摸屏或触控板时那样自然，那种感觉岂不美哉？:smile:
-真巧！我们这儿正好有款名叫 [**Natural Scrolling**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Natural-Scrolling.exe) 的软件可以让您获得这种美好的体验！
+真巧！我们这儿正好有款名叫 [**Natural Scrolling**](https://github.com/szzhiyang/PerfectWindows/raw/master/Natural-Scrolling.exe) 的软件可以让您获得这种美好的体验！
 
 **Natural Scrolling 为免安装型软件，一旦运行即可生效。**
 
