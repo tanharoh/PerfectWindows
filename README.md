@@ -64,7 +64,7 @@
 
 ![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo7.jpg)
 
-**Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 [**Power-Keys.ahk**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.ahk)。
+**Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 <a href="https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.ahk" rel="nofollow">**Power-Keys.ahk**</a>
 
 ---
 
