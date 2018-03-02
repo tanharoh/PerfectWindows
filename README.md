@@ -25,7 +25,7 @@
 
 # 要是我能<br><br>按 `空格 + E` 秒开 最常用的文件夹<br>按 `空格 + B` 秒开 浏览器<br>按 `空格 + Z` 秒开 知乎<br>按 `空格 + G` 秒开 GitHub<br>按 `空格 + V` 秒开 VS Code<br>按 `空格 + A` 秒开 Atom<br>按 `空格 + S` 秒开 Steam<br>按 `空格 + P` 秒开 PUBG<br>按 `空格 + 1` 秒开 最爱的人的照片<br>……<br><br>那岂不是美滋滋？   :smile:
 
-真巧！我们这儿正好有款名叫 [**Power Space**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.exe) 的软件可以**增强空格键的功能**，快来试试吧！
+真巧！我们这儿正好有款名叫 [**Power Space**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.exe) 的软件能够 **增强空格键的功能**，快来试试吧！
 
 |随同空格键按下|功能|
 |:-|:-|
@@ -56,13 +56,13 @@
 
 <br>
 
-**Power Keys 为免安装型软件，一旦运行即可生效。**
+**Power Space 为免安装型软件，一旦运行即可生效。**
 
-**纵使 Power Keys 小巧玲珑，也不妨碍它有完整的菜单选项，如图所示：**
+**纵使 Power Space 小巧玲珑，也不妨碍它有完整的菜单选项，如图所示：**
 
 ![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo7.jpg)
 
-**Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 <a href="https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.ahk" rel="nofollow">**Power-Keys.ahk**</a>
+**Power Space** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 **Power-Space.ahk**。
 
 ---
 
