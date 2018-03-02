@@ -1,9 +1,9 @@
-#SingleInstance force
+﻿#SingleInstance force
 #MaxHotkeysPerInterval 1000
 #Persistent
 SetWorkingDir %A_ScriptDir%
 
-Menu, tray, Tip, Power Keys
+Menu, tray, Tip, Power Space
 Menu, tray, NoStandard
 Menu, tray, add, 开机自启, Autorun
 Menu, tray, add, 配置热键, Config
@@ -14,7 +14,7 @@ Menu, tray, add
 Menu, tray, add, 退出, Exit
 Menu, tray, default, 配置热键
 
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Space
 if AutorunState=%A_ScriptFullPath%
 {
 	Menu,tray,check,开机自启
@@ -27,15 +27,15 @@ else
 return
 
 Autorun:
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Space
 if AutorunState=%A_ScriptFullPath%
 {
-	regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+	regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Space
 	Menu,tray,uncheck,开机自启
 }
 else
 {
-	RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+	RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Space, %A_ScriptFullPath%
 	Menu,tray,check,开机自启
 }
 return
@@ -56,379 +56,341 @@ Feedback:
 Run, https://github.com/szzhiyang/PerfectWindows/issues
 return
 
-#=::Send {Volume_Up}
-#-::Send {Volume_Down}
-#,::Send {Media_Prev}
-#.::Send {Media_Next}
-#'::Send {Media_Play_Pause}
+Space::Space
 
-#[::Send ^#{Left}
-#]::Send ^#{Right}
-#\::Send ^#d
-#;::Send ^#d
-#F4::Send ^#{F4}
+Space & /::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
-#Esc::Send !{F4}
+Space & Tab::AltTab
 
-#`::Send !{Esc}
+Space & Up::Send {Volume_Up}
+Space & Down::Send {Volume_Down}
+Space & Left::Send {Media_Prev}
+Space & Right::Send {Media_Next}
+Space & '::Send {Media_Play_Pause}
 
-#CapsLock::winset,AlwaysOnTop,, A
+Space & WheelUp::Send {Volume_Up}
+Space & WheelDown::Send {Volume_Down}
+Space & LButton::Send {Media_Prev}
+Space & RButton::Send {Media_Next}
+Space & MButton::Send {Media_Play_Pause}
 
-#a::
+Space & <::Send ^#{Left}
+Space & >::Send ^#{Right}
+Space & =::Send ^#d
+Space & -::Send ^#{F4}
+
+Space & Esc::Send !{F4}
+
+Space & `::Send !{Esc}
+
+Space & CapsLock::winset,AlwaysOnTop,, A
+
+Space & a::
 If FileExist("a.lnk")
 Run, a.lnk
-else
-Send #a
 return
 
-#b::
+Space & b::
 If FileExist("b.lnk")
 Run, b.lnk
-else
-Send #b
 return
 
-#c::
+Space & c::
 If FileExist("c.lnk")
 Run, c.lnk
-else
-Send #c
 return
 
-#d::
+Space & d::
 If FileExist("d.lnk")
 Run, d.lnk
-else
-Send #d
 return
 
-#e::
+Space & e::
 If FileExist("e.lnk")
 Run, e.lnk
-else
-Send #e
 return
 
-#f::
+Space & f::
 If FileExist("f.lnk")
 Run, f.lnk
-else
-Send #f
 return
 
-#g::
+Space & g::
 If FileExist("g.lnk")
 Run, g.lnk
-else
-Send #g
 return
 
-#h::
+Space & h::
 If FileExist("h.lnk")
 Run, h.lnk
-else
-Send #h
 return
 
-#i::
+Space & i::
 If FileExist("i.lnk")
 Run, i.lnk
-else
-Send #i
 return
 
-#j::
+Space & j::
 If FileExist("j.lnk")
 Run, j.lnk
-else
-Send #j
 return
 
-#k::
+Space & k::
 If FileExist("k.lnk")
 Run, k.lnk
-else
-Send #k
 return
 
-#m::
+Space & l::
+If FileExist("l.lnk")
+Run, l.lnk
+return
+
+Space & m::
 If FileExist("m.lnk")
 Run, m.lnk
-else
-Send #m
 return
 
-#n::
+Space & n::
 If FileExist("n.lnk")
 Run, n.lnk
-else
-Send #n
 return
 
-#o::
+Space & o::
 If FileExist("o.lnk")
 Run, o.lnk
-else
-Send #o
 return
 
-#p::
+Space & p::
 If FileExist("p.lnk")
 Run, p.lnk
-else
-Send #p
 return
 
-#q::
+Space & q::
 If FileExist("q.lnk")
 Run, q.lnk
-else
-Send #q
 return
 
-#r::
+Space & r::
 If FileExist("r.lnk")
 Run, r.lnk
-else
-Send #r
 return
 
-#s::
+Space & s::
 If FileExist("s.lnk")
 Run, s.lnk
-else
-Send #s
 return
 
-#t::
+Space & t::
 If FileExist("t.lnk")
 Run, t.lnk
-else
-Send #t
 return
 
-#u::
+Space & u::
 If FileExist("u.lnk")
 Run, u.lnk
-else
-Send #u
 return
 
-#v::
+Space & v::
 If FileExist("v.lnk")
 Run, v.lnk
-else
-Send #v
 return
 
-#w::
+Space & w::
 If FileExist("w.lnk")
 Run, w.lnk
-else
-Send #w
 return
 
-#x::
+Space & x::
 If FileExist("x.lnk")
 Run, x.lnk
-else
-Send #x
 return
 
-#y::
+Space & y::
 If FileExist("y.lnk")
 Run, y.lnk
-else
-Send #y
 return
 
-#z::
+Space & z::
 If FileExist("z.lnk")
 Run, z.lnk
-else
-Send #z
 return
 
-#1::
+Space & 1::
 If FileExist("1.lnk")
 Run, 1.lnk
-else
-Send #1
 return
 
-#2::
+Space & 2::
 If FileExist("2.lnk")
 Run, 2.lnk
-else
-Send #2
 return
 
-#3::
+Space & 3::
 If FileExist("3.lnk")
 Run, 3.lnk
-else
-Send #3
 return
 
-#4::
+Space & 4::
 If FileExist("4.lnk")
 Run, 4.lnk
-else
-Send #4
 return
 
-#5::
+Space & 5::
 If FileExist("5.lnk")
 Run, 5.lnk
-else
-Send #5
 return
 
-#6::
+Space & 6::
 If FileExist("6.lnk")
 Run, 6.lnk
-else
-Send #6
 return
 
-#7::
+Space & 7::
 If FileExist("7.lnk")
 Run, 7.lnk
-else
-Send #7
 return
 
-#8::
+Space & 8::
 If FileExist("8.lnk")
 Run, 8.lnk
-else
-Send #8
 return
 
-#9::
+Space & 9::
 If FileExist("9.lnk")
 Run, 9.lnk
-else
-Send #9
 return
 
-#0::
+Space & 0::
 If FileExist("0.lnk")
 Run, 0.lnk
-else
-Send #0
 return
 
-#F1::
+Space & F1::
 If FileExist("F1.lnk")
 Run, F1.lnk
-else
-Send #{F1}
 return
 
-#F2::
+Space & F2::
 If FileExist("F2.lnk")
 Run, F2.lnk
 return
 
-#F3::
+Space & F3::
 If FileExist("F3.lnk")
 Run, F3.lnk
 return
 
-#F5::
+Space & F4::
+If FileExist("F4.lnk")
+Run, F4.lnk
+return
+
+Space & F5::
 If FileExist("F5.lnk")
 Run, F5.lnk
 return
 
-#F6::
+Space & F6::
 If FileExist("F6.lnk")
 Run, F6.lnk
 return
 
-#F7::
+Space & F7::
 If FileExist("F7.lnk")
 Run, F7.lnk
 return
 
-#F8::
+Space & F8::
 If FileExist("F8.lnk")
 Run, F8.lnk
 return
 
-#F9::
+Space & F9::
 If FileExist("F9.lnk")
 Run, F9.lnk
 return
 
-#F10::
+Space & F10::
 If FileExist("F10.lnk")
 Run, F10.lnk
 return
 
-#F11::
+Space & F11::
 If FileExist("F11.lnk")
 Run, F11.lnk
 return
 
-#F12::
+Space & F12::
 If FileExist("F12.lnk")
 Run, F12.lnk
 return
 
-#Enter::
+Space & Enter::
 If FileExist("Enter.lnk")
 Run, Enter.lnk
 return
 
-#Home::
+Space & Home::
 If FileExist("home.lnk")
 Run, home.lnk
-else
-Send #{Home}
 return
 
-#End::
+Space & End::
 If FileExist("End.lnk")
 Run, End.lnk
 return
 
-#BackSpace::
+Space & BackSpace::
 If FileExist("BackSpace.lnk")
 Run, BackSpace.lnk
 return
 
-#PrintScreen::
+Space & PrintScreen::
 If FileExist("Print Screen.lnk")
 Run, "Print Screen.lnk"
-else
-Send #{PrintScreen}
 return
 
-#Space::
-If FileExist("space.lnk")
-Run, space.lnk
-else
-Send #{Space}
-return
-
-#Delete::
+Space & Delete::
 If FileExist("Delete.lnk")
 Run, Delete.lnk
 return
 
-#Insert::
+Space & Insert::
 If FileExist("Insert.lnk")
 Run, Insert.lnk
 return
 
-#ScrollLock::
+Space & ScrollLock::
 If FileExist("Scroll Lock.lnk")
 Run, "Scroll Lock.lnk"
 return
 
-#NumLock::
+Space & NumLock::
 If FileExist("Numpad Lock.lnk")
 Run, "Numpad Lock.lnk"
 return
 
+Space & Ctrl::
+If FileExist("Ctrl.lnk")
+Run, "Ctrl.lnk"
+return
+
+Space & Shift:: 
+If FileExist("Shift.lnk")
+Run, "Shift.lnk"
+return
+
+Space & Alt::
+If FileExist("Alt.lnk")
+Run, "Alt.lnk"
+return
+
+Space & LWin::
+If FileExist("Win.lnk")
+Run, "Win.lnk"
+return
+
+Space & RWin::
+If FileExist("Win.lnk")
+Run, "Win.lnk"
+return
