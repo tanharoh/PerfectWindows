@@ -30,11 +30,12 @@
 |随同空格键按下|功能|
 |:-|:-|
 |**`?`**|**打开 Power Space 帮助页面**
+|**`Alt`**|**长按空格键**
 |**鼠标上滚<br>鼠标下滚<br>鼠标左键<br>鼠标右键<br>鼠标中键**|**增大系统音量<br>减小系统音量**<br>**上一首歌曲<br>下一首歌曲<br>暂停（继续）**
 |**`↑`<br>`↓`<br>`←`<br>`→`<br><big>`"`</big>**（像极了暂停符号）|**增大系统音量<br>减小系统音量**<br>**上一首歌曲<br>下一首歌曲<br>暂停（继续）**
 |**`<`**<br>**`>`**<br>**`+`**<br>**`-`**|**上一个虚拟桌面<br>下一个虚拟桌面<br>新建虚拟桌面<br>关闭虚拟桌面**
 |**`Caps Lock`<br>`Tab`<br>`Esc`**|**（不再）将窗口锁定至最前<br>切换窗口<br>关闭窗口**
-|**`A` ~ `Z`   `0` ~ `9`   `F1` ~ `F12`<br>`Home` `End` `Enter`<br>`Backspace` `Print Screen`<br>`Delete` `Insert`<br>`Scroll Lock` `Numpad Lock`<br>`Win` `Shift` `Ctrl` `Alt`**|**听您的！**
+|**`A` ~ `Z`   `0` ~ `9`   `F1` ~ `F12`<br>`Home` `End` `Enter`<br>`Backspace` `Print Screen`<br>`Delete` `Insert`<br>`Scroll Lock` `Numpad Lock`<br>`Win` `Shift` `Ctrl`**|**听您的！**
 
 \* **为需要快速启动的应用程序（包括来自 Microsoft Store 的应用程序）、文件、文件夹、网站甚至命令指定全局热键的方法：**
 

@@ -58,6 +58,8 @@ return
 
 Space::Space
 
+Space & Alt::Send {Space}
+
 Space & /::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
 Space & Tab::AltTab
@@ -378,11 +380,6 @@ return
 Space & Shift:: 
 If FileExist("Shift.lnk")
 Run, "Shift.lnk"
-return
-
-Space & Alt::
-If FileExist("Alt.lnk")
-Run, "Alt.lnk"
 return
 
 Space & LWin::
