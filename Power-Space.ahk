@@ -58,7 +58,7 @@ return
 
 Space::Space
 
-Space & Alt::Send {Space}
+Space & Alt::Space
 
 Space & /::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 
