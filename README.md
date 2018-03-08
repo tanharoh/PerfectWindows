@@ -1,3 +1,1 @@
-# 本项目正在升级改造，敬请期待！
-
-# 请您不要下载 release 中的程序！
+# [Power Keys](Power-Keys.md)
