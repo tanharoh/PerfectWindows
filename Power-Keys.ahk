@@ -3,7 +3,16 @@
 #Persistent
 #InstallKeybdHook
 
-RegWrite,REG_DWORD,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced,SeparateProcess,0
+if !A_IsAdmin
+{
+try
+{
+Run *RunAs "%A_ScriptFullPath%" /restart
+}
+exitapp
+}
+
+RegWrite,REG_DWORD,HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced,SeparateProcess,0
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir %LocalAppData%\Power Keys
 
@@ -31,7 +40,7 @@ Menu, tray, add
 Menu, tray, add, 退出, Exit
 Menu, tray, default, 配置热键
 
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegRead, AutorunState, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 if AutorunState=%A_ScriptFullPath%
 {
 	Menu,tray,check,开机自启
@@ -44,16 +53,61 @@ else
 return
 
 Autorun:
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+run,%systemroot%\system32\schtasks.exe /delete /tn "Power Keys" /f,,hide
+RegRead, AutorunState, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 if AutorunState=%A_ScriptFullPath%
 {
-	regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-	Menu,tray,uncheck,开机自启
+regdelete,HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+Menu,tray,uncheck,开机自启
 }
 else
 {
-	RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-	Menu,tray,check,开机自启
+RegWrite, REG_SZ, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
+filedelete,Power Keys.xml
+fileappend,
+(
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+    </LogonTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>HighestAvailable</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>false</AllowHardTerminate>
+    <StartWhenAvailable>false</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>true</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>%A_ScriptFullPath%</Command>
+    </Exec>
+  </Actions>
+</Task>
+),Power Keys.xml,UTF-16
+runwait,%systemroot%\system32\schtasks.exe /create /tn "Power Keys" /xml "Power Keys.xml" /f,,hide
+filedelete,Power Keys.xml
+Menu,tray,check,开机自启
 }
 return
 
