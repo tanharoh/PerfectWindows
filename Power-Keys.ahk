@@ -127,58 +127,6 @@ F10 & Alt::F10
 F11 & Alt::F11
 F12 & Alt::F12
 
-F1 & Ctrl::F1
-F2 & Ctrl::F2
-F3 & Ctrl::F3
-F4 & Ctrl::F4
-F5 & Ctrl::F5
-F6 & Ctrl::F6
-F7 & Ctrl::F7
-F8 & Ctrl::F8
-F9 & Ctrl::F9
-F10 & Ctrl::F10
-F11 & Ctrl::F11
-F12 & Ctrl::F12
-
-F1 & LWin::F1
-F2 & LWin::F2
-F3 & LWin::F3
-F4 & LWin::F4
-F5 & LWin::F5
-F6 & LWin::F6
-F7 & LWin::F7
-F8 & LWin::F8
-F9 & LWin::F9
-F10 & LWin::F10
-F11 & LWin::F11
-F12 & LWin::F12
-
-F1 & RWin::F1
-F2 & RWin::F2
-F3 & RWin::F3
-F4 & RWin::F4
-F5 & RWin::F5
-F6 & RWin::F6
-F7 & RWin::F7
-F8 & RWin::F8
-F9 & RWin::F9
-F10 & RWin::F10
-F11 & RWin::F11
-F12 & RWin::F12
-
-F1 & Shift::F1
-F2 & Shift::F2
-F3 & Shift::F3
-F4 & Shift::F4
-F5 & Shift::F5
-F6 & Shift::F6
-F7 & Shift::F7
-F8 & Shift::F8
-F9 & Shift::F9
-F10 & Shift::F10
-F11 & Shift::F11
-F12 & Shift::F12
-
 F1 & Space Up::Send !{F4}
 F2 & Space Up::Send !{F4}
 F3 & Space Up::Send !{F4}
@@ -191,19 +139,6 @@ F9 & Space Up::Send !{F4}
 F10 & Space Up::Send !{F4}
 F11 & Space Up::Send !{F4}
 F12 & Space Up::Send !{F4}
-
-F1 & Esc::Run,"%A_ScriptFullPath%" /restart
-F2 & Esc::Run,"%A_ScriptFullPath%" /restart
-F3 & Esc::Run,"%A_ScriptFullPath%" /restart
-F4 & Esc::Run,"%A_ScriptFullPath%" /restart
-F5 & Esc::Run,"%A_ScriptFullPath%" /restart
-F6 & Esc::Run,"%A_ScriptFullPath%" /restart
-F7 & Esc::Run,"%A_ScriptFullPath%" /restart
-F8 & Esc::Run,"%A_ScriptFullPath%" /restart
-F9 & Esc::Run,"%A_ScriptFullPath%" /restart
-F10 & Esc::Run,"%A_ScriptFullPath%" /restart
-F11 & Esc::Run,"%A_ScriptFullPath%" /restart
-F12 & Esc::Run,"%A_ScriptFullPath%" /restart
 
 F1 & Enter::Run, F1
 
