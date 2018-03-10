@@ -37,8 +37,8 @@ return
 #[::^#Left
 #]::^#Right
 
-#Esc::Send !{F4}
-<#`::AltTab
+#+=::Send #=
+#+-::Send #-
 
 #NumLock::run,%systemroot%\explorer.exe "%systemroot%\system32\calc.exe"
 
@@ -114,18 +114,18 @@ F10::F10
 F11::F11
 F12::F12
 
-F1 & Alt::F1
-F2 & Alt::F2
-F3 & Alt::F3
-F4 & Alt::F4
-F5 & Alt::F5
-F6 & Alt::F6
-F7 & Alt::F7
-F8 & Alt::F8
-F9 & Alt::F9
-F10 & Alt::F10
-F11 & Alt::F11
-F12 & Alt::F12
+F1 & Shift::F1
+F2 & Shift::F2
+F3 & Shift::F3
+F4 & Shift::F4
+F5 & Shift::F5
+F6 & Shift::F6
+F7 & Shift::F7
+F8 & Shift::F8
+F9 & Shift::F9
+F10 & Shift::F10
+F11 & Shift::F11
+F12 & Shift::F12
 
 F1 & Space Up::Send !{F4}
 F2 & Space Up::Send !{F4}
