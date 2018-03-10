@@ -30,24 +30,23 @@ Menu, tray, NoStandard
 Menu, tray, add, Power Keys %v% by Tom Zhu,Autorun
 Menu, tray, disable, Power Keys %v% by Tom Zhu
 Menu, tray, add
-Menu, tray, add, 开机自启, Autorun
-Menu, tray, add, 配置热键, Config
+Menu, tray, add, 开机自启 (&A), Autorun
+Menu, tray, add, 配置热键 (&C), Config
 Menu, tray, add
-Menu, tray, add, 帮助, Help
-Menu, tray, add, 反馈, Feedback
+Menu, tray, add, 帮助 (&H), Help
+Menu, tray, add, 反馈 (&F), Feedback
 Menu, tray, add
-Menu, tray, add, 重启, Restart
-Menu, tray, add, 退出, Exit
-Menu, tray, default, 配置热键
+Menu, tray, add, 重启 Power Keys (&R), Restart
+Menu, tray, add, 退出 Power Keys (&Q), Exit
 
 RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 if AutorunState=%A_ScriptFullPath%
 {
-	Menu,tray,check,开机自启
+	Menu,tray,check,开机自启 (&A)
 }
 else
 {
-	Menu,tray,uncheck,开机自启
+	Menu,tray,uncheck,开机自启 (&A)
 }
 
 return
@@ -57,12 +56,12 @@ RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersi
 if AutorunState=%A_ScriptFullPath%
 {
 regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-Menu,tray,uncheck,开机自启
+Menu,tray,uncheck,开机自启 (&A)
 }
 else
 {
 RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-Menu,tray,check,开机自启
+Menu,tray,check,开机自启 (&A)
 }
 return
 
