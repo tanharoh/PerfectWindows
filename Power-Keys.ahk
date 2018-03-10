@@ -31,6 +31,8 @@ Menu, tray, add
 Menu, tray, add, 帮助, Help
 Menu, tray, add, 反馈, Feedback
 Menu, tray, add
+Menu, tray, add, 暂停, Suspend
+Menu, tray, add, 重启, Restart
 Menu, tray, add, 退出, Exit
 Menu, tray, default, 配置热键
 
@@ -74,6 +76,23 @@ return
 
 Feedback:
 Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/issues
+return
+
+Restart:
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Suspend:
+if A_IsSuspended
+{
+Suspend,Off
+Menu,tray,uncheck,暂停
+}
+else
+{
+Suspend,On
+Menu,tray,check,暂停
+}
 return
 
 #=::Volume_Up
