@@ -75,7 +75,7 @@ Run,%A_WorkingDir%
 return
 
 Help:
-menu,tray,show
+Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 return
 
 Feedback:
