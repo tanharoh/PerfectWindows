@@ -3,16 +3,10 @@
 #Persistent
 #InstallKeybdHook
 
-if !A_IsAdmin
-{
-try
-{
-Run *RunAs "%A_ScriptFullPath%" /restart
-}
+if A_IsAdmin
 exitapp
-}
 
-RegWrite,REG_DWORD,HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced,SeparateProcess,0
+RegWrite,REG_DWORD,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced,SeparateProcess,0
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir %LocalAppData%\Power Keys
 
@@ -40,7 +34,7 @@ Menu, tray, add
 Menu, tray, add, 退出, Exit
 Menu, tray, default, 配置热键
 
-RegRead, AutorunState, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 if AutorunState=%A_ScriptFullPath%
 {
 	Menu,tray,check,开机自启
@@ -53,60 +47,15 @@ else
 return
 
 Autorun:
-run,%systemroot%\system32\schtasks.exe /delete /tn "Power Keys" /f,,hide
-RegRead, AutorunState, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 if AutorunState=%A_ScriptFullPath%
 {
-regdelete,HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 Menu,tray,uncheck,开机自启
 }
 else
 {
-RegWrite, REG_SZ, HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-filedelete,Power Keys.xml
-fileappend,
-(
-<?xml version="1.0" encoding="UTF-16"?>
-<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
-  <Triggers>
-    <LogonTrigger>
-      <Enabled>true</Enabled>
-    </LogonTrigger>
-  </Triggers>
-  <Principals>
-    <Principal id="Author">
-      <LogonType>InteractiveToken</LogonType>
-      <RunLevel>HighestAvailable</RunLevel>
-    </Principal>
-  </Principals>
-  <Settings>
-    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
-    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
-    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
-    <AllowHardTerminate>false</AllowHardTerminate>
-    <StartWhenAvailable>false</StartWhenAvailable>
-    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
-    <IdleSettings>
-      <StopOnIdleEnd>false</StopOnIdleEnd>
-      <RestartOnIdle>false</RestartOnIdle>
-    </IdleSettings>
-    <AllowStartOnDemand>true</AllowStartOnDemand>
-    <Enabled>true</Enabled>
-    <Hidden>true</Hidden>
-    <RunOnlyIfIdle>false</RunOnlyIfIdle>
-    <WakeToRun>false</WakeToRun>
-    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
-    <Priority>7</Priority>
-  </Settings>
-  <Actions Context="Author">
-    <Exec>
-      <Command>%A_ScriptFullPath%</Command>
-    </Exec>
-  </Actions>
-</Task>
-),Power Keys.xml,UTF-16
-runwait,%systemroot%\system32\schtasks.exe /create /tn "Power Keys" /xml "Power Keys.xml" /f,,hide
-filedelete,Power Keys.xml
+RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
 Menu,tray,check,开机自启
 }
 return
@@ -249,18 +198,18 @@ F10 & Space Up::Send !{F4}
 F11 & Space Up::Send !{F4}
 F12 & Space Up::Send !{F4}
 
-F1 & Esc::Return
-F2 & Esc::Return
-F3 & Esc::Return
-F4 & Esc::Return
-F5 & Esc::Return
-F6 & Esc::Return
-F7 & Esc::Return
-F8 & Esc::Return
-F9 & Esc::Return
-F10 & Esc::Return
-F11 & Esc::Return
-F12 & Esc::Return
+F1 & Esc::Run,"%A_ScriptFullPath%" /restart
+F2 & Esc::Run,"%A_ScriptFullPath%" /restart
+F3 & Esc::Run,"%A_ScriptFullPath%" /restart
+F4 & Esc::Run,"%A_ScriptFullPath%" /restart
+F5 & Esc::Run,"%A_ScriptFullPath%" /restart
+F6 & Esc::Run,"%A_ScriptFullPath%" /restart
+F7 & Esc::Run,"%A_ScriptFullPath%" /restart
+F8 & Esc::Run,"%A_ScriptFullPath%" /restart
+F9 & Esc::Run,"%A_ScriptFullPath%" /restart
+F10 & Esc::Run,"%A_ScriptFullPath%" /restart
+F11 & Esc::Run,"%A_ScriptFullPath%" /restart
+F12 & Esc::Run,"%A_ScriptFullPath%" /restart
 
 F1 & /::Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
 F2 & /::Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
