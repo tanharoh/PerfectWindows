@@ -2,7 +2,7 @@
 
 ---
 
-## 通过热键：
+## 通过简洁的快捷键：
 
 ### 更快地启动应用！
 
@@ -78,7 +78,7 @@
 
 |随同 `Win` 键按下|功能|
 |:-|:-|
-|**`?`**|**打开 Power Keys 菜单**
+|**`?`<br>`F1`<br>`F4`<br>`F5`<br>`F8`<br>`F12`**|**显示 Power Keys 的运行状态<br>打开 Power Keys 的帮助页面<br>退出 Power Keys<br>重启 Power Keys 以解决热键故障<br>管理 Power Keys 的热键设置<br>询问 Power Keys 是否开机自启**
 |**`+`<br>`-`**|**增大系统音量<br>减小系统音量**
 |**`<`<br><big>`"`</big>（像极了暂停符号）<br>`>`**|**上一首歌曲<br>暂停（继续）<br>下一首歌曲**
 |**`{`**<br>**`}`**<br>**`Enter`**<br>**`Backspace`**|**上一个虚拟桌面<br>下一个虚拟桌面<br>新建虚拟桌面<br>关闭虚拟桌面**
@@ -94,9 +94,5 @@
 <br>
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
-
-**纵使 Power Keys 小巧玲珑，也不妨碍它有完整的菜单选项，如图所示：**
-
-![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo8.png)
 
 **Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 **Power-Keys.ahk**。

@@ -6,9 +6,6 @@
 
 v:="0.4.0"
 
-if A_IsAdmin
-exitapp
-
 RegWrite,REG_DWORD,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced,SeparateProcess,0
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir %LocalAppData%\Power Keys
@@ -26,63 +23,6 @@ FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
 
-Menu, tray, NoStandard
-Menu, tray, add, Power Keys %v% by Tom Zhu,Autorun
-Menu, tray, disable, Power Keys %v% by Tom Zhu
-Menu, tray, add
-Menu, tray, add, 开机自启 (&A), Autorun
-Menu, tray, add, 配置热键 (&C), Config
-Menu, tray, add
-Menu, tray, add, 帮助 (&H), Help
-Menu, tray, add, 反馈 (&F), Feedback
-Menu, tray, add
-Menu, tray, add, 重启 Power Keys (&R), Restart
-Menu, tray, add, 退出 Power Keys (&Q), Exit
-
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-if AutorunState=%A_ScriptFullPath%
-{
-	Menu,tray,check,开机自启 (&A)
-}
-else
-{
-	Menu,tray,uncheck,开机自启 (&A)
-}
-
-return
-
-Autorun:
-RegRead, AutorunState, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-if AutorunState=%A_ScriptFullPath%
-{
-regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-Menu,tray,uncheck,开机自启 (&A)
-}
-else
-{
-RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-Menu,tray,check,开机自启 (&A)
-}
-return
-
-Exit:
-ExitApp
-return
-
-Config:
-Run,%A_WorkingDir%
-return
-
-Help:
-Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
-return
-
-Feedback:
-Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/issues
-return
-
-Restart:
-Run,"%A_ScriptFullPath%" /restart
 return
 
 #=::Volume_Up
@@ -114,8 +54,51 @@ Keywait,RWin
 DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
 return
 
+#F1::
+Run,%systemroot%\explorer.exe https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
+return
+
+#F4::
+msgbox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
+ifmsgbox,yes
+exitapp
+return
+
+#F5::
+msgbox,0x40040,Power Keys %v% by 知阳,已重启 Power Keys。,1
+Run,"%A_ScriptFullPath%" /restart
+return
+
+#F8::
+Run,%A_WorkingDir%
+return
+
+#F12::
+msgbox,0x40024,Power Keys %v% by 知阳,登录 Windows 时自动启动 Power Keys？
+ifmsgbox,yes
+{
+RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
+}
+else
+{
+regdelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+}
+return
+
 #/::
-menu,tray,show
+if A_IsAdmin
+{
+msgbox,0x40040,Power Keys %v% by 知阳,Power Keys 正在以管理员身份运行。,1
+return
+}
+else
+{
+msgbox,0x40124,Power Keys %v% by 知阳,Power Keys 正在运行，但是没有管理员权限。`n`n您希望以管理员身份运行 Power Keys 吗？
+ifmsgbox,yes
+Run, *runas "%A_ScriptFullPath%" /restart
+else
+return
+}
 return
 
 F1::F1
