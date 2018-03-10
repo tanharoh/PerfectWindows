@@ -97,6 +97,6 @@
 
 **纵使 Power Keys 小巧玲珑，也不妨碍它有完整的菜单选项，如图所示：**
 
-![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo7.jpg)
+![Demo 7](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo7.png)
 
 **Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 **Power-Keys.ahk**。
