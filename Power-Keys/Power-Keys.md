@@ -1,4 +1,4 @@
-# [Power Keys](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys.exe)
+# [Power Keys](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys.exe)
 
 ---
 
