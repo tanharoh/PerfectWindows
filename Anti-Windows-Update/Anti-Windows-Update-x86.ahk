@@ -39,7 +39,7 @@ ifmsgbox,yes
 }
 else
 {
-    regwrite,reg_dword,HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\au,noautoupdate,1
+    regwrite,reg_dword,HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\au,NoAutoUpdate,1
     runwait,takeown.exe /f UsoClient.exe,,hide
     runwait,icacls.exe UsoClient.exe /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System",,hide
     runwait,takeown.exe /f MusNotification.exe,,hide
