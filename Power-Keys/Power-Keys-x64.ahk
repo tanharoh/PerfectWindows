@@ -5,7 +5,9 @@
 #NoTrayIcon
 
 if A_IsAdmin
+{
 exitapp
+}
 
 v:="0.6.0"
 

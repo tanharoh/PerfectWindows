@@ -24,7 +24,9 @@
 
 #### 下载 Power Keys
 
-[32 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)  [64 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)
+**[32 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe) （无法在 64 位 Windows 上运行）**
+
+**[64 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) （无法在 32 位 Windows 上运行）**
 
 ---
 
@@ -100,6 +102,8 @@
 <br>
 
 **不小心因为按错快捷键而启动了错误的项目？没关系！您只需在按住任意功能键（`F1` ~ `F12`）的同时按下空格键即可关闭您错误启动的项目。得益于此，您的手指无需大幅移动即可纠正错误！**
+
+**注意：您无法以管理员身份运行 Power Keys！**
 
 **注意：虽然 Power Keys 把功能键（`F1` ~ `F12`）当作了快捷键的修饰键，但是这完全不影响您正常使用它们的功能！需要您注意的是，您无法像往常那样按住它们以实现连击操作（相信我，您可能一辈子都不会这么做）。万一您实在需要这么做，请在按住对应功能键的同时按下 `Shift` 键。**
 

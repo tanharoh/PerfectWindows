@@ -2,7 +2,11 @@
 
 ## 完美地禁用 Windows 自动更新！
 
-[32 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Anti-Windows-Update/Anti-Windows-Update-x86.exe)  [64 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Anti-Windows-Update/Anti-Windows-Update-x64.exe)
+---
+
+**[32 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Anti-Windows-Update/Anti-Windows-Update-x86.exe)  （无法在 64 位 Windows 上运行）**
+
+**[64 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Anti-Windows-Update/Anti-Windows-Update-x64.exe)  （无法在 32 位 Windows 上运行）**
 
 ---
 

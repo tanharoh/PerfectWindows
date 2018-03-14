@@ -7,12 +7,14 @@
 v:="0.6.0"
 
 if A_IsAdmin
+{
 exitapp
+}
+
 
 if A_Is64bitOS
 {
-    msgbox,0x40130,Power Keys %v% by 知阳,您必须使用 64 位版本的 Power Keys！
-    exitapp
+exitapp
 }
 
 FileCreateDir,%LocalAppData%\Power Keys
