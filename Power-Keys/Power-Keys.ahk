@@ -148,6 +148,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & b::
 
 if fileexist("F1\b.url")
@@ -163,6 +165,8 @@ Run,"F1\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & c::
 
@@ -180,6 +184,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & d::
 
 if fileexist("F1\d.url")
@@ -195,6 +201,8 @@ Run,"F1\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & e::
 
@@ -212,6 +220,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & f::
 
 if fileexist("F1\f.url")
@@ -227,6 +237,8 @@ Run,"F1\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & g::
 
@@ -244,6 +256,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & h::
 
 if fileexist("F1\h.url")
@@ -259,6 +273,8 @@ Run,"F1\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & i::
 
@@ -276,6 +292,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & j::
 
 if fileexist("F1\j.url")
@@ -291,6 +309,8 @@ Run,"F1\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & k::
 
@@ -308,6 +328,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & l::
 
 if fileexist("F1\l.url")
@@ -323,6 +345,8 @@ Run,"F1\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & m::
 
@@ -340,6 +364,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & n::
 
 if fileexist("F1\n.url")
@@ -355,6 +381,8 @@ Run,"F1\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & o::
 
@@ -372,6 +400,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & p::
 
 if fileexist("F1\p.url")
@@ -387,6 +417,8 @@ Run,"F1\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & q::
 
@@ -404,6 +436,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & r::
 
 if fileexist("F1\r.url")
@@ -419,6 +453,8 @@ Run,"F1\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & s::
 
@@ -436,6 +472,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & t::
 
 if fileexist("F1\t.url")
@@ -451,6 +489,8 @@ Run,"F1\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & u::
 
@@ -468,6 +508,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & v::
 
 if fileexist("F1\v.url")
@@ -483,6 +525,8 @@ Run,"F1\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & w::
 
@@ -500,6 +544,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & x::
 
 if fileexist("F1\x.url")
@@ -515,6 +561,8 @@ Run,"F1\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & y::
 
@@ -532,6 +580,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & z::
 
 if fileexist("F1\z.url")
@@ -547,6 +597,8 @@ Run,"F1\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & 1::
 
@@ -564,6 +616,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & 2::
 
 if fileexist("F1\2.url")
@@ -579,6 +633,8 @@ Run,"F1\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & 3::
 
@@ -596,6 +652,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & 4::
 
 if fileexist("F1\4.url")
@@ -611,6 +669,8 @@ Run,"F1\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & 5::
 
@@ -628,6 +688,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & 6::
 
 if fileexist("F1\6.url")
@@ -643,6 +705,8 @@ Run,"F1\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & 7::
 
@@ -660,6 +724,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & 8::
 
 if fileexist("F1\8.url")
@@ -675,6 +741,8 @@ Run,"F1\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F1 & 9::
 
@@ -692,6 +760,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F1 & 0::
 
 if fileexist("F1\0.url")
@@ -707,6 +777,8 @@ Run,"F1\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & Enter::Run, F2
 
@@ -726,6 +798,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & b::
 
 if fileexist("F2\b.url")
@@ -741,6 +815,8 @@ Run,"F2\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & c::
 
@@ -758,6 +834,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & d::
 
 if fileexist("F2\d.url")
@@ -773,6 +851,8 @@ Run,"F2\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & e::
 
@@ -790,6 +870,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & f::
 
 if fileexist("F2\f.url")
@@ -805,6 +887,8 @@ Run,"F2\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & g::
 
@@ -822,6 +906,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & h::
 
 if fileexist("F2\h.url")
@@ -837,6 +923,8 @@ Run,"F2\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & i::
 
@@ -854,6 +942,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & j::
 
 if fileexist("F2\j.url")
@@ -869,6 +959,8 @@ Run,"F2\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & k::
 
@@ -886,6 +978,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & l::
 
 if fileexist("F2\l.url")
@@ -901,6 +995,8 @@ Run,"F2\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & m::
 
@@ -918,6 +1014,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & n::
 
 if fileexist("F2\n.url")
@@ -933,6 +1031,8 @@ Run,"F2\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & o::
 
@@ -950,6 +1050,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & p::
 
 if fileexist("F2\p.url")
@@ -965,6 +1067,8 @@ Run,"F2\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & q::
 
@@ -982,6 +1086,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & r::
 
 if fileexist("F2\r.url")
@@ -997,6 +1103,8 @@ Run,"F2\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & s::
 
@@ -1014,6 +1122,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & t::
 
 if fileexist("F2\t.url")
@@ -1029,6 +1139,8 @@ Run,"F2\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & u::
 
@@ -1046,6 +1158,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & v::
 
 if fileexist("F2\v.url")
@@ -1061,6 +1175,8 @@ Run,"F2\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & w::
 
@@ -1078,6 +1194,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & x::
 
 if fileexist("F2\x.url")
@@ -1093,6 +1211,8 @@ Run,"F2\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & y::
 
@@ -1110,6 +1230,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & z::
 
 if fileexist("F2\z.url")
@@ -1125,6 +1247,8 @@ Run,"F2\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & 1::
 
@@ -1142,6 +1266,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & 2::
 
 if fileexist("F2\2.url")
@@ -1157,6 +1283,8 @@ Run,"F2\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & 3::
 
@@ -1174,6 +1302,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & 4::
 
 if fileexist("F2\4.url")
@@ -1189,6 +1319,8 @@ Run,"F2\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & 5::
 
@@ -1206,6 +1338,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & 6::
 
 if fileexist("F2\6.url")
@@ -1221,6 +1355,8 @@ Run,"F2\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & 7::
 
@@ -1238,6 +1374,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & 8::
 
 if fileexist("F2\8.url")
@@ -1253,6 +1391,8 @@ Run,"F2\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F2 & 9::
 
@@ -1270,6 +1410,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F2 & 0::
 
 if fileexist("F2\0.url")
@@ -1285,6 +1427,8 @@ Run,"F2\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & Enter::Run, F3
 
@@ -1304,6 +1448,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & b::
 
 if fileexist("F3\b.url")
@@ -1319,6 +1465,8 @@ Run,"F3\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & c::
 
@@ -1336,6 +1484,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & d::
 
 if fileexist("F3\d.url")
@@ -1351,6 +1501,8 @@ Run,"F3\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & e::
 
@@ -1368,6 +1520,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & f::
 
 if fileexist("F3\f.url")
@@ -1383,6 +1537,8 @@ Run,"F3\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & g::
 
@@ -1400,6 +1556,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & h::
 
 if fileexist("F3\h.url")
@@ -1415,6 +1573,8 @@ Run,"F3\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & i::
 
@@ -1432,6 +1592,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & j::
 
 if fileexist("F3\j.url")
@@ -1447,6 +1609,8 @@ Run,"F3\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & k::
 
@@ -1464,6 +1628,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & l::
 
 if fileexist("F3\l.url")
@@ -1479,6 +1645,8 @@ Run,"F3\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & m::
 
@@ -1496,6 +1664,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & n::
 
 if fileexist("F3\n.url")
@@ -1511,6 +1681,8 @@ Run,"F3\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & o::
 
@@ -1528,6 +1700,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & p::
 
 if fileexist("F3\p.url")
@@ -1543,6 +1717,8 @@ Run,"F3\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & q::
 
@@ -1560,6 +1736,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & r::
 
 if fileexist("F3\r.url")
@@ -1575,6 +1753,8 @@ Run,"F3\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & s::
 
@@ -1592,6 +1772,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & t::
 
 if fileexist("F3\t.url")
@@ -1607,6 +1789,8 @@ Run,"F3\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & u::
 
@@ -1624,6 +1808,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & v::
 
 if fileexist("F3\v.url")
@@ -1639,6 +1825,8 @@ Run,"F3\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & w::
 
@@ -1656,6 +1844,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & x::
 
 if fileexist("F3\x.url")
@@ -1671,6 +1861,8 @@ Run,"F3\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & y::
 
@@ -1688,6 +1880,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & z::
 
 if fileexist("F3\z.url")
@@ -1703,6 +1897,8 @@ Run,"F3\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & 1::
 
@@ -1720,6 +1916,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & 2::
 
 if fileexist("F3\2.url")
@@ -1735,6 +1933,8 @@ Run,"F3\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & 3::
 
@@ -1752,6 +1952,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & 4::
 
 if fileexist("F3\4.url")
@@ -1767,6 +1969,8 @@ Run,"F3\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & 5::
 
@@ -1784,6 +1988,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & 6::
 
 if fileexist("F3\6.url")
@@ -1799,6 +2005,8 @@ Run,"F3\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & 7::
 
@@ -1816,6 +2024,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & 8::
 
 if fileexist("F3\8.url")
@@ -1831,6 +2041,8 @@ Run,"F3\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F3 & 9::
 
@@ -1848,6 +2060,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F3 & 0::
 
 if fileexist("F3\0.url")
@@ -1863,6 +2077,8 @@ Run,"F3\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & Enter::Run, F4
 
@@ -1882,6 +2098,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & b::
 
 if fileexist("F4\b.url")
@@ -1897,6 +2115,8 @@ Run,"F4\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & c::
 
@@ -1914,6 +2134,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & d::
 
 if fileexist("F4\d.url")
@@ -1929,6 +2151,8 @@ Run,"F4\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & e::
 
@@ -1946,6 +2170,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & f::
 
 if fileexist("F4\f.url")
@@ -1961,6 +2187,8 @@ Run,"F4\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & g::
 
@@ -1978,6 +2206,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & h::
 
 if fileexist("F4\h.url")
@@ -1993,6 +2223,8 @@ Run,"F4\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & i::
 
@@ -2010,6 +2242,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & j::
 
 if fileexist("F4\j.url")
@@ -2025,6 +2259,8 @@ Run,"F4\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & k::
 
@@ -2042,6 +2278,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & l::
 
 if fileexist("F4\l.url")
@@ -2057,6 +2295,8 @@ Run,"F4\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & m::
 
@@ -2074,6 +2314,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & n::
 
 if fileexist("F4\n.url")
@@ -2089,6 +2331,8 @@ Run,"F4\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & o::
 
@@ -2106,6 +2350,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & p::
 
 if fileexist("F4\p.url")
@@ -2121,6 +2367,8 @@ Run,"F4\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & q::
 
@@ -2138,6 +2386,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & r::
 
 if fileexist("F4\r.url")
@@ -2153,6 +2403,8 @@ Run,"F4\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & s::
 
@@ -2170,6 +2422,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & t::
 
 if fileexist("F4\t.url")
@@ -2185,6 +2439,8 @@ Run,"F4\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & u::
 
@@ -2202,6 +2458,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & v::
 
 if fileexist("F4\v.url")
@@ -2217,6 +2475,8 @@ Run,"F4\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & w::
 
@@ -2234,6 +2494,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & x::
 
 if fileexist("F4\x.url")
@@ -2249,6 +2511,8 @@ Run,"F4\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & y::
 
@@ -2266,6 +2530,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & z::
 
 if fileexist("F4\z.url")
@@ -2281,6 +2547,8 @@ Run,"F4\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & 1::
 
@@ -2298,6 +2566,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & 2::
 
 if fileexist("F4\2.url")
@@ -2313,6 +2583,8 @@ Run,"F4\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & 3::
 
@@ -2330,6 +2602,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & 4::
 
 if fileexist("F4\4.url")
@@ -2345,6 +2619,8 @@ Run,"F4\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & 5::
 
@@ -2362,6 +2638,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & 6::
 
 if fileexist("F4\6.url")
@@ -2377,6 +2655,8 @@ Run,"F4\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & 7::
 
@@ -2394,6 +2674,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & 8::
 
 if fileexist("F4\8.url")
@@ -2409,6 +2691,8 @@ Run,"F4\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F4 & 9::
 
@@ -2426,6 +2710,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F4 & 0::
 
 if fileexist("F4\0.url")
@@ -2441,6 +2727,8 @@ Run,"F4\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & Enter::Run, F5
 
@@ -2460,6 +2748,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & b::
 
 if fileexist("F5\b.url")
@@ -2475,6 +2765,8 @@ Run,"F5\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & c::
 
@@ -2492,6 +2784,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & d::
 
 if fileexist("F5\d.url")
@@ -2507,6 +2801,8 @@ Run,"F5\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & e::
 
@@ -2524,6 +2820,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & f::
 
 if fileexist("F5\f.url")
@@ -2539,6 +2837,8 @@ Run,"F5\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & g::
 
@@ -2556,6 +2856,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & h::
 
 if fileexist("F5\h.url")
@@ -2571,6 +2873,8 @@ Run,"F5\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & i::
 
@@ -2588,6 +2892,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & j::
 
 if fileexist("F5\j.url")
@@ -2603,6 +2909,8 @@ Run,"F5\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & k::
 
@@ -2620,6 +2928,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & l::
 
 if fileexist("F5\l.url")
@@ -2635,6 +2945,8 @@ Run,"F5\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & m::
 
@@ -2652,6 +2964,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & n::
 
 if fileexist("F5\n.url")
@@ -2667,6 +2981,8 @@ Run,"F5\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & o::
 
@@ -2684,6 +3000,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & p::
 
 if fileexist("F5\p.url")
@@ -2699,6 +3017,8 @@ Run,"F5\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & q::
 
@@ -2716,6 +3036,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & r::
 
 if fileexist("F5\r.url")
@@ -2731,6 +3053,8 @@ Run,"F5\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & s::
 
@@ -2748,6 +3072,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & t::
 
 if fileexist("F5\t.url")
@@ -2763,6 +3089,8 @@ Run,"F5\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & u::
 
@@ -2780,6 +3108,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & v::
 
 if fileexist("F5\v.url")
@@ -2795,6 +3125,8 @@ Run,"F5\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & w::
 
@@ -2812,6 +3144,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & x::
 
 if fileexist("F5\x.url")
@@ -2827,6 +3161,8 @@ Run,"F5\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & y::
 
@@ -2844,6 +3180,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & z::
 
 if fileexist("F5\z.url")
@@ -2859,6 +3197,8 @@ Run,"F5\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & 1::
 
@@ -2876,6 +3216,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & 2::
 
 if fileexist("F5\2.url")
@@ -2891,6 +3233,8 @@ Run,"F5\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & 3::
 
@@ -2908,6 +3252,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & 4::
 
 if fileexist("F5\4.url")
@@ -2923,6 +3269,8 @@ Run,"F5\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & 5::
 
@@ -2940,6 +3288,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & 6::
 
 if fileexist("F5\6.url")
@@ -2955,6 +3305,8 @@ Run,"F5\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & 7::
 
@@ -2972,6 +3324,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & 8::
 
 if fileexist("F5\8.url")
@@ -2987,6 +3341,8 @@ Run,"F5\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F5 & 9::
 
@@ -3004,6 +3360,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F5 & 0::
 
 if fileexist("F5\0.url")
@@ -3019,6 +3377,8 @@ Run,"F5\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & Enter::Run, F6
 
@@ -3038,6 +3398,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & b::
 
 if fileexist("F6\b.url")
@@ -3053,6 +3415,8 @@ Run,"F6\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & c::
 
@@ -3070,6 +3434,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & d::
 
 if fileexist("F6\d.url")
@@ -3085,6 +3451,8 @@ Run,"F6\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & e::
 
@@ -3102,6 +3470,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & f::
 
 if fileexist("F6\f.url")
@@ -3117,6 +3487,8 @@ Run,"F6\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & g::
 
@@ -3134,6 +3506,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & h::
 
 if fileexist("F6\h.url")
@@ -3149,6 +3523,8 @@ Run,"F6\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & i::
 
@@ -3166,6 +3542,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & j::
 
 if fileexist("F6\j.url")
@@ -3181,6 +3559,8 @@ Run,"F6\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & k::
 
@@ -3198,6 +3578,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & l::
 
 if fileexist("F6\l.url")
@@ -3213,6 +3595,8 @@ Run,"F6\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & m::
 
@@ -3230,6 +3614,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & n::
 
 if fileexist("F6\n.url")
@@ -3245,6 +3631,8 @@ Run,"F6\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & o::
 
@@ -3262,6 +3650,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & p::
 
 if fileexist("F6\p.url")
@@ -3277,6 +3667,8 @@ Run,"F6\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & q::
 
@@ -3294,6 +3686,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & r::
 
 if fileexist("F6\r.url")
@@ -3309,6 +3703,8 @@ Run,"F6\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & s::
 
@@ -3326,6 +3722,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & t::
 
 if fileexist("F6\t.url")
@@ -3341,6 +3739,8 @@ Run,"F6\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & u::
 
@@ -3358,6 +3758,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & v::
 
 if fileexist("F6\v.url")
@@ -3373,6 +3775,8 @@ Run,"F6\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & w::
 
@@ -3390,6 +3794,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & x::
 
 if fileexist("F6\x.url")
@@ -3405,6 +3811,8 @@ Run,"F6\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & y::
 
@@ -3422,6 +3830,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & z::
 
 if fileexist("F6\z.url")
@@ -3437,6 +3847,8 @@ Run,"F6\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & 1::
 
@@ -3454,6 +3866,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & 2::
 
 if fileexist("F6\2.url")
@@ -3469,6 +3883,8 @@ Run,"F6\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & 3::
 
@@ -3486,6 +3902,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & 4::
 
 if fileexist("F6\4.url")
@@ -3501,6 +3919,8 @@ Run,"F6\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & 5::
 
@@ -3518,6 +3938,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & 6::
 
 if fileexist("F6\6.url")
@@ -3533,6 +3955,8 @@ Run,"F6\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & 7::
 
@@ -3550,6 +3974,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & 8::
 
 if fileexist("F6\8.url")
@@ -3565,6 +3991,8 @@ Run,"F6\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F6 & 9::
 
@@ -3582,6 +4010,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F6 & 0::
 
 if fileexist("F6\0.url")
@@ -3597,6 +4027,8 @@ Run,"F6\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & Enter::Run, F7
 
@@ -3616,6 +4048,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & b::
 
 if fileexist("F7\b.url")
@@ -3631,6 +4065,8 @@ Run,"F7\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & c::
 
@@ -3648,6 +4084,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & d::
 
 if fileexist("F7\d.url")
@@ -3663,6 +4101,8 @@ Run,"F7\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & e::
 
@@ -3680,6 +4120,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & f::
 
 if fileexist("F7\f.url")
@@ -3695,6 +4137,8 @@ Run,"F7\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & g::
 
@@ -3712,6 +4156,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & h::
 
 if fileexist("F7\h.url")
@@ -3727,6 +4173,8 @@ Run,"F7\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & i::
 
@@ -3744,6 +4192,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & j::
 
 if fileexist("F7\j.url")
@@ -3759,6 +4209,8 @@ Run,"F7\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & k::
 
@@ -3776,6 +4228,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & l::
 
 if fileexist("F7\l.url")
@@ -3791,6 +4245,8 @@ Run,"F7\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & m::
 
@@ -3808,6 +4264,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & n::
 
 if fileexist("F7\n.url")
@@ -3823,6 +4281,8 @@ Run,"F7\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & o::
 
@@ -3840,6 +4300,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & p::
 
 if fileexist("F7\p.url")
@@ -3855,6 +4317,8 @@ Run,"F7\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & q::
 
@@ -3872,6 +4336,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & r::
 
 if fileexist("F7\r.url")
@@ -3887,6 +4353,8 @@ Run,"F7\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & s::
 
@@ -3904,6 +4372,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & t::
 
 if fileexist("F7\t.url")
@@ -3919,6 +4389,8 @@ Run,"F7\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & u::
 
@@ -3936,6 +4408,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & v::
 
 if fileexist("F7\v.url")
@@ -3951,6 +4425,8 @@ Run,"F7\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & w::
 
@@ -3968,6 +4444,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & x::
 
 if fileexist("F7\x.url")
@@ -3983,6 +4461,8 @@ Run,"F7\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & y::
 
@@ -4000,6 +4480,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & z::
 
 if fileexist("F7\z.url")
@@ -4015,6 +4497,8 @@ Run,"F7\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & 1::
 
@@ -4032,6 +4516,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & 2::
 
 if fileexist("F7\2.url")
@@ -4047,6 +4533,8 @@ Run,"F7\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & 3::
 
@@ -4064,6 +4552,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & 4::
 
 if fileexist("F7\4.url")
@@ -4079,6 +4569,8 @@ Run,"F7\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & 5::
 
@@ -4096,6 +4588,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & 6::
 
 if fileexist("F7\6.url")
@@ -4111,6 +4605,8 @@ Run,"F7\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & 7::
 
@@ -4128,6 +4624,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & 8::
 
 if fileexist("F7\8.url")
@@ -4143,6 +4641,8 @@ Run,"F7\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F7 & 9::
 
@@ -4160,6 +4660,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F7 & 0::
 
 if fileexist("F7\0.url")
@@ -4175,6 +4677,8 @@ Run,"F7\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & Enter::Run, F8
 
@@ -4194,6 +4698,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & b::
 
 if fileexist("F8\b.url")
@@ -4209,6 +4715,8 @@ Run,"F8\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & c::
 
@@ -4226,6 +4734,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & d::
 
 if fileexist("F8\d.url")
@@ -4241,6 +4751,8 @@ Run,"F8\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & e::
 
@@ -4258,6 +4770,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & f::
 
 if fileexist("F8\f.url")
@@ -4273,6 +4787,8 @@ Run,"F8\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & g::
 
@@ -4290,6 +4806,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & h::
 
 if fileexist("F8\h.url")
@@ -4305,6 +4823,8 @@ Run,"F8\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & i::
 
@@ -4322,6 +4842,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & j::
 
 if fileexist("F8\j.url")
@@ -4337,6 +4859,8 @@ Run,"F8\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & k::
 
@@ -4354,6 +4878,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & l::
 
 if fileexist("F8\l.url")
@@ -4369,6 +4895,8 @@ Run,"F8\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & m::
 
@@ -4386,6 +4914,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & n::
 
 if fileexist("F8\n.url")
@@ -4401,6 +4931,8 @@ Run,"F8\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & o::
 
@@ -4418,6 +4950,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & p::
 
 if fileexist("F8\p.url")
@@ -4433,6 +4967,8 @@ Run,"F8\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & q::
 
@@ -4450,6 +4986,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & r::
 
 if fileexist("F8\r.url")
@@ -4465,6 +5003,8 @@ Run,"F8\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & s::
 
@@ -4482,6 +5022,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & t::
 
 if fileexist("F8\t.url")
@@ -4497,6 +5039,8 @@ Run,"F8\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & u::
 
@@ -4514,6 +5058,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & v::
 
 if fileexist("F8\v.url")
@@ -4529,6 +5075,8 @@ Run,"F8\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & w::
 
@@ -4546,6 +5094,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & x::
 
 if fileexist("F8\x.url")
@@ -4561,6 +5111,8 @@ Run,"F8\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & y::
 
@@ -4578,6 +5130,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & z::
 
 if fileexist("F8\z.url")
@@ -4593,6 +5147,8 @@ Run,"F8\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & 1::
 
@@ -4610,6 +5166,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & 2::
 
 if fileexist("F8\2.url")
@@ -4625,6 +5183,8 @@ Run,"F8\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & 3::
 
@@ -4642,6 +5202,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & 4::
 
 if fileexist("F8\4.url")
@@ -4657,6 +5219,8 @@ Run,"F8\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & 5::
 
@@ -4674,6 +5238,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & 6::
 
 if fileexist("F8\6.url")
@@ -4689,6 +5255,8 @@ Run,"F8\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & 7::
 
@@ -4706,6 +5274,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & 8::
 
 if fileexist("F8\8.url")
@@ -4721,6 +5291,8 @@ Run,"F8\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F8 & 9::
 
@@ -4738,6 +5310,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F8 & 0::
 
 if fileexist("F8\0.url")
@@ -4753,6 +5327,8 @@ Run,"F8\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & Enter::Run, F9
 
@@ -4772,6 +5348,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & b::
 
 if fileexist("F9\b.url")
@@ -4787,6 +5365,8 @@ Run,"F9\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & c::
 
@@ -4804,6 +5384,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & d::
 
 if fileexist("F9\d.url")
@@ -4819,6 +5401,8 @@ Run,"F9\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & e::
 
@@ -4836,6 +5420,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & f::
 
 if fileexist("F9\f.url")
@@ -4851,6 +5437,8 @@ Run,"F9\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & g::
 
@@ -4868,6 +5456,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & h::
 
 if fileexist("F9\h.url")
@@ -4883,6 +5473,8 @@ Run,"F9\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & i::
 
@@ -4900,6 +5492,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & j::
 
 if fileexist("F9\j.url")
@@ -4915,6 +5509,8 @@ Run,"F9\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & k::
 
@@ -4932,6 +5528,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & l::
 
 if fileexist("F9\l.url")
@@ -4947,6 +5545,8 @@ Run,"F9\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & m::
 
@@ -4964,6 +5564,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & n::
 
 if fileexist("F9\n.url")
@@ -4979,6 +5581,8 @@ Run,"F9\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & o::
 
@@ -4996,6 +5600,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & p::
 
 if fileexist("F9\p.url")
@@ -5011,6 +5617,8 @@ Run,"F9\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & q::
 
@@ -5028,6 +5636,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & r::
 
 if fileexist("F9\r.url")
@@ -5043,6 +5653,8 @@ Run,"F9\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & s::
 
@@ -5060,6 +5672,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & t::
 
 if fileexist("F9\t.url")
@@ -5075,6 +5689,8 @@ Run,"F9\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & u::
 
@@ -5092,6 +5708,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & v::
 
 if fileexist("F9\v.url")
@@ -5107,6 +5725,8 @@ Run,"F9\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & w::
 
@@ -5124,6 +5744,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & x::
 
 if fileexist("F9\x.url")
@@ -5139,6 +5761,8 @@ Run,"F9\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & y::
 
@@ -5156,6 +5780,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & z::
 
 if fileexist("F9\z.url")
@@ -5171,6 +5797,8 @@ Run,"F9\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & 1::
 
@@ -5188,6 +5816,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & 2::
 
 if fileexist("F9\2.url")
@@ -5203,6 +5833,8 @@ Run,"F9\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & 3::
 
@@ -5220,6 +5852,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & 4::
 
 if fileexist("F9\4.url")
@@ -5235,6 +5869,8 @@ Run,"F9\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & 5::
 
@@ -5252,6 +5888,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & 6::
 
 if fileexist("F9\6.url")
@@ -5267,6 +5905,8 @@ Run,"F9\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & 7::
 
@@ -5284,6 +5924,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & 8::
 
 if fileexist("F9\8.url")
@@ -5299,6 +5941,8 @@ Run,"F9\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F9 & 9::
 
@@ -5316,6 +5960,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F9 & 0::
 
 if fileexist("F9\0.url")
@@ -5331,6 +5977,8 @@ Run,"F9\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & Enter::Run, F10
 
@@ -5350,6 +5998,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & b::
 
 if fileexist("F10\b.url")
@@ -5365,6 +6015,8 @@ Run,"F10\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & c::
 
@@ -5382,6 +6034,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & d::
 
 if fileexist("F10\d.url")
@@ -5397,6 +6051,8 @@ Run,"F10\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & e::
 
@@ -5414,6 +6070,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & f::
 
 if fileexist("F10\f.url")
@@ -5429,6 +6087,8 @@ Run,"F10\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & g::
 
@@ -5446,6 +6106,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & h::
 
 if fileexist("F10\h.url")
@@ -5461,6 +6123,8 @@ Run,"F10\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & i::
 
@@ -5478,6 +6142,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & j::
 
 if fileexist("F10\j.url")
@@ -5493,6 +6159,8 @@ Run,"F10\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & k::
 
@@ -5510,6 +6178,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & l::
 
 if fileexist("F10\l.url")
@@ -5525,6 +6195,8 @@ Run,"F10\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & m::
 
@@ -5542,6 +6214,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & n::
 
 if fileexist("F10\n.url")
@@ -5557,6 +6231,8 @@ Run,"F10\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & o::
 
@@ -5574,6 +6250,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & p::
 
 if fileexist("F10\p.url")
@@ -5589,6 +6267,8 @@ Run,"F10\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & q::
 
@@ -5606,6 +6286,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & r::
 
 if fileexist("F10\r.url")
@@ -5621,6 +6303,8 @@ Run,"F10\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & s::
 
@@ -5638,6 +6322,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & t::
 
 if fileexist("F10\t.url")
@@ -5653,6 +6339,8 @@ Run,"F10\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & u::
 
@@ -5670,6 +6358,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & v::
 
 if fileexist("F10\v.url")
@@ -5685,6 +6375,8 @@ Run,"F10\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & w::
 
@@ -5702,6 +6394,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & x::
 
 if fileexist("F10\x.url")
@@ -5717,6 +6411,8 @@ Run,"F10\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & y::
 
@@ -5734,6 +6430,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & z::
 
 if fileexist("F10\z.url")
@@ -5749,6 +6447,8 @@ Run,"F10\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & 1::
 
@@ -5766,6 +6466,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & 2::
 
 if fileexist("F10\2.url")
@@ -5781,6 +6483,8 @@ Run,"F10\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & 3::
 
@@ -5798,6 +6502,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & 4::
 
 if fileexist("F10\4.url")
@@ -5813,6 +6519,8 @@ Run,"F10\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & 5::
 
@@ -5830,6 +6538,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & 6::
 
 if fileexist("F10\6.url")
@@ -5845,6 +6555,8 @@ Run,"F10\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & 7::
 
@@ -5862,6 +6574,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & 8::
 
 if fileexist("F10\8.url")
@@ -5877,6 +6591,8 @@ Run,"F10\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F10 & 9::
 
@@ -5894,6 +6610,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F10 & 0::
 
 if fileexist("F10\0.url")
@@ -5909,6 +6627,8 @@ Run,"F10\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & Enter::Run, F11
 
@@ -5928,6 +6648,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & b::
 
 if fileexist("F11\b.url")
@@ -5943,6 +6665,8 @@ Run,"F11\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & c::
 
@@ -5960,6 +6684,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & d::
 
 if fileexist("F11\d.url")
@@ -5975,6 +6701,8 @@ Run,"F11\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & e::
 
@@ -5992,6 +6720,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & f::
 
 if fileexist("F11\f.url")
@@ -6007,6 +6737,8 @@ Run,"F11\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & g::
 
@@ -6024,6 +6756,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & h::
 
 if fileexist("F11\h.url")
@@ -6039,6 +6773,8 @@ Run,"F11\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & i::
 
@@ -6056,6 +6792,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & j::
 
 if fileexist("F11\j.url")
@@ -6071,6 +6809,8 @@ Run,"F11\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & k::
 
@@ -6088,6 +6828,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & l::
 
 if fileexist("F11\l.url")
@@ -6103,6 +6845,8 @@ Run,"F11\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & m::
 
@@ -6120,6 +6864,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & n::
 
 if fileexist("F11\n.url")
@@ -6135,6 +6881,8 @@ Run,"F11\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & o::
 
@@ -6152,6 +6900,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & p::
 
 if fileexist("F11\p.url")
@@ -6167,6 +6917,8 @@ Run,"F11\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & q::
 
@@ -6184,6 +6936,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & r::
 
 if fileexist("F11\r.url")
@@ -6199,6 +6953,8 @@ Run,"F11\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & s::
 
@@ -6216,6 +6972,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & t::
 
 if fileexist("F11\t.url")
@@ -6231,6 +6989,8 @@ Run,"F11\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & u::
 
@@ -6248,6 +7008,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & v::
 
 if fileexist("F11\v.url")
@@ -6263,6 +7025,8 @@ Run,"F11\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & w::
 
@@ -6280,6 +7044,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & x::
 
 if fileexist("F11\x.url")
@@ -6295,6 +7061,8 @@ Run,"F11\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & y::
 
@@ -6312,6 +7080,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & z::
 
 if fileexist("F11\z.url")
@@ -6327,6 +7097,8 @@ Run,"F11\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & 1::
 
@@ -6344,6 +7116,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & 2::
 
 if fileexist("F11\2.url")
@@ -6359,6 +7133,8 @@ Run,"F11\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & 3::
 
@@ -6376,6 +7152,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & 4::
 
 if fileexist("F11\4.url")
@@ -6391,6 +7169,8 @@ Run,"F11\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & 5::
 
@@ -6408,6 +7188,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & 6::
 
 if fileexist("F11\6.url")
@@ -6423,6 +7205,8 @@ Run,"F11\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & 7::
 
@@ -6440,6 +7224,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & 8::
 
 if fileexist("F11\8.url")
@@ -6455,6 +7241,8 @@ Run,"F11\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F11 & 9::
 
@@ -6472,6 +7260,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F11 & 0::
 
 if fileexist("F11\0.url")
@@ -6487,6 +7277,8 @@ Run,"F11\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & Enter::Run, F12
 
@@ -6506,6 +7298,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & b::
 
 if fileexist("F12\b.url")
@@ -6521,6 +7315,8 @@ Run,"F12\b.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & c::
 
@@ -6538,6 +7334,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & d::
 
 if fileexist("F12\d.url")
@@ -6553,6 +7351,8 @@ Run,"F12\d.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & e::
 
@@ -6570,6 +7370,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & f::
 
 if fileexist("F12\f.url")
@@ -6585,6 +7387,8 @@ Run,"F12\f.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & g::
 
@@ -6602,6 +7406,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & h::
 
 if fileexist("F12\h.url")
@@ -6617,6 +7423,8 @@ Run,"F12\h.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & i::
 
@@ -6634,6 +7442,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & j::
 
 if fileexist("F12\j.url")
@@ -6649,6 +7459,8 @@ Run,"F12\j.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & k::
 
@@ -6666,6 +7478,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & l::
 
 if fileexist("F12\l.url")
@@ -6681,6 +7495,8 @@ Run,"F12\l.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & m::
 
@@ -6698,6 +7514,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & n::
 
 if fileexist("F12\n.url")
@@ -6713,6 +7531,8 @@ Run,"F12\n.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & o::
 
@@ -6730,6 +7550,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & p::
 
 if fileexist("F12\p.url")
@@ -6745,6 +7567,8 @@ Run,"F12\p.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & q::
 
@@ -6762,6 +7586,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & r::
 
 if fileexist("F12\r.url")
@@ -6777,6 +7603,8 @@ Run,"F12\r.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & s::
 
@@ -6794,6 +7622,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & t::
 
 if fileexist("F12\t.url")
@@ -6809,6 +7639,8 @@ Run,"F12\t.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & u::
 
@@ -6826,6 +7658,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & v::
 
 if fileexist("F12\v.url")
@@ -6841,6 +7675,8 @@ Run,"F12\v.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & w::
 
@@ -6858,6 +7694,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & x::
 
 if fileexist("F12\x.url")
@@ -6873,6 +7711,8 @@ Run,"F12\x.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & y::
 
@@ -6890,6 +7730,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & z::
 
 if fileexist("F12\z.url")
@@ -6905,6 +7747,8 @@ Run,"F12\z.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & 1::
 
@@ -6922,6 +7766,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & 2::
 
 if fileexist("F12\2.url")
@@ -6937,6 +7783,8 @@ Run,"F12\2.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & 3::
 
@@ -6954,6 +7802,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & 4::
 
 if fileexist("F12\4.url")
@@ -6969,6 +7819,8 @@ Run,"F12\4.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & 5::
 
@@ -6986,6 +7838,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & 6::
 
 if fileexist("F12\6.url")
@@ -7001,6 +7855,8 @@ Run,"F12\6.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & 7::
 
@@ -7018,6 +7874,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & 8::
 
 if fileexist("F12\8.url")
@@ -7033,6 +7891,8 @@ Run,"F12\8.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
 F12 & 9::
 
@@ -7050,6 +7910,8 @@ Run,"%A_ScriptFullPath%" /restart
 return
 }
 
+return
+
 F12 & 0::
 
 if fileexist("F12\0.url")
@@ -7065,4 +7927,6 @@ Run,"F12\0.lnk",,useerrorlevel
 Run,"%A_ScriptFullPath%" /restart
 return
 }
+
+return
 
