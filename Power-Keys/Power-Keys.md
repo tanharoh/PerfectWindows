@@ -1,4 +1,4 @@
-# [Power Keys](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys.exe)
+# Power Keys
 
 ---
 
@@ -19,6 +19,12 @@
 ### 更快地调整窗口！
 
 ### 更快地操作虚拟桌面！
+
+---
+
+#### 下载 Power Keys
+
+[32 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)  [64 位](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)
 
 ---
 
