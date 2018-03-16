@@ -94,6 +94,7 @@
 |**`0` 或 `NumLock`**|**启动计算器**
 |**`Delete`**|**打开回收站**
 |**`End`**|**休眠 Windows**
+|**`Page Up`<br>`Page Down`<br>`Esc`**|**放大屏幕<br>缩小屏幕<br>退出放大镜**
 
 ---
 

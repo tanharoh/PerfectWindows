@@ -41,8 +41,8 @@ return
 #[::^#Left
 #]::^#Right
 
-#+=::Send #=
-#+-::Send #-
+#PgUp::#=
+#PgDn::#-
 
 #NumLock Up::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
 
