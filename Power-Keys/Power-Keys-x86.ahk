@@ -50,11 +50,11 @@ return
 #+=::Send #=
 #+-::Send #-
 
-#NumLock::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
+#NumLock Up::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
 
-#0::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
+#0 Up::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
 
-#CapsLock::winset,AlwaysOnTop,, A
+#CapsLock Up::winset,AlwaysOnTop,, A
 
 #Delete::Run ::{645ff040-5081-101b-9f08-00aa002f954e},,useerrorlevel
 
@@ -134,9 +134,9 @@ F10 & Space Up::Send !{F4}
 F11 & Space Up::Send !{F4}
 F12 & Space Up::Send !{F4}
 
-F1 & Enter::Run, F1
+F1 & Enter Up::Run, F1
 
-F1 & a::
+F1 & a Up::
 
 if fileexist("F1\a.url")
 {
@@ -154,7 +154,7 @@ return
 
 return
 
-F1 & b::
+F1 & b Up::
 
 if fileexist("F1\b.url")
 {
@@ -172,7 +172,7 @@ return
 
 return
 
-F1 & c::
+F1 & c Up::
 
 if fileexist("F1\c.url")
 {
@@ -190,7 +190,7 @@ return
 
 return
 
-F1 & d::
+F1 & d Up::
 
 if fileexist("F1\d.url")
 {
@@ -208,7 +208,7 @@ return
 
 return
 
-F1 & e::
+F1 & e Up::
 
 if fileexist("F1\e.url")
 {
@@ -226,7 +226,7 @@ return
 
 return
 
-F1 & f::
+F1 & f Up::
 
 if fileexist("F1\f.url")
 {
@@ -244,7 +244,7 @@ return
 
 return
 
-F1 & g::
+F1 & g Up::
 
 if fileexist("F1\g.url")
 {
@@ -262,7 +262,7 @@ return
 
 return
 
-F1 & h::
+F1 & h Up::
 
 if fileexist("F1\h.url")
 {
@@ -280,7 +280,7 @@ return
 
 return
 
-F1 & i::
+F1 & i Up::
 
 if fileexist("F1\i.url")
 {
@@ -298,7 +298,7 @@ return
 
 return
 
-F1 & j::
+F1 & j Up::
 
 if fileexist("F1\j.url")
 {
@@ -316,7 +316,7 @@ return
 
 return
 
-F1 & k::
+F1 & k Up::
 
 if fileexist("F1\k.url")
 {
@@ -334,7 +334,7 @@ return
 
 return
 
-F1 & l::
+F1 & l Up::
 
 if fileexist("F1\l.url")
 {
@@ -352,7 +352,7 @@ return
 
 return
 
-F1 & m::
+F1 & m Up::
 
 if fileexist("F1\m.url")
 {
@@ -370,7 +370,7 @@ return
 
 return
 
-F1 & n::
+F1 & n Up::
 
 if fileexist("F1\n.url")
 {
@@ -388,7 +388,7 @@ return
 
 return
 
-F1 & o::
+F1 & o Up::
 
 if fileexist("F1\o.url")
 {
@@ -406,7 +406,7 @@ return
 
 return
 
-F1 & p::
+F1 & p Up::
 
 if fileexist("F1\p.url")
 {
@@ -424,7 +424,7 @@ return
 
 return
 
-F1 & q::
+F1 & q Up::
 
 if fileexist("F1\q.url")
 {
@@ -442,7 +442,7 @@ return
 
 return
 
-F1 & r::
+F1 & r Up::
 
 if fileexist("F1\r.url")
 {
@@ -460,7 +460,7 @@ return
 
 return
 
-F1 & s::
+F1 & s Up::
 
 if fileexist("F1\s.url")
 {
@@ -478,7 +478,7 @@ return
 
 return
 
-F1 & t::
+F1 & t Up::
 
 if fileexist("F1\t.url")
 {
@@ -496,7 +496,7 @@ return
 
 return
 
-F1 & u::
+F1 & u Up::
 
 if fileexist("F1\u.url")
 {
@@ -514,7 +514,7 @@ return
 
 return
 
-F1 & v::
+F1 & v Up::
 
 if fileexist("F1\v.url")
 {
@@ -532,7 +532,7 @@ return
 
 return
 
-F1 & w::
+F1 & w Up::
 
 if fileexist("F1\w.url")
 {
@@ -550,7 +550,7 @@ return
 
 return
 
-F1 & x::
+F1 & x Up::
 
 if fileexist("F1\x.url")
 {
@@ -568,7 +568,7 @@ return
 
 return
 
-F1 & y::
+F1 & y Up::
 
 if fileexist("F1\y.url")
 {
@@ -586,7 +586,7 @@ return
 
 return
 
-F1 & z::
+F1 & z Up::
 
 if fileexist("F1\z.url")
 {
@@ -604,7 +604,7 @@ return
 
 return
 
-F1 & 1::
+F1 & 1 Up::
 
 if fileexist("F1\1.url")
 {
@@ -622,7 +622,7 @@ return
 
 return
 
-F1 & 2::
+F1 & 2 Up::
 
 if fileexist("F1\2.url")
 {
@@ -640,7 +640,7 @@ return
 
 return
 
-F1 & 3::
+F1 & 3 Up::
 
 if fileexist("F1\3.url")
 {
@@ -658,7 +658,7 @@ return
 
 return
 
-F1 & 4::
+F1 & 4 Up::
 
 if fileexist("F1\4.url")
 {
@@ -676,7 +676,7 @@ return
 
 return
 
-F1 & 5::
+F1 & 5 Up::
 
 if fileexist("F1\5.url")
 {
@@ -694,7 +694,7 @@ return
 
 return
 
-F1 & 6::
+F1 & 6 Up::
 
 if fileexist("F1\6.url")
 {
@@ -712,7 +712,7 @@ return
 
 return
 
-F1 & 7::
+F1 & 7 Up::
 
 if fileexist("F1\7.url")
 {
@@ -730,7 +730,7 @@ return
 
 return
 
-F1 & 8::
+F1 & 8 Up::
 
 if fileexist("F1\8.url")
 {
@@ -748,7 +748,7 @@ return
 
 return
 
-F1 & 9::
+F1 & 9 Up::
 
 if fileexist("F1\9.url")
 {
@@ -766,7 +766,7 @@ return
 
 return
 
-F1 & 0::
+F1 & 0 Up::
 
 if fileexist("F1\0.url")
 {
@@ -784,9 +784,9 @@ return
 
 return
 
-F2 & Enter::Run, F2
+F2 & Enter Up::Run, F2
 
-F2 & a::
+F2 & a Up::
 
 if fileexist("F2\a.url")
 {
@@ -804,7 +804,7 @@ return
 
 return
 
-F2 & b::
+F2 & b Up::
 
 if fileexist("F2\b.url")
 {
@@ -822,7 +822,7 @@ return
 
 return
 
-F2 & c::
+F2 & c Up::
 
 if fileexist("F2\c.url")
 {
@@ -840,7 +840,7 @@ return
 
 return
 
-F2 & d::
+F2 & d Up::
 
 if fileexist("F2\d.url")
 {
@@ -858,7 +858,7 @@ return
 
 return
 
-F2 & e::
+F2 & e Up::
 
 if fileexist("F2\e.url")
 {
@@ -876,7 +876,7 @@ return
 
 return
 
-F2 & f::
+F2 & f Up::
 
 if fileexist("F2\f.url")
 {
@@ -894,7 +894,7 @@ return
 
 return
 
-F2 & g::
+F2 & g Up::
 
 if fileexist("F2\g.url")
 {
@@ -912,7 +912,7 @@ return
 
 return
 
-F2 & h::
+F2 & h Up::
 
 if fileexist("F2\h.url")
 {
@@ -930,7 +930,7 @@ return
 
 return
 
-F2 & i::
+F2 & i Up::
 
 if fileexist("F2\i.url")
 {
@@ -948,7 +948,7 @@ return
 
 return
 
-F2 & j::
+F2 & j Up::
 
 if fileexist("F2\j.url")
 {
@@ -966,7 +966,7 @@ return
 
 return
 
-F2 & k::
+F2 & k Up::
 
 if fileexist("F2\k.url")
 {
@@ -984,7 +984,7 @@ return
 
 return
 
-F2 & l::
+F2 & l Up::
 
 if fileexist("F2\l.url")
 {
@@ -1002,7 +1002,7 @@ return
 
 return
 
-F2 & m::
+F2 & m Up::
 
 if fileexist("F2\m.url")
 {
@@ -1020,7 +1020,7 @@ return
 
 return
 
-F2 & n::
+F2 & n Up::
 
 if fileexist("F2\n.url")
 {
@@ -1038,7 +1038,7 @@ return
 
 return
 
-F2 & o::
+F2 & o Up::
 
 if fileexist("F2\o.url")
 {
@@ -1056,7 +1056,7 @@ return
 
 return
 
-F2 & p::
+F2 & p Up::
 
 if fileexist("F2\p.url")
 {
@@ -1074,7 +1074,7 @@ return
 
 return
 
-F2 & q::
+F2 & q Up::
 
 if fileexist("F2\q.url")
 {
@@ -1092,7 +1092,7 @@ return
 
 return
 
-F2 & r::
+F2 & r Up::
 
 if fileexist("F2\r.url")
 {
@@ -1110,7 +1110,7 @@ return
 
 return
 
-F2 & s::
+F2 & s Up::
 
 if fileexist("F2\s.url")
 {
@@ -1128,7 +1128,7 @@ return
 
 return
 
-F2 & t::
+F2 & t Up::
 
 if fileexist("F2\t.url")
 {
@@ -1146,7 +1146,7 @@ return
 
 return
 
-F2 & u::
+F2 & u Up::
 
 if fileexist("F2\u.url")
 {
@@ -1164,7 +1164,7 @@ return
 
 return
 
-F2 & v::
+F2 & v Up::
 
 if fileexist("F2\v.url")
 {
@@ -1182,7 +1182,7 @@ return
 
 return
 
-F2 & w::
+F2 & w Up::
 
 if fileexist("F2\w.url")
 {
@@ -1200,7 +1200,7 @@ return
 
 return
 
-F2 & x::
+F2 & x Up::
 
 if fileexist("F2\x.url")
 {
@@ -1218,7 +1218,7 @@ return
 
 return
 
-F2 & y::
+F2 & y Up::
 
 if fileexist("F2\y.url")
 {
@@ -1236,7 +1236,7 @@ return
 
 return
 
-F2 & z::
+F2 & z Up::
 
 if fileexist("F2\z.url")
 {
@@ -1254,7 +1254,7 @@ return
 
 return
 
-F2 & 1::
+F2 & 1 Up::
 
 if fileexist("F2\1.url")
 {
@@ -1272,7 +1272,7 @@ return
 
 return
 
-F2 & 2::
+F2 & 2 Up::
 
 if fileexist("F2\2.url")
 {
@@ -1290,7 +1290,7 @@ return
 
 return
 
-F2 & 3::
+F2 & 3 Up::
 
 if fileexist("F2\3.url")
 {
@@ -1308,7 +1308,7 @@ return
 
 return
 
-F2 & 4::
+F2 & 4 Up::
 
 if fileexist("F2\4.url")
 {
@@ -1326,7 +1326,7 @@ return
 
 return
 
-F2 & 5::
+F2 & 5 Up::
 
 if fileexist("F2\5.url")
 {
@@ -1344,7 +1344,7 @@ return
 
 return
 
-F2 & 6::
+F2 & 6 Up::
 
 if fileexist("F2\6.url")
 {
@@ -1362,7 +1362,7 @@ return
 
 return
 
-F2 & 7::
+F2 & 7 Up::
 
 if fileexist("F2\7.url")
 {
@@ -1380,7 +1380,7 @@ return
 
 return
 
-F2 & 8::
+F2 & 8 Up::
 
 if fileexist("F2\8.url")
 {
@@ -1398,7 +1398,7 @@ return
 
 return
 
-F2 & 9::
+F2 & 9 Up::
 
 if fileexist("F2\9.url")
 {
@@ -1416,7 +1416,7 @@ return
 
 return
 
-F2 & 0::
+F2 & 0 Up::
 
 if fileexist("F2\0.url")
 {
@@ -1434,9 +1434,9 @@ return
 
 return
 
-F3 & Enter::Run, F3
+F3 & Enter Up::Run, F3
 
-F3 & a::
+F3 & a Up::
 
 if fileexist("F3\a.url")
 {
@@ -1454,7 +1454,7 @@ return
 
 return
 
-F3 & b::
+F3 & b Up::
 
 if fileexist("F3\b.url")
 {
@@ -1472,7 +1472,7 @@ return
 
 return
 
-F3 & c::
+F3 & c Up::
 
 if fileexist("F3\c.url")
 {
@@ -1490,7 +1490,7 @@ return
 
 return
 
-F3 & d::
+F3 & d Up::
 
 if fileexist("F3\d.url")
 {
@@ -1508,7 +1508,7 @@ return
 
 return
 
-F3 & e::
+F3 & e Up::
 
 if fileexist("F3\e.url")
 {
@@ -1526,7 +1526,7 @@ return
 
 return
 
-F3 & f::
+F3 & f Up::
 
 if fileexist("F3\f.url")
 {
@@ -1544,7 +1544,7 @@ return
 
 return
 
-F3 & g::
+F3 & g Up::
 
 if fileexist("F3\g.url")
 {
@@ -1562,7 +1562,7 @@ return
 
 return
 
-F3 & h::
+F3 & h Up::
 
 if fileexist("F3\h.url")
 {
@@ -1580,7 +1580,7 @@ return
 
 return
 
-F3 & i::
+F3 & i Up::
 
 if fileexist("F3\i.url")
 {
@@ -1598,7 +1598,7 @@ return
 
 return
 
-F3 & j::
+F3 & j Up::
 
 if fileexist("F3\j.url")
 {
@@ -1616,7 +1616,7 @@ return
 
 return
 
-F3 & k::
+F3 & k Up::
 
 if fileexist("F3\k.url")
 {
@@ -1634,7 +1634,7 @@ return
 
 return
 
-F3 & l::
+F3 & l Up::
 
 if fileexist("F3\l.url")
 {
@@ -1652,7 +1652,7 @@ return
 
 return
 
-F3 & m::
+F3 & m Up::
 
 if fileexist("F3\m.url")
 {
@@ -1670,7 +1670,7 @@ return
 
 return
 
-F3 & n::
+F3 & n Up::
 
 if fileexist("F3\n.url")
 {
@@ -1688,7 +1688,7 @@ return
 
 return
 
-F3 & o::
+F3 & o Up::
 
 if fileexist("F3\o.url")
 {
@@ -1706,7 +1706,7 @@ return
 
 return
 
-F3 & p::
+F3 & p Up::
 
 if fileexist("F3\p.url")
 {
@@ -1724,7 +1724,7 @@ return
 
 return
 
-F3 & q::
+F3 & q Up::
 
 if fileexist("F3\q.url")
 {
@@ -1742,7 +1742,7 @@ return
 
 return
 
-F3 & r::
+F3 & r Up::
 
 if fileexist("F3\r.url")
 {
@@ -1760,7 +1760,7 @@ return
 
 return
 
-F3 & s::
+F3 & s Up::
 
 if fileexist("F3\s.url")
 {
@@ -1778,7 +1778,7 @@ return
 
 return
 
-F3 & t::
+F3 & t Up::
 
 if fileexist("F3\t.url")
 {
@@ -1796,7 +1796,7 @@ return
 
 return
 
-F3 & u::
+F3 & u Up::
 
 if fileexist("F3\u.url")
 {
@@ -1814,7 +1814,7 @@ return
 
 return
 
-F3 & v::
+F3 & v Up::
 
 if fileexist("F3\v.url")
 {
@@ -1832,7 +1832,7 @@ return
 
 return
 
-F3 & w::
+F3 & w Up::
 
 if fileexist("F3\w.url")
 {
@@ -1850,7 +1850,7 @@ return
 
 return
 
-F3 & x::
+F3 & x Up::
 
 if fileexist("F3\x.url")
 {
@@ -1868,7 +1868,7 @@ return
 
 return
 
-F3 & y::
+F3 & y Up::
 
 if fileexist("F3\y.url")
 {
@@ -1886,7 +1886,7 @@ return
 
 return
 
-F3 & z::
+F3 & z Up::
 
 if fileexist("F3\z.url")
 {
@@ -1904,7 +1904,7 @@ return
 
 return
 
-F3 & 1::
+F3 & 1 Up::
 
 if fileexist("F3\1.url")
 {
@@ -1922,7 +1922,7 @@ return
 
 return
 
-F3 & 2::
+F3 & 2 Up::
 
 if fileexist("F3\2.url")
 {
@@ -1940,7 +1940,7 @@ return
 
 return
 
-F3 & 3::
+F3 & 3 Up::
 
 if fileexist("F3\3.url")
 {
@@ -1958,7 +1958,7 @@ return
 
 return
 
-F3 & 4::
+F3 & 4 Up::
 
 if fileexist("F3\4.url")
 {
@@ -1976,7 +1976,7 @@ return
 
 return
 
-F3 & 5::
+F3 & 5 Up::
 
 if fileexist("F3\5.url")
 {
@@ -1994,7 +1994,7 @@ return
 
 return
 
-F3 & 6::
+F3 & 6 Up::
 
 if fileexist("F3\6.url")
 {
@@ -2012,7 +2012,7 @@ return
 
 return
 
-F3 & 7::
+F3 & 7 Up::
 
 if fileexist("F3\7.url")
 {
@@ -2030,7 +2030,7 @@ return
 
 return
 
-F3 & 8::
+F3 & 8 Up::
 
 if fileexist("F3\8.url")
 {
@@ -2048,7 +2048,7 @@ return
 
 return
 
-F3 & 9::
+F3 & 9 Up::
 
 if fileexist("F3\9.url")
 {
@@ -2066,7 +2066,7 @@ return
 
 return
 
-F3 & 0::
+F3 & 0 Up::
 
 if fileexist("F3\0.url")
 {
@@ -2084,9 +2084,9 @@ return
 
 return
 
-F4 & Enter::Run, F4
+F4 & Enter Up::Run, F4
 
-F4 & a::
+F4 & a Up::
 
 if fileexist("F4\a.url")
 {
@@ -2104,7 +2104,7 @@ return
 
 return
 
-F4 & b::
+F4 & b Up::
 
 if fileexist("F4\b.url")
 {
@@ -2122,7 +2122,7 @@ return
 
 return
 
-F4 & c::
+F4 & c Up::
 
 if fileexist("F4\c.url")
 {
@@ -2140,7 +2140,7 @@ return
 
 return
 
-F4 & d::
+F4 & d Up::
 
 if fileexist("F4\d.url")
 {
@@ -2158,7 +2158,7 @@ return
 
 return
 
-F4 & e::
+F4 & e Up::
 
 if fileexist("F4\e.url")
 {
@@ -2176,7 +2176,7 @@ return
 
 return
 
-F4 & f::
+F4 & f Up::
 
 if fileexist("F4\f.url")
 {
@@ -2194,7 +2194,7 @@ return
 
 return
 
-F4 & g::
+F4 & g Up::
 
 if fileexist("F4\g.url")
 {
@@ -2212,7 +2212,7 @@ return
 
 return
 
-F4 & h::
+F4 & h Up::
 
 if fileexist("F4\h.url")
 {
@@ -2230,7 +2230,7 @@ return
 
 return
 
-F4 & i::
+F4 & i Up::
 
 if fileexist("F4\i.url")
 {
@@ -2248,7 +2248,7 @@ return
 
 return
 
-F4 & j::
+F4 & j Up::
 
 if fileexist("F4\j.url")
 {
@@ -2266,7 +2266,7 @@ return
 
 return
 
-F4 & k::
+F4 & k Up::
 
 if fileexist("F4\k.url")
 {
@@ -2284,7 +2284,7 @@ return
 
 return
 
-F4 & l::
+F4 & l Up::
 
 if fileexist("F4\l.url")
 {
@@ -2302,7 +2302,7 @@ return
 
 return
 
-F4 & m::
+F4 & m Up::
 
 if fileexist("F4\m.url")
 {
@@ -2320,7 +2320,7 @@ return
 
 return
 
-F4 & n::
+F4 & n Up::
 
 if fileexist("F4\n.url")
 {
@@ -2338,7 +2338,7 @@ return
 
 return
 
-F4 & o::
+F4 & o Up::
 
 if fileexist("F4\o.url")
 {
@@ -2356,7 +2356,7 @@ return
 
 return
 
-F4 & p::
+F4 & p Up::
 
 if fileexist("F4\p.url")
 {
@@ -2374,7 +2374,7 @@ return
 
 return
 
-F4 & q::
+F4 & q Up::
 
 if fileexist("F4\q.url")
 {
@@ -2392,7 +2392,7 @@ return
 
 return
 
-F4 & r::
+F4 & r Up::
 
 if fileexist("F4\r.url")
 {
@@ -2410,7 +2410,7 @@ return
 
 return
 
-F4 & s::
+F4 & s Up::
 
 if fileexist("F4\s.url")
 {
@@ -2428,7 +2428,7 @@ return
 
 return
 
-F4 & t::
+F4 & t Up::
 
 if fileexist("F4\t.url")
 {
@@ -2446,7 +2446,7 @@ return
 
 return
 
-F4 & u::
+F4 & u Up::
 
 if fileexist("F4\u.url")
 {
@@ -2464,7 +2464,7 @@ return
 
 return
 
-F4 & v::
+F4 & v Up::
 
 if fileexist("F4\v.url")
 {
@@ -2482,7 +2482,7 @@ return
 
 return
 
-F4 & w::
+F4 & w Up::
 
 if fileexist("F4\w.url")
 {
@@ -2500,7 +2500,7 @@ return
 
 return
 
-F4 & x::
+F4 & x Up::
 
 if fileexist("F4\x.url")
 {
@@ -2518,7 +2518,7 @@ return
 
 return
 
-F4 & y::
+F4 & y Up::
 
 if fileexist("F4\y.url")
 {
@@ -2536,7 +2536,7 @@ return
 
 return
 
-F4 & z::
+F4 & z Up::
 
 if fileexist("F4\z.url")
 {
@@ -2554,7 +2554,7 @@ return
 
 return
 
-F4 & 1::
+F4 & 1 Up::
 
 if fileexist("F4\1.url")
 {
@@ -2572,7 +2572,7 @@ return
 
 return
 
-F4 & 2::
+F4 & 2 Up::
 
 if fileexist("F4\2.url")
 {
@@ -2590,7 +2590,7 @@ return
 
 return
 
-F4 & 3::
+F4 & 3 Up::
 
 if fileexist("F4\3.url")
 {
@@ -2608,7 +2608,7 @@ return
 
 return
 
-F4 & 4::
+F4 & 4 Up::
 
 if fileexist("F4\4.url")
 {
@@ -2626,7 +2626,7 @@ return
 
 return
 
-F4 & 5::
+F4 & 5 Up::
 
 if fileexist("F4\5.url")
 {
@@ -2644,7 +2644,7 @@ return
 
 return
 
-F4 & 6::
+F4 & 6 Up::
 
 if fileexist("F4\6.url")
 {
@@ -2662,7 +2662,7 @@ return
 
 return
 
-F4 & 7::
+F4 & 7 Up::
 
 if fileexist("F4\7.url")
 {
@@ -2680,7 +2680,7 @@ return
 
 return
 
-F4 & 8::
+F4 & 8 Up::
 
 if fileexist("F4\8.url")
 {
@@ -2698,7 +2698,7 @@ return
 
 return
 
-F4 & 9::
+F4 & 9 Up::
 
 if fileexist("F4\9.url")
 {
@@ -2716,7 +2716,7 @@ return
 
 return
 
-F4 & 0::
+F4 & 0 Up::
 
 if fileexist("F4\0.url")
 {
@@ -2734,9 +2734,9 @@ return
 
 return
 
-F5 & Enter::Run, F5
+F5 & Enter Up::Run, F5
 
-F5 & a::
+F5 & a Up::
 
 if fileexist("F5\a.url")
 {
@@ -2754,7 +2754,7 @@ return
 
 return
 
-F5 & b::
+F5 & b Up::
 
 if fileexist("F5\b.url")
 {
@@ -2772,7 +2772,7 @@ return
 
 return
 
-F5 & c::
+F5 & c Up::
 
 if fileexist("F5\c.url")
 {
@@ -2790,7 +2790,7 @@ return
 
 return
 
-F5 & d::
+F5 & d Up::
 
 if fileexist("F5\d.url")
 {
@@ -2808,7 +2808,7 @@ return
 
 return
 
-F5 & e::
+F5 & e Up::
 
 if fileexist("F5\e.url")
 {
@@ -2826,7 +2826,7 @@ return
 
 return
 
-F5 & f::
+F5 & f Up::
 
 if fileexist("F5\f.url")
 {
@@ -2844,7 +2844,7 @@ return
 
 return
 
-F5 & g::
+F5 & g Up::
 
 if fileexist("F5\g.url")
 {
@@ -2862,7 +2862,7 @@ return
 
 return
 
-F5 & h::
+F5 & h Up::
 
 if fileexist("F5\h.url")
 {
@@ -2880,7 +2880,7 @@ return
 
 return
 
-F5 & i::
+F5 & i Up::
 
 if fileexist("F5\i.url")
 {
@@ -2898,7 +2898,7 @@ return
 
 return
 
-F5 & j::
+F5 & j Up::
 
 if fileexist("F5\j.url")
 {
@@ -2916,7 +2916,7 @@ return
 
 return
 
-F5 & k::
+F5 & k Up::
 
 if fileexist("F5\k.url")
 {
@@ -2934,7 +2934,7 @@ return
 
 return
 
-F5 & l::
+F5 & l Up::
 
 if fileexist("F5\l.url")
 {
@@ -2952,7 +2952,7 @@ return
 
 return
 
-F5 & m::
+F5 & m Up::
 
 if fileexist("F5\m.url")
 {
@@ -2970,7 +2970,7 @@ return
 
 return
 
-F5 & n::
+F5 & n Up::
 
 if fileexist("F5\n.url")
 {
@@ -2988,7 +2988,7 @@ return
 
 return
 
-F5 & o::
+F5 & o Up::
 
 if fileexist("F5\o.url")
 {
@@ -3006,7 +3006,7 @@ return
 
 return
 
-F5 & p::
+F5 & p Up::
 
 if fileexist("F5\p.url")
 {
@@ -3024,7 +3024,7 @@ return
 
 return
 
-F5 & q::
+F5 & q Up::
 
 if fileexist("F5\q.url")
 {
@@ -3042,7 +3042,7 @@ return
 
 return
 
-F5 & r::
+F5 & r Up::
 
 if fileexist("F5\r.url")
 {
@@ -3060,7 +3060,7 @@ return
 
 return
 
-F5 & s::
+F5 & s Up::
 
 if fileexist("F5\s.url")
 {
@@ -3078,7 +3078,7 @@ return
 
 return
 
-F5 & t::
+F5 & t Up::
 
 if fileexist("F5\t.url")
 {
@@ -3096,7 +3096,7 @@ return
 
 return
 
-F5 & u::
+F5 & u Up::
 
 if fileexist("F5\u.url")
 {
@@ -3114,7 +3114,7 @@ return
 
 return
 
-F5 & v::
+F5 & v Up::
 
 if fileexist("F5\v.url")
 {
@@ -3132,7 +3132,7 @@ return
 
 return
 
-F5 & w::
+F5 & w Up::
 
 if fileexist("F5\w.url")
 {
@@ -3150,7 +3150,7 @@ return
 
 return
 
-F5 & x::
+F5 & x Up::
 
 if fileexist("F5\x.url")
 {
@@ -3168,7 +3168,7 @@ return
 
 return
 
-F5 & y::
+F5 & y Up::
 
 if fileexist("F5\y.url")
 {
@@ -3186,7 +3186,7 @@ return
 
 return
 
-F5 & z::
+F5 & z Up::
 
 if fileexist("F5\z.url")
 {
@@ -3204,7 +3204,7 @@ return
 
 return
 
-F5 & 1::
+F5 & 1 Up::
 
 if fileexist("F5\1.url")
 {
@@ -3222,7 +3222,7 @@ return
 
 return
 
-F5 & 2::
+F5 & 2 Up::
 
 if fileexist("F5\2.url")
 {
@@ -3240,7 +3240,7 @@ return
 
 return
 
-F5 & 3::
+F5 & 3 Up::
 
 if fileexist("F5\3.url")
 {
@@ -3258,7 +3258,7 @@ return
 
 return
 
-F5 & 4::
+F5 & 4 Up::
 
 if fileexist("F5\4.url")
 {
@@ -3276,7 +3276,7 @@ return
 
 return
 
-F5 & 5::
+F5 & 5 Up::
 
 if fileexist("F5\5.url")
 {
@@ -3294,7 +3294,7 @@ return
 
 return
 
-F5 & 6::
+F5 & 6 Up::
 
 if fileexist("F5\6.url")
 {
@@ -3312,7 +3312,7 @@ return
 
 return
 
-F5 & 7::
+F5 & 7 Up::
 
 if fileexist("F5\7.url")
 {
@@ -3330,7 +3330,7 @@ return
 
 return
 
-F5 & 8::
+F5 & 8 Up::
 
 if fileexist("F5\8.url")
 {
@@ -3348,7 +3348,7 @@ return
 
 return
 
-F5 & 9::
+F5 & 9 Up::
 
 if fileexist("F5\9.url")
 {
@@ -3366,7 +3366,7 @@ return
 
 return
 
-F5 & 0::
+F5 & 0 Up::
 
 if fileexist("F5\0.url")
 {
@@ -3384,9 +3384,9 @@ return
 
 return
 
-F6 & Enter::Run, F6
+F6 & Enter Up::Run, F6
 
-F6 & a::
+F6 & a Up::
 
 if fileexist("F6\a.url")
 {
@@ -3404,7 +3404,7 @@ return
 
 return
 
-F6 & b::
+F6 & b Up::
 
 if fileexist("F6\b.url")
 {
@@ -3422,7 +3422,7 @@ return
 
 return
 
-F6 & c::
+F6 & c Up::
 
 if fileexist("F6\c.url")
 {
@@ -3440,7 +3440,7 @@ return
 
 return
 
-F6 & d::
+F6 & d Up::
 
 if fileexist("F6\d.url")
 {
@@ -3458,7 +3458,7 @@ return
 
 return
 
-F6 & e::
+F6 & e Up::
 
 if fileexist("F6\e.url")
 {
@@ -3476,7 +3476,7 @@ return
 
 return
 
-F6 & f::
+F6 & f Up::
 
 if fileexist("F6\f.url")
 {
@@ -3494,7 +3494,7 @@ return
 
 return
 
-F6 & g::
+F6 & g Up::
 
 if fileexist("F6\g.url")
 {
@@ -3512,7 +3512,7 @@ return
 
 return
 
-F6 & h::
+F6 & h Up::
 
 if fileexist("F6\h.url")
 {
@@ -3530,7 +3530,7 @@ return
 
 return
 
-F6 & i::
+F6 & i Up::
 
 if fileexist("F6\i.url")
 {
@@ -3548,7 +3548,7 @@ return
 
 return
 
-F6 & j::
+F6 & j Up::
 
 if fileexist("F6\j.url")
 {
@@ -3566,7 +3566,7 @@ return
 
 return
 
-F6 & k::
+F6 & k Up::
 
 if fileexist("F6\k.url")
 {
@@ -3584,7 +3584,7 @@ return
 
 return
 
-F6 & l::
+F6 & l Up::
 
 if fileexist("F6\l.url")
 {
@@ -3602,7 +3602,7 @@ return
 
 return
 
-F6 & m::
+F6 & m Up::
 
 if fileexist("F6\m.url")
 {
@@ -3620,7 +3620,7 @@ return
 
 return
 
-F6 & n::
+F6 & n Up::
 
 if fileexist("F6\n.url")
 {
@@ -3638,7 +3638,7 @@ return
 
 return
 
-F6 & o::
+F6 & o Up::
 
 if fileexist("F6\o.url")
 {
@@ -3656,7 +3656,7 @@ return
 
 return
 
-F6 & p::
+F6 & p Up::
 
 if fileexist("F6\p.url")
 {
@@ -3674,7 +3674,7 @@ return
 
 return
 
-F6 & q::
+F6 & q Up::
 
 if fileexist("F6\q.url")
 {
@@ -3692,7 +3692,7 @@ return
 
 return
 
-F6 & r::
+F6 & r Up::
 
 if fileexist("F6\r.url")
 {
@@ -3710,7 +3710,7 @@ return
 
 return
 
-F6 & s::
+F6 & s Up::
 
 if fileexist("F6\s.url")
 {
@@ -3728,7 +3728,7 @@ return
 
 return
 
-F6 & t::
+F6 & t Up::
 
 if fileexist("F6\t.url")
 {
@@ -3746,7 +3746,7 @@ return
 
 return
 
-F6 & u::
+F6 & u Up::
 
 if fileexist("F6\u.url")
 {
@@ -3764,7 +3764,7 @@ return
 
 return
 
-F6 & v::
+F6 & v Up::
 
 if fileexist("F6\v.url")
 {
@@ -3782,7 +3782,7 @@ return
 
 return
 
-F6 & w::
+F6 & w Up::
 
 if fileexist("F6\w.url")
 {
@@ -3800,7 +3800,7 @@ return
 
 return
 
-F6 & x::
+F6 & x Up::
 
 if fileexist("F6\x.url")
 {
@@ -3818,7 +3818,7 @@ return
 
 return
 
-F6 & y::
+F6 & y Up::
 
 if fileexist("F6\y.url")
 {
@@ -3836,7 +3836,7 @@ return
 
 return
 
-F6 & z::
+F6 & z Up::
 
 if fileexist("F6\z.url")
 {
@@ -3854,7 +3854,7 @@ return
 
 return
 
-F6 & 1::
+F6 & 1 Up::
 
 if fileexist("F6\1.url")
 {
@@ -3872,7 +3872,7 @@ return
 
 return
 
-F6 & 2::
+F6 & 2 Up::
 
 if fileexist("F6\2.url")
 {
@@ -3890,7 +3890,7 @@ return
 
 return
 
-F6 & 3::
+F6 & 3 Up::
 
 if fileexist("F6\3.url")
 {
@@ -3908,7 +3908,7 @@ return
 
 return
 
-F6 & 4::
+F6 & 4 Up::
 
 if fileexist("F6\4.url")
 {
@@ -3926,7 +3926,7 @@ return
 
 return
 
-F6 & 5::
+F6 & 5 Up::
 
 if fileexist("F6\5.url")
 {
@@ -3944,7 +3944,7 @@ return
 
 return
 
-F6 & 6::
+F6 & 6 Up::
 
 if fileexist("F6\6.url")
 {
@@ -3962,7 +3962,7 @@ return
 
 return
 
-F6 & 7::
+F6 & 7 Up::
 
 if fileexist("F6\7.url")
 {
@@ -3980,7 +3980,7 @@ return
 
 return
 
-F6 & 8::
+F6 & 8 Up::
 
 if fileexist("F6\8.url")
 {
@@ -3998,7 +3998,7 @@ return
 
 return
 
-F6 & 9::
+F6 & 9 Up::
 
 if fileexist("F6\9.url")
 {
@@ -4016,7 +4016,7 @@ return
 
 return
 
-F6 & 0::
+F6 & 0 Up::
 
 if fileexist("F6\0.url")
 {
@@ -4034,9 +4034,9 @@ return
 
 return
 
-F7 & Enter::Run, F7
+F7 & Enter Up::Run, F7
 
-F7 & a::
+F7 & a Up::
 
 if fileexist("F7\a.url")
 {
@@ -4054,7 +4054,7 @@ return
 
 return
 
-F7 & b::
+F7 & b Up::
 
 if fileexist("F7\b.url")
 {
@@ -4072,7 +4072,7 @@ return
 
 return
 
-F7 & c::
+F7 & c Up::
 
 if fileexist("F7\c.url")
 {
@@ -4090,7 +4090,7 @@ return
 
 return
 
-F7 & d::
+F7 & d Up::
 
 if fileexist("F7\d.url")
 {
@@ -4108,7 +4108,7 @@ return
 
 return
 
-F7 & e::
+F7 & e Up::
 
 if fileexist("F7\e.url")
 {
@@ -4126,7 +4126,7 @@ return
 
 return
 
-F7 & f::
+F7 & f Up::
 
 if fileexist("F7\f.url")
 {
@@ -4144,7 +4144,7 @@ return
 
 return
 
-F7 & g::
+F7 & g Up::
 
 if fileexist("F7\g.url")
 {
@@ -4162,7 +4162,7 @@ return
 
 return
 
-F7 & h::
+F7 & h Up::
 
 if fileexist("F7\h.url")
 {
@@ -4180,7 +4180,7 @@ return
 
 return
 
-F7 & i::
+F7 & i Up::
 
 if fileexist("F7\i.url")
 {
@@ -4198,7 +4198,7 @@ return
 
 return
 
-F7 & j::
+F7 & j Up::
 
 if fileexist("F7\j.url")
 {
@@ -4216,7 +4216,7 @@ return
 
 return
 
-F7 & k::
+F7 & k Up::
 
 if fileexist("F7\k.url")
 {
@@ -4234,7 +4234,7 @@ return
 
 return
 
-F7 & l::
+F7 & l Up::
 
 if fileexist("F7\l.url")
 {
@@ -4252,7 +4252,7 @@ return
 
 return
 
-F7 & m::
+F7 & m Up::
 
 if fileexist("F7\m.url")
 {
@@ -4270,7 +4270,7 @@ return
 
 return
 
-F7 & n::
+F7 & n Up::
 
 if fileexist("F7\n.url")
 {
@@ -4288,7 +4288,7 @@ return
 
 return
 
-F7 & o::
+F7 & o Up::
 
 if fileexist("F7\o.url")
 {
@@ -4306,7 +4306,7 @@ return
 
 return
 
-F7 & p::
+F7 & p Up::
 
 if fileexist("F7\p.url")
 {
@@ -4324,7 +4324,7 @@ return
 
 return
 
-F7 & q::
+F7 & q Up::
 
 if fileexist("F7\q.url")
 {
@@ -4342,7 +4342,7 @@ return
 
 return
 
-F7 & r::
+F7 & r Up::
 
 if fileexist("F7\r.url")
 {
@@ -4360,7 +4360,7 @@ return
 
 return
 
-F7 & s::
+F7 & s Up::
 
 if fileexist("F7\s.url")
 {
@@ -4378,7 +4378,7 @@ return
 
 return
 
-F7 & t::
+F7 & t Up::
 
 if fileexist("F7\t.url")
 {
@@ -4396,7 +4396,7 @@ return
 
 return
 
-F7 & u::
+F7 & u Up::
 
 if fileexist("F7\u.url")
 {
@@ -4414,7 +4414,7 @@ return
 
 return
 
-F7 & v::
+F7 & v Up::
 
 if fileexist("F7\v.url")
 {
@@ -4432,7 +4432,7 @@ return
 
 return
 
-F7 & w::
+F7 & w Up::
 
 if fileexist("F7\w.url")
 {
@@ -4450,7 +4450,7 @@ return
 
 return
 
-F7 & x::
+F7 & x Up::
 
 if fileexist("F7\x.url")
 {
@@ -4468,7 +4468,7 @@ return
 
 return
 
-F7 & y::
+F7 & y Up::
 
 if fileexist("F7\y.url")
 {
@@ -4486,7 +4486,7 @@ return
 
 return
 
-F7 & z::
+F7 & z Up::
 
 if fileexist("F7\z.url")
 {
@@ -4504,7 +4504,7 @@ return
 
 return
 
-F7 & 1::
+F7 & 1 Up::
 
 if fileexist("F7\1.url")
 {
@@ -4522,7 +4522,7 @@ return
 
 return
 
-F7 & 2::
+F7 & 2 Up::
 
 if fileexist("F7\2.url")
 {
@@ -4540,7 +4540,7 @@ return
 
 return
 
-F7 & 3::
+F7 & 3 Up::
 
 if fileexist("F7\3.url")
 {
@@ -4558,7 +4558,7 @@ return
 
 return
 
-F7 & 4::
+F7 & 4 Up::
 
 if fileexist("F7\4.url")
 {
@@ -4576,7 +4576,7 @@ return
 
 return
 
-F7 & 5::
+F7 & 5 Up::
 
 if fileexist("F7\5.url")
 {
@@ -4594,7 +4594,7 @@ return
 
 return
 
-F7 & 6::
+F7 & 6 Up::
 
 if fileexist("F7\6.url")
 {
@@ -4612,7 +4612,7 @@ return
 
 return
 
-F7 & 7::
+F7 & 7 Up::
 
 if fileexist("F7\7.url")
 {
@@ -4630,7 +4630,7 @@ return
 
 return
 
-F7 & 8::
+F7 & 8 Up::
 
 if fileexist("F7\8.url")
 {
@@ -4648,7 +4648,7 @@ return
 
 return
 
-F7 & 9::
+F7 & 9 Up::
 
 if fileexist("F7\9.url")
 {
@@ -4666,7 +4666,7 @@ return
 
 return
 
-F7 & 0::
+F7 & 0 Up::
 
 if fileexist("F7\0.url")
 {
@@ -4684,9 +4684,9 @@ return
 
 return
 
-F8 & Enter::Run, F8
+F8 & Enter Up::Run, F8
 
-F8 & a::
+F8 & a Up::
 
 if fileexist("F8\a.url")
 {
@@ -4704,7 +4704,7 @@ return
 
 return
 
-F8 & b::
+F8 & b Up::
 
 if fileexist("F8\b.url")
 {
@@ -4722,7 +4722,7 @@ return
 
 return
 
-F8 & c::
+F8 & c Up::
 
 if fileexist("F8\c.url")
 {
@@ -4740,7 +4740,7 @@ return
 
 return
 
-F8 & d::
+F8 & d Up::
 
 if fileexist("F8\d.url")
 {
@@ -4758,7 +4758,7 @@ return
 
 return
 
-F8 & e::
+F8 & e Up::
 
 if fileexist("F8\e.url")
 {
@@ -4776,7 +4776,7 @@ return
 
 return
 
-F8 & f::
+F8 & f Up::
 
 if fileexist("F8\f.url")
 {
@@ -4794,7 +4794,7 @@ return
 
 return
 
-F8 & g::
+F8 & g Up::
 
 if fileexist("F8\g.url")
 {
@@ -4812,7 +4812,7 @@ return
 
 return
 
-F8 & h::
+F8 & h Up::
 
 if fileexist("F8\h.url")
 {
@@ -4830,7 +4830,7 @@ return
 
 return
 
-F8 & i::
+F8 & i Up::
 
 if fileexist("F8\i.url")
 {
@@ -4848,7 +4848,7 @@ return
 
 return
 
-F8 & j::
+F8 & j Up::
 
 if fileexist("F8\j.url")
 {
@@ -4866,7 +4866,7 @@ return
 
 return
 
-F8 & k::
+F8 & k Up::
 
 if fileexist("F8\k.url")
 {
@@ -4884,7 +4884,7 @@ return
 
 return
 
-F8 & l::
+F8 & l Up::
 
 if fileexist("F8\l.url")
 {
@@ -4902,7 +4902,7 @@ return
 
 return
 
-F8 & m::
+F8 & m Up::
 
 if fileexist("F8\m.url")
 {
@@ -4920,7 +4920,7 @@ return
 
 return
 
-F8 & n::
+F8 & n Up::
 
 if fileexist("F8\n.url")
 {
@@ -4938,7 +4938,7 @@ return
 
 return
 
-F8 & o::
+F8 & o Up::
 
 if fileexist("F8\o.url")
 {
@@ -4956,7 +4956,7 @@ return
 
 return
 
-F8 & p::
+F8 & p Up::
 
 if fileexist("F8\p.url")
 {
@@ -4974,7 +4974,7 @@ return
 
 return
 
-F8 & q::
+F8 & q Up::
 
 if fileexist("F8\q.url")
 {
@@ -4992,7 +4992,7 @@ return
 
 return
 
-F8 & r::
+F8 & r Up::
 
 if fileexist("F8\r.url")
 {
@@ -5010,7 +5010,7 @@ return
 
 return
 
-F8 & s::
+F8 & s Up::
 
 if fileexist("F8\s.url")
 {
@@ -5028,7 +5028,7 @@ return
 
 return
 
-F8 & t::
+F8 & t Up::
 
 if fileexist("F8\t.url")
 {
@@ -5046,7 +5046,7 @@ return
 
 return
 
-F8 & u::
+F8 & u Up::
 
 if fileexist("F8\u.url")
 {
@@ -5064,7 +5064,7 @@ return
 
 return
 
-F8 & v::
+F8 & v Up::
 
 if fileexist("F8\v.url")
 {
@@ -5082,7 +5082,7 @@ return
 
 return
 
-F8 & w::
+F8 & w Up::
 
 if fileexist("F8\w.url")
 {
@@ -5100,7 +5100,7 @@ return
 
 return
 
-F8 & x::
+F8 & x Up::
 
 if fileexist("F8\x.url")
 {
@@ -5118,7 +5118,7 @@ return
 
 return
 
-F8 & y::
+F8 & y Up::
 
 if fileexist("F8\y.url")
 {
@@ -5136,7 +5136,7 @@ return
 
 return
 
-F8 & z::
+F8 & z Up::
 
 if fileexist("F8\z.url")
 {
@@ -5154,7 +5154,7 @@ return
 
 return
 
-F8 & 1::
+F8 & 1 Up::
 
 if fileexist("F8\1.url")
 {
@@ -5172,7 +5172,7 @@ return
 
 return
 
-F8 & 2::
+F8 & 2 Up::
 
 if fileexist("F8\2.url")
 {
@@ -5190,7 +5190,7 @@ return
 
 return
 
-F8 & 3::
+F8 & 3 Up::
 
 if fileexist("F8\3.url")
 {
@@ -5208,7 +5208,7 @@ return
 
 return
 
-F8 & 4::
+F8 & 4 Up::
 
 if fileexist("F8\4.url")
 {
@@ -5226,7 +5226,7 @@ return
 
 return
 
-F8 & 5::
+F8 & 5 Up::
 
 if fileexist("F8\5.url")
 {
@@ -5244,7 +5244,7 @@ return
 
 return
 
-F8 & 6::
+F8 & 6 Up::
 
 if fileexist("F8\6.url")
 {
@@ -5262,7 +5262,7 @@ return
 
 return
 
-F8 & 7::
+F8 & 7 Up::
 
 if fileexist("F8\7.url")
 {
@@ -5280,7 +5280,7 @@ return
 
 return
 
-F8 & 8::
+F8 & 8 Up::
 
 if fileexist("F8\8.url")
 {
@@ -5298,7 +5298,7 @@ return
 
 return
 
-F8 & 9::
+F8 & 9 Up::
 
 if fileexist("F8\9.url")
 {
@@ -5316,7 +5316,7 @@ return
 
 return
 
-F8 & 0::
+F8 & 0 Up::
 
 if fileexist("F8\0.url")
 {
@@ -5334,9 +5334,9 @@ return
 
 return
 
-F9 & Enter::Run, F9
+F9 & Enter Up::Run, F9
 
-F9 & a::
+F9 & a Up::
 
 if fileexist("F9\a.url")
 {
@@ -5354,7 +5354,7 @@ return
 
 return
 
-F9 & b::
+F9 & b Up::
 
 if fileexist("F9\b.url")
 {
@@ -5372,7 +5372,7 @@ return
 
 return
 
-F9 & c::
+F9 & c Up::
 
 if fileexist("F9\c.url")
 {
@@ -5390,7 +5390,7 @@ return
 
 return
 
-F9 & d::
+F9 & d Up::
 
 if fileexist("F9\d.url")
 {
@@ -5408,7 +5408,7 @@ return
 
 return
 
-F9 & e::
+F9 & e Up::
 
 if fileexist("F9\e.url")
 {
@@ -5426,7 +5426,7 @@ return
 
 return
 
-F9 & f::
+F9 & f Up::
 
 if fileexist("F9\f.url")
 {
@@ -5444,7 +5444,7 @@ return
 
 return
 
-F9 & g::
+F9 & g Up::
 
 if fileexist("F9\g.url")
 {
@@ -5462,7 +5462,7 @@ return
 
 return
 
-F9 & h::
+F9 & h Up::
 
 if fileexist("F9\h.url")
 {
@@ -5480,7 +5480,7 @@ return
 
 return
 
-F9 & i::
+F9 & i Up::
 
 if fileexist("F9\i.url")
 {
@@ -5498,7 +5498,7 @@ return
 
 return
 
-F9 & j::
+F9 & j Up::
 
 if fileexist("F9\j.url")
 {
@@ -5516,7 +5516,7 @@ return
 
 return
 
-F9 & k::
+F9 & k Up::
 
 if fileexist("F9\k.url")
 {
@@ -5534,7 +5534,7 @@ return
 
 return
 
-F9 & l::
+F9 & l Up::
 
 if fileexist("F9\l.url")
 {
@@ -5552,7 +5552,7 @@ return
 
 return
 
-F9 & m::
+F9 & m Up::
 
 if fileexist("F9\m.url")
 {
@@ -5570,7 +5570,7 @@ return
 
 return
 
-F9 & n::
+F9 & n Up::
 
 if fileexist("F9\n.url")
 {
@@ -5588,7 +5588,7 @@ return
 
 return
 
-F9 & o::
+F9 & o Up::
 
 if fileexist("F9\o.url")
 {
@@ -5606,7 +5606,7 @@ return
 
 return
 
-F9 & p::
+F9 & p Up::
 
 if fileexist("F9\p.url")
 {
@@ -5624,7 +5624,7 @@ return
 
 return
 
-F9 & q::
+F9 & q Up::
 
 if fileexist("F9\q.url")
 {
@@ -5642,7 +5642,7 @@ return
 
 return
 
-F9 & r::
+F9 & r Up::
 
 if fileexist("F9\r.url")
 {
@@ -5660,7 +5660,7 @@ return
 
 return
 
-F9 & s::
+F9 & s Up::
 
 if fileexist("F9\s.url")
 {
@@ -5678,7 +5678,7 @@ return
 
 return
 
-F9 & t::
+F9 & t Up::
 
 if fileexist("F9\t.url")
 {
@@ -5696,7 +5696,7 @@ return
 
 return
 
-F9 & u::
+F9 & u Up::
 
 if fileexist("F9\u.url")
 {
@@ -5714,7 +5714,7 @@ return
 
 return
 
-F9 & v::
+F9 & v Up::
 
 if fileexist("F9\v.url")
 {
@@ -5732,7 +5732,7 @@ return
 
 return
 
-F9 & w::
+F9 & w Up::
 
 if fileexist("F9\w.url")
 {
@@ -5750,7 +5750,7 @@ return
 
 return
 
-F9 & x::
+F9 & x Up::
 
 if fileexist("F9\x.url")
 {
@@ -5768,7 +5768,7 @@ return
 
 return
 
-F9 & y::
+F9 & y Up::
 
 if fileexist("F9\y.url")
 {
@@ -5786,7 +5786,7 @@ return
 
 return
 
-F9 & z::
+F9 & z Up::
 
 if fileexist("F9\z.url")
 {
@@ -5804,7 +5804,7 @@ return
 
 return
 
-F9 & 1::
+F9 & 1 Up::
 
 if fileexist("F9\1.url")
 {
@@ -5822,7 +5822,7 @@ return
 
 return
 
-F9 & 2::
+F9 & 2 Up::
 
 if fileexist("F9\2.url")
 {
@@ -5840,7 +5840,7 @@ return
 
 return
 
-F9 & 3::
+F9 & 3 Up::
 
 if fileexist("F9\3.url")
 {
@@ -5858,7 +5858,7 @@ return
 
 return
 
-F9 & 4::
+F9 & 4 Up::
 
 if fileexist("F9\4.url")
 {
@@ -5876,7 +5876,7 @@ return
 
 return
 
-F9 & 5::
+F9 & 5 Up::
 
 if fileexist("F9\5.url")
 {
@@ -5894,7 +5894,7 @@ return
 
 return
 
-F9 & 6::
+F9 & 6 Up::
 
 if fileexist("F9\6.url")
 {
@@ -5912,7 +5912,7 @@ return
 
 return
 
-F9 & 7::
+F9 & 7 Up::
 
 if fileexist("F9\7.url")
 {
@@ -5930,7 +5930,7 @@ return
 
 return
 
-F9 & 8::
+F9 & 8 Up::
 
 if fileexist("F9\8.url")
 {
@@ -5948,7 +5948,7 @@ return
 
 return
 
-F9 & 9::
+F9 & 9 Up::
 
 if fileexist("F9\9.url")
 {
@@ -5966,7 +5966,7 @@ return
 
 return
 
-F9 & 0::
+F9 & 0 Up::
 
 if fileexist("F9\0.url")
 {
@@ -5984,9 +5984,9 @@ return
 
 return
 
-F10 & Enter::Run, F10
+F10 & Enter Up::Run, F10
 
-F10 & a::
+F10 & a Up::
 
 if fileexist("F10\a.url")
 {
@@ -6004,7 +6004,7 @@ return
 
 return
 
-F10 & b::
+F10 & b Up::
 
 if fileexist("F10\b.url")
 {
@@ -6022,7 +6022,7 @@ return
 
 return
 
-F10 & c::
+F10 & c Up::
 
 if fileexist("F10\c.url")
 {
@@ -6040,7 +6040,7 @@ return
 
 return
 
-F10 & d::
+F10 & d Up::
 
 if fileexist("F10\d.url")
 {
@@ -6058,7 +6058,7 @@ return
 
 return
 
-F10 & e::
+F10 & e Up::
 
 if fileexist("F10\e.url")
 {
@@ -6076,7 +6076,7 @@ return
 
 return
 
-F10 & f::
+F10 & f Up::
 
 if fileexist("F10\f.url")
 {
@@ -6094,7 +6094,7 @@ return
 
 return
 
-F10 & g::
+F10 & g Up::
 
 if fileexist("F10\g.url")
 {
@@ -6112,7 +6112,7 @@ return
 
 return
 
-F10 & h::
+F10 & h Up::
 
 if fileexist("F10\h.url")
 {
@@ -6130,7 +6130,7 @@ return
 
 return
 
-F10 & i::
+F10 & i Up::
 
 if fileexist("F10\i.url")
 {
@@ -6148,7 +6148,7 @@ return
 
 return
 
-F10 & j::
+F10 & j Up::
 
 if fileexist("F10\j.url")
 {
@@ -6166,7 +6166,7 @@ return
 
 return
 
-F10 & k::
+F10 & k Up::
 
 if fileexist("F10\k.url")
 {
@@ -6184,7 +6184,7 @@ return
 
 return
 
-F10 & l::
+F10 & l Up::
 
 if fileexist("F10\l.url")
 {
@@ -6202,7 +6202,7 @@ return
 
 return
 
-F10 & m::
+F10 & m Up::
 
 if fileexist("F10\m.url")
 {
@@ -6220,7 +6220,7 @@ return
 
 return
 
-F10 & n::
+F10 & n Up::
 
 if fileexist("F10\n.url")
 {
@@ -6238,7 +6238,7 @@ return
 
 return
 
-F10 & o::
+F10 & o Up::
 
 if fileexist("F10\o.url")
 {
@@ -6256,7 +6256,7 @@ return
 
 return
 
-F10 & p::
+F10 & p Up::
 
 if fileexist("F10\p.url")
 {
@@ -6274,7 +6274,7 @@ return
 
 return
 
-F10 & q::
+F10 & q Up::
 
 if fileexist("F10\q.url")
 {
@@ -6292,7 +6292,7 @@ return
 
 return
 
-F10 & r::
+F10 & r Up::
 
 if fileexist("F10\r.url")
 {
@@ -6310,7 +6310,7 @@ return
 
 return
 
-F10 & s::
+F10 & s Up::
 
 if fileexist("F10\s.url")
 {
@@ -6328,7 +6328,7 @@ return
 
 return
 
-F10 & t::
+F10 & t Up::
 
 if fileexist("F10\t.url")
 {
@@ -6346,7 +6346,7 @@ return
 
 return
 
-F10 & u::
+F10 & u Up::
 
 if fileexist("F10\u.url")
 {
@@ -6364,7 +6364,7 @@ return
 
 return
 
-F10 & v::
+F10 & v Up::
 
 if fileexist("F10\v.url")
 {
@@ -6382,7 +6382,7 @@ return
 
 return
 
-F10 & w::
+F10 & w Up::
 
 if fileexist("F10\w.url")
 {
@@ -6400,7 +6400,7 @@ return
 
 return
 
-F10 & x::
+F10 & x Up::
 
 if fileexist("F10\x.url")
 {
@@ -6418,7 +6418,7 @@ return
 
 return
 
-F10 & y::
+F10 & y Up::
 
 if fileexist("F10\y.url")
 {
@@ -6436,7 +6436,7 @@ return
 
 return
 
-F10 & z::
+F10 & z Up::
 
 if fileexist("F10\z.url")
 {
@@ -6454,7 +6454,7 @@ return
 
 return
 
-F10 & 1::
+F10 & 1 Up::
 
 if fileexist("F10\1.url")
 {
@@ -6472,7 +6472,7 @@ return
 
 return
 
-F10 & 2::
+F10 & 2 Up::
 
 if fileexist("F10\2.url")
 {
@@ -6490,7 +6490,7 @@ return
 
 return
 
-F10 & 3::
+F10 & 3 Up::
 
 if fileexist("F10\3.url")
 {
@@ -6508,7 +6508,7 @@ return
 
 return
 
-F10 & 4::
+F10 & 4 Up::
 
 if fileexist("F10\4.url")
 {
@@ -6526,7 +6526,7 @@ return
 
 return
 
-F10 & 5::
+F10 & 5 Up::
 
 if fileexist("F10\5.url")
 {
@@ -6544,7 +6544,7 @@ return
 
 return
 
-F10 & 6::
+F10 & 6 Up::
 
 if fileexist("F10\6.url")
 {
@@ -6562,7 +6562,7 @@ return
 
 return
 
-F10 & 7::
+F10 & 7 Up::
 
 if fileexist("F10\7.url")
 {
@@ -6580,7 +6580,7 @@ return
 
 return
 
-F10 & 8::
+F10 & 8 Up::
 
 if fileexist("F10\8.url")
 {
@@ -6598,7 +6598,7 @@ return
 
 return
 
-F10 & 9::
+F10 & 9 Up::
 
 if fileexist("F10\9.url")
 {
@@ -6616,7 +6616,7 @@ return
 
 return
 
-F10 & 0::
+F10 & 0 Up::
 
 if fileexist("F10\0.url")
 {
@@ -6634,9 +6634,9 @@ return
 
 return
 
-F11 & Enter::Run, F11
+F11 & Enter Up::Run, F11
 
-F11 & a::
+F11 & a Up::
 
 if fileexist("F11\a.url")
 {
@@ -6654,7 +6654,7 @@ return
 
 return
 
-F11 & b::
+F11 & b Up::
 
 if fileexist("F11\b.url")
 {
@@ -6672,7 +6672,7 @@ return
 
 return
 
-F11 & c::
+F11 & c Up::
 
 if fileexist("F11\c.url")
 {
@@ -6690,7 +6690,7 @@ return
 
 return
 
-F11 & d::
+F11 & d Up::
 
 if fileexist("F11\d.url")
 {
@@ -6708,7 +6708,7 @@ return
 
 return
 
-F11 & e::
+F11 & e Up::
 
 if fileexist("F11\e.url")
 {
@@ -6726,7 +6726,7 @@ return
 
 return
 
-F11 & f::
+F11 & f Up::
 
 if fileexist("F11\f.url")
 {
@@ -6744,7 +6744,7 @@ return
 
 return
 
-F11 & g::
+F11 & g Up::
 
 if fileexist("F11\g.url")
 {
@@ -6762,7 +6762,7 @@ return
 
 return
 
-F11 & h::
+F11 & h Up::
 
 if fileexist("F11\h.url")
 {
@@ -6780,7 +6780,7 @@ return
 
 return
 
-F11 & i::
+F11 & i Up::
 
 if fileexist("F11\i.url")
 {
@@ -6798,7 +6798,7 @@ return
 
 return
 
-F11 & j::
+F11 & j Up::
 
 if fileexist("F11\j.url")
 {
@@ -6816,7 +6816,7 @@ return
 
 return
 
-F11 & k::
+F11 & k Up::
 
 if fileexist("F11\k.url")
 {
@@ -6834,7 +6834,7 @@ return
 
 return
 
-F11 & l::
+F11 & l Up::
 
 if fileexist("F11\l.url")
 {
@@ -6852,7 +6852,7 @@ return
 
 return
 
-F11 & m::
+F11 & m Up::
 
 if fileexist("F11\m.url")
 {
@@ -6870,7 +6870,7 @@ return
 
 return
 
-F11 & n::
+F11 & n Up::
 
 if fileexist("F11\n.url")
 {
@@ -6888,7 +6888,7 @@ return
 
 return
 
-F11 & o::
+F11 & o Up::
 
 if fileexist("F11\o.url")
 {
@@ -6906,7 +6906,7 @@ return
 
 return
 
-F11 & p::
+F11 & p Up::
 
 if fileexist("F11\p.url")
 {
@@ -6924,7 +6924,7 @@ return
 
 return
 
-F11 & q::
+F11 & q Up::
 
 if fileexist("F11\q.url")
 {
@@ -6942,7 +6942,7 @@ return
 
 return
 
-F11 & r::
+F11 & r Up::
 
 if fileexist("F11\r.url")
 {
@@ -6960,7 +6960,7 @@ return
 
 return
 
-F11 & s::
+F11 & s Up::
 
 if fileexist("F11\s.url")
 {
@@ -6978,7 +6978,7 @@ return
 
 return
 
-F11 & t::
+F11 & t Up::
 
 if fileexist("F11\t.url")
 {
@@ -6996,7 +6996,7 @@ return
 
 return
 
-F11 & u::
+F11 & u Up::
 
 if fileexist("F11\u.url")
 {
@@ -7014,7 +7014,7 @@ return
 
 return
 
-F11 & v::
+F11 & v Up::
 
 if fileexist("F11\v.url")
 {
@@ -7032,7 +7032,7 @@ return
 
 return
 
-F11 & w::
+F11 & w Up::
 
 if fileexist("F11\w.url")
 {
@@ -7050,7 +7050,7 @@ return
 
 return
 
-F11 & x::
+F11 & x Up::
 
 if fileexist("F11\x.url")
 {
@@ -7068,7 +7068,7 @@ return
 
 return
 
-F11 & y::
+F11 & y Up::
 
 if fileexist("F11\y.url")
 {
@@ -7086,7 +7086,7 @@ return
 
 return
 
-F11 & z::
+F11 & z Up::
 
 if fileexist("F11\z.url")
 {
@@ -7104,7 +7104,7 @@ return
 
 return
 
-F11 & 1::
+F11 & 1 Up::
 
 if fileexist("F11\1.url")
 {
@@ -7122,7 +7122,7 @@ return
 
 return
 
-F11 & 2::
+F11 & 2 Up::
 
 if fileexist("F11\2.url")
 {
@@ -7140,7 +7140,7 @@ return
 
 return
 
-F11 & 3::
+F11 & 3 Up::
 
 if fileexist("F11\3.url")
 {
@@ -7158,7 +7158,7 @@ return
 
 return
 
-F11 & 4::
+F11 & 4 Up::
 
 if fileexist("F11\4.url")
 {
@@ -7176,7 +7176,7 @@ return
 
 return
 
-F11 & 5::
+F11 & 5 Up::
 
 if fileexist("F11\5.url")
 {
@@ -7194,7 +7194,7 @@ return
 
 return
 
-F11 & 6::
+F11 & 6 Up::
 
 if fileexist("F11\6.url")
 {
@@ -7212,7 +7212,7 @@ return
 
 return
 
-F11 & 7::
+F11 & 7 Up::
 
 if fileexist("F11\7.url")
 {
@@ -7230,7 +7230,7 @@ return
 
 return
 
-F11 & 8::
+F11 & 8 Up::
 
 if fileexist("F11\8.url")
 {
@@ -7248,7 +7248,7 @@ return
 
 return
 
-F11 & 9::
+F11 & 9 Up::
 
 if fileexist("F11\9.url")
 {
@@ -7266,7 +7266,7 @@ return
 
 return
 
-F11 & 0::
+F11 & 0 Up::
 
 if fileexist("F11\0.url")
 {
@@ -7284,9 +7284,9 @@ return
 
 return
 
-F12 & Enter::Run, F12
+F12 & Enter Up::Run, F12
 
-F12 & a::
+F12 & a Up::
 
 if fileexist("F12\a.url")
 {
@@ -7304,7 +7304,7 @@ return
 
 return
 
-F12 & b::
+F12 & b Up::
 
 if fileexist("F12\b.url")
 {
@@ -7322,7 +7322,7 @@ return
 
 return
 
-F12 & c::
+F12 & c Up::
 
 if fileexist("F12\c.url")
 {
@@ -7340,7 +7340,7 @@ return
 
 return
 
-F12 & d::
+F12 & d Up::
 
 if fileexist("F12\d.url")
 {
@@ -7358,7 +7358,7 @@ return
 
 return
 
-F12 & e::
+F12 & e Up::
 
 if fileexist("F12\e.url")
 {
@@ -7376,7 +7376,7 @@ return
 
 return
 
-F12 & f::
+F12 & f Up::
 
 if fileexist("F12\f.url")
 {
@@ -7394,7 +7394,7 @@ return
 
 return
 
-F12 & g::
+F12 & g Up::
 
 if fileexist("F12\g.url")
 {
@@ -7412,7 +7412,7 @@ return
 
 return
 
-F12 & h::
+F12 & h Up::
 
 if fileexist("F12\h.url")
 {
@@ -7430,7 +7430,7 @@ return
 
 return
 
-F12 & i::
+F12 & i Up::
 
 if fileexist("F12\i.url")
 {
@@ -7448,7 +7448,7 @@ return
 
 return
 
-F12 & j::
+F12 & j Up::
 
 if fileexist("F12\j.url")
 {
@@ -7466,7 +7466,7 @@ return
 
 return
 
-F12 & k::
+F12 & k Up::
 
 if fileexist("F12\k.url")
 {
@@ -7484,7 +7484,7 @@ return
 
 return
 
-F12 & l::
+F12 & l Up::
 
 if fileexist("F12\l.url")
 {
@@ -7502,7 +7502,7 @@ return
 
 return
 
-F12 & m::
+F12 & m Up::
 
 if fileexist("F12\m.url")
 {
@@ -7520,7 +7520,7 @@ return
 
 return
 
-F12 & n::
+F12 & n Up::
 
 if fileexist("F12\n.url")
 {
@@ -7538,7 +7538,7 @@ return
 
 return
 
-F12 & o::
+F12 & o Up::
 
 if fileexist("F12\o.url")
 {
@@ -7556,7 +7556,7 @@ return
 
 return
 
-F12 & p::
+F12 & p Up::
 
 if fileexist("F12\p.url")
 {
@@ -7574,7 +7574,7 @@ return
 
 return
 
-F12 & q::
+F12 & q Up::
 
 if fileexist("F12\q.url")
 {
@@ -7592,7 +7592,7 @@ return
 
 return
 
-F12 & r::
+F12 & r Up::
 
 if fileexist("F12\r.url")
 {
@@ -7610,7 +7610,7 @@ return
 
 return
 
-F12 & s::
+F12 & s Up::
 
 if fileexist("F12\s.url")
 {
@@ -7628,7 +7628,7 @@ return
 
 return
 
-F12 & t::
+F12 & t Up::
 
 if fileexist("F12\t.url")
 {
@@ -7646,7 +7646,7 @@ return
 
 return
 
-F12 & u::
+F12 & u Up::
 
 if fileexist("F12\u.url")
 {
@@ -7664,7 +7664,7 @@ return
 
 return
 
-F12 & v::
+F12 & v Up::
 
 if fileexist("F12\v.url")
 {
@@ -7682,7 +7682,7 @@ return
 
 return
 
-F12 & w::
+F12 & w Up::
 
 if fileexist("F12\w.url")
 {
@@ -7700,7 +7700,7 @@ return
 
 return
 
-F12 & x::
+F12 & x Up::
 
 if fileexist("F12\x.url")
 {
@@ -7718,7 +7718,7 @@ return
 
 return
 
-F12 & y::
+F12 & y Up::
 
 if fileexist("F12\y.url")
 {
@@ -7736,7 +7736,7 @@ return
 
 return
 
-F12 & z::
+F12 & z Up::
 
 if fileexist("F12\z.url")
 {
@@ -7754,7 +7754,7 @@ return
 
 return
 
-F12 & 1::
+F12 & 1 Up::
 
 if fileexist("F12\1.url")
 {
@@ -7772,7 +7772,7 @@ return
 
 return
 
-F12 & 2::
+F12 & 2 Up::
 
 if fileexist("F12\2.url")
 {
@@ -7790,7 +7790,7 @@ return
 
 return
 
-F12 & 3::
+F12 & 3 Up::
 
 if fileexist("F12\3.url")
 {
@@ -7808,7 +7808,7 @@ return
 
 return
 
-F12 & 4::
+F12 & 4 Up::
 
 if fileexist("F12\4.url")
 {
@@ -7826,7 +7826,7 @@ return
 
 return
 
-F12 & 5::
+F12 & 5 Up::
 
 if fileexist("F12\5.url")
 {
@@ -7844,7 +7844,7 @@ return
 
 return
 
-F12 & 6::
+F12 & 6 Up::
 
 if fileexist("F12\6.url")
 {
@@ -7862,7 +7862,7 @@ return
 
 return
 
-F12 & 7::
+F12 & 7 Up::
 
 if fileexist("F12\7.url")
 {
@@ -7880,7 +7880,7 @@ return
 
 return
 
-F12 & 8::
+F12 & 8 Up::
 
 if fileexist("F12\8.url")
 {
@@ -7898,7 +7898,7 @@ return
 
 return
 
-F12 & 9::
+F12 & 9 Up::
 
 if fileexist("F12\9.url")
 {
@@ -7916,7 +7916,7 @@ return
 
 return
 
-F12 & 0::
+F12 & 0 Up::
 
 if fileexist("F12\0.url")
 {
