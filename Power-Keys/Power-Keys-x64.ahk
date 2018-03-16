@@ -52,11 +52,7 @@ return
 
 #Delete::Run ::{645ff040-5081-101b-9f08-00aa002f954e},,useerrorlevel
 
-#End::
-Keywait,LWin
-Keywait,RWin
-DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
-return
+#End::DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
 
 #F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md,,useerrorlevel
