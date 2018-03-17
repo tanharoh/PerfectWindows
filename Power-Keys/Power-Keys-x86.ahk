@@ -134,6 +134,21 @@ F10 & Space Up::Send !{F4}
 F11 & Space Up::Send !{F4}
 F12 & Space Up::Send !{F4}
 
+F1 & PrintScreen::^+!F1
+F2 & PrintScreen::^+!F2
+F3 & PrintScreen::^+!F3
+F4 & PrintScreen::^+!F4
+F5 & PrintScreen::^+!F5
+F6 & PrintScreen::^+!F6
+F7 & PrintScreen::^+!F7
+F8 & PrintScreen::^+!F8
+F9 & PrintScreen::^+!F9
+F10 & PrintScreen::^+!F10
+F11 & PrintScreen::^+!F11
+F12 & PrintScreen::^+!F12
+
+#!PrintScreen::Run, %systemroot%\system32\snippingtool.exe,,useerrorlevel
+
 F1 & Enter Up::Run, F1
 
 F1 & a Up::
