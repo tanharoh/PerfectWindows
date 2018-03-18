@@ -12,6 +12,8 @@
 
 3. 使用简洁的快捷键呼出多达 13 个软件的截图功能！
 
+4. 使用仅仅两根手指按下形如 `Ctrl + Alt + P` 甚至 `Ctrl + Shift + Alt + P` 的复杂快捷键！
+
 ---
 
 ## [Anti Windows Update](Anti-Windows-Update/Anti-Windows-Update.md)
