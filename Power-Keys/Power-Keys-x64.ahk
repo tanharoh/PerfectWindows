@@ -54,6 +54,226 @@ return
 
 #End::DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
 
+SetStoreCapsLockMode, Off
+
+CapsLock::
+GetKeyState,caps,CapsLock,T
+if caps=D
+setcapslockstate,off
+else
+setcapslockstate,on
+return
+
+CapsLock & a::^+!a
+CapsLock & b::^+!b
+CapsLock & c::^+!c
+CapsLock & d::^+!d
+CapsLock & e::^+!e
+CapsLock & f::^+!f
+CapsLock & g::^+!g
+CapsLock & h::^+!h
+CapsLock & i::^+!i
+CapsLock & j::^+!j
+CapsLock & k::^+!k
+CapsLock & l::^+!l
+CapsLock & m::^+!m
+CapsLock & n::^+!n
+CapsLock & o::^+!o
+CapsLock & p::^+!p
+CapsLock & q::^+!q
+CapsLock & r::^+!r
+CapsLock & s::^+!s
+CapsLock & t::^+!t
+CapsLock & u::^+!u
+CapsLock & v::^+!v
+CapsLock & w::^+!w
+CapsLock & x::^+!x
+CapsLock & y::^+!y
+CapsLock & z::^+!z
+CapsLock & 1::^+!1
+CapsLock & 2::^+!2
+CapsLock & 3::^+!3
+CapsLock & 4::^+!4
+CapsLock & 5::^+!5
+CapsLock & 6::^+!6
+CapsLock & 7::^+!7
+CapsLock & 8::^+!8
+CapsLock & 9::^+!9
+CapsLock & 0::^+!0
+CapsLock & `::^+!`
+CapsLock & ,::^+!,
+CapsLock & .::^+!.
+CapsLock & /::^+!/
+CapsLock & '::^+!'
+CapsLock & [::^+![
+CapsLock & ]::^+!]
+CapsLock & \::^+!\
+CapsLock & -::^+!-
+CapsLock & =::^+!=
+CapsLock & Space::^+!Space
+CapsLock & Enter::^+!Enter
+CapsLock & Backspace::^+!Backspace
+CapsLock & Delete::^+!Delete
+CapsLock & Home::^+!Home
+CapsLock & End::^+!End
+CapsLock & PgUp::^+!PgUp
+CapsLock & PgDn::^+!PgDn
+CapsLock & Up::^+!Up
+CapsLock & Down::^+!Down
+CapsLock & Left::^+!Left
+CapsLock & Right::^+!Right
+CapsLock & Insert::^+!Insert
+
+Tab::Tab
+Tab & Shift::Tab
+
+Tab & a::^!a
+Tab & b::^!b
+Tab & c::^!c
+Tab & d::^!d
+Tab & e::^!e
+Tab & f::^!f
+Tab & g::^!g
+Tab & h::^!h
+Tab & i::^!i
+Tab & j::^!j
+Tab & k::^!k
+Tab & l::^!l
+Tab & m::^!m
+Tab & n::^!n
+Tab & o::^!o
+Tab & p::^!p
+Tab & q::^!q
+Tab & r::^!r
+Tab & s::^!s
+Tab & t::^!t
+Tab & u::^!u
+Tab & v::^!v
+Tab & w::^!w
+Tab & x::^!x
+Tab & y::^!y
+Tab & z::^!z
+Tab & 1::^!1
+Tab & 2::^!2
+Tab & 3::^!3
+Tab & 4::^!4
+Tab & 5::^!5
+Tab & 6::^!6
+Tab & 7::^!7
+Tab & 8::^!8
+Tab & 9::^!9
+Tab & 0::^!0
+Tab & F1::^!F1
+Tab & F2::^!F2
+Tab & F3::^!F3
+Tab & F4::^!F4
+Tab & F5::^!F5
+Tab & F6::^!F6
+Tab & F7::^!F7
+Tab & F8::^!F8
+Tab & F9::^!F9
+Tab & F10::^!F10
+Tab & F11::^!F11
+Tab & F12::^!F12
+Tab & `::^!`
+Tab & ,::^!,
+Tab & .::^!.
+Tab & /::^!/
+Tab & '::^!'
+Tab & [::^![
+Tab & ]::^!]
+Tab & \::^!\
+Tab & -::^!-
+Tab & =::^!=
+Tab & Space::^!Space
+Tab & Enter::^!Enter
+Tab & Backspace::^!Backspace
+Tab & Delete::^!Delete
+Tab & Home::^!Home
+Tab & End::^!End
+Tab & PgUp::^!PgUp
+Tab & PgDn::^!PgDn
+Tab & Up::^!Up
+Tab & Down::^!Down
+Tab & Left::^!Left
+Tab & Right::^!Right
+Tab & Insert::^!Insert
+
+Esc::Esc
+Esc & Shift::Esc
+
+Esc & a::^+a
+Esc & b::^+b
+Esc & c::^+c
+Esc & d::^+d
+Esc & e::^+e
+Esc & f::^+f
+Esc & g::^+g
+Esc & h::^+h
+Esc & i::^+i
+Esc & j::^+j
+Esc & k::^+k
+Esc & l::^+l
+Esc & m::^+m
+Esc & n::^+n
+Esc & o::^+o
+Esc & p::^+p
+Esc & q::^+q
+Esc & r::^+r
+Esc & s::^+s
+Esc & t::^+t
+Esc & u::^+u
+Esc & v::^+v
+Esc & w::^+w
+Esc & x::^+x
+Esc & y::^+y
+Esc & z::^+z
+Esc & 1::^+1
+Esc & 2::^+2
+Esc & 3::^+3
+Esc & 4::^+4
+Esc & 5::^+5
+Esc & 6::^+6
+Esc & 7::^+7
+Esc & 8::^+8
+Esc & 9::^+9
+Esc & 0::^+0
+Esc & F1::^+F1
+Esc & F2::^+F2
+Esc & F3::^+F3
+Esc & F4::^+F4
+Esc & F5::^+F5
+Esc & F6::^+F6
+Esc & F7::^+F7
+Esc & F8::^+F8
+Esc & F9::^+F9
+Esc & F10::^+F10
+Esc & F11::^+F11
+Esc & F12::^+F12
+Esc & `::^+`
+Esc & ,::^+,
+Esc & .::^+.
+Esc & /::^+/
+Esc & '::^+'
+Esc & [::^+[
+Esc & ]::^+]
+Esc & \::^+\
+Esc & -::^+-
+Esc & =::^+=
+Esc & Space::^+Space
+Esc & Enter::^+Enter
+Esc & Backspace::^+Backspace
+Esc & Delete::^+Delete
+Esc & Home::^+Home
+Esc & End::^+End
+Esc & PgUp::^+PgUp
+Esc & PgDn::^+PgDn
+Esc & Up::^+Up
+Esc & Down::^+Down
+Esc & Left::^+Left
+Esc & Right::^+Right
+Esc & Insert::^+Insert
+
 #F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md,,useerrorlevel
 return
