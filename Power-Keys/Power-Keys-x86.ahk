@@ -4,7 +4,9 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="0.6.0"
+Process, Priority, , High
+
+v:="0.8.0"
 
 if A_IsAdmin
 {

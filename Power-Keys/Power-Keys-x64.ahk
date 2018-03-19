@@ -4,12 +4,14 @@
 #InstallKeybdHook
 #NoTrayIcon
 
+Process, Priority, , High
+
 if A_IsAdmin
 {
 exitapp
 }
 
-v:="0.6.0"
+v:="0.8.0"
 
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir %LocalAppData%\Power Keys
