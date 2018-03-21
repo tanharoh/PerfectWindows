@@ -77,357 +77,357 @@ CapsLock & Esc::Send !{F4}
 
 CapsLock & a::
 Send ^+!{a}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & b::
 Send ^+!{b}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & c::
 Send ^+!{c}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & d::
 Send ^+!{d}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & e::
 Send ^+!{e}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & f::
 Send ^+!{f}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & g::
 Send ^+!{g}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & h::
 Send ^+!{h}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & i::
 Send ^+!{i}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & j::
 Send ^+!{j}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & k::
 Send ^+!{k}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & l::
 Send ^+!{l}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & m::
 Send ^+!{m}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & n::
 Send ^+!{n}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & o::
 Send ^+!{o}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & p::
 Send ^+!{p}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & q::
 Send ^+!{q}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & r::
 Send ^+!{r}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & s::
 Send ^+!{s}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & t::
 Send ^+!{t}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & u::
 Send ^+!{u}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & v::
 Send ^+!{v}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & w::
 Send ^+!{w}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & x::
 Send ^+!{x}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & y::
 Send ^+!{y}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & z::
 Send ^+!{z}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 1::
 Send ^+!{1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 2::
 Send ^+!{2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 3::
 Send ^+!{3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 4::
 Send ^+!{4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 5::
 Send ^+!{5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 6::
 Send ^+!{6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 7::
 Send ^+!{7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 8::
 Send ^+!{8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 9::
 Send ^+!{9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & 0::
 Send ^+!{0}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F1::
 Send ^+!{F1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F2::
 Send ^+!{F2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F3::
 Send ^+!{F3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F4::
 Send ^+!{F4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F5::
 Send ^+!{F5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F6::
 Send ^+!{F6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F7::
 Send ^+!{F7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F8::
 Send ^+!{F8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F9::
 Send ^+!{F9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F10::
 Send ^+!{F10}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F11::
 Send ^+!{F11}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & F12::
 Send ^+!{F12}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & ,::
 Send ^+!{,}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & .::
 Send ^+!{.}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & /::
 Send ^+!{/}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & '::
 Send ^+!{'}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & [::
 Send ^+!{[}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & ]::
 Send ^+!{]}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & \::
 Send ^+!{\}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & -::
 Send ^+!{-}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & =::
 Send ^+!{=}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Space::
 Send ^+!{Space}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Enter::
 Send ^+!{Enter}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Backspace::
 Send ^+!{Backspace}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Delete::
 Send ^+!{Delete}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Insert::
 Send ^+!{Insert}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Home::
 Send ^+!{Home}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & End::
 Send ^+!{End}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & PgUp::
 Send ^+!{PgUp}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & PgDn::
 Send ^+!{PgDn}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Up::
 Send ^+!{Up}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Down::
 Send ^+!{Down}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Left::
 Send ^+!{Left}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & Right::
 Send ^+!{Right}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 CapsLock & PrintScreen::
 Send ^+!{PrintScreen}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 `::`
@@ -435,357 +435,357 @@ return
 
 ` & a::
 Send +!{a}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & b::
 Send +!{b}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & c::
 Send +!{c}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & d::
 Send +!{d}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & e::
 Send +!{e}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & f::
 Send +!{f}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & g::
 Send +!{g}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & h::
 Send +!{h}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & i::
 Send +!{i}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & j::
 Send +!{j}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & k::
 Send +!{k}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & l::
 Send +!{l}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & m::
 Send +!{m}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & n::
 Send +!{n}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & o::
 Send +!{o}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & p::
 Send +!{p}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & q::
 Send +!{q}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & r::
 Send +!{r}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & s::
 Send +!{s}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & t::
 Send +!{t}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & u::
 Send +!{u}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & v::
 Send +!{v}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & w::
 Send +!{w}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & x::
 Send +!{x}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & y::
 Send +!{y}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & z::
 Send +!{z}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 1::
 Send +!{1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 2::
 Send +!{2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 3::
 Send +!{3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 4::
 Send +!{4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 5::
 Send +!{5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 6::
 Send +!{6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 7::
 Send +!{7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 8::
 Send +!{8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 9::
 Send +!{9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & 0::
 Send +!{0}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F1::
 Send +!{F1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F2::
 Send +!{F2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F3::
 Send +!{F3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F4::
 Send +!{F4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F5::
 Send +!{F5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F6::
 Send +!{F6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F7::
 Send +!{F7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F8::
 Send +!{F8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F9::
 Send +!{F9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F10::
 Send +!{F10}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F11::
 Send +!{F11}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & F12::
 Send +!{F12}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & ,::
 Send +!{,}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & .::
 Send +!{.}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & /::
 Send +!{/}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & '::
 Send +!{'}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & [::
 Send +!{[}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & ]::
 Send +!{]}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & \::
 Send +!{\}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & -::
 Send +!{-}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & =::
 Send +!{=}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Space::
 Send +!{Space}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Enter::
 Send +!{Enter}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Backspace::
 Send +!{Backspace}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Delete::
 Send +!{Delete}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Insert::
 Send +!{Insert}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Home::
 Send +!{Home}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & End::
 Send +!{End}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & PgUp::
 Send +!{PgUp}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & PgDn::
 Send +!{PgDn}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Up::
 Send +!{Up}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Down::
 Send +!{Down}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Left::
 Send +!{Left}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & Right::
 Send +!{Right}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 ` & PrintScreen::
 Send +!{PrintScreen}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab::Tab
@@ -793,357 +793,357 @@ Tab & Shift::Tab
 
 Tab & a::
 Send ^!{a}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & b::
 Send ^!{b}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & c::
 Send ^!{c}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & d::
 Send ^!{d}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & e::
 Send ^!{e}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & f::
 Send ^!{f}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & g::
 Send ^!{g}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & h::
 Send ^!{h}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & i::
 Send ^!{i}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & j::
 Send ^!{j}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & k::
 Send ^!{k}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & l::
 Send ^!{l}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & m::
 Send ^!{m}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & n::
 Send ^!{n}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & o::
 Send ^!{o}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & p::
 Send ^!{p}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & q::
 Send ^!{q}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & r::
 Send ^!{r}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & s::
 Send ^!{s}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & t::
 Send ^!{t}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & u::
 Send ^!{u}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & v::
 Send ^!{v}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & w::
 Send ^!{w}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & x::
 Send ^!{x}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & y::
 Send ^!{y}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & z::
 Send ^!{z}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 1::
 Send ^!{1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 2::
 Send ^!{2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 3::
 Send ^!{3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 4::
 Send ^!{4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 5::
 Send ^!{5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 6::
 Send ^!{6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 7::
 Send ^!{7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 8::
 Send ^!{8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 9::
 Send ^!{9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & 0::
 Send ^!{0}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F1::
 Send ^!{F1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F2::
 Send ^!{F2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F3::
 Send ^!{F3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F4::
 Send ^!{F4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F5::
 Send ^!{F5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F6::
 Send ^!{F6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F7::
 Send ^!{F7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F8::
 Send ^!{F8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F9::
 Send ^!{F9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F10::
 Send ^!{F10}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F11::
 Send ^!{F11}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & F12::
 Send ^!{F12}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & ,::
 Send ^!{,}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & .::
 Send ^!{.}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & /::
 Send ^!{/}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & '::
 Send ^!{'}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & [::
 Send ^!{[}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & ]::
 Send ^!{]}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & \::
 Send ^!{\}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & -::
 Send ^!{-}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & =::
 Send ^!{=}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Space::
 Send ^!{Space}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Enter::
 Send ^!{Enter}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Backspace::
 Send ^!{Backspace}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Delete::
 Send ^!{Delete}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Insert::
 Send ^!{Insert}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Home::
 Send ^!{Home}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & End::
 Send ^!{End}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & PgUp::
 Send ^!{PgUp}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & PgDn::
 Send ^!{PgDn}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Up::
 Send ^!{Up}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Down::
 Send ^!{Down}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Left::
 Send ^!{Left}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & Right::
 Send ^!{Right}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Tab & PrintScreen::
 Send ^!{PrintScreen}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc::Esc
@@ -1151,357 +1151,357 @@ Esc & Shift::Esc
 
 Esc & a::
 Send ^+{a}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & b::
 Send ^+{b}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & c::
 Send ^+{c}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & d::
 Send ^+{d}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & e::
 Send ^+{e}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & f::
 Send ^+{f}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & g::
 Send ^+{g}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & h::
 Send ^+{h}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & i::
 Send ^+{i}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & j::
 Send ^+{j}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & k::
 Send ^+{k}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & l::
 Send ^+{l}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & m::
 Send ^+{m}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & n::
 Send ^+{n}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & o::
 Send ^+{o}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & p::
 Send ^+{p}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & q::
 Send ^+{q}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & r::
 Send ^+{r}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & s::
 Send ^+{s}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & t::
 Send ^+{t}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & u::
 Send ^+{u}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & v::
 Send ^+{v}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & w::
 Send ^+{w}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & x::
 Send ^+{x}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & y::
 Send ^+{y}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & z::
 Send ^+{z}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 1::
 Send ^+{1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 2::
 Send ^+{2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 3::
 Send ^+{3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 4::
 Send ^+{4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 5::
 Send ^+{5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 6::
 Send ^+{6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 7::
 Send ^+{7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 8::
 Send ^+{8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 9::
 Send ^+{9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & 0::
 Send ^+{0}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F1::
 Send ^+{F1}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F2::
 Send ^+{F2}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F3::
 Send ^+{F3}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F4::
 Send ^+{F4}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F5::
 Send ^+{F5}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F6::
 Send ^+{F6}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F7::
 Send ^+{F7}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F8::
 Send ^+{F8}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F9::
 Send ^+{F9}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F10::
 Send ^+{F10}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F11::
 Send ^+{F11}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & F12::
 Send ^+{F12}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & ,::
 Send ^+{,}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & .::
 Send ^+{.}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & /::
 Send ^+{/}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & '::
 Send ^+{'}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & [::
 Send ^+{[}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & ]::
 Send ^+{]}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & \::
 Send ^+{\}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & -::
 Send ^+{-}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & =::
 Send ^+{=}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Space::
 Send ^+{Space}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Enter::
 Send ^+{Enter}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Backspace::
 Send ^+{Backspace}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Delete::
 Send ^+{Delete}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Insert::
 Send ^+{Insert}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Home::
 Send ^+{Home}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & End::
 Send ^+{End}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & PgUp::
 Send ^+{PgUp}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & PgDn::
 Send ^+{PgDn}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Up::
 Send ^+{Up}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Down::
 Send ^+{Down}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Left::
 Send ^+{Left}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & Right::
 Send ^+{Right}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 Esc & PrintScreen::
 Send ^+{PrintScreen}
-Run,"%A_ScriptFullPath%" /restart
+;Run,"%A_ScriptFullPath%" /restart
 return
 
 #F1::
