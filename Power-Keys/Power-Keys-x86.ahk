@@ -64,8 +64,6 @@ return
 
 SetStoreCapsLockMode, Off
 
-SetStoreCapsLockMode, Off
-
 CapsLock::
 GetKeyState,caps,CapsLock,T
 if caps=D
@@ -74,228 +72,305 @@ else
 setcapslockstate,on
 return
 
-CapsLock & a::^+!a
-CapsLock & b::^+!b
-CapsLock & c::^+!c
-CapsLock & d::^+!d
-CapsLock & e::^+!e
-CapsLock & f::^+!f
-CapsLock & g::^+!g
-CapsLock & h::^+!h
-CapsLock & i::^+!i
-CapsLock & j::^+!j
-CapsLock & k::^+!k
-CapsLock & l::^+!l
-CapsLock & m::^+!m
-CapsLock & n::^+!n
-CapsLock & o::^+!o
-CapsLock & p::^+!p
-CapsLock & q::^+!q
-CapsLock & r::^+!r
-CapsLock & s::^+!s
-CapsLock & t::^+!t
-CapsLock & u::^+!u
-CapsLock & v::^+!v
-CapsLock & w::^+!w
-CapsLock & x::^+!x
-CapsLock & y::^+!y
-CapsLock & z::^+!z
-CapsLock & 1::^+!1
-CapsLock & 2::^+!2
-CapsLock & 3::^+!3
-CapsLock & 4::^+!4
-CapsLock & 5::^+!5
-CapsLock & 6::^+!6
-CapsLock & 7::^+!7
-CapsLock & 8::^+!8
-CapsLock & 9::^+!9
-CapsLock & 0::^+!0
+CapsLock & a::Send ^+!{a}
+CapsLock & b::Send ^+!{b}
+CapsLock & c::Send ^+!{c}
+CapsLock & d::Send ^+!{d}
+CapsLock & e::Send ^+!{e}
+CapsLock & f::Send ^+!{f}
+CapsLock & g::Send ^+!{g}
+CapsLock & h::Send ^+!{h}
+CapsLock & i::Send ^+!{i}
+CapsLock & j::Send ^+!{j}
+CapsLock & k::Send ^+!{k}
+CapsLock & l::Send ^+!{l}
+CapsLock & m::Send ^+!{m}
+CapsLock & n::Send ^+!{n}
+CapsLock & o::Send ^+!{o}
+CapsLock & p::Send ^+!{p}
+CapsLock & q::Send ^+!{q}
+CapsLock & r::Send ^+!{r}
+CapsLock & s::Send ^+!{s}
+CapsLock & t::Send ^+!{t}
+CapsLock & u::Send ^+!{u}
+CapsLock & v::Send ^+!{v}
+CapsLock & w::Send ^+!{w}
+CapsLock & x::Send ^+!{x}
+CapsLock & y::Send ^+!{y}
+CapsLock & z::Send ^+!{z}
+CapsLock & 1::Send ^+!{1}
+CapsLock & 2::Send ^+!{2}
+CapsLock & 3::Send ^+!{3}
+CapsLock & 4::Send ^+!{4}
+CapsLock & 5::Send ^+!{5}
+CapsLock & 6::Send ^+!{6}
+CapsLock & 7::Send ^+!{7}
+CapsLock & 8::Send ^+!{8}
+CapsLock & 9::Send ^+!{9}
+CapsLock & 0::Send ^+!{0}
+CapsLock & F1::Send ^+!{F1}
+CapsLock & F2::Send ^+!{F2}
+CapsLock & F3::Send ^+!{F3}
+CapsLock & F4::Send ^+!{F4}
+CapsLock & F5::Send ^+!{F5}
+CapsLock & F6::Send ^+!{F6}
+CapsLock & F7::Send ^+!{F7}
+CapsLock & F8::Send ^+!{F8}
+CapsLock & F9::Send ^+!{F9}
+CapsLock & F10::Send ^+!{F10}
+CapsLock & F11::Send ^+!{F11}
+CapsLock & F12::Send ^+!{F12}
+CapsLock & ,::Send ^+!{,}
+CapsLock & .::Send ^+!{.}
+CapsLock & /::Send ^+!{/}
+CapsLock & '::Send ^+!{'}
+CapsLock & [::Send ^+!{[}
+CapsLock & ]::Send ^+!{]}
+CapsLock & \::Send ^+!{\}
+CapsLock & -::Send ^+!{-}
+CapsLock & =::Send ^+!{=}
+CapsLock & Space::Send ^+!{Space}
+CapsLock & Enter::Send ^+!{Enter}
+CapsLock & Backspace::Send ^+!{Backspace}
+CapsLock & Delete::Send ^+!{Delete}
+CapsLock & Insert::Send ^+!{Insert}
+CapsLock & Home::Send ^+!{Home}
+CapsLock & End::Send ^+!{End}
+CapsLock & PgUp::Send ^+!{PgUp}
+CapsLock & PgDn::Send ^+!{PgDn}
+CapsLock & Up::Send ^+!{Up}
+CapsLock & Down::Send ^+!{Down}
+CapsLock & Left::Send ^+!{Left}
+CapsLock & Right::Send ^+!{Right}
+CapsLock & PrintScreen::Send ^+!{PrintScreen}
 
-Tab::Tab
-Tab & Shift::Tab
-
-Tab & a::^!a
-Tab & b::^!b
-Tab & c::^!c
-Tab & d::^!d
-Tab & e::^!e
-Tab & f::^!f
-Tab & g::^!g
-Tab & h::^!h
-Tab & i::^!i
-Tab & j::^!j
-Tab & k::^!k
-Tab & l::^!l
-Tab & m::^!m
-Tab & n::^!n
-Tab & o::^!o
-Tab & p::^!p
-Tab & q::^!q
-Tab & r::^!r
-Tab & s::^!s
-Tab & t::^!t
-Tab & u::^!u
-Tab & v::^!v
-Tab & w::^!w
-Tab & x::^!x
-Tab & y::^!y
-Tab & z::^!z
-Tab & 1::^!1
-Tab & 2::^!2
-Tab & 3::^!3
-Tab & 4::^!4
-Tab & 5::^!5
-Tab & 6::^!6
-Tab & 7::^!7
-Tab & 8::^!8
-Tab & 9::^!9
-Tab & 0::^!0
-Tab & F1::^!F1
-Tab & F2::^!F2
-Tab & F3::^!F3
-Tab & F4::^!F4
-Tab & F5::^!F5
-Tab & F6::^!F6
-Tab & F7::^!F7
-Tab & F8::^!F8
-Tab & F9::^!F9
-Tab & F10::^!F10
-Tab & F11::^!F11
-Tab & F12::^!F12
-Tab & Space::^!Space
-Tab & Enter::^!Enter
-Tab & Home::^!Home
-Tab & End::^!End
-Tab & PgUp::^!PgUp
-Tab & PgDn::^!PgDn
-Tab & Up::^!Up
-Tab & Down::^!Down
-Tab & Left::^!Left
-Tab & Right::^!Right
-
-Esc::Esc
-Esc & Shift::Esc
-
-Esc & a::^+a
-Esc & b::^+b
-Esc & c::^+c
-Esc & d::^+d
-Esc & e::^+e
-Esc & f::^+f
-Esc & g::^+g
-Esc & h::^+h
-Esc & i::^+i
-Esc & j::^+j
-Esc & k::^+k
-Esc & l::^+l
-Esc & m::^+m
-Esc & n::^+n
-Esc & o::^+o
-Esc & p::^+p
-Esc & q::^+q
-Esc & r::^+r
-Esc & s::^+s
-Esc & t::^+t
-Esc & u::^+u
-Esc & v::^+v
-Esc & w::^+w
-Esc & x::^+x
-Esc & y::^+y
-Esc & z::^+z
-Esc & 1::^+1
-Esc & 2::^+2
-Esc & 3::^+3
-Esc & 4::^+4
-Esc & 5::^+5
-Esc & 6::^+6
-Esc & 7::^+7
-Esc & 8::^+8
-Esc & 9::^+9
-Esc & 0::^+0
-Esc & F1::^+F1
-Esc & F2::^+F2
-Esc & F3::^+F3
-Esc & F4::^+F4
-Esc & F5::^+F5
-Esc & F6::^+F6
-Esc & F7::^+F7
-Esc & F8::^+F8
-Esc & F9::^+F9
-Esc & F10::^+F10
-Esc & F11::^+F11
-Esc & F12::^+F12
-Esc & Space::^+Space
-Esc & Enter::^+Enter
-Esc & Home::^+Home
-Esc & End::^+End
-Esc & PgUp::^+PgUp
-Esc & PgDn::^+PgDn
-Esc & Up::^+Up
-Esc & Down::^+Down
-Esc & Left::^+Left
-Esc & Right::^+Right
+CapsLock & `::AltTab
+CapsLock & Esc::Send !{F4}
 
 `::`
 ` & Shift::`
 
-` & a::+!a
-` & b::+!b
-` & c::+!c
-` & d::+!d
-` & e::+!e
-` & f::+!f
-` & g::+!g
-` & h::+!h
-` & i::+!i
-` & j::+!j
-` & k::+!k
-` & l::+!l
-` & m::+!m
-` & n::+!n
-` & o::+!o
-` & p::+!p
-` & q::+!q
-` & r::+!r
-` & s::+!s
-` & t::+!t
-` & u::+!u
-` & v::+!v
-` & w::+!w
-` & x::+!x
-` & y::+!y
-` & z::+!z
-` & 1::+!1
-` & 2::+!2
-` & 3::+!3
-` & 4::+!4
-` & 5::+!5
-` & 6::+!6
-` & 7::+!7
-` & 8::+!8
-` & 9::+!9
-` & 0::+!0
-` & F1::+!F1
-` & F2::+!F2
-` & F3::+!F3
-` & F4::+!F4
-` & F5::+!F5
-` & F6::+!F6
-` & F7::+!F7
-` & F8::+!F8
-` & F9::+!F9
-` & F10::+!F10
-` & F11::+!F11
-` & F12::+!F12
-` & Space::+!Space
-` & Enter::+!Enter
-` & Home::+!Home
-` & End::+!End
-` & PgUp::+!PgUp
-` & PgDn::+!PgDn
-` & Up::+!Up
-` & Down::+!Down
-` & Left::+!Left
-` & Right::+!Right
+` & a::Send +!{a}
+` & b::Send +!{b}
+` & c::Send +!{c}
+` & d::Send +!{d}
+` & e::Send +!{e}
+` & f::Send +!{f}
+` & g::Send +!{g}
+` & h::Send +!{h}
+` & i::Send +!{i}
+` & j::Send +!{j}
+` & k::Send +!{k}
+` & l::Send +!{l}
+` & m::Send +!{m}
+` & n::Send +!{n}
+` & o::Send +!{o}
+` & p::Send +!{p}
+` & q::Send +!{q}
+` & r::Send +!{r}
+` & s::Send +!{s}
+` & t::Send +!{t}
+` & u::Send +!{u}
+` & v::Send +!{v}
+` & w::Send +!{w}
+` & x::Send +!{x}
+` & y::Send +!{y}
+` & z::Send +!{z}
+` & 1::Send +!{1}
+` & 2::Send +!{2}
+` & 3::Send +!{3}
+` & 4::Send +!{4}
+` & 5::Send +!{5}
+` & 6::Send +!{6}
+` & 7::Send +!{7}
+` & 8::Send +!{8}
+` & 9::Send +!{9}
+` & 0::Send +!{0}
+` & F1::Send +!{F1}
+` & F2::Send +!{F2}
+` & F3::Send +!{F3}
+` & F4::Send +!{F4}
+` & F5::Send +!{F5}
+` & F6::Send +!{F6}
+` & F7::Send +!{F7}
+` & F8::Send +!{F8}
+` & F9::Send +!{F9}
+` & F10::Send +!{F10}
+` & F11::Send +!{F11}
+` & F12::Send +!{F12}
+` & ,::Send +!{,}
+` & .::Send +!{.}
+` & /::Send +!{/}
+` & '::Send +!{'}
+` & [::Send +!{[}
+` & ]::Send +!{]}
+` & \::Send +!{\}
+` & -::Send +!{-}
+` & =::Send +!{=}
+` & Space::Send +!{Space}
+` & Enter::Send +!{Enter}
+` & Backspace::Send +!{Backspace}
+` & Delete::Send +!{Delete}
+` & Insert::Send +!{Insert}
+` & Home::Send +!{Home}
+` & End::Send +!{End}
+` & PgUp::Send +!{PgUp}
+` & PgDn::Send +!{PgDn}
+` & Up::Send +!{Up}
+` & Down::Send +!{Down}
+` & Left::Send +!{Left}
+` & Right::Send +!{Right}
+` & PrintScreen::Send +!{PrintScreen}
+
+Tab::Tab
+Tab & Shift::Tab
+
+Tab & a::Send ^!{a}
+Tab & b::Send ^!{b}
+Tab & c::Send ^!{c}
+Tab & d::Send ^!{d}
+Tab & e::Send ^!{e}
+Tab & f::Send ^!{f}
+Tab & g::Send ^!{g}
+Tab & h::Send ^!{h}
+Tab & i::Send ^!{i}
+Tab & j::Send ^!{j}
+Tab & k::Send ^!{k}
+Tab & l::Send ^!{l}
+Tab & m::Send ^!{m}
+Tab & n::Send ^!{n}
+Tab & o::Send ^!{o}
+Tab & p::Send ^!{p}
+Tab & q::Send ^!{q}
+Tab & r::Send ^!{r}
+Tab & s::Send ^!{s}
+Tab & t::Send ^!{t}
+Tab & u::Send ^!{u}
+Tab & v::Send ^!{v}
+Tab & w::Send ^!{w}
+Tab & x::Send ^!{x}
+Tab & y::Send ^!{y}
+Tab & z::Send ^!{z}
+Tab & 1::Send ^!{1}
+Tab & 2::Send ^!{2}
+Tab & 3::Send ^!{3}
+Tab & 4::Send ^!{4}
+Tab & 5::Send ^!{5}
+Tab & 6::Send ^!{6}
+Tab & 7::Send ^!{7}
+Tab & 8::Send ^!{8}
+Tab & 9::Send ^!{9}
+Tab & 0::Send ^!{0}
+Tab & F1::Send ^!{F1}
+Tab & F2::Send ^!{F2}
+Tab & F3::Send ^!{F3}
+Tab & F4::Send ^!{F4}
+Tab & F5::Send ^!{F5}
+Tab & F6::Send ^!{F6}
+Tab & F7::Send ^!{F7}
+Tab & F8::Send ^!{F8}
+Tab & F9::Send ^!{F9}
+Tab & F10::Send ^!{F10}
+Tab & F11::Send ^!{F11}
+Tab & F12::Send ^!{F12}
+Tab & ,::Send ^!{,}
+Tab & .::Send ^!{.}
+Tab & /::Send ^!{/}
+Tab & '::Send ^!{'}
+Tab & [::Send ^!{[}
+Tab & ]::Send ^!{]}
+Tab & \::Send ^!{\}
+Tab & -::Send ^!{-}
+Tab & =::Send ^!{=}
+Tab & Space::Send ^!{Space}
+Tab & Enter::Send ^!{Enter}
+Tab & Backspace::Send ^!{Backspace}
+Tab & Delete::Send ^!{Delete}
+Tab & Insert::Send ^!{Insert}
+Tab & Home::Send ^!{Home}
+Tab & End::Send ^!{End}
+Tab & PgUp::Send ^!{PgUp}
+Tab & PgDn::Send ^!{PgDn}
+Tab & Up::Send ^!{Up}
+Tab & Down::Send ^!{Down}
+Tab & Left::Send ^!{Left}
+Tab & Right::Send ^!{Right}
+Tab & PrintScreen::Send ^!{PrintScreen}
+
+Esc::Esc
+Esc & Shift::Esc
+
+Esc & a::Send ^+{a}
+Esc & b::Send ^+{b}
+Esc & c::Send ^+{c}
+Esc & d::Send ^+{d}
+Esc & e::Send ^+{e}
+Esc & f::Send ^+{f}
+Esc & g::Send ^+{g}
+Esc & h::Send ^+{h}
+Esc & i::Send ^+{i}
+Esc & j::Send ^+{j}
+Esc & k::Send ^+{k}
+Esc & l::Send ^+{l}
+Esc & m::Send ^+{m}
+Esc & n::Send ^+{n}
+Esc & o::Send ^+{o}
+Esc & p::Send ^+{p}
+Esc & q::Send ^+{q}
+Esc & r::Send ^+{r}
+Esc & s::Send ^+{s}
+Esc & t::Send ^+{t}
+Esc & u::Send ^+{u}
+Esc & v::Send ^+{v}
+Esc & w::Send ^+{w}
+Esc & x::Send ^+{x}
+Esc & y::Send ^+{y}
+Esc & z::Send ^+{z}
+Esc & 1::Send ^+{1}
+Esc & 2::Send ^+{2}
+Esc & 3::Send ^+{3}
+Esc & 4::Send ^+{4}
+Esc & 5::Send ^+{5}
+Esc & 6::Send ^+{6}
+Esc & 7::Send ^+{7}
+Esc & 8::Send ^+{8}
+Esc & 9::Send ^+{9}
+Esc & 0::Send ^+{0}
+Esc & F1::Send ^+{F1}
+Esc & F2::Send ^+{F2}
+Esc & F3::Send ^+{F3}
+Esc & F4::Send ^+{F4}
+Esc & F5::Send ^+{F5}
+Esc & F6::Send ^+{F6}
+Esc & F7::Send ^+{F7}
+Esc & F8::Send ^+{F8}
+Esc & F9::Send ^+{F9}
+Esc & F10::Send ^+{F10}
+Esc & F11::Send ^+{F11}
+Esc & F12::Send ^+{F12}
+Esc & ,::Send ^+{,}
+Esc & .::Send ^+{.}
+Esc & /::Send ^+{/}
+Esc & '::Send ^+{'}
+Esc & [::Send ^+{[}
+Esc & ]::Send ^+{]}
+Esc & \::Send ^+{\}
+Esc & -::Send ^+{-}
+Esc & =::Send ^+{=}
+Esc & Space::Send ^+{Space}
+Esc & Enter::Send ^+{Enter}
+Esc & Backspace::Send ^+{Backspace}
+Esc & Delete::Send ^+{Delete}
+Esc & Insert::Send ^+{Insert}
+Esc & Home::Send ^+{Home}
+Esc & End::Send ^+{End}
+Esc & PgUp::Send ^+{PgUp}
+Esc & PgDn::Send ^+{PgDn}
+Esc & Up::Send ^+{Up}
+Esc & Down::Send ^+{Down}
+Esc & Left::Send ^+{Left}
+Esc & Right::Send ^+{Right}
+Esc & PrintScreen::Send ^+{PrintScreen}
 
 #F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md,,useerrorlevel
@@ -8185,4 +8260,3 @@ return
 }
 
 return
-
