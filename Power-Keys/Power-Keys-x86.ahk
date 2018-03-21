@@ -6,7 +6,7 @@
 
 Process, Priority, , High
 
-v:="0.8.0"
+v:="0.9.0"
 
 if A_IsAdmin
 {
@@ -72,305 +72,1437 @@ else
 setcapslockstate,on
 return
 
-CapsLock & a::Send ^+!{a}
-CapsLock & b::Send ^+!{b}
-CapsLock & c::Send ^+!{c}
-CapsLock & d::Send ^+!{d}
-CapsLock & e::Send ^+!{e}
-CapsLock & f::Send ^+!{f}
-CapsLock & g::Send ^+!{g}
-CapsLock & h::Send ^+!{h}
-CapsLock & i::Send ^+!{i}
-CapsLock & j::Send ^+!{j}
-CapsLock & k::Send ^+!{k}
-CapsLock & l::Send ^+!{l}
-CapsLock & m::Send ^+!{m}
-CapsLock & n::Send ^+!{n}
-CapsLock & o::Send ^+!{o}
-CapsLock & p::Send ^+!{p}
-CapsLock & q::Send ^+!{q}
-CapsLock & r::Send ^+!{r}
-CapsLock & s::Send ^+!{s}
-CapsLock & t::Send ^+!{t}
-CapsLock & u::Send ^+!{u}
-CapsLock & v::Send ^+!{v}
-CapsLock & w::Send ^+!{w}
-CapsLock & x::Send ^+!{x}
-CapsLock & y::Send ^+!{y}
-CapsLock & z::Send ^+!{z}
-CapsLock & 1::Send ^+!{1}
-CapsLock & 2::Send ^+!{2}
-CapsLock & 3::Send ^+!{3}
-CapsLock & 4::Send ^+!{4}
-CapsLock & 5::Send ^+!{5}
-CapsLock & 6::Send ^+!{6}
-CapsLock & 7::Send ^+!{7}
-CapsLock & 8::Send ^+!{8}
-CapsLock & 9::Send ^+!{9}
-CapsLock & 0::Send ^+!{0}
-CapsLock & F1::Send ^+!{F1}
-CapsLock & F2::Send ^+!{F2}
-CapsLock & F3::Send ^+!{F3}
-CapsLock & F4::Send ^+!{F4}
-CapsLock & F5::Send ^+!{F5}
-CapsLock & F6::Send ^+!{F6}
-CapsLock & F7::Send ^+!{F7}
-CapsLock & F8::Send ^+!{F8}
-CapsLock & F9::Send ^+!{F9}
-CapsLock & F10::Send ^+!{F10}
-CapsLock & F11::Send ^+!{F11}
-CapsLock & F12::Send ^+!{F12}
-CapsLock & ,::Send ^+!{,}
-CapsLock & .::Send ^+!{.}
-CapsLock & /::Send ^+!{/}
-CapsLock & '::Send ^+!{'}
-CapsLock & [::Send ^+!{[}
-CapsLock & ]::Send ^+!{]}
-CapsLock & \::Send ^+!{\}
-CapsLock & -::Send ^+!{-}
-CapsLock & =::Send ^+!{=}
-CapsLock & Space::Send ^+!{Space}
-CapsLock & Enter::Send ^+!{Enter}
-CapsLock & Backspace::Send ^+!{Backspace}
-CapsLock & Delete::Send ^+!{Delete}
-CapsLock & Insert::Send ^+!{Insert}
-CapsLock & Home::Send ^+!{Home}
-CapsLock & End::Send ^+!{End}
-CapsLock & PgUp::Send ^+!{PgUp}
-CapsLock & PgDn::Send ^+!{PgDn}
-CapsLock & Up::Send ^+!{Up}
-CapsLock & Down::Send ^+!{Down}
-CapsLock & Left::Send ^+!{Left}
-CapsLock & Right::Send ^+!{Right}
-CapsLock & PrintScreen::Send ^+!{PrintScreen}
-
 CapsLock & `::AltTab
 CapsLock & Esc::Send !{F4}
+
+CapsLock & a::
+Send ^+!{a}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & b::
+Send ^+!{b}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & c::
+Send ^+!{c}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & d::
+Send ^+!{d}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & e::
+Send ^+!{e}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & f::
+Send ^+!{f}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & g::
+Send ^+!{g}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & h::
+Send ^+!{h}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & i::
+Send ^+!{i}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & j::
+Send ^+!{j}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & k::
+Send ^+!{k}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & l::
+Send ^+!{l}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & m::
+Send ^+!{m}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & n::
+Send ^+!{n}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & o::
+Send ^+!{o}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & p::
+Send ^+!{p}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & q::
+Send ^+!{q}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & r::
+Send ^+!{r}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & s::
+Send ^+!{s}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & t::
+Send ^+!{t}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & u::
+Send ^+!{u}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & v::
+Send ^+!{v}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & w::
+Send ^+!{w}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & x::
+Send ^+!{x}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & y::
+Send ^+!{y}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & z::
+Send ^+!{z}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 1::
+Send ^+!{1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 2::
+Send ^+!{2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 3::
+Send ^+!{3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 4::
+Send ^+!{4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 5::
+Send ^+!{5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 6::
+Send ^+!{6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 7::
+Send ^+!{7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 8::
+Send ^+!{8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 9::
+Send ^+!{9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & 0::
+Send ^+!{0}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F1::
+Send ^+!{F1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F2::
+Send ^+!{F2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F3::
+Send ^+!{F3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F4::
+Send ^+!{F4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F5::
+Send ^+!{F5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F6::
+Send ^+!{F6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F7::
+Send ^+!{F7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F8::
+Send ^+!{F8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F9::
+Send ^+!{F9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F10::
+Send ^+!{F10}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F11::
+Send ^+!{F11}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & F12::
+Send ^+!{F12}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & ,::
+Send ^+!{,}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & .::
+Send ^+!{.}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & /::
+Send ^+!{/}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & '::
+Send ^+!{'}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & [::
+Send ^+!{[}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & ]::
+Send ^+!{]}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & \::
+Send ^+!{\}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & -::
+Send ^+!{-}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & =::
+Send ^+!{=}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Space::
+Send ^+!{Space}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Enter::
+Send ^+!{Enter}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Backspace::
+Send ^+!{Backspace}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Delete::
+Send ^+!{Delete}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Insert::
+Send ^+!{Insert}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Home::
+Send ^+!{Home}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & End::
+Send ^+!{End}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & PgUp::
+Send ^+!{PgUp}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & PgDn::
+Send ^+!{PgDn}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Up::
+Send ^+!{Up}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Down::
+Send ^+!{Down}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Left::
+Send ^+!{Left}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & Right::
+Send ^+!{Right}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+CapsLock & PrintScreen::
+Send ^+!{PrintScreen}
+Run,"%A_ScriptFullPath%" /restart
+return
 
 `::`
 ` & Shift::`
 
-` & a::Send +!{a}
-` & b::Send +!{b}
-` & c::Send +!{c}
-` & d::Send +!{d}
-` & e::Send +!{e}
-` & f::Send +!{f}
-` & g::Send +!{g}
-` & h::Send +!{h}
-` & i::Send +!{i}
-` & j::Send +!{j}
-` & k::Send +!{k}
-` & l::Send +!{l}
-` & m::Send +!{m}
-` & n::Send +!{n}
-` & o::Send +!{o}
-` & p::Send +!{p}
-` & q::Send +!{q}
-` & r::Send +!{r}
-` & s::Send +!{s}
-` & t::Send +!{t}
-` & u::Send +!{u}
-` & v::Send +!{v}
-` & w::Send +!{w}
-` & x::Send +!{x}
-` & y::Send +!{y}
-` & z::Send +!{z}
-` & 1::Send +!{1}
-` & 2::Send +!{2}
-` & 3::Send +!{3}
-` & 4::Send +!{4}
-` & 5::Send +!{5}
-` & 6::Send +!{6}
-` & 7::Send +!{7}
-` & 8::Send +!{8}
-` & 9::Send +!{9}
-` & 0::Send +!{0}
-` & F1::Send +!{F1}
-` & F2::Send +!{F2}
-` & F3::Send +!{F3}
-` & F4::Send +!{F4}
-` & F5::Send +!{F5}
-` & F6::Send +!{F6}
-` & F7::Send +!{F7}
-` & F8::Send +!{F8}
-` & F9::Send +!{F9}
-` & F10::Send +!{F10}
-` & F11::Send +!{F11}
-` & F12::Send +!{F12}
-` & ,::Send +!{,}
-` & .::Send +!{.}
-` & /::Send +!{/}
-` & '::Send +!{'}
-` & [::Send +!{[}
-` & ]::Send +!{]}
-` & \::Send +!{\}
-` & -::Send +!{-}
-` & =::Send +!{=}
-` & Space::Send +!{Space}
-` & Enter::Send +!{Enter}
-` & Backspace::Send +!{Backspace}
-` & Delete::Send +!{Delete}
-` & Insert::Send +!{Insert}
-` & Home::Send +!{Home}
-` & End::Send +!{End}
-` & PgUp::Send +!{PgUp}
-` & PgDn::Send +!{PgDn}
-` & Up::Send +!{Up}
-` & Down::Send +!{Down}
-` & Left::Send +!{Left}
-` & Right::Send +!{Right}
-` & PrintScreen::Send +!{PrintScreen}
+` & a::
+Send +!{a}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & b::
+Send +!{b}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & c::
+Send +!{c}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & d::
+Send +!{d}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & e::
+Send +!{e}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & f::
+Send +!{f}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & g::
+Send +!{g}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & h::
+Send +!{h}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & i::
+Send +!{i}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & j::
+Send +!{j}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & k::
+Send +!{k}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & l::
+Send +!{l}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & m::
+Send +!{m}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & n::
+Send +!{n}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & o::
+Send +!{o}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & p::
+Send +!{p}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & q::
+Send +!{q}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & r::
+Send +!{r}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & s::
+Send +!{s}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & t::
+Send +!{t}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & u::
+Send +!{u}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & v::
+Send +!{v}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & w::
+Send +!{w}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & x::
+Send +!{x}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & y::
+Send +!{y}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & z::
+Send +!{z}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 1::
+Send +!{1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 2::
+Send +!{2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 3::
+Send +!{3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 4::
+Send +!{4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 5::
+Send +!{5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 6::
+Send +!{6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 7::
+Send +!{7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 8::
+Send +!{8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 9::
+Send +!{9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & 0::
+Send +!{0}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F1::
+Send +!{F1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F2::
+Send +!{F2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F3::
+Send +!{F3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F4::
+Send +!{F4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F5::
+Send +!{F5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F6::
+Send +!{F6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F7::
+Send +!{F7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F8::
+Send +!{F8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F9::
+Send +!{F9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F10::
+Send +!{F10}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F11::
+Send +!{F11}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & F12::
+Send +!{F12}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & ,::
+Send +!{,}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & .::
+Send +!{.}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & /::
+Send +!{/}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & '::
+Send +!{'}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & [::
+Send +!{[}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & ]::
+Send +!{]}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & \::
+Send +!{\}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & -::
+Send +!{-}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & =::
+Send +!{=}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Space::
+Send +!{Space}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Enter::
+Send +!{Enter}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Backspace::
+Send +!{Backspace}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Delete::
+Send +!{Delete}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Insert::
+Send +!{Insert}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Home::
+Send +!{Home}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & End::
+Send +!{End}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & PgUp::
+Send +!{PgUp}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & PgDn::
+Send +!{PgDn}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Up::
+Send +!{Up}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Down::
+Send +!{Down}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Left::
+Send +!{Left}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & Right::
+Send +!{Right}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+` & PrintScreen::
+Send +!{PrintScreen}
+Run,"%A_ScriptFullPath%" /restart
+return
 
 Tab::Tab
 Tab & Shift::Tab
 
-Tab & a::Send ^!{a}
-Tab & b::Send ^!{b}
-Tab & c::Send ^!{c}
-Tab & d::Send ^!{d}
-Tab & e::Send ^!{e}
-Tab & f::Send ^!{f}
-Tab & g::Send ^!{g}
-Tab & h::Send ^!{h}
-Tab & i::Send ^!{i}
-Tab & j::Send ^!{j}
-Tab & k::Send ^!{k}
-Tab & l::Send ^!{l}
-Tab & m::Send ^!{m}
-Tab & n::Send ^!{n}
-Tab & o::Send ^!{o}
-Tab & p::Send ^!{p}
-Tab & q::Send ^!{q}
-Tab & r::Send ^!{r}
-Tab & s::Send ^!{s}
-Tab & t::Send ^!{t}
-Tab & u::Send ^!{u}
-Tab & v::Send ^!{v}
-Tab & w::Send ^!{w}
-Tab & x::Send ^!{x}
-Tab & y::Send ^!{y}
-Tab & z::Send ^!{z}
-Tab & 1::Send ^!{1}
-Tab & 2::Send ^!{2}
-Tab & 3::Send ^!{3}
-Tab & 4::Send ^!{4}
-Tab & 5::Send ^!{5}
-Tab & 6::Send ^!{6}
-Tab & 7::Send ^!{7}
-Tab & 8::Send ^!{8}
-Tab & 9::Send ^!{9}
-Tab & 0::Send ^!{0}
-Tab & F1::Send ^!{F1}
-Tab & F2::Send ^!{F2}
-Tab & F3::Send ^!{F3}
-Tab & F4::Send ^!{F4}
-Tab & F5::Send ^!{F5}
-Tab & F6::Send ^!{F6}
-Tab & F7::Send ^!{F7}
-Tab & F8::Send ^!{F8}
-Tab & F9::Send ^!{F9}
-Tab & F10::Send ^!{F10}
-Tab & F11::Send ^!{F11}
-Tab & F12::Send ^!{F12}
-Tab & ,::Send ^!{,}
-Tab & .::Send ^!{.}
-Tab & /::Send ^!{/}
-Tab & '::Send ^!{'}
-Tab & [::Send ^!{[}
-Tab & ]::Send ^!{]}
-Tab & \::Send ^!{\}
-Tab & -::Send ^!{-}
-Tab & =::Send ^!{=}
-Tab & Space::Send ^!{Space}
-Tab & Enter::Send ^!{Enter}
-Tab & Backspace::Send ^!{Backspace}
-Tab & Delete::Send ^!{Delete}
-Tab & Insert::Send ^!{Insert}
-Tab & Home::Send ^!{Home}
-Tab & End::Send ^!{End}
-Tab & PgUp::Send ^!{PgUp}
-Tab & PgDn::Send ^!{PgDn}
-Tab & Up::Send ^!{Up}
-Tab & Down::Send ^!{Down}
-Tab & Left::Send ^!{Left}
-Tab & Right::Send ^!{Right}
-Tab & PrintScreen::Send ^!{PrintScreen}
+Tab & a::
+Send ^!{a}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & b::
+Send ^!{b}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & c::
+Send ^!{c}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & d::
+Send ^!{d}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & e::
+Send ^!{e}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & f::
+Send ^!{f}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & g::
+Send ^!{g}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & h::
+Send ^!{h}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & i::
+Send ^!{i}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & j::
+Send ^!{j}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & k::
+Send ^!{k}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & l::
+Send ^!{l}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & m::
+Send ^!{m}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & n::
+Send ^!{n}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & o::
+Send ^!{o}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & p::
+Send ^!{p}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & q::
+Send ^!{q}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & r::
+Send ^!{r}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & s::
+Send ^!{s}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & t::
+Send ^!{t}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & u::
+Send ^!{u}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & v::
+Send ^!{v}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & w::
+Send ^!{w}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & x::
+Send ^!{x}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & y::
+Send ^!{y}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & z::
+Send ^!{z}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 1::
+Send ^!{1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 2::
+Send ^!{2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 3::
+Send ^!{3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 4::
+Send ^!{4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 5::
+Send ^!{5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 6::
+Send ^!{6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 7::
+Send ^!{7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 8::
+Send ^!{8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 9::
+Send ^!{9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & 0::
+Send ^!{0}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F1::
+Send ^!{F1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F2::
+Send ^!{F2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F3::
+Send ^!{F3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F4::
+Send ^!{F4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F5::
+Send ^!{F5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F6::
+Send ^!{F6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F7::
+Send ^!{F7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F8::
+Send ^!{F8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F9::
+Send ^!{F9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F10::
+Send ^!{F10}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F11::
+Send ^!{F11}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & F12::
+Send ^!{F12}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & ,::
+Send ^!{,}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & .::
+Send ^!{.}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & /::
+Send ^!{/}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & '::
+Send ^!{'}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & [::
+Send ^!{[}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & ]::
+Send ^!{]}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & \::
+Send ^!{\}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & -::
+Send ^!{-}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & =::
+Send ^!{=}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Space::
+Send ^!{Space}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Enter::
+Send ^!{Enter}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Backspace::
+Send ^!{Backspace}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Delete::
+Send ^!{Delete}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Insert::
+Send ^!{Insert}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Home::
+Send ^!{Home}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & End::
+Send ^!{End}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & PgUp::
+Send ^!{PgUp}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & PgDn::
+Send ^!{PgDn}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Up::
+Send ^!{Up}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Down::
+Send ^!{Down}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Left::
+Send ^!{Left}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & Right::
+Send ^!{Right}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Tab & PrintScreen::
+Send ^!{PrintScreen}
+Run,"%A_ScriptFullPath%" /restart
+return
 
 Esc::Esc
 Esc & Shift::Esc
 
-Esc & a::Send ^+{a}
-Esc & b::Send ^+{b}
-Esc & c::Send ^+{c}
-Esc & d::Send ^+{d}
-Esc & e::Send ^+{e}
-Esc & f::Send ^+{f}
-Esc & g::Send ^+{g}
-Esc & h::Send ^+{h}
-Esc & i::Send ^+{i}
-Esc & j::Send ^+{j}
-Esc & k::Send ^+{k}
-Esc & l::Send ^+{l}
-Esc & m::Send ^+{m}
-Esc & n::Send ^+{n}
-Esc & o::Send ^+{o}
-Esc & p::Send ^+{p}
-Esc & q::Send ^+{q}
-Esc & r::Send ^+{r}
-Esc & s::Send ^+{s}
-Esc & t::Send ^+{t}
-Esc & u::Send ^+{u}
-Esc & v::Send ^+{v}
-Esc & w::Send ^+{w}
-Esc & x::Send ^+{x}
-Esc & y::Send ^+{y}
-Esc & z::Send ^+{z}
-Esc & 1::Send ^+{1}
-Esc & 2::Send ^+{2}
-Esc & 3::Send ^+{3}
-Esc & 4::Send ^+{4}
-Esc & 5::Send ^+{5}
-Esc & 6::Send ^+{6}
-Esc & 7::Send ^+{7}
-Esc & 8::Send ^+{8}
-Esc & 9::Send ^+{9}
-Esc & 0::Send ^+{0}
-Esc & F1::Send ^+{F1}
-Esc & F2::Send ^+{F2}
-Esc & F3::Send ^+{F3}
-Esc & F4::Send ^+{F4}
-Esc & F5::Send ^+{F5}
-Esc & F6::Send ^+{F6}
-Esc & F7::Send ^+{F7}
-Esc & F8::Send ^+{F8}
-Esc & F9::Send ^+{F9}
-Esc & F10::Send ^+{F10}
-Esc & F11::Send ^+{F11}
-Esc & F12::Send ^+{F12}
-Esc & ,::Send ^+{,}
-Esc & .::Send ^+{.}
-Esc & /::Send ^+{/}
-Esc & '::Send ^+{'}
-Esc & [::Send ^+{[}
-Esc & ]::Send ^+{]}
-Esc & \::Send ^+{\}
-Esc & -::Send ^+{-}
-Esc & =::Send ^+{=}
-Esc & Space::Send ^+{Space}
-Esc & Enter::Send ^+{Enter}
-Esc & Backspace::Send ^+{Backspace}
-Esc & Delete::Send ^+{Delete}
-Esc & Insert::Send ^+{Insert}
-Esc & Home::Send ^+{Home}
-Esc & End::Send ^+{End}
-Esc & PgUp::Send ^+{PgUp}
-Esc & PgDn::Send ^+{PgDn}
-Esc & Up::Send ^+{Up}
-Esc & Down::Send ^+{Down}
-Esc & Left::Send ^+{Left}
-Esc & Right::Send ^+{Right}
-Esc & PrintScreen::Send ^+{PrintScreen}
+Esc & a::
+Send ^+{a}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & b::
+Send ^+{b}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & c::
+Send ^+{c}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & d::
+Send ^+{d}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & e::
+Send ^+{e}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & f::
+Send ^+{f}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & g::
+Send ^+{g}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & h::
+Send ^+{h}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & i::
+Send ^+{i}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & j::
+Send ^+{j}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & k::
+Send ^+{k}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & l::
+Send ^+{l}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & m::
+Send ^+{m}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & n::
+Send ^+{n}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & o::
+Send ^+{o}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & p::
+Send ^+{p}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & q::
+Send ^+{q}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & r::
+Send ^+{r}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & s::
+Send ^+{s}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & t::
+Send ^+{t}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & u::
+Send ^+{u}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & v::
+Send ^+{v}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & w::
+Send ^+{w}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & x::
+Send ^+{x}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & y::
+Send ^+{y}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & z::
+Send ^+{z}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 1::
+Send ^+{1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 2::
+Send ^+{2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 3::
+Send ^+{3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 4::
+Send ^+{4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 5::
+Send ^+{5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 6::
+Send ^+{6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 7::
+Send ^+{7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 8::
+Send ^+{8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 9::
+Send ^+{9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & 0::
+Send ^+{0}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F1::
+Send ^+{F1}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F2::
+Send ^+{F2}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F3::
+Send ^+{F3}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F4::
+Send ^+{F4}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F5::
+Send ^+{F5}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F6::
+Send ^+{F6}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F7::
+Send ^+{F7}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F8::
+Send ^+{F8}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F9::
+Send ^+{F9}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F10::
+Send ^+{F10}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F11::
+Send ^+{F11}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & F12::
+Send ^+{F12}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & ,::
+Send ^+{,}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & .::
+Send ^+{.}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & /::
+Send ^+{/}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & '::
+Send ^+{'}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & [::
+Send ^+{[}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & ]::
+Send ^+{]}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & \::
+Send ^+{\}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & -::
+Send ^+{-}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & =::
+Send ^+{=}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Space::
+Send ^+{Space}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Enter::
+Send ^+{Enter}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Backspace::
+Send ^+{Backspace}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Delete::
+Send ^+{Delete}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Insert::
+Send ^+{Insert}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Home::
+Send ^+{Home}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & End::
+Send ^+{End}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & PgUp::
+Send ^+{PgUp}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & PgDn::
+Send ^+{PgDn}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Up::
+Send ^+{Up}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Down::
+Send ^+{Down}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Left::
+Send ^+{Left}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & Right::
+Send ^+{Right}
+Run,"%A_ScriptFullPath%" /restart
+return
+
+Esc & PrintScreen::
+Send ^+{PrintScreen}
+Run,"%A_ScriptFullPath%" /restart
+return
 
 #F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md,,useerrorlevel
