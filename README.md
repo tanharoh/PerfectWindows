@@ -19,3 +19,15 @@
 ## [Anti Windows Update](Anti-Windows-Update/Anti-Windows-Update.md)
 
 * 有它在，Windows 再也不敢自作主张地更新自己！
+
+---
+
+## Checkpoint
+
+* 从此摆脱防病毒软件的桎梏！
+
+---
+
+## Windows 高级控制面板
+
+* 轻松自如地自定义 Windows 的隐藏设置！
