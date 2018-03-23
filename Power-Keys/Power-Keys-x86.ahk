@@ -37,20 +37,20 @@ FileCreateDir,F12
 
 return
 
-#=::Volume_Up
-#-::Volume_Down
+$#=::Send {Volume_Up}
+$#-::Send {Volume_Down}
 
 #,::Send {Media_Prev}
 #.::Send {Media_Next}
 #'::Send {Media_Play_Pause}
 
-#Enter::^#d
-#BackSpace::^#F4
-#[::^#Left
-#]::^#Right
+#Enter::Send ^#d
+#BackSpace::Send ^#{F4}
+#[::Send ^#{Left}
+#]::Send ^#{Right}
 
-#PgUp::#=
-#PgDn::#-
+$#PgUp::Send #=
+$#PgDn::Send #-
 
 #NumLock Up::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
 
