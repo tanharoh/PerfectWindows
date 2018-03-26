@@ -1,4 +1,4 @@
-﻿#SingleInstance ignore
+﻿#SingleInstance force
 #MaxHotkeysPerInterval 1000
 #Persistent
 #InstallKeybdHook
@@ -6,19 +6,18 @@
 
 v:="1.0.0"
 
-isenabled=1
+isenabled=0
 
 Process, Priority, , High
 
 if A_IsAdmin
 {
-isenabled=0
 msgbox,0x40030,Power Keys %v% by 知阳,为确保安全性和兼容性，`nPower Keys 拒绝以管理员身份运行！
 exitapp
 }
 
 if !A_Args.Length()
-msgbox,0x40040,Power Keys %v% by 知阳,欢迎使用 Power Keys！,3
+msgbox,0x40040,Power Keys %v% by 知阳,欢迎使用 Power Keys！
 
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir %LocalAppData%\Power Keys
@@ -35,6 +34,8 @@ FileCreateDir,F9
 FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
+
+isenabled=1
 
 return
 
