@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="1.0.0"
+v:="1.0.1"
 
 isenabled=0
 
@@ -41,20 +41,20 @@ return
 
 #if isenabled
 
-$#=::Send {Volume_Up}
-$#-::Send {Volume_Down}
+#=::Volume_Up
+#-::Volume_Down
 
 #,::Send {Media_Prev}
 #.::Send {Media_Next}
 #'::Send {Media_Play_Pause}
 
-#Enter::Send ^#d
-#BackSpace::Send ^#{F4}
-#[::Send ^#{Left}
-#]::Send ^#{Right}
+#Enter::^#d
+#BackSpace::^#F4
+#[::^#Left
+#]::^#Right
 
-$#PgUp::Send #=
-$#PgDn::Send #-
+#PgUp::#=
+#PgDn::#-
 
 #NumLock Up::Run, "%systemroot%\system32\calc.exe",,useerrorlevel
 
