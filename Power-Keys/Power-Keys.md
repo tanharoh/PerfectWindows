@@ -2,6 +2,10 @@
 
 ---
 
+![动图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Power-Keys.gif)
+
+---
+
 ## 通过更加简洁且不可能冲突的快捷键：
 
 ### 更快地启动应用！
