@@ -1,3 +1,9 @@
+![动图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Anti-Windows-Update.gif)
+
+> 抱歉，Win 10 的爹就是可以为所欲为的。:joy:
+
+---
+
 # Anti Windows Update
 
 ## 完美地禁用 Windows 自动更新！

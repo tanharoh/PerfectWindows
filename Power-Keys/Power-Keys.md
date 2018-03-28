@@ -1,8 +1,6 @@
-# Power Keys
-
----
-
 ![动图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Power-Keys.gif)
+
+# Power Keys
 
 ---
 
