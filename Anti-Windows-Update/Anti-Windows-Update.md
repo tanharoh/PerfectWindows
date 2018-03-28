@@ -1,4 +1,4 @@
-![动图](https://pic4.zhimg.com/v2-a03a7313a56485c6e4ff01d52c2bf27f_b.gif)
+![动图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Anti-Windows-Update.gif)
 
 > 抱歉，Win 10 的爹就是可以为所欲为的。:joy:
 
