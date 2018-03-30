@@ -48,10 +48,10 @@ return
 #.::Send {Media_Next}
 #'::Send {Media_Play_Pause}
 
-#Enter::^#d
-#BackSpace::^#F4
-#[::^#Left
-#]::^#Right
+#Enter::Send ^#d
+#BackSpace::Send ^#{F4}
+#[::Send ^#{Left}
+#]::Send ^#{Right}
 
 #PgUp::#=
 #PgDn::#-
@@ -77,7 +77,7 @@ setcapslockstate,on
 return
 
 CapsLock & Tab::AltTab
-CapsLock & `::!Esc
+CapsLock & `::Send !{Esc}
 CapsLock & Esc::Send !{F4}
 
 CapsLock & a::
