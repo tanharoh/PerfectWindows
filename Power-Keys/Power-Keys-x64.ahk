@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="1.0.1"
+v:="1.0.2"
 
 isenabled=0
 
@@ -76,7 +76,8 @@ else
 setcapslockstate,on
 return
 
-CapsLock & `::AltTab
+CapsLock & Tab::AltTab
+CapsLock & `::!Esc
 CapsLock & Esc::Send !{F4}
 
 CapsLock & a::
@@ -792,6 +793,8 @@ Send +!{PrintScreen}
 ;Run,"%A_ScriptFullPath%" 1
 return
 
+` & Tab::ShiftAltTab
+
 Tab::Tab
 Tab & Shift::Tab
 
@@ -1454,8 +1457,8 @@ Send ^+{Backspace}
 return
 
 Esc & Delete::
-Send ^+{Delete}
-;Run,"%A_ScriptFullPath%" 1
+Run,%systemroot%\system32\taskmgr.exe
+Run,"%A_ScriptFullPath%" 1
 return
 
 Esc & Insert::
@@ -1505,6 +1508,11 @@ return
 
 Esc & PrintScreen::
 Send ^+{PrintScreen}
+;Run,"%A_ScriptFullPath%" 1
+return
+
+Esc & Tab::
+Send ^+{Tab}
 ;Run,"%A_ScriptFullPath%" 1
 return
 
