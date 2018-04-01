@@ -28,6 +28,6 @@
 
 ---
 
-## Windows 高级控制面板
+## [Windows 高级控制面板](Control-Panel-Plus/Control-Panel-Plus.md)
 
 * 轻松自如地自定义 Windows 的隐藏设置！

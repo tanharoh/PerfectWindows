@@ -1,8 +1,6 @@
 # Windows 高级控制面板
 
-
-
-[demo](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/cpp1.jpg)
+![demo](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/cpp1.jpg)
 
 ---
 
