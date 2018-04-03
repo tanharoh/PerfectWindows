@@ -149,6 +149,8 @@
 |**`End`**|**休眠 Windows**
 |**`Page Up` `Page Down`<br>`Esc`**|**放大 / 缩小屏幕<br>退出放大镜**
 
+<br>
+
 ---
 
 <br>
