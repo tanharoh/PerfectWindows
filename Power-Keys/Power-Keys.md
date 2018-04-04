@@ -138,7 +138,7 @@
 
 |随同徽标键按下|功能|
 |:-|:-|
-|**`?`<br>`F1`<br>`F4`<br>`F5`<br>`F8`<br>`F12`**|**显示 Power Keys 的运行状态<br>打开 Power Keys 的帮助页面<br>退出 Power Keys<br>重启 Power Keys 以解决热键故障<br>管理 Power Keys 的热键设置<br>询问 Power Keys 是否开机自启**
+|**`?`<br>`F1`<br>`F4`<br>`F5`<br>`F8`<br>`F11`<br>`F12`**|**显示 Power Keys 的运行状态<br>打开 Power Keys 的帮助页面<br>退出 Power Keys<br>重启 Power Keys 以解决热键故障<br>管理 Power Keys 的热键设置<br>切换 Power Keys 的游戏模式<br>询问 Power Keys 是否开机自启**
 |**`+` `-`**|**增大 / 减小系统音量**
 |**`<` <big>`"`</big> `>`**|**上一首 / 暂停（继续）/ 下一首**
 |**`{`** **`}`**<br>**`Enter`**<br>**`Backspace`**|**上一个 / 下一个虚拟桌面<br>新建虚拟桌面<br>关闭虚拟桌面**
