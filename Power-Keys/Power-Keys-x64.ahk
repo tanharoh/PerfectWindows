@@ -123,6 +123,14 @@ Return
 LWin::Return
 RWin::Return
 
+LWin & F1::
+RWin & F1::
+Return
+
+LWin & F4::
+RWin & F4::
+Return
+
 LWin & Esc::
 RWin & Esc::
 GameMode=0
