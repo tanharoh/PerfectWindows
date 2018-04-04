@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="2.2.0"
+v:="2.3.0"
 
 isenabled=0
 
@@ -53,24 +53,27 @@ Rwin & -::
 Send {Volume_Down}
 Return
 
-Lwin & ,::
-Rwin & ,::
+Lwin & , Up::
+Rwin & , Up::
 Send {Media_Prev}
 Return
 
-Lwin & .::
-Rwin & .::
+Lwin & . Up::
+Rwin & . Up::
 Send {Media_Next}
 Return
 
-Lwin & '::
-Rwin & '::
+Lwin & ' Up::
+Rwin & ' Up::
 Send {Media_Play_Pause}
 Return
 
-Lwin & /::
-Rwin & /::
-MsgBox,0x40040,Power Keys %v% by 知阳,Power Keys 正在运行。,1
+Lwin & / Up::
+Rwin & / Up::
+if GameMode=1
+MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
+else
+MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式未开启。
 Return
 
 LWin & NumLock Up::
@@ -83,33 +86,33 @@ RWin & 0 Up::
 Run, "%systemroot%\system32\calc.exe",,UseErrorLevel
 Return
 
-LWin & CapsLock Up::
-RWin & CapsLock Up::
+LWin & CapsLock::
+RWin & CapsLock::
 winset,AlwaysOnTop,, A
 Return
 
-LWin & Delete::
-RWin & Delete::
+LWin & Delete Up::
+RWin & Delete Up::
 Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
 Return
 
-LWin & Enter::
-RWin & Enter::
+LWin & Enter Up::
+RWin & Enter Up::
 Send ^#d
 Return
 
-LWin & BackSpace::
-RWin & BackSpace::
+LWin & BackSpace Up::
+RWin & BackSpace Up::
 Send ^#{F4}
 Return
 
-LWin & [::
-RWin & [::
+LWin & [ Up::
+RWin & [ Up::
 Send ^#{Left}
 Return
 
-LWin & ]::
-RWin & ]::
+LWin & ] Up::
+RWin & ] Up::
 Send ^#{Right}
 Return
 
