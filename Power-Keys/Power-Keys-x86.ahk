@@ -44,6 +44,9 @@ FileCreateDir,F12
 isenabled=1
 GameMode=0
 
+RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
+RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+
 Return
 
 Lwin & =::
@@ -71,32 +74,9 @@ Rwin & '::
 Send {Media_Play_Pause}
 Return
 
-LWin & F11::
-RWin & F11::
-GameMode=1
-isenabled=0
-;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
-Return
-
 Lwin & /::
 Rwin & /::
 MsgBox,0x40040,Power Keys %v% by 知阳,Power Keys 正在运行。,1
-Return
-
-Lwin & F4::
-MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
-ifMsgBox,yes
-ExitApp
-Return
-
-Lwin & PgUp::
-Rwin & PgUp::
-Send #=
-Return
-
-Lwin & PgDn::
-Rwin & PgDn::
-Send #-
 Return
 
 LWin & NumLock Up::
@@ -144,33 +124,13 @@ RWin & F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md,,UseErrorLevel
 Return
 
-LWin & F8::
-RWin & F8::
-Run,%A_WorkingDir%,,UseErrorLevel
-Return
-
-LWin & F12::
-RWin & F12::
-MsgBox,0x40024,Power Keys %v% by 知阳,登录 Windows 时自动启动 Power Keys？
-ifMsgBox,yes
-{
-RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
-}
-else
-{
-RegDelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-RegDelete,HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
-}
-Return
-
 #if GameMode=1
 
 LWin::Return
 RWin::Return
 
-LWin & F11::
-RWin & F11::
+LWin & Esc::
+RWin & Esc::
 GameMode=0
 isenabled=1
 ;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已关闭。
@@ -184,8 +144,30 @@ Return
 
 #!PrintScreen::Run, %systemroot%\system32\snippingtool.exe,,UseErrorLevel
 
-#F5::
-Run,"%A_ScriptFullPath%" 1,,UseErrorLevel
+Lwin & PgUp::
+Rwin & PgUp::
+Send #=
+Return
+
+Lwin & PgDn::
+Rwin & PgDn::
+Send #-
+Return
+
+LWin & G::
+RWin & G::
+GameMode=1
+isenabled=0
+;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
+Return
+
+Lwin & F4::
+Rwin & F4::
+MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
+ifMsgBox,yes
+ExitApp
+else
+Run,"%A_ScriptFullPath%" 1
 Return
 
 Space::Space
