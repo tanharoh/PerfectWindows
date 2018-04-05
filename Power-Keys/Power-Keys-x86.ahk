@@ -14,6 +14,7 @@ if A_Is64bitOS
 {
 msgbox,0x40130,Power Keys %v% by 知阳,为确保兼容性，`n您必须使用 64 位版本的 Power Keys！
 exitapp
+}
 
 if A_IsAdmin
 {
