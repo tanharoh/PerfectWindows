@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.0"
+v:="3.0.1"
 
 isenabled=0
 
@@ -191,7 +191,7 @@ MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
 ifMsgBox,yes
 ExitApp
 else
-Run,"%A_ScriptFullPath%" 1
+Run,"%A_ScriptFullPath%" 1 1 1 1
 Return
 
 Space::Space
@@ -603,458 +603,458 @@ F10 & PrintScreen::^+!F10
 F11 & PrintScreen::^+!F11
 F12 & PrintScreen::^+!F12
 
-F1 & Enter::Run, F1
-F1 & a::Run,"%A_ScriptFullPath%" 1 a
-F1 & b::Run,"%A_ScriptFullPath%" 1 b
-F1 & c::Run,"%A_ScriptFullPath%" 1 c
-F1 & d::Run,"%A_ScriptFullPath%" 1 d
-F1 & e::Run,"%A_ScriptFullPath%" 1 e
-F1 & f::Run,"%A_ScriptFullPath%" 1 f
-F1 & g::Run,"%A_ScriptFullPath%" 1 g
-F1 & h::Run,"%A_ScriptFullPath%" 1 h
-F1 & i::Run,"%A_ScriptFullPath%" 1 i
-F1 & j::Run,"%A_ScriptFullPath%" 1 j
-F1 & k::Run,"%A_ScriptFullPath%" 1 k
-F1 & l::Run,"%A_ScriptFullPath%" 1 l
-F1 & m::Run,"%A_ScriptFullPath%" 1 m
-F1 & n::Run,"%A_ScriptFullPath%" 1 n
-F1 & o::Run,"%A_ScriptFullPath%" 1 o
-F1 & p::Run,"%A_ScriptFullPath%" 1 p
-F1 & q::Run,"%A_ScriptFullPath%" 1 q
-F1 & r::Run,"%A_ScriptFullPath%" 1 r
-F1 & s::Run,"%A_ScriptFullPath%" 1 s
-F1 & t::Run,"%A_ScriptFullPath%" 1 t
-F1 & u::Run,"%A_ScriptFullPath%" 1 u
-F1 & v::Run,"%A_ScriptFullPath%" 1 v
-F1 & w::Run,"%A_ScriptFullPath%" 1 w
-F1 & x::Run,"%A_ScriptFullPath%" 1 x
-F1 & y::Run,"%A_ScriptFullPath%" 1 y
-F1 & z::Run,"%A_ScriptFullPath%" 1 z
-F1 & 1::Run,"%A_ScriptFullPath%" 1 1
-F1 & 2::Run,"%A_ScriptFullPath%" 1 2
-F1 & 3::Run,"%A_ScriptFullPath%" 1 3
-F1 & 4::Run,"%A_ScriptFullPath%" 1 4
-F1 & 5::Run,"%A_ScriptFullPath%" 1 5
-F1 & 6::Run,"%A_ScriptFullPath%" 1 6
-F1 & 7::Run,"%A_ScriptFullPath%" 1 7
-F1 & 8::Run,"%A_ScriptFullPath%" 1 8
-F1 & 9::Run,"%A_ScriptFullPath%" 1 9
-F1 & 0::Run,"%A_ScriptFullPath%" 1 0
+F1 & Enter Up::Run, F1
+F1 & a Up::Run,"%A_ScriptFullPath%" 1 a
+F1 & b Up::Run,"%A_ScriptFullPath%" 1 b
+F1 & c Up::Run,"%A_ScriptFullPath%" 1 c
+F1 & d Up::Run,"%A_ScriptFullPath%" 1 d
+F1 & e Up::Run,"%A_ScriptFullPath%" 1 e
+F1 & f Up::Run,"%A_ScriptFullPath%" 1 f
+F1 & g Up::Run,"%A_ScriptFullPath%" 1 g
+F1 & h Up::Run,"%A_ScriptFullPath%" 1 h
+F1 & i Up::Run,"%A_ScriptFullPath%" 1 i
+F1 & j Up::Run,"%A_ScriptFullPath%" 1 j
+F1 & k Up::Run,"%A_ScriptFullPath%" 1 k
+F1 & l Up::Run,"%A_ScriptFullPath%" 1 l
+F1 & m Up::Run,"%A_ScriptFullPath%" 1 m
+F1 & n Up::Run,"%A_ScriptFullPath%" 1 n
+F1 & o Up::Run,"%A_ScriptFullPath%" 1 o
+F1 & p Up::Run,"%A_ScriptFullPath%" 1 p
+F1 & q Up::Run,"%A_ScriptFullPath%" 1 q
+F1 & r Up::Run,"%A_ScriptFullPath%" 1 r
+F1 & s Up::Run,"%A_ScriptFullPath%" 1 s
+F1 & t Up::Run,"%A_ScriptFullPath%" 1 t
+F1 & u Up::Run,"%A_ScriptFullPath%" 1 u
+F1 & v Up::Run,"%A_ScriptFullPath%" 1 v
+F1 & w Up::Run,"%A_ScriptFullPath%" 1 w
+F1 & x Up::Run,"%A_ScriptFullPath%" 1 x
+F1 & y Up::Run,"%A_ScriptFullPath%" 1 y
+F1 & z Up::Run,"%A_ScriptFullPath%" 1 z
+F1 & 1 Up::Run,"%A_ScriptFullPath%" 1 1
+F1 & 2 Up::Run,"%A_ScriptFullPath%" 1 2
+F1 & 3 Up::Run,"%A_ScriptFullPath%" 1 3
+F1 & 4 Up::Run,"%A_ScriptFullPath%" 1 4
+F1 & 5 Up::Run,"%A_ScriptFullPath%" 1 5
+F1 & 6 Up::Run,"%A_ScriptFullPath%" 1 6
+F1 & 7 Up::Run,"%A_ScriptFullPath%" 1 7
+F1 & 8 Up::Run,"%A_ScriptFullPath%" 1 8
+F1 & 9 Up::Run,"%A_ScriptFullPath%" 1 9
+F1 & 0 Up::Run,"%A_ScriptFullPath%" 1 0
 
-F2 & Enter::Run, F2
-F2 & a::Run,"%A_ScriptFullPath%" 2 a
-F2 & b::Run,"%A_ScriptFullPath%" 2 b
-F2 & c::Run,"%A_ScriptFullPath%" 2 c
-F2 & d::Run,"%A_ScriptFullPath%" 2 d
-F2 & e::Run,"%A_ScriptFullPath%" 2 e
-F2 & f::Run,"%A_ScriptFullPath%" 2 f
-F2 & g::Run,"%A_ScriptFullPath%" 2 g
-F2 & h::Run,"%A_ScriptFullPath%" 2 h
-F2 & i::Run,"%A_ScriptFullPath%" 2 i
-F2 & j::Run,"%A_ScriptFullPath%" 2 j
-F2 & k::Run,"%A_ScriptFullPath%" 2 k
-F2 & l::Run,"%A_ScriptFullPath%" 2 l
-F2 & m::Run,"%A_ScriptFullPath%" 2 m
-F2 & n::Run,"%A_ScriptFullPath%" 2 n
-F2 & o::Run,"%A_ScriptFullPath%" 2 o
-F2 & p::Run,"%A_ScriptFullPath%" 2 p
-F2 & q::Run,"%A_ScriptFullPath%" 2 q
-F2 & r::Run,"%A_ScriptFullPath%" 2 r
-F2 & s::Run,"%A_ScriptFullPath%" 2 s
-F2 & t::Run,"%A_ScriptFullPath%" 2 t
-F2 & u::Run,"%A_ScriptFullPath%" 2 u
-F2 & v::Run,"%A_ScriptFullPath%" 2 v
-F2 & w::Run,"%A_ScriptFullPath%" 2 w
-F2 & x::Run,"%A_ScriptFullPath%" 2 x
-F2 & y::Run,"%A_ScriptFullPath%" 2 y
-F2 & z::Run,"%A_ScriptFullPath%" 2 z
-F2 & 1::Run,"%A_ScriptFullPath%" 2 1
-F2 & 2::Run,"%A_ScriptFullPath%" 2 2
-F2 & 3::Run,"%A_ScriptFullPath%" 2 3
-F2 & 4::Run,"%A_ScriptFullPath%" 2 4
-F2 & 5::Run,"%A_ScriptFullPath%" 2 5
-F2 & 6::Run,"%A_ScriptFullPath%" 2 6
-F2 & 7::Run,"%A_ScriptFullPath%" 2 7
-F2 & 8::Run,"%A_ScriptFullPath%" 2 8
-F2 & 9::Run,"%A_ScriptFullPath%" 2 9
-F2 & 0::Run,"%A_ScriptFullPath%" 2 0
+F2 & Enter Up::Run, F2
+F2 & a Up::Run,"%A_ScriptFullPath%" 2 a
+F2 & b Up::Run,"%A_ScriptFullPath%" 2 b
+F2 & c Up::Run,"%A_ScriptFullPath%" 2 c
+F2 & d Up::Run,"%A_ScriptFullPath%" 2 d
+F2 & e Up::Run,"%A_ScriptFullPath%" 2 e
+F2 & f Up::Run,"%A_ScriptFullPath%" 2 f
+F2 & g Up::Run,"%A_ScriptFullPath%" 2 g
+F2 & h Up::Run,"%A_ScriptFullPath%" 2 h
+F2 & i Up::Run,"%A_ScriptFullPath%" 2 i
+F2 & j Up::Run,"%A_ScriptFullPath%" 2 j
+F2 & k Up::Run,"%A_ScriptFullPath%" 2 k
+F2 & l Up::Run,"%A_ScriptFullPath%" 2 l
+F2 & m Up::Run,"%A_ScriptFullPath%" 2 m
+F2 & n Up::Run,"%A_ScriptFullPath%" 2 n
+F2 & o Up::Run,"%A_ScriptFullPath%" 2 o
+F2 & p Up::Run,"%A_ScriptFullPath%" 2 p
+F2 & q Up::Run,"%A_ScriptFullPath%" 2 q
+F2 & r Up::Run,"%A_ScriptFullPath%" 2 r
+F2 & s Up::Run,"%A_ScriptFullPath%" 2 s
+F2 & t Up::Run,"%A_ScriptFullPath%" 2 t
+F2 & u Up::Run,"%A_ScriptFullPath%" 2 u
+F2 & v Up::Run,"%A_ScriptFullPath%" 2 v
+F2 & w Up::Run,"%A_ScriptFullPath%" 2 w
+F2 & x Up::Run,"%A_ScriptFullPath%" 2 x
+F2 & y Up::Run,"%A_ScriptFullPath%" 2 y
+F2 & z Up::Run,"%A_ScriptFullPath%" 2 z
+F2 & 1 Up::Run,"%A_ScriptFullPath%" 2 1
+F2 & 2 Up::Run,"%A_ScriptFullPath%" 2 2
+F2 & 3 Up::Run,"%A_ScriptFullPath%" 2 3
+F2 & 4 Up::Run,"%A_ScriptFullPath%" 2 4
+F2 & 5 Up::Run,"%A_ScriptFullPath%" 2 5
+F2 & 6 Up::Run,"%A_ScriptFullPath%" 2 6
+F2 & 7 Up::Run,"%A_ScriptFullPath%" 2 7
+F2 & 8 Up::Run,"%A_ScriptFullPath%" 2 8
+F2 & 9 Up::Run,"%A_ScriptFullPath%" 2 9
+F2 & 0 Up::Run,"%A_ScriptFullPath%" 2 0
 
-F3 & Enter::Run, F3
-F3 & a::Run,"%A_ScriptFullPath%" 3 a
-F3 & b::Run,"%A_ScriptFullPath%" 3 b
-F3 & c::Run,"%A_ScriptFullPath%" 3 c
-F3 & d::Run,"%A_ScriptFullPath%" 3 d
-F3 & e::Run,"%A_ScriptFullPath%" 3 e
-F3 & f::Run,"%A_ScriptFullPath%" 3 f
-F3 & g::Run,"%A_ScriptFullPath%" 3 g
-F3 & h::Run,"%A_ScriptFullPath%" 3 h
-F3 & i::Run,"%A_ScriptFullPath%" 3 i
-F3 & j::Run,"%A_ScriptFullPath%" 3 j
-F3 & k::Run,"%A_ScriptFullPath%" 3 k
-F3 & l::Run,"%A_ScriptFullPath%" 3 l
-F3 & m::Run,"%A_ScriptFullPath%" 3 m
-F3 & n::Run,"%A_ScriptFullPath%" 3 n
-F3 & o::Run,"%A_ScriptFullPath%" 3 o
-F3 & p::Run,"%A_ScriptFullPath%" 3 p
-F3 & q::Run,"%A_ScriptFullPath%" 3 q
-F3 & r::Run,"%A_ScriptFullPath%" 3 r
-F3 & s::Run,"%A_ScriptFullPath%" 3 s
-F3 & t::Run,"%A_ScriptFullPath%" 3 t
-F3 & u::Run,"%A_ScriptFullPath%" 3 u
-F3 & v::Run,"%A_ScriptFullPath%" 3 v
-F3 & w::Run,"%A_ScriptFullPath%" 3 w
-F3 & x::Run,"%A_ScriptFullPath%" 3 x
-F3 & y::Run,"%A_ScriptFullPath%" 3 y
-F3 & z::Run,"%A_ScriptFullPath%" 3 z
-F3 & 1::Run,"%A_ScriptFullPath%" 3 1
-F3 & 2::Run,"%A_ScriptFullPath%" 3 2
-F3 & 3::Run,"%A_ScriptFullPath%" 3 3
-F3 & 4::Run,"%A_ScriptFullPath%" 3 4
-F3 & 5::Run,"%A_ScriptFullPath%" 3 5
-F3 & 6::Run,"%A_ScriptFullPath%" 3 6
-F3 & 7::Run,"%A_ScriptFullPath%" 3 7
-F3 & 8::Run,"%A_ScriptFullPath%" 3 8
-F3 & 9::Run,"%A_ScriptFullPath%" 3 9
-F3 & 0::Run,"%A_ScriptFullPath%" 3 0
+F3 & Enter Up::Run, F3
+F3 & a Up::Run,"%A_ScriptFullPath%" 3 a
+F3 & b Up::Run,"%A_ScriptFullPath%" 3 b
+F3 & c Up::Run,"%A_ScriptFullPath%" 3 c
+F3 & d Up::Run,"%A_ScriptFullPath%" 3 d
+F3 & e Up::Run,"%A_ScriptFullPath%" 3 e
+F3 & f Up::Run,"%A_ScriptFullPath%" 3 f
+F3 & g Up::Run,"%A_ScriptFullPath%" 3 g
+F3 & h Up::Run,"%A_ScriptFullPath%" 3 h
+F3 & i Up::Run,"%A_ScriptFullPath%" 3 i
+F3 & j Up::Run,"%A_ScriptFullPath%" 3 j
+F3 & k Up::Run,"%A_ScriptFullPath%" 3 k
+F3 & l Up::Run,"%A_ScriptFullPath%" 3 l
+F3 & m Up::Run,"%A_ScriptFullPath%" 3 m
+F3 & n Up::Run,"%A_ScriptFullPath%" 3 n
+F3 & o Up::Run,"%A_ScriptFullPath%" 3 o
+F3 & p Up::Run,"%A_ScriptFullPath%" 3 p
+F3 & q Up::Run,"%A_ScriptFullPath%" 3 q
+F3 & r Up::Run,"%A_ScriptFullPath%" 3 r
+F3 & s Up::Run,"%A_ScriptFullPath%" 3 s
+F3 & t Up::Run,"%A_ScriptFullPath%" 3 t
+F3 & u Up::Run,"%A_ScriptFullPath%" 3 u
+F3 & v Up::Run,"%A_ScriptFullPath%" 3 v
+F3 & w Up::Run,"%A_ScriptFullPath%" 3 w
+F3 & x Up::Run,"%A_ScriptFullPath%" 3 x
+F3 & y Up::Run,"%A_ScriptFullPath%" 3 y
+F3 & z Up::Run,"%A_ScriptFullPath%" 3 z
+F3 & 1 Up::Run,"%A_ScriptFullPath%" 3 1
+F3 & 2 Up::Run,"%A_ScriptFullPath%" 3 2
+F3 & 3 Up::Run,"%A_ScriptFullPath%" 3 3
+F3 & 4 Up::Run,"%A_ScriptFullPath%" 3 4
+F3 & 5 Up::Run,"%A_ScriptFullPath%" 3 5
+F3 & 6 Up::Run,"%A_ScriptFullPath%" 3 6
+F3 & 7 Up::Run,"%A_ScriptFullPath%" 3 7
+F3 & 8 Up::Run,"%A_ScriptFullPath%" 3 8
+F3 & 9 Up::Run,"%A_ScriptFullPath%" 3 9
+F3 & 0 Up::Run,"%A_ScriptFullPath%" 3 0
 
-F4 & Enter::Run, F4
-F4 & a::Run,"%A_ScriptFullPath%" 4 a
-F4 & b::Run,"%A_ScriptFullPath%" 4 b
-F4 & c::Run,"%A_ScriptFullPath%" 4 c
-F4 & d::Run,"%A_ScriptFullPath%" 4 d
-F4 & e::Run,"%A_ScriptFullPath%" 4 e
-F4 & f::Run,"%A_ScriptFullPath%" 4 f
-F4 & g::Run,"%A_ScriptFullPath%" 4 g
-F4 & h::Run,"%A_ScriptFullPath%" 4 h
-F4 & i::Run,"%A_ScriptFullPath%" 4 i
-F4 & j::Run,"%A_ScriptFullPath%" 4 j
-F4 & k::Run,"%A_ScriptFullPath%" 4 k
-F4 & l::Run,"%A_ScriptFullPath%" 4 l
-F4 & m::Run,"%A_ScriptFullPath%" 4 m
-F4 & n::Run,"%A_ScriptFullPath%" 4 n
-F4 & o::Run,"%A_ScriptFullPath%" 4 o
-F4 & p::Run,"%A_ScriptFullPath%" 4 p
-F4 & q::Run,"%A_ScriptFullPath%" 4 q
-F4 & r::Run,"%A_ScriptFullPath%" 4 r
-F4 & s::Run,"%A_ScriptFullPath%" 4 s
-F4 & t::Run,"%A_ScriptFullPath%" 4 t
-F4 & u::Run,"%A_ScriptFullPath%" 4 u
-F4 & v::Run,"%A_ScriptFullPath%" 4 v
-F4 & w::Run,"%A_ScriptFullPath%" 4 w
-F4 & x::Run,"%A_ScriptFullPath%" 4 x
-F4 & y::Run,"%A_ScriptFullPath%" 4 y
-F4 & z::Run,"%A_ScriptFullPath%" 4 z
-F4 & 1::Run,"%A_ScriptFullPath%" 4 1
-F4 & 2::Run,"%A_ScriptFullPath%" 4 2
-F4 & 3::Run,"%A_ScriptFullPath%" 4 3
-F4 & 4::Run,"%A_ScriptFullPath%" 4 4
-F4 & 5::Run,"%A_ScriptFullPath%" 4 5
-F4 & 6::Run,"%A_ScriptFullPath%" 4 6
-F4 & 7::Run,"%A_ScriptFullPath%" 4 7
-F4 & 8::Run,"%A_ScriptFullPath%" 4 8
-F4 & 9::Run,"%A_ScriptFullPath%" 4 9
-F4 & 0::Run,"%A_ScriptFullPath%" 4 0
+F4 & Enter Up::Run, F4
+F4 & a Up::Run,"%A_ScriptFullPath%" 4 a
+F4 & b Up::Run,"%A_ScriptFullPath%" 4 b
+F4 & c Up::Run,"%A_ScriptFullPath%" 4 c
+F4 & d Up::Run,"%A_ScriptFullPath%" 4 d
+F4 & e Up::Run,"%A_ScriptFullPath%" 4 e
+F4 & f Up::Run,"%A_ScriptFullPath%" 4 f
+F4 & g Up::Run,"%A_ScriptFullPath%" 4 g
+F4 & h Up::Run,"%A_ScriptFullPath%" 4 h
+F4 & i Up::Run,"%A_ScriptFullPath%" 4 i
+F4 & j Up::Run,"%A_ScriptFullPath%" 4 j
+F4 & k Up::Run,"%A_ScriptFullPath%" 4 k
+F4 & l Up::Run,"%A_ScriptFullPath%" 4 l
+F4 & m Up::Run,"%A_ScriptFullPath%" 4 m
+F4 & n Up::Run,"%A_ScriptFullPath%" 4 n
+F4 & o Up::Run,"%A_ScriptFullPath%" 4 o
+F4 & p Up::Run,"%A_ScriptFullPath%" 4 p
+F4 & q Up::Run,"%A_ScriptFullPath%" 4 q
+F4 & r Up::Run,"%A_ScriptFullPath%" 4 r
+F4 & s Up::Run,"%A_ScriptFullPath%" 4 s
+F4 & t Up::Run,"%A_ScriptFullPath%" 4 t
+F4 & u Up::Run,"%A_ScriptFullPath%" 4 u
+F4 & v Up::Run,"%A_ScriptFullPath%" 4 v
+F4 & w Up::Run,"%A_ScriptFullPath%" 4 w
+F4 & x Up::Run,"%A_ScriptFullPath%" 4 x
+F4 & y Up::Run,"%A_ScriptFullPath%" 4 y
+F4 & z Up::Run,"%A_ScriptFullPath%" 4 z
+F4 & 1 Up::Run,"%A_ScriptFullPath%" 4 1
+F4 & 2 Up::Run,"%A_ScriptFullPath%" 4 2
+F4 & 3 Up::Run,"%A_ScriptFullPath%" 4 3
+F4 & 4 Up::Run,"%A_ScriptFullPath%" 4 4
+F4 & 5 Up::Run,"%A_ScriptFullPath%" 4 5
+F4 & 6 Up::Run,"%A_ScriptFullPath%" 4 6
+F4 & 7 Up::Run,"%A_ScriptFullPath%" 4 7
+F4 & 8 Up::Run,"%A_ScriptFullPath%" 4 8
+F4 & 9 Up::Run,"%A_ScriptFullPath%" 4 9
+F4 & 0 Up::Run,"%A_ScriptFullPath%" 4 0
 
-F5 & Enter::Run, F5
-F5 & a::Run,"%A_ScriptFullPath%" 5 a
-F5 & b::Run,"%A_ScriptFullPath%" 5 b
-F5 & c::Run,"%A_ScriptFullPath%" 5 c
-F5 & d::Run,"%A_ScriptFullPath%" 5 d
-F5 & e::Run,"%A_ScriptFullPath%" 5 e
-F5 & f::Run,"%A_ScriptFullPath%" 5 f
-F5 & g::Run,"%A_ScriptFullPath%" 5 g
-F5 & h::Run,"%A_ScriptFullPath%" 5 h
-F5 & i::Run,"%A_ScriptFullPath%" 5 i
-F5 & j::Run,"%A_ScriptFullPath%" 5 j
-F5 & k::Run,"%A_ScriptFullPath%" 5 k
-F5 & l::Run,"%A_ScriptFullPath%" 5 l
-F5 & m::Run,"%A_ScriptFullPath%" 5 m
-F5 & n::Run,"%A_ScriptFullPath%" 5 n
-F5 & o::Run,"%A_ScriptFullPath%" 5 o
-F5 & p::Run,"%A_ScriptFullPath%" 5 p
-F5 & q::Run,"%A_ScriptFullPath%" 5 q
-F5 & r::Run,"%A_ScriptFullPath%" 5 r
-F5 & s::Run,"%A_ScriptFullPath%" 5 s
-F5 & t::Run,"%A_ScriptFullPath%" 5 t
-F5 & u::Run,"%A_ScriptFullPath%" 5 u
-F5 & v::Run,"%A_ScriptFullPath%" 5 v
-F5 & w::Run,"%A_ScriptFullPath%" 5 w
-F5 & x::Run,"%A_ScriptFullPath%" 5 x
-F5 & y::Run,"%A_ScriptFullPath%" 5 y
-F5 & z::Run,"%A_ScriptFullPath%" 5 z
-F5 & 1::Run,"%A_ScriptFullPath%" 5 1
-F5 & 2::Run,"%A_ScriptFullPath%" 5 2
-F5 & 3::Run,"%A_ScriptFullPath%" 5 3
-F5 & 4::Run,"%A_ScriptFullPath%" 5 4
-F5 & 5::Run,"%A_ScriptFullPath%" 5 5
-F5 & 6::Run,"%A_ScriptFullPath%" 5 6
-F5 & 7::Run,"%A_ScriptFullPath%" 5 7
-F5 & 8::Run,"%A_ScriptFullPath%" 5 8
-F5 & 9::Run,"%A_ScriptFullPath%" 5 9
-F5 & 0::Run,"%A_ScriptFullPath%" 5 0
+F5 & Enter Up::Run, F5
+F5 & a Up::Run,"%A_ScriptFullPath%" 5 a
+F5 & b Up::Run,"%A_ScriptFullPath%" 5 b
+F5 & c Up::Run,"%A_ScriptFullPath%" 5 c
+F5 & d Up::Run,"%A_ScriptFullPath%" 5 d
+F5 & e Up::Run,"%A_ScriptFullPath%" 5 e
+F5 & f Up::Run,"%A_ScriptFullPath%" 5 f
+F5 & g Up::Run,"%A_ScriptFullPath%" 5 g
+F5 & h Up::Run,"%A_ScriptFullPath%" 5 h
+F5 & i Up::Run,"%A_ScriptFullPath%" 5 i
+F5 & j Up::Run,"%A_ScriptFullPath%" 5 j
+F5 & k Up::Run,"%A_ScriptFullPath%" 5 k
+F5 & l Up::Run,"%A_ScriptFullPath%" 5 l
+F5 & m Up::Run,"%A_ScriptFullPath%" 5 m
+F5 & n Up::Run,"%A_ScriptFullPath%" 5 n
+F5 & o Up::Run,"%A_ScriptFullPath%" 5 o
+F5 & p Up::Run,"%A_ScriptFullPath%" 5 p
+F5 & q Up::Run,"%A_ScriptFullPath%" 5 q
+F5 & r Up::Run,"%A_ScriptFullPath%" 5 r
+F5 & s Up::Run,"%A_ScriptFullPath%" 5 s
+F5 & t Up::Run,"%A_ScriptFullPath%" 5 t
+F5 & u Up::Run,"%A_ScriptFullPath%" 5 u
+F5 & v Up::Run,"%A_ScriptFullPath%" 5 v
+F5 & w Up::Run,"%A_ScriptFullPath%" 5 w
+F5 & x Up::Run,"%A_ScriptFullPath%" 5 x
+F5 & y Up::Run,"%A_ScriptFullPath%" 5 y
+F5 & z Up::Run,"%A_ScriptFullPath%" 5 z
+F5 & 1 Up::Run,"%A_ScriptFullPath%" 5 1
+F5 & 2 Up::Run,"%A_ScriptFullPath%" 5 2
+F5 & 3 Up::Run,"%A_ScriptFullPath%" 5 3
+F5 & 4 Up::Run,"%A_ScriptFullPath%" 5 4
+F5 & 5 Up::Run,"%A_ScriptFullPath%" 5 5
+F5 & 6 Up::Run,"%A_ScriptFullPath%" 5 6
+F5 & 7 Up::Run,"%A_ScriptFullPath%" 5 7
+F5 & 8 Up::Run,"%A_ScriptFullPath%" 5 8
+F5 & 9 Up::Run,"%A_ScriptFullPath%" 5 9
+F5 & 0 Up::Run,"%A_ScriptFullPath%" 5 0
 
-F6 & Enter::Run, F6
-F6 & a::Run,"%A_ScriptFullPath%" 6 a
-F6 & b::Run,"%A_ScriptFullPath%" 6 b
-F6 & c::Run,"%A_ScriptFullPath%" 6 c
-F6 & d::Run,"%A_ScriptFullPath%" 6 d
-F6 & e::Run,"%A_ScriptFullPath%" 6 e
-F6 & f::Run,"%A_ScriptFullPath%" 6 f
-F6 & g::Run,"%A_ScriptFullPath%" 6 g
-F6 & h::Run,"%A_ScriptFullPath%" 6 h
-F6 & i::Run,"%A_ScriptFullPath%" 6 i
-F6 & j::Run,"%A_ScriptFullPath%" 6 j
-F6 & k::Run,"%A_ScriptFullPath%" 6 k
-F6 & l::Run,"%A_ScriptFullPath%" 6 l
-F6 & m::Run,"%A_ScriptFullPath%" 6 m
-F6 & n::Run,"%A_ScriptFullPath%" 6 n
-F6 & o::Run,"%A_ScriptFullPath%" 6 o
-F6 & p::Run,"%A_ScriptFullPath%" 6 p
-F6 & q::Run,"%A_ScriptFullPath%" 6 q
-F6 & r::Run,"%A_ScriptFullPath%" 6 r
-F6 & s::Run,"%A_ScriptFullPath%" 6 s
-F6 & t::Run,"%A_ScriptFullPath%" 6 t
-F6 & u::Run,"%A_ScriptFullPath%" 6 u
-F6 & v::Run,"%A_ScriptFullPath%" 6 v
-F6 & w::Run,"%A_ScriptFullPath%" 6 w
-F6 & x::Run,"%A_ScriptFullPath%" 6 x
-F6 & y::Run,"%A_ScriptFullPath%" 6 y
-F6 & z::Run,"%A_ScriptFullPath%" 6 z
-F6 & 1::Run,"%A_ScriptFullPath%" 6 1
-F6 & 2::Run,"%A_ScriptFullPath%" 6 2
-F6 & 3::Run,"%A_ScriptFullPath%" 6 3
-F6 & 4::Run,"%A_ScriptFullPath%" 6 4
-F6 & 5::Run,"%A_ScriptFullPath%" 6 5
-F6 & 6::Run,"%A_ScriptFullPath%" 6 6
-F6 & 7::Run,"%A_ScriptFullPath%" 6 7
-F6 & 8::Run,"%A_ScriptFullPath%" 6 8
-F6 & 9::Run,"%A_ScriptFullPath%" 6 9
-F6 & 0::Run,"%A_ScriptFullPath%" 6 0
+F6 & Enter Up::Run, F6
+F6 & a Up::Run,"%A_ScriptFullPath%" 6 a
+F6 & b Up::Run,"%A_ScriptFullPath%" 6 b
+F6 & c Up::Run,"%A_ScriptFullPath%" 6 c
+F6 & d Up::Run,"%A_ScriptFullPath%" 6 d
+F6 & e Up::Run,"%A_ScriptFullPath%" 6 e
+F6 & f Up::Run,"%A_ScriptFullPath%" 6 f
+F6 & g Up::Run,"%A_ScriptFullPath%" 6 g
+F6 & h Up::Run,"%A_ScriptFullPath%" 6 h
+F6 & i Up::Run,"%A_ScriptFullPath%" 6 i
+F6 & j Up::Run,"%A_ScriptFullPath%" 6 j
+F6 & k Up::Run,"%A_ScriptFullPath%" 6 k
+F6 & l Up::Run,"%A_ScriptFullPath%" 6 l
+F6 & m Up::Run,"%A_ScriptFullPath%" 6 m
+F6 & n Up::Run,"%A_ScriptFullPath%" 6 n
+F6 & o Up::Run,"%A_ScriptFullPath%" 6 o
+F6 & p Up::Run,"%A_ScriptFullPath%" 6 p
+F6 & q Up::Run,"%A_ScriptFullPath%" 6 q
+F6 & r Up::Run,"%A_ScriptFullPath%" 6 r
+F6 & s Up::Run,"%A_ScriptFullPath%" 6 s
+F6 & t Up::Run,"%A_ScriptFullPath%" 6 t
+F6 & u Up::Run,"%A_ScriptFullPath%" 6 u
+F6 & v Up::Run,"%A_ScriptFullPath%" 6 v
+F6 & w Up::Run,"%A_ScriptFullPath%" 6 w
+F6 & x Up::Run,"%A_ScriptFullPath%" 6 x
+F6 & y Up::Run,"%A_ScriptFullPath%" 6 y
+F6 & z Up::Run,"%A_ScriptFullPath%" 6 z
+F6 & 1 Up::Run,"%A_ScriptFullPath%" 6 1
+F6 & 2 Up::Run,"%A_ScriptFullPath%" 6 2
+F6 & 3 Up::Run,"%A_ScriptFullPath%" 6 3
+F6 & 4 Up::Run,"%A_ScriptFullPath%" 6 4
+F6 & 5 Up::Run,"%A_ScriptFullPath%" 6 5
+F6 & 6 Up::Run,"%A_ScriptFullPath%" 6 6
+F6 & 7 Up::Run,"%A_ScriptFullPath%" 6 7
+F6 & 8 Up::Run,"%A_ScriptFullPath%" 6 8
+F6 & 9 Up::Run,"%A_ScriptFullPath%" 6 9
+F6 & 0 Up::Run,"%A_ScriptFullPath%" 6 0
 
-F7 & Enter::Run, F7
-F7 & a::Run,"%A_ScriptFullPath%" 7 a
-F7 & b::Run,"%A_ScriptFullPath%" 7 b
-F7 & c::Run,"%A_ScriptFullPath%" 7 c
-F7 & d::Run,"%A_ScriptFullPath%" 7 d
-F7 & e::Run,"%A_ScriptFullPath%" 7 e
-F7 & f::Run,"%A_ScriptFullPath%" 7 f
-F7 & g::Run,"%A_ScriptFullPath%" 7 g
-F7 & h::Run,"%A_ScriptFullPath%" 7 h
-F7 & i::Run,"%A_ScriptFullPath%" 7 i
-F7 & j::Run,"%A_ScriptFullPath%" 7 j
-F7 & k::Run,"%A_ScriptFullPath%" 7 k
-F7 & l::Run,"%A_ScriptFullPath%" 7 l
-F7 & m::Run,"%A_ScriptFullPath%" 7 m
-F7 & n::Run,"%A_ScriptFullPath%" 7 n
-F7 & o::Run,"%A_ScriptFullPath%" 7 o
-F7 & p::Run,"%A_ScriptFullPath%" 7 p
-F7 & q::Run,"%A_ScriptFullPath%" 7 q
-F7 & r::Run,"%A_ScriptFullPath%" 7 r
-F7 & s::Run,"%A_ScriptFullPath%" 7 s
-F7 & t::Run,"%A_ScriptFullPath%" 7 t
-F7 & u::Run,"%A_ScriptFullPath%" 7 u
-F7 & v::Run,"%A_ScriptFullPath%" 7 v
-F7 & w::Run,"%A_ScriptFullPath%" 7 w
-F7 & x::Run,"%A_ScriptFullPath%" 7 x
-F7 & y::Run,"%A_ScriptFullPath%" 7 y
-F7 & z::Run,"%A_ScriptFullPath%" 7 z
-F7 & 1::Run,"%A_ScriptFullPath%" 7 1
-F7 & 2::Run,"%A_ScriptFullPath%" 7 2
-F7 & 3::Run,"%A_ScriptFullPath%" 7 3
-F7 & 4::Run,"%A_ScriptFullPath%" 7 4
-F7 & 5::Run,"%A_ScriptFullPath%" 7 5
-F7 & 6::Run,"%A_ScriptFullPath%" 7 6
-F7 & 7::Run,"%A_ScriptFullPath%" 7 7
-F7 & 8::Run,"%A_ScriptFullPath%" 7 8
-F7 & 9::Run,"%A_ScriptFullPath%" 7 9
-F7 & 0::Run,"%A_ScriptFullPath%" 7 0
+F7 & Enter Up::Run, F7
+F7 & a Up::Run,"%A_ScriptFullPath%" 7 a
+F7 & b Up::Run,"%A_ScriptFullPath%" 7 b
+F7 & c Up::Run,"%A_ScriptFullPath%" 7 c
+F7 & d Up::Run,"%A_ScriptFullPath%" 7 d
+F7 & e Up::Run,"%A_ScriptFullPath%" 7 e
+F7 & f Up::Run,"%A_ScriptFullPath%" 7 f
+F7 & g Up::Run,"%A_ScriptFullPath%" 7 g
+F7 & h Up::Run,"%A_ScriptFullPath%" 7 h
+F7 & i Up::Run,"%A_ScriptFullPath%" 7 i
+F7 & j Up::Run,"%A_ScriptFullPath%" 7 j
+F7 & k Up::Run,"%A_ScriptFullPath%" 7 k
+F7 & l Up::Run,"%A_ScriptFullPath%" 7 l
+F7 & m Up::Run,"%A_ScriptFullPath%" 7 m
+F7 & n Up::Run,"%A_ScriptFullPath%" 7 n
+F7 & o Up::Run,"%A_ScriptFullPath%" 7 o
+F7 & p Up::Run,"%A_ScriptFullPath%" 7 p
+F7 & q Up::Run,"%A_ScriptFullPath%" 7 q
+F7 & r Up::Run,"%A_ScriptFullPath%" 7 r
+F7 & s Up::Run,"%A_ScriptFullPath%" 7 s
+F7 & t Up::Run,"%A_ScriptFullPath%" 7 t
+F7 & u Up::Run,"%A_ScriptFullPath%" 7 u
+F7 & v Up::Run,"%A_ScriptFullPath%" 7 v
+F7 & w Up::Run,"%A_ScriptFullPath%" 7 w
+F7 & x Up::Run,"%A_ScriptFullPath%" 7 x
+F7 & y Up::Run,"%A_ScriptFullPath%" 7 y
+F7 & z Up::Run,"%A_ScriptFullPath%" 7 z
+F7 & 1 Up::Run,"%A_ScriptFullPath%" 7 1
+F7 & 2 Up::Run,"%A_ScriptFullPath%" 7 2
+F7 & 3 Up::Run,"%A_ScriptFullPath%" 7 3
+F7 & 4 Up::Run,"%A_ScriptFullPath%" 7 4
+F7 & 5 Up::Run,"%A_ScriptFullPath%" 7 5
+F7 & 6 Up::Run,"%A_ScriptFullPath%" 7 6
+F7 & 7 Up::Run,"%A_ScriptFullPath%" 7 7
+F7 & 8 Up::Run,"%A_ScriptFullPath%" 7 8
+F7 & 9 Up::Run,"%A_ScriptFullPath%" 7 9
+F7 & 0 Up::Run,"%A_ScriptFullPath%" 7 0
 
-F8 & Enter::Run, F8
-F8 & a::Run,"%A_ScriptFullPath%" 8 a
-F8 & b::Run,"%A_ScriptFullPath%" 8 b
-F8 & c::Run,"%A_ScriptFullPath%" 8 c
-F8 & d::Run,"%A_ScriptFullPath%" 8 d
-F8 & e::Run,"%A_ScriptFullPath%" 8 e
-F8 & f::Run,"%A_ScriptFullPath%" 8 f
-F8 & g::Run,"%A_ScriptFullPath%" 8 g
-F8 & h::Run,"%A_ScriptFullPath%" 8 h
-F8 & i::Run,"%A_ScriptFullPath%" 8 i
-F8 & j::Run,"%A_ScriptFullPath%" 8 j
-F8 & k::Run,"%A_ScriptFullPath%" 8 k
-F8 & l::Run,"%A_ScriptFullPath%" 8 l
-F8 & m::Run,"%A_ScriptFullPath%" 8 m
-F8 & n::Run,"%A_ScriptFullPath%" 8 n
-F8 & o::Run,"%A_ScriptFullPath%" 8 o
-F8 & p::Run,"%A_ScriptFullPath%" 8 p
-F8 & q::Run,"%A_ScriptFullPath%" 8 q
-F8 & r::Run,"%A_ScriptFullPath%" 8 r
-F8 & s::Run,"%A_ScriptFullPath%" 8 s
-F8 & t::Run,"%A_ScriptFullPath%" 8 t
-F8 & u::Run,"%A_ScriptFullPath%" 8 u
-F8 & v::Run,"%A_ScriptFullPath%" 8 v
-F8 & w::Run,"%A_ScriptFullPath%" 8 w
-F8 & x::Run,"%A_ScriptFullPath%" 8 x
-F8 & y::Run,"%A_ScriptFullPath%" 8 y
-F8 & z::Run,"%A_ScriptFullPath%" 8 z
-F8 & 1::Run,"%A_ScriptFullPath%" 8 1
-F8 & 2::Run,"%A_ScriptFullPath%" 8 2
-F8 & 3::Run,"%A_ScriptFullPath%" 8 3
-F8 & 4::Run,"%A_ScriptFullPath%" 8 4
-F8 & 5::Run,"%A_ScriptFullPath%" 8 5
-F8 & 6::Run,"%A_ScriptFullPath%" 8 6
-F8 & 7::Run,"%A_ScriptFullPath%" 8 7
-F8 & 8::Run,"%A_ScriptFullPath%" 8 8
-F8 & 9::Run,"%A_ScriptFullPath%" 8 9
-F8 & 0::Run,"%A_ScriptFullPath%" 8 0
+F8 & Enter Up::Run, F8
+F8 & a Up::Run,"%A_ScriptFullPath%" 8 a
+F8 & b Up::Run,"%A_ScriptFullPath%" 8 b
+F8 & c Up::Run,"%A_ScriptFullPath%" 8 c
+F8 & d Up::Run,"%A_ScriptFullPath%" 8 d
+F8 & e Up::Run,"%A_ScriptFullPath%" 8 e
+F8 & f Up::Run,"%A_ScriptFullPath%" 8 f
+F8 & g Up::Run,"%A_ScriptFullPath%" 8 g
+F8 & h Up::Run,"%A_ScriptFullPath%" 8 h
+F8 & i Up::Run,"%A_ScriptFullPath%" 8 i
+F8 & j Up::Run,"%A_ScriptFullPath%" 8 j
+F8 & k Up::Run,"%A_ScriptFullPath%" 8 k
+F8 & l Up::Run,"%A_ScriptFullPath%" 8 l
+F8 & m Up::Run,"%A_ScriptFullPath%" 8 m
+F8 & n Up::Run,"%A_ScriptFullPath%" 8 n
+F8 & o Up::Run,"%A_ScriptFullPath%" 8 o
+F8 & p Up::Run,"%A_ScriptFullPath%" 8 p
+F8 & q Up::Run,"%A_ScriptFullPath%" 8 q
+F8 & r Up::Run,"%A_ScriptFullPath%" 8 r
+F8 & s Up::Run,"%A_ScriptFullPath%" 8 s
+F8 & t Up::Run,"%A_ScriptFullPath%" 8 t
+F8 & u Up::Run,"%A_ScriptFullPath%" 8 u
+F8 & v Up::Run,"%A_ScriptFullPath%" 8 v
+F8 & w Up::Run,"%A_ScriptFullPath%" 8 w
+F8 & x Up::Run,"%A_ScriptFullPath%" 8 x
+F8 & y Up::Run,"%A_ScriptFullPath%" 8 y
+F8 & z Up::Run,"%A_ScriptFullPath%" 8 z
+F8 & 1 Up::Run,"%A_ScriptFullPath%" 8 1
+F8 & 2 Up::Run,"%A_ScriptFullPath%" 8 2
+F8 & 3 Up::Run,"%A_ScriptFullPath%" 8 3
+F8 & 4 Up::Run,"%A_ScriptFullPath%" 8 4
+F8 & 5 Up::Run,"%A_ScriptFullPath%" 8 5
+F8 & 6 Up::Run,"%A_ScriptFullPath%" 8 6
+F8 & 7 Up::Run,"%A_ScriptFullPath%" 8 7
+F8 & 8 Up::Run,"%A_ScriptFullPath%" 8 8
+F8 & 9 Up::Run,"%A_ScriptFullPath%" 8 9
+F8 & 0 Up::Run,"%A_ScriptFullPath%" 8 0
 
-F9 & Enter::Run, F9
-F9 & a::Run,"%A_ScriptFullPath%" 9 a
-F9 & b::Run,"%A_ScriptFullPath%" 9 b
-F9 & c::Run,"%A_ScriptFullPath%" 9 c
-F9 & d::Run,"%A_ScriptFullPath%" 9 d
-F9 & e::Run,"%A_ScriptFullPath%" 9 e
-F9 & f::Run,"%A_ScriptFullPath%" 9 f
-F9 & g::Run,"%A_ScriptFullPath%" 9 g
-F9 & h::Run,"%A_ScriptFullPath%" 9 h
-F9 & i::Run,"%A_ScriptFullPath%" 9 i
-F9 & j::Run,"%A_ScriptFullPath%" 9 j
-F9 & k::Run,"%A_ScriptFullPath%" 9 k
-F9 & l::Run,"%A_ScriptFullPath%" 9 l
-F9 & m::Run,"%A_ScriptFullPath%" 9 m
-F9 & n::Run,"%A_ScriptFullPath%" 9 n
-F9 & o::Run,"%A_ScriptFullPath%" 9 o
-F9 & p::Run,"%A_ScriptFullPath%" 9 p
-F9 & q::Run,"%A_ScriptFullPath%" 9 q
-F9 & r::Run,"%A_ScriptFullPath%" 9 r
-F9 & s::Run,"%A_ScriptFullPath%" 9 s
-F9 & t::Run,"%A_ScriptFullPath%" 9 t
-F9 & u::Run,"%A_ScriptFullPath%" 9 u
-F9 & v::Run,"%A_ScriptFullPath%" 9 v
-F9 & w::Run,"%A_ScriptFullPath%" 9 w
-F9 & x::Run,"%A_ScriptFullPath%" 9 x
-F9 & y::Run,"%A_ScriptFullPath%" 9 y
-F9 & z::Run,"%A_ScriptFullPath%" 9 z
-F9 & 1::Run,"%A_ScriptFullPath%" 9 1
-F9 & 2::Run,"%A_ScriptFullPath%" 9 2
-F9 & 3::Run,"%A_ScriptFullPath%" 9 3
-F9 & 4::Run,"%A_ScriptFullPath%" 9 4
-F9 & 5::Run,"%A_ScriptFullPath%" 9 5
-F9 & 6::Run,"%A_ScriptFullPath%" 9 6
-F9 & 7::Run,"%A_ScriptFullPath%" 9 7
-F9 & 8::Run,"%A_ScriptFullPath%" 9 8
-F9 & 9::Run,"%A_ScriptFullPath%" 9 9
-F9 & 0::Run,"%A_ScriptFullPath%" 9 0
+F9 & Enter Up::Run, F9
+F9 & a Up::Run,"%A_ScriptFullPath%" 9 a
+F9 & b Up::Run,"%A_ScriptFullPath%" 9 b
+F9 & c Up::Run,"%A_ScriptFullPath%" 9 c
+F9 & d Up::Run,"%A_ScriptFullPath%" 9 d
+F9 & e Up::Run,"%A_ScriptFullPath%" 9 e
+F9 & f Up::Run,"%A_ScriptFullPath%" 9 f
+F9 & g Up::Run,"%A_ScriptFullPath%" 9 g
+F9 & h Up::Run,"%A_ScriptFullPath%" 9 h
+F9 & i Up::Run,"%A_ScriptFullPath%" 9 i
+F9 & j Up::Run,"%A_ScriptFullPath%" 9 j
+F9 & k Up::Run,"%A_ScriptFullPath%" 9 k
+F9 & l Up::Run,"%A_ScriptFullPath%" 9 l
+F9 & m Up::Run,"%A_ScriptFullPath%" 9 m
+F9 & n Up::Run,"%A_ScriptFullPath%" 9 n
+F9 & o Up::Run,"%A_ScriptFullPath%" 9 o
+F9 & p Up::Run,"%A_ScriptFullPath%" 9 p
+F9 & q Up::Run,"%A_ScriptFullPath%" 9 q
+F9 & r Up::Run,"%A_ScriptFullPath%" 9 r
+F9 & s Up::Run,"%A_ScriptFullPath%" 9 s
+F9 & t Up::Run,"%A_ScriptFullPath%" 9 t
+F9 & u Up::Run,"%A_ScriptFullPath%" 9 u
+F9 & v Up::Run,"%A_ScriptFullPath%" 9 v
+F9 & w Up::Run,"%A_ScriptFullPath%" 9 w
+F9 & x Up::Run,"%A_ScriptFullPath%" 9 x
+F9 & y Up::Run,"%A_ScriptFullPath%" 9 y
+F9 & z Up::Run,"%A_ScriptFullPath%" 9 z
+F9 & 1 Up::Run,"%A_ScriptFullPath%" 9 1
+F9 & 2 Up::Run,"%A_ScriptFullPath%" 9 2
+F9 & 3 Up::Run,"%A_ScriptFullPath%" 9 3
+F9 & 4 Up::Run,"%A_ScriptFullPath%" 9 4
+F9 & 5 Up::Run,"%A_ScriptFullPath%" 9 5
+F9 & 6 Up::Run,"%A_ScriptFullPath%" 9 6
+F9 & 7 Up::Run,"%A_ScriptFullPath%" 9 7
+F9 & 8 Up::Run,"%A_ScriptFullPath%" 9 8
+F9 & 9 Up::Run,"%A_ScriptFullPath%" 9 9
+F9 & 0 Up::Run,"%A_ScriptFullPath%" 9 0
 
-F10 & Enter::Run, F10
-F10 & a::Run,"%A_ScriptFullPath%" 10 a
-F10 & b::Run,"%A_ScriptFullPath%" 10 b
-F10 & c::Run,"%A_ScriptFullPath%" 10 c
-F10 & d::Run,"%A_ScriptFullPath%" 10 d
-F10 & e::Run,"%A_ScriptFullPath%" 10 e
-F10 & f::Run,"%A_ScriptFullPath%" 10 f
-F10 & g::Run,"%A_ScriptFullPath%" 10 g
-F10 & h::Run,"%A_ScriptFullPath%" 10 h
-F10 & i::Run,"%A_ScriptFullPath%" 10 i
-F10 & j::Run,"%A_ScriptFullPath%" 10 j
-F10 & k::Run,"%A_ScriptFullPath%" 10 k
-F10 & l::Run,"%A_ScriptFullPath%" 10 l
-F10 & m::Run,"%A_ScriptFullPath%" 10 m
-F10 & n::Run,"%A_ScriptFullPath%" 10 n
-F10 & o::Run,"%A_ScriptFullPath%" 10 o
-F10 & p::Run,"%A_ScriptFullPath%" 10 p
-F10 & q::Run,"%A_ScriptFullPath%" 10 q
-F10 & r::Run,"%A_ScriptFullPath%" 10 r
-F10 & s::Run,"%A_ScriptFullPath%" 10 s
-F10 & t::Run,"%A_ScriptFullPath%" 10 t
-F10 & u::Run,"%A_ScriptFullPath%" 10 u
-F10 & v::Run,"%A_ScriptFullPath%" 10 v
-F10 & w::Run,"%A_ScriptFullPath%" 10 w
-F10 & x::Run,"%A_ScriptFullPath%" 10 x
-F10 & y::Run,"%A_ScriptFullPath%" 10 y
-F10 & z::Run,"%A_ScriptFullPath%" 10 z
-F10 & 1::Run,"%A_ScriptFullPath%" 10 1
-F10 & 2::Run,"%A_ScriptFullPath%" 10 2
-F10 & 3::Run,"%A_ScriptFullPath%" 10 3
-F10 & 4::Run,"%A_ScriptFullPath%" 10 4
-F10 & 5::Run,"%A_ScriptFullPath%" 10 5
-F10 & 6::Run,"%A_ScriptFullPath%" 10 6
-F10 & 7::Run,"%A_ScriptFullPath%" 10 7
-F10 & 8::Run,"%A_ScriptFullPath%" 10 8
-F10 & 9::Run,"%A_ScriptFullPath%" 10 9
-F10 & 0::Run,"%A_ScriptFullPath%" 10 0
+F10 & Enter Up::Run, F10
+F10 & a Up::Run,"%A_ScriptFullPath%" 10 a
+F10 & b Up::Run,"%A_ScriptFullPath%" 10 b
+F10 & c Up::Run,"%A_ScriptFullPath%" 10 c
+F10 & d Up::Run,"%A_ScriptFullPath%" 10 d
+F10 & e Up::Run,"%A_ScriptFullPath%" 10 e
+F10 & f Up::Run,"%A_ScriptFullPath%" 10 f
+F10 & g Up::Run,"%A_ScriptFullPath%" 10 g
+F10 & h Up::Run,"%A_ScriptFullPath%" 10 h
+F10 & i Up::Run,"%A_ScriptFullPath%" 10 i
+F10 & j Up::Run,"%A_ScriptFullPath%" 10 j
+F10 & k Up::Run,"%A_ScriptFullPath%" 10 k
+F10 & l Up::Run,"%A_ScriptFullPath%" 10 l
+F10 & m Up::Run,"%A_ScriptFullPath%" 10 m
+F10 & n Up::Run,"%A_ScriptFullPath%" 10 n
+F10 & o Up::Run,"%A_ScriptFullPath%" 10 o
+F10 & p Up::Run,"%A_ScriptFullPath%" 10 p
+F10 & q Up::Run,"%A_ScriptFullPath%" 10 q
+F10 & r Up::Run,"%A_ScriptFullPath%" 10 r
+F10 & s Up::Run,"%A_ScriptFullPath%" 10 s
+F10 & t Up::Run,"%A_ScriptFullPath%" 10 t
+F10 & u Up::Run,"%A_ScriptFullPath%" 10 u
+F10 & v Up::Run,"%A_ScriptFullPath%" 10 v
+F10 & w Up::Run,"%A_ScriptFullPath%" 10 w
+F10 & x Up::Run,"%A_ScriptFullPath%" 10 x
+F10 & y Up::Run,"%A_ScriptFullPath%" 10 y
+F10 & z Up::Run,"%A_ScriptFullPath%" 10 z
+F10 & 1 Up::Run,"%A_ScriptFullPath%" 10 1
+F10 & 2 Up::Run,"%A_ScriptFullPath%" 10 2
+F10 & 3 Up::Run,"%A_ScriptFullPath%" 10 3
+F10 & 4 Up::Run,"%A_ScriptFullPath%" 10 4
+F10 & 5 Up::Run,"%A_ScriptFullPath%" 10 5
+F10 & 6 Up::Run,"%A_ScriptFullPath%" 10 6
+F10 & 7 Up::Run,"%A_ScriptFullPath%" 10 7
+F10 & 8 Up::Run,"%A_ScriptFullPath%" 10 8
+F10 & 9 Up::Run,"%A_ScriptFullPath%" 10 9
+F10 & 0 Up::Run,"%A_ScriptFullPath%" 10 0
 
-F11 & Enter::Run, F11
-F11 & a::Run,"%A_ScriptFullPath%" 11 a
-F11 & b::Run,"%A_ScriptFullPath%" 11 b
-F11 & c::Run,"%A_ScriptFullPath%" 11 c
-F11 & d::Run,"%A_ScriptFullPath%" 11 d
-F11 & e::Run,"%A_ScriptFullPath%" 11 e
-F11 & f::Run,"%A_ScriptFullPath%" 11 f
-F11 & g::Run,"%A_ScriptFullPath%" 11 g
-F11 & h::Run,"%A_ScriptFullPath%" 11 h
-F11 & i::Run,"%A_ScriptFullPath%" 11 i
-F11 & j::Run,"%A_ScriptFullPath%" 11 j
-F11 & k::Run,"%A_ScriptFullPath%" 11 k
-F11 & l::Run,"%A_ScriptFullPath%" 11 l
-F11 & m::Run,"%A_ScriptFullPath%" 11 m
-F11 & n::Run,"%A_ScriptFullPath%" 11 n
-F11 & o::Run,"%A_ScriptFullPath%" 11 o
-F11 & p::Run,"%A_ScriptFullPath%" 11 p
-F11 & q::Run,"%A_ScriptFullPath%" 11 q
-F11 & r::Run,"%A_ScriptFullPath%" 11 r
-F11 & s::Run,"%A_ScriptFullPath%" 11 s
-F11 & t::Run,"%A_ScriptFullPath%" 11 t
-F11 & u::Run,"%A_ScriptFullPath%" 11 u
-F11 & v::Run,"%A_ScriptFullPath%" 11 v
-F11 & w::Run,"%A_ScriptFullPath%" 11 w
-F11 & x::Run,"%A_ScriptFullPath%" 11 x
-F11 & y::Run,"%A_ScriptFullPath%" 11 y
-F11 & z::Run,"%A_ScriptFullPath%" 11 z
-F11 & 1::Run,"%A_ScriptFullPath%" 11 1
-F11 & 2::Run,"%A_ScriptFullPath%" 11 2
-F11 & 3::Run,"%A_ScriptFullPath%" 11 3
-F11 & 4::Run,"%A_ScriptFullPath%" 11 4
-F11 & 5::Run,"%A_ScriptFullPath%" 11 5
-F11 & 6::Run,"%A_ScriptFullPath%" 11 6
-F11 & 7::Run,"%A_ScriptFullPath%" 11 7
-F11 & 8::Run,"%A_ScriptFullPath%" 11 8
-F11 & 9::Run,"%A_ScriptFullPath%" 11 9
-F11 & 0::Run,"%A_ScriptFullPath%" 11 0
+F11 & Enter Up::Run, F11
+F11 & a Up::Run,"%A_ScriptFullPath%" 11 a
+F11 & b Up::Run,"%A_ScriptFullPath%" 11 b
+F11 & c Up::Run,"%A_ScriptFullPath%" 11 c
+F11 & d Up::Run,"%A_ScriptFullPath%" 11 d
+F11 & e Up::Run,"%A_ScriptFullPath%" 11 e
+F11 & f Up::Run,"%A_ScriptFullPath%" 11 f
+F11 & g Up::Run,"%A_ScriptFullPath%" 11 g
+F11 & h Up::Run,"%A_ScriptFullPath%" 11 h
+F11 & i Up::Run,"%A_ScriptFullPath%" 11 i
+F11 & j Up::Run,"%A_ScriptFullPath%" 11 j
+F11 & k Up::Run,"%A_ScriptFullPath%" 11 k
+F11 & l Up::Run,"%A_ScriptFullPath%" 11 l
+F11 & m Up::Run,"%A_ScriptFullPath%" 11 m
+F11 & n Up::Run,"%A_ScriptFullPath%" 11 n
+F11 & o Up::Run,"%A_ScriptFullPath%" 11 o
+F11 & p Up::Run,"%A_ScriptFullPath%" 11 p
+F11 & q Up::Run,"%A_ScriptFullPath%" 11 q
+F11 & r Up::Run,"%A_ScriptFullPath%" 11 r
+F11 & s Up::Run,"%A_ScriptFullPath%" 11 s
+F11 & t Up::Run,"%A_ScriptFullPath%" 11 t
+F11 & u Up::Run,"%A_ScriptFullPath%" 11 u
+F11 & v Up::Run,"%A_ScriptFullPath%" 11 v
+F11 & w Up::Run,"%A_ScriptFullPath%" 11 w
+F11 & x Up::Run,"%A_ScriptFullPath%" 11 x
+F11 & y Up::Run,"%A_ScriptFullPath%" 11 y
+F11 & z Up::Run,"%A_ScriptFullPath%" 11 z
+F11 & 1 Up::Run,"%A_ScriptFullPath%" 11 1
+F11 & 2 Up::Run,"%A_ScriptFullPath%" 11 2
+F11 & 3 Up::Run,"%A_ScriptFullPath%" 11 3
+F11 & 4 Up::Run,"%A_ScriptFullPath%" 11 4
+F11 & 5 Up::Run,"%A_ScriptFullPath%" 11 5
+F11 & 6 Up::Run,"%A_ScriptFullPath%" 11 6
+F11 & 7 Up::Run,"%A_ScriptFullPath%" 11 7
+F11 & 8 Up::Run,"%A_ScriptFullPath%" 11 8
+F11 & 9 Up::Run,"%A_ScriptFullPath%" 11 9
+F11 & 0 Up::Run,"%A_ScriptFullPath%" 11 0
 
-F12 & Enter::Run, F12
-F12 & a::Run,"%A_ScriptFullPath%" 12 a
-F12 & b::Run,"%A_ScriptFullPath%" 12 b
-F12 & c::Run,"%A_ScriptFullPath%" 12 c
-F12 & d::Run,"%A_ScriptFullPath%" 12 d
-F12 & e::Run,"%A_ScriptFullPath%" 12 e
-F12 & f::Run,"%A_ScriptFullPath%" 12 f
-F12 & g::Run,"%A_ScriptFullPath%" 12 g
-F12 & h::Run,"%A_ScriptFullPath%" 12 h
-F12 & i::Run,"%A_ScriptFullPath%" 12 i
-F12 & j::Run,"%A_ScriptFullPath%" 12 j
-F12 & k::Run,"%A_ScriptFullPath%" 12 k
-F12 & l::Run,"%A_ScriptFullPath%" 12 l
-F12 & m::Run,"%A_ScriptFullPath%" 12 m
-F12 & n::Run,"%A_ScriptFullPath%" 12 n
-F12 & o::Run,"%A_ScriptFullPath%" 12 o
-F12 & p::Run,"%A_ScriptFullPath%" 12 p
-F12 & q::Run,"%A_ScriptFullPath%" 12 q
-F12 & r::Run,"%A_ScriptFullPath%" 12 r
-F12 & s::Run,"%A_ScriptFullPath%" 12 s
-F12 & t::Run,"%A_ScriptFullPath%" 12 t
-F12 & u::Run,"%A_ScriptFullPath%" 12 u
-F12 & v::Run,"%A_ScriptFullPath%" 12 v
-F12 & w::Run,"%A_ScriptFullPath%" 12 w
-F12 & x::Run,"%A_ScriptFullPath%" 12 x
-F12 & y::Run,"%A_ScriptFullPath%" 12 y
-F12 & z::Run,"%A_ScriptFullPath%" 12 z
-F12 & 1::Run,"%A_ScriptFullPath%" 12 1
-F12 & 2::Run,"%A_ScriptFullPath%" 12 2
-F12 & 3::Run,"%A_ScriptFullPath%" 12 3
-F12 & 4::Run,"%A_ScriptFullPath%" 12 4
-F12 & 5::Run,"%A_ScriptFullPath%" 12 5
-F12 & 6::Run,"%A_ScriptFullPath%" 12 6
-F12 & 7::Run,"%A_ScriptFullPath%" 12 7
-F12 & 8::Run,"%A_ScriptFullPath%" 12 8
-F12 & 9::Run,"%A_ScriptFullPath%" 12 9
-F12 & 0::Run,"%A_ScriptFullPath%" 12 0
+F12 & Enter Up::Run, F12
+F12 & a Up::Run,"%A_ScriptFullPath%" 12 a
+F12 & b Up::Run,"%A_ScriptFullPath%" 12 b
+F12 & c Up::Run,"%A_ScriptFullPath%" 12 c
+F12 & d Up::Run,"%A_ScriptFullPath%" 12 d
+F12 & e Up::Run,"%A_ScriptFullPath%" 12 e
+F12 & f Up::Run,"%A_ScriptFullPath%" 12 f
+F12 & g Up::Run,"%A_ScriptFullPath%" 12 g
+F12 & h Up::Run,"%A_ScriptFullPath%" 12 h
+F12 & i Up::Run,"%A_ScriptFullPath%" 12 i
+F12 & j Up::Run,"%A_ScriptFullPath%" 12 j
+F12 & k Up::Run,"%A_ScriptFullPath%" 12 k
+F12 & l Up::Run,"%A_ScriptFullPath%" 12 l
+F12 & m Up::Run,"%A_ScriptFullPath%" 12 m
+F12 & n Up::Run,"%A_ScriptFullPath%" 12 n
+F12 & o Up::Run,"%A_ScriptFullPath%" 12 o
+F12 & p Up::Run,"%A_ScriptFullPath%" 12 p
+F12 & q Up::Run,"%A_ScriptFullPath%" 12 q
+F12 & r Up::Run,"%A_ScriptFullPath%" 12 r
+F12 & s Up::Run,"%A_ScriptFullPath%" 12 s
+F12 & t Up::Run,"%A_ScriptFullPath%" 12 t
+F12 & u Up::Run,"%A_ScriptFullPath%" 12 u
+F12 & v Up::Run,"%A_ScriptFullPath%" 12 v
+F12 & w Up::Run,"%A_ScriptFullPath%" 12 w
+F12 & x Up::Run,"%A_ScriptFullPath%" 12 x
+F12 & y Up::Run,"%A_ScriptFullPath%" 12 y
+F12 & z Up::Run,"%A_ScriptFullPath%" 12 z
+F12 & 1 Up::Run,"%A_ScriptFullPath%" 12 1
+F12 & 2 Up::Run,"%A_ScriptFullPath%" 12 2
+F12 & 3 Up::Run,"%A_ScriptFullPath%" 12 3
+F12 & 4 Up::Run,"%A_ScriptFullPath%" 12 4
+F12 & 5 Up::Run,"%A_ScriptFullPath%" 12 5
+F12 & 6 Up::Run,"%A_ScriptFullPath%" 12 6
+F12 & 7 Up::Run,"%A_ScriptFullPath%" 12 7
+F12 & 8 Up::Run,"%A_ScriptFullPath%" 12 8
+F12 & 9 Up::Run,"%A_ScriptFullPath%" 12 9
+F12 & 0 Up::Run,"%A_ScriptFullPath%" 12 0
