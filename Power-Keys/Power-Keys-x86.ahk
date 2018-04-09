@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.1"
+v:="3.0.2"
 
 isenabled=0
 
@@ -43,9 +43,11 @@ FileCreateDir,F12
 
 if A_Args.Length()=2
 {
+Run,"%LocalAppData%\Power Keys\F%1%\%2%.lnk",,UseErrorLevel
+if ErrorLevel
 Run,"%LocalAppData%\Power Keys\F%1%\%2%.url",,UseErrorLevel
 if ErrorLevel
-Run,"%LocalAppData%\Power Keys\F%1%\%2%.lnk",,UseErrorLevel
+Run,"%LocalAppData%\Power Keys\F%1%",,UseErrorLevel
 }
 
 if A_Args.Length()=0
