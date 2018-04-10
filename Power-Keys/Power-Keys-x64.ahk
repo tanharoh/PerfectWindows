@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.3"
+v:="3.0.4"
 
 isenabled=0
 
@@ -454,7 +454,7 @@ Tab & =::Send ^!{=}
 Tab & Space::Send ^!{Space}
 Tab & Enter::Send ^!{Enter}
 Tab & Backspace::Send ^!{Backspace}
-Tab & Delete::Send ^!{Delete}
+Tab & Delete::Run,"%A_ScriptFullPath%" 1
 Tab & Insert::Send ^!{Insert}
 Tab & Home::Send ^!{Home}
 Tab & End::Send ^!{End}
@@ -528,7 +528,7 @@ Esc & =::Send ^+{=}
 Esc & Space::Send ^+{Space}
 Esc & Enter::Send ^+{Enter}
 Esc & Backspace::Send ^+{Backspace}
-Esc & Delete::Run,"%A_ScriptFullPath%" 1
+Esc & Delete::Send ^+{Delete}
 Esc & Insert::Send ^+{Insert}
 Esc & Home::Send ^+{Home}
 Esc & End::Send ^+{End}
