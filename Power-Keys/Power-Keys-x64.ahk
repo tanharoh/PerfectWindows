@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.2"
+v:="3.0.3"
 
 isenabled=0
 
@@ -136,6 +136,11 @@ RWin & F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/Power-Keys/Power-Keys.md,,UseErrorLevel
 Return
 
+LWin & F5::
+RWin & F5::
+Run,"%A_ScriptFullPath%" 1 1 1 1
+Return
+
 #if GameMode=1
 
 LWin::Return
@@ -143,17 +148,6 @@ RWin::Return
 
 LWin & F1::
 RWin & F1::
-Return
-
-LWin & F4::
-RWin & F4::
-Return
-
-LWin & Esc::
-RWin & Esc::
-GameMode=0
-isenabled=1
-;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已关闭。
 Return
 
 #if
@@ -186,8 +180,6 @@ Rwin & F4::
 MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
 ifMsgBox,yes
 ExitApp
-else
-Run,"%A_ScriptFullPath%" 1 1 1 1
 Return
 
 Space::Space
