@@ -142,6 +142,13 @@ RWin & F1::
 Run, https://github.com/szzhiyang/PerfectWindows/blob/master/Power-Keys/Power-Keys.md,,UseErrorLevel
 Return
 
+Lwin & F4::
+Rwin & F4::
+MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
+ifMsgBox,yes
+ExitApp
+Return
+
 LWin & F5::
 RWin & F5::
 Run,"%A_ScriptFullPath%" 1 1 1 1
@@ -179,13 +186,6 @@ RWin & G::
 GameMode=1
 isenabled=0
 ;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
-Return
-
-Lwin & F4::
-Rwin & F4::
-MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
-ifMsgBox,yes
-ExitApp
 Return
 
 Space::Space
