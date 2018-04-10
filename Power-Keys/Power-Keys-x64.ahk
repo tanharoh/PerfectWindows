@@ -145,6 +145,8 @@ Return
 
 LWin & F5::
 RWin & F5::
+Send {LWin Up}
+Send {RWin Up}
 Run,"%A_ScriptFullPath%" 1 1 1 1
 Return
 
