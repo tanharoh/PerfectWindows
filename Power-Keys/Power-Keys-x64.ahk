@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.4"
+v:="3.0.5"
 
 isenabled=0
 
@@ -19,29 +19,16 @@ ExitApp
 isenabled=1
 GameMode=0
 
-FileCreateDir,%LocalAppData%\Power Keys
-SetWorkingDir %LocalAppData%\Power Keys
-
-FileCreateDir,F1
-FileCreateDir,F2
-FileCreateDir,F3
-FileCreateDir,F4
-FileCreateDir,F5
-FileCreateDir,F6
-FileCreateDir,F7
-FileCreateDir,F8
-FileCreateDir,F9
-FileCreateDir,F10
-FileCreateDir,F11
-FileCreateDir,F12
-
 if A_Args.Length()=2
 {
 Run,"%LocalAppData%\Power Keys\F%1%\%2%.lnk",,UseErrorLevel
 if ErrorLevel
 Run,"%LocalAppData%\Power Keys\F%1%\%2%.url",,UseErrorLevel
 if ErrorLevel
+{
+FileCreateDir,%LocalAppData%\Power Keys\F%1%
 Run,"%LocalAppData%\Power Keys\F%1%",,UseErrorLevel
+}
 }
 
 if A_Args.Length()=0
@@ -593,7 +580,11 @@ F10 & PrintScreen::^+!F10
 F11 & PrintScreen::^+!F11
 F12 & PrintScreen::^+!F12
 
-F1 & Enter Up::Run, F1
+F1 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F1
+Run, %LocalAppData%\Power Keys\F1
+Return
+
 F1 & a Up::Run,"%A_ScriptFullPath%" 1 a
 F1 & b Up::Run,"%A_ScriptFullPath%" 1 b
 F1 & c Up::Run,"%A_ScriptFullPath%" 1 c
@@ -631,7 +622,11 @@ F1 & 8 Up::Run,"%A_ScriptFullPath%" 1 8
 F1 & 9 Up::Run,"%A_ScriptFullPath%" 1 9
 F1 & 0 Up::Run,"%A_ScriptFullPath%" 1 0
 
-F2 & Enter Up::Run, F2
+F2 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F2
+Run, %LocalAppData%\Power Keys\F2
+Return
+
 F2 & a Up::Run,"%A_ScriptFullPath%" 2 a
 F2 & b Up::Run,"%A_ScriptFullPath%" 2 b
 F2 & c Up::Run,"%A_ScriptFullPath%" 2 c
@@ -669,7 +664,11 @@ F2 & 8 Up::Run,"%A_ScriptFullPath%" 2 8
 F2 & 9 Up::Run,"%A_ScriptFullPath%" 2 9
 F2 & 0 Up::Run,"%A_ScriptFullPath%" 2 0
 
-F3 & Enter Up::Run, F3
+F3 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F3
+Run, %LocalAppData%\Power Keys\F3
+Return
+
 F3 & a Up::Run,"%A_ScriptFullPath%" 3 a
 F3 & b Up::Run,"%A_ScriptFullPath%" 3 b
 F3 & c Up::Run,"%A_ScriptFullPath%" 3 c
@@ -707,7 +706,11 @@ F3 & 8 Up::Run,"%A_ScriptFullPath%" 3 8
 F3 & 9 Up::Run,"%A_ScriptFullPath%" 3 9
 F3 & 0 Up::Run,"%A_ScriptFullPath%" 3 0
 
-F4 & Enter Up::Run, F4
+F4 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F4
+Run, %LocalAppData%\Power Keys\F4
+Return
+
 F4 & a Up::Run,"%A_ScriptFullPath%" 4 a
 F4 & b Up::Run,"%A_ScriptFullPath%" 4 b
 F4 & c Up::Run,"%A_ScriptFullPath%" 4 c
@@ -745,7 +748,11 @@ F4 & 8 Up::Run,"%A_ScriptFullPath%" 4 8
 F4 & 9 Up::Run,"%A_ScriptFullPath%" 4 9
 F4 & 0 Up::Run,"%A_ScriptFullPath%" 4 0
 
-F5 & Enter Up::Run, F5
+F5 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F5
+Run, %LocalAppData%\Power Keys\F5
+Return
+
 F5 & a Up::Run,"%A_ScriptFullPath%" 5 a
 F5 & b Up::Run,"%A_ScriptFullPath%" 5 b
 F5 & c Up::Run,"%A_ScriptFullPath%" 5 c
@@ -783,7 +790,11 @@ F5 & 8 Up::Run,"%A_ScriptFullPath%" 5 8
 F5 & 9 Up::Run,"%A_ScriptFullPath%" 5 9
 F5 & 0 Up::Run,"%A_ScriptFullPath%" 5 0
 
-F6 & Enter Up::Run, F6
+F6 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F6
+Run, %LocalAppData%\Power Keys\F6
+Return
+
 F6 & a Up::Run,"%A_ScriptFullPath%" 6 a
 F6 & b Up::Run,"%A_ScriptFullPath%" 6 b
 F6 & c Up::Run,"%A_ScriptFullPath%" 6 c
@@ -821,7 +832,11 @@ F6 & 8 Up::Run,"%A_ScriptFullPath%" 6 8
 F6 & 9 Up::Run,"%A_ScriptFullPath%" 6 9
 F6 & 0 Up::Run,"%A_ScriptFullPath%" 6 0
 
-F7 & Enter Up::Run, F7
+F7 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F7
+Run, %LocalAppData%\Power Keys\F7
+Return
+
 F7 & a Up::Run,"%A_ScriptFullPath%" 7 a
 F7 & b Up::Run,"%A_ScriptFullPath%" 7 b
 F7 & c Up::Run,"%A_ScriptFullPath%" 7 c
@@ -859,7 +874,11 @@ F7 & 8 Up::Run,"%A_ScriptFullPath%" 7 8
 F7 & 9 Up::Run,"%A_ScriptFullPath%" 7 9
 F7 & 0 Up::Run,"%A_ScriptFullPath%" 7 0
 
-F8 & Enter Up::Run, F8
+F8 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F8
+Run, %LocalAppData%\Power Keys\F8
+Return
+
 F8 & a Up::Run,"%A_ScriptFullPath%" 8 a
 F8 & b Up::Run,"%A_ScriptFullPath%" 8 b
 F8 & c Up::Run,"%A_ScriptFullPath%" 8 c
@@ -897,7 +916,11 @@ F8 & 8 Up::Run,"%A_ScriptFullPath%" 8 8
 F8 & 9 Up::Run,"%A_ScriptFullPath%" 8 9
 F8 & 0 Up::Run,"%A_ScriptFullPath%" 8 0
 
-F9 & Enter Up::Run, F9
+F9 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F9
+Run, %LocalAppData%\Power Keys\F9
+Return
+
 F9 & a Up::Run,"%A_ScriptFullPath%" 9 a
 F9 & b Up::Run,"%A_ScriptFullPath%" 9 b
 F9 & c Up::Run,"%A_ScriptFullPath%" 9 c
@@ -935,7 +958,11 @@ F9 & 8 Up::Run,"%A_ScriptFullPath%" 9 8
 F9 & 9 Up::Run,"%A_ScriptFullPath%" 9 9
 F9 & 0 Up::Run,"%A_ScriptFullPath%" 9 0
 
-F10 & Enter Up::Run, F10
+F10 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F10
+Run, %LocalAppData%\Power Keys\F10
+Return
+
 F10 & a Up::Run,"%A_ScriptFullPath%" 10 a
 F10 & b Up::Run,"%A_ScriptFullPath%" 10 b
 F10 & c Up::Run,"%A_ScriptFullPath%" 10 c
@@ -973,7 +1000,11 @@ F10 & 8 Up::Run,"%A_ScriptFullPath%" 10 8
 F10 & 9 Up::Run,"%A_ScriptFullPath%" 10 9
 F10 & 0 Up::Run,"%A_ScriptFullPath%" 10 0
 
-F11 & Enter Up::Run, F11
+F11 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F11
+Run, %LocalAppData%\Power Keys\F11
+Return
+
 F11 & a Up::Run,"%A_ScriptFullPath%" 11 a
 F11 & b Up::Run,"%A_ScriptFullPath%" 11 b
 F11 & c Up::Run,"%A_ScriptFullPath%" 11 c
@@ -1011,7 +1042,11 @@ F11 & 8 Up::Run,"%A_ScriptFullPath%" 11 8
 F11 & 9 Up::Run,"%A_ScriptFullPath%" 11 9
 F11 & 0 Up::Run,"%A_ScriptFullPath%" 11 0
 
-F12 & Enter Up::Run, F12
+F12 & Enter Up::
+FileCreateDir,%LocalAppData%\Power Keys\F12
+Run, %LocalAppData%\Power Keys\F12
+Return
+
 F12 & a Up::Run,"%A_ScriptFullPath%" 12 a
 F12 & b Up::Run,"%A_ScriptFullPath%" 12 b
 F12 & c Up::Run,"%A_ScriptFullPath%" 12 c
