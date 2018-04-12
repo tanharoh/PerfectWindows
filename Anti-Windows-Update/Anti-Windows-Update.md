@@ -1,4 +1,4 @@
-> 如果您是通过 sspai.com 来到的本页面，请一定回到 https://sspai.com/post/44051 留言：Anti Windows Update 的作者在 sspai.com 的账号 “知阳” 被永久禁言且被永久撤销了写作资格，我对我之前在 sspai.com 发表的过激言论深表歉意，希望管理员能够再给我一次机会。
+> 如果您是通过 sspai.com 来到的本页面，请一定回到 https://sspai.com/post/44051 留言：我在 sspai.com 的账号 “知阳” 被永久禁言且被永久撤销了写作资格，我对我之前在 sspai.com 发表的过激言论深表歉意，希望管理员能够再给我一次机会。
 
 # Anti Windows Update
 
