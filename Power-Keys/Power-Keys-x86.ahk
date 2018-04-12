@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.5"
+v:="3.0.6"
 
 isenabled=0
 
@@ -143,6 +143,13 @@ Send {RWin Up}
 Run,"%A_ScriptFullPath%" 1 1 1 1
 Return
 
+LWin & End::
+RWin & End::
+Send {LWin Up}
+Send {RWin Up}
+Run,"%A_ScriptFullPath%" 1 1 1
+Return
+
 #if GameMode=1
 
 LWin::Return
@@ -155,8 +162,6 @@ Return
 #if
 
 #if isenabled
-
-#End::Run,"%A_ScriptFullPath%" 1 1 1
 
 #!PrintScreen::Run, %systemroot%\system32\snippingtool.exe,,UseErrorLevel
 
