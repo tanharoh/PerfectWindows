@@ -3,7 +3,7 @@
 #Persistent
 #NoTrayIcon
 
-v:="0.0.1"
+v:="0.0.2"
 
 if !A_IsAdmin
 {
@@ -32,6 +32,7 @@ ifmsgbox,yes
 }
 else
 {
+    runwait,%systemdrive%\Windows10Upgrade\Windows10UpgraderApp.exe /Uninstall,,UseErrorLevel
     regwrite,reg_dword,HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\au,NoAutoUpdate,1
     runwait,takeown.exe /f UsoClient.exe,,hide
     runwait,icacls.exe UsoClient.exe /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System",,hide
