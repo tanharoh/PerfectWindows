@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.6"
+v:="3.0.7"
 
 isenabled=0
 
@@ -183,6 +183,8 @@ Space & J::Send {Right}
 Space & G::Send +{WheelUp}
 Space & H::Send +{WheelDown}
 Space & CapsLock::Send {Backspace}
+Space & LCtrl::Send {Backspace}
+Space & RCtrl::Send {Backspace}
 Space & '::Send {Enter}
 Space & A::Send {Home}
 Space & `;::Send {End}
