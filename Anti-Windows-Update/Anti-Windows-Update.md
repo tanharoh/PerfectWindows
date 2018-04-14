@@ -1,9 +1,11 @@
 
 # Anti Windows Update
 
-## 完美地禁用 Windows 自动更新！
+## 完美地防止 Windows 自动更新！
 
 ---
+
+**警告：点击下载链接即代表您同意全权负责使用非最新版本的 Windows 的后果！**
 
 **[32 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Anti-Windows-Update/Anti-Windows-Update-x86.exe)  （无法在 64 位 Windows 上运行）**
 
