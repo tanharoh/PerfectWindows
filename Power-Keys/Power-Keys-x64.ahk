@@ -1,47 +1,77 @@
-﻿#SingleInstance force
+﻿#SingleInstance ignore
 #MaxHotkeysPerInterval 1000
 #Persistent
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.8"
+v:="4.0.0"
+
+FileCreateDir,%LocalAppData%\Power Keys
+SetWorkingDir,%LocalAppData%\Power Keys
+
+if !A_IsAdmin
+{
+try
+{
+Run *RunAs "%A_ScriptFullPath%" /restart
+}
+ExitApp
+}
+
+ShellRun(prms*)
+{
+    shellWindows := ComObjCreate("{9BA05972-F6A8-11CF-A442-00A0C90A8F39}")
+    
+    desktop := shellWindows.Item(ComObj(19, 8)) ; VT_UI4, SCW_DESKTOP                
+   
+    ; Retrieve top-level browser object.
+    if ptlb := ComObjQuery(desktop
+        , "{4C96BE40-915C-11CF-99D3-00AA004AE837}"  ; SID_STopLevelBrowser
+        , "{000214E2-0000-0000-C000-000000000046}") ; IID_IShellBrowser
+    {
+        ; IShellBrowser.QueryActiveShellView -> IShellView
+        if DllCall(NumGet(NumGet(ptlb+0)+15*A_PtrSize), "ptr", ptlb, "ptr*", psv:=0) = 0
+        {
+            ; Define IID_IDispatch.
+            VarSetCapacity(IID_IDispatch, 16)
+            NumPut(0x46000000000000C0, NumPut(0x20400, IID_IDispatch, "int64"), "int64")
+           
+            ; IShellView.GetItemObject -> IDispatch (object which implements IShellFolderViewDual)
+            DllCall(NumGet(NumGet(psv+0)+15*A_PtrSize), "ptr", psv
+                , "uint", 0, "ptr", &IID_IDispatch, "ptr*", pdisp:=0)
+           
+            ; Get Shell object.
+            shell := ComObj(9,pdisp,1).Application
+           
+            ; IShellDispatch2.ShellExecute
+            test:=shell.ShellExecute(prms*)
+           
+            ObjRelease(psv)
+        }
+        ObjRelease(ptlb)
+    }
+}
 
 isenabled=0
 
 Process, Priority, , High
-
-if A_IsAdmin
-{
-MsgBox,0x40030,Power Keys %v% by 知阳,为确保安全性和兼容性，`nPower Keys 拒绝以管理员身份运行！
-ExitApp
-}
 
 isenabled=1
 GameMode=0
 
 if A_Args.Length()=2
 {
-Run,"%LocalAppData%\Power Keys\F%1%\%2%.lnk",,UseErrorLevel
-if ErrorLevel
-Run,"%LocalAppData%\Power Keys\F%1%\%2%.url",,UseErrorLevel
-if ErrorLevel
-{
-FileCreateDir,%LocalAppData%\Power Keys\F%1%
-Run,"%LocalAppData%\Power Keys\F%1%",,UseErrorLevel
+toRun="%LocalAppData%\Power Keys\F%1%\%2%"
+ShellRun(toRun)
 }
-}
-
-if A_Args.Length()=0
-MsgBox,0x40040,Power Keys %v% by 知阳,欢迎使用 Power Keys！
 
 if A_Args.Length()=1
-Run,%systemroot%\system32\taskmgr.exe,,UseErrorLevel
-
-if A_Args.Length()=3
 DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
 
-RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-RegWrite, REG_SZ, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
+RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
+RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
 
 Return
 
@@ -80,12 +110,14 @@ Return
 
 LWin & NumLock Up::
 RWin & NumLock Up::
-Run, "%systemroot%\system32\calc.exe",,UseErrorLevel
+toRun="%systemroot%\system32\calc.exe"
+ShellRun(toRun)
 Return
 
 LWin & 0 Up::
 RWin & 0 Up::
-Run, "%systemroot%\system32\calc.exe",,UseErrorLevel
+toRun="%systemroot%\system32\calc.exe"
+ShellRun(toRun)
 Return
 
 LWin & CapsLock::
@@ -134,14 +166,14 @@ LWin & F5::
 RWin & F5::
 Send {LWin Up}
 Send {RWin Up}
-Run,"%A_ScriptFullPath%" 1 1 1 1
+Run,"%A_ScriptFullPath%" /restart
 Return
 
 LWin & End::
 RWin & End::
 Send {LWin Up}
 Send {RWin Up}
-Run,"%A_ScriptFullPath%" 1 1 1
+Run,"%A_ScriptFullPath%" /restart /hibernate
 Return
 
 #if GameMode=1
@@ -157,7 +189,10 @@ Return
 
 #if isenabled
 
-#!PrintScreen::Run, %systemroot%\system32\snippingtool.exe,,UseErrorLevel
+#!PrintScreen::
+toRun="%systemroot%\system32\snippingtool.exe"
+ShellRun(toRun)
+Return
 
 Lwin & PgUp::
 Rwin & PgUp::
@@ -448,7 +483,7 @@ Tab & =::Send ^!{=}
 Tab & Space::Send ^!{Space}
 Tab & Enter::Send ^!{Enter}
 Tab & Backspace::Send ^!{Backspace}
-Tab & Delete::Run,"%A_ScriptFullPath%" 1
+Tab & Delete::Run,"%systemroot%\system32\taskmgr.exe",,UseErrorLevel
 Tab & Insert::Send ^!{Insert}
 Tab & Home::Send ^!{Home}
 Tab & End::Send ^!{End}
@@ -588,505 +623,5257 @@ F11 & PrintScreen::^+!F11
 F12 & PrintScreen::^+!F12
 
 F1 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F1
-Run, %LocalAppData%\Power Keys\F1
+FileCreateDir,F1
+Run,F1
 Return
 
-F1 & a Up::Run,"%A_ScriptFullPath%" 1 a
-F1 & b Up::Run,"%A_ScriptFullPath%" 1 b
-F1 & c Up::Run,"%A_ScriptFullPath%" 1 c
-F1 & d Up::Run,"%A_ScriptFullPath%" 1 d
-F1 & e Up::Run,"%A_ScriptFullPath%" 1 e
-F1 & f Up::Run,"%A_ScriptFullPath%" 1 f
-F1 & g Up::Run,"%A_ScriptFullPath%" 1 g
-F1 & h Up::Run,"%A_ScriptFullPath%" 1 h
-F1 & i Up::Run,"%A_ScriptFullPath%" 1 i
-F1 & j Up::Run,"%A_ScriptFullPath%" 1 j
-F1 & k Up::Run,"%A_ScriptFullPath%" 1 k
-F1 & l Up::Run,"%A_ScriptFullPath%" 1 l
-F1 & m Up::Run,"%A_ScriptFullPath%" 1 m
-F1 & n Up::Run,"%A_ScriptFullPath%" 1 n
-F1 & o Up::Run,"%A_ScriptFullPath%" 1 o
-F1 & p Up::Run,"%A_ScriptFullPath%" 1 p
-F1 & q Up::Run,"%A_ScriptFullPath%" 1 q
-F1 & r Up::Run,"%A_ScriptFullPath%" 1 r
-F1 & s Up::Run,"%A_ScriptFullPath%" 1 s
-F1 & t Up::Run,"%A_ScriptFullPath%" 1 t
-F1 & u Up::Run,"%A_ScriptFullPath%" 1 u
-F1 & v Up::Run,"%A_ScriptFullPath%" 1 v
-F1 & w Up::Run,"%A_ScriptFullPath%" 1 w
-F1 & x Up::Run,"%A_ScriptFullPath%" 1 x
-F1 & y Up::Run,"%A_ScriptFullPath%" 1 y
-F1 & z Up::Run,"%A_ScriptFullPath%" 1 z
-F1 & 1 Up::Run,"%A_ScriptFullPath%" 1 1
-F1 & 2 Up::Run,"%A_ScriptFullPath%" 1 2
-F1 & 3 Up::Run,"%A_ScriptFullPath%" 1 3
-F1 & 4 Up::Run,"%A_ScriptFullPath%" 1 4
-F1 & 5 Up::Run,"%A_ScriptFullPath%" 1 5
-F1 & 6 Up::Run,"%A_ScriptFullPath%" 1 6
-F1 & 7 Up::Run,"%A_ScriptFullPath%" 1 7
-F1 & 8 Up::Run,"%A_ScriptFullPath%" 1 8
-F1 & 9 Up::Run,"%A_ScriptFullPath%" 1 9
-F1 & 0 Up::Run,"%A_ScriptFullPath%" 1 0
+F1 & a Up::
+if FileExist("F1\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 a.lnk
+else if FileExist("F1\a.url")
+Run,"%A_ScriptFullPath%" /restart 1 a.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & b Up::
+if FileExist("F1\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 b.lnk
+else if FileExist("F1\b.url")
+Run,"%A_ScriptFullPath%" /restart 1 b.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & c Up::
+if FileExist("F1\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 c.lnk
+else if FileExist("F1\c.url")
+Run,"%A_ScriptFullPath%" /restart 1 c.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & d Up::
+if FileExist("F1\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 d.lnk
+else if FileExist("F1\d.url")
+Run,"%A_ScriptFullPath%" /restart 1 d.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & e Up::
+if FileExist("F1\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 e.lnk
+else if FileExist("F1\e.url")
+Run,"%A_ScriptFullPath%" /restart 1 e.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & f Up::
+if FileExist("F1\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 f.lnk
+else if FileExist("F1\f.url")
+Run,"%A_ScriptFullPath%" /restart 1 f.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & g Up::
+if FileExist("F1\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 g.lnk
+else if FileExist("F1\g.url")
+Run,"%A_ScriptFullPath%" /restart 1 g.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & h Up::
+if FileExist("F1\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 h.lnk
+else if FileExist("F1\h.url")
+Run,"%A_ScriptFullPath%" /restart 1 h.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & i Up::
+if FileExist("F1\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 i.lnk
+else if FileExist("F1\i.url")
+Run,"%A_ScriptFullPath%" /restart 1 i.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & j Up::
+if FileExist("F1\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 j.lnk
+else if FileExist("F1\j.url")
+Run,"%A_ScriptFullPath%" /restart 1 j.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & k Up::
+if FileExist("F1\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 k.lnk
+else if FileExist("F1\k.url")
+Run,"%A_ScriptFullPath%" /restart 1 k.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & l Up::
+if FileExist("F1\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 l.lnk
+else if FileExist("F1\l.url")
+Run,"%A_ScriptFullPath%" /restart 1 l.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & m Up::
+if FileExist("F1\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 m.lnk
+else if FileExist("F1\m.url")
+Run,"%A_ScriptFullPath%" /restart 1 m.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & n Up::
+if FileExist("F1\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 n.lnk
+else if FileExist("F1\n.url")
+Run,"%A_ScriptFullPath%" /restart 1 n.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & o Up::
+if FileExist("F1\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 o.lnk
+else if FileExist("F1\o.url")
+Run,"%A_ScriptFullPath%" /restart 1 o.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & p Up::
+if FileExist("F1\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 p.lnk
+else if FileExist("F1\p.url")
+Run,"%A_ScriptFullPath%" /restart 1 p.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & q Up::
+if FileExist("F1\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 q.lnk
+else if FileExist("F1\q.url")
+Run,"%A_ScriptFullPath%" /restart 1 q.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & r Up::
+if FileExist("F1\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 r.lnk
+else if FileExist("F1\r.url")
+Run,"%A_ScriptFullPath%" /restart 1 r.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & s Up::
+if FileExist("F1\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 s.lnk
+else if FileExist("F1\s.url")
+Run,"%A_ScriptFullPath%" /restart 1 s.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & t Up::
+if FileExist("F1\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 t.lnk
+else if FileExist("F1\t.url")
+Run,"%A_ScriptFullPath%" /restart 1 t.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & u Up::
+if FileExist("F1\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 u.lnk
+else if FileExist("F1\u.url")
+Run,"%A_ScriptFullPath%" /restart 1 u.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & v Up::
+if FileExist("F1\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 v.lnk
+else if FileExist("F1\v.url")
+Run,"%A_ScriptFullPath%" /restart 1 v.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & w Up::
+if FileExist("F1\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 w.lnk
+else if FileExist("F1\w.url")
+Run,"%A_ScriptFullPath%" /restart 1 w.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & x Up::
+if FileExist("F1\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 x.lnk
+else if FileExist("F1\x.url")
+Run,"%A_ScriptFullPath%" /restart 1 x.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & y Up::
+if FileExist("F1\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 y.lnk
+else if FileExist("F1\y.url")
+Run,"%A_ScriptFullPath%" /restart 1 y.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & z Up::
+if FileExist("F1\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 z.lnk
+else if FileExist("F1\z.url")
+Run,"%A_ScriptFullPath%" /restart 1 z.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 1 Up::
+if FileExist("F1\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 1.lnk
+else if FileExist("F1\1.url")
+Run,"%A_ScriptFullPath%" /restart 1 1.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 2 Up::
+if FileExist("F1\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 2.lnk
+else if FileExist("F1\2.url")
+Run,"%A_ScriptFullPath%" /restart 1 2.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 3 Up::
+if FileExist("F1\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 3.lnk
+else if FileExist("F1\3.url")
+Run,"%A_ScriptFullPath%" /restart 1 3.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 4 Up::
+if FileExist("F1\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 4.lnk
+else if FileExist("F1\4.url")
+Run,"%A_ScriptFullPath%" /restart 1 4.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 5 Up::
+if FileExist("F1\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 5.lnk
+else if FileExist("F1\5.url")
+Run,"%A_ScriptFullPath%" /restart 1 5.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 6 Up::
+if FileExist("F1\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 6.lnk
+else if FileExist("F1\6.url")
+Run,"%A_ScriptFullPath%" /restart 1 6.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 7 Up::
+if FileExist("F1\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 7.lnk
+else if FileExist("F1\7.url")
+Run,"%A_ScriptFullPath%" /restart 1 7.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 8 Up::
+if FileExist("F1\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 8.lnk
+else if FileExist("F1\8.url")
+Run,"%A_ScriptFullPath%" /restart 1 8.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 9 Up::
+if FileExist("F1\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 9.lnk
+else if FileExist("F1\9.url")
+Run,"%A_ScriptFullPath%" /restart 1 9.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
+F1 & 0 Up::
+if FileExist("F1\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 1 0.lnk
+else if FileExist("F1\0.url")
+Run,"%A_ScriptFullPath%" /restart 1 0.url
+else
+{
+FileCreateDir,F1
+Run,F1
+}
+Return
+
 
 F2 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F2
-Run, %LocalAppData%\Power Keys\F2
+FileCreateDir,F2
+Run,F2
 Return
 
-F2 & a Up::Run,"%A_ScriptFullPath%" 2 a
-F2 & b Up::Run,"%A_ScriptFullPath%" 2 b
-F2 & c Up::Run,"%A_ScriptFullPath%" 2 c
-F2 & d Up::Run,"%A_ScriptFullPath%" 2 d
-F2 & e Up::Run,"%A_ScriptFullPath%" 2 e
-F2 & f Up::Run,"%A_ScriptFullPath%" 2 f
-F2 & g Up::Run,"%A_ScriptFullPath%" 2 g
-F2 & h Up::Run,"%A_ScriptFullPath%" 2 h
-F2 & i Up::Run,"%A_ScriptFullPath%" 2 i
-F2 & j Up::Run,"%A_ScriptFullPath%" 2 j
-F2 & k Up::Run,"%A_ScriptFullPath%" 2 k
-F2 & l Up::Run,"%A_ScriptFullPath%" 2 l
-F2 & m Up::Run,"%A_ScriptFullPath%" 2 m
-F2 & n Up::Run,"%A_ScriptFullPath%" 2 n
-F2 & o Up::Run,"%A_ScriptFullPath%" 2 o
-F2 & p Up::Run,"%A_ScriptFullPath%" 2 p
-F2 & q Up::Run,"%A_ScriptFullPath%" 2 q
-F2 & r Up::Run,"%A_ScriptFullPath%" 2 r
-F2 & s Up::Run,"%A_ScriptFullPath%" 2 s
-F2 & t Up::Run,"%A_ScriptFullPath%" 2 t
-F2 & u Up::Run,"%A_ScriptFullPath%" 2 u
-F2 & v Up::Run,"%A_ScriptFullPath%" 2 v
-F2 & w Up::Run,"%A_ScriptFullPath%" 2 w
-F2 & x Up::Run,"%A_ScriptFullPath%" 2 x
-F2 & y Up::Run,"%A_ScriptFullPath%" 2 y
-F2 & z Up::Run,"%A_ScriptFullPath%" 2 z
-F2 & 1 Up::Run,"%A_ScriptFullPath%" 2 1
-F2 & 2 Up::Run,"%A_ScriptFullPath%" 2 2
-F2 & 3 Up::Run,"%A_ScriptFullPath%" 2 3
-F2 & 4 Up::Run,"%A_ScriptFullPath%" 2 4
-F2 & 5 Up::Run,"%A_ScriptFullPath%" 2 5
-F2 & 6 Up::Run,"%A_ScriptFullPath%" 2 6
-F2 & 7 Up::Run,"%A_ScriptFullPath%" 2 7
-F2 & 8 Up::Run,"%A_ScriptFullPath%" 2 8
-F2 & 9 Up::Run,"%A_ScriptFullPath%" 2 9
-F2 & 0 Up::Run,"%A_ScriptFullPath%" 2 0
+F2 & a Up::
+if FileExist("F2\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 a.lnk
+else if FileExist("F2\a.url")
+Run,"%A_ScriptFullPath%" /restart 2 a.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & b Up::
+if FileExist("F2\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 b.lnk
+else if FileExist("F2\b.url")
+Run,"%A_ScriptFullPath%" /restart 2 b.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & c Up::
+if FileExist("F2\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 c.lnk
+else if FileExist("F2\c.url")
+Run,"%A_ScriptFullPath%" /restart 2 c.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & d Up::
+if FileExist("F2\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 d.lnk
+else if FileExist("F2\d.url")
+Run,"%A_ScriptFullPath%" /restart 2 d.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & e Up::
+if FileExist("F2\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 e.lnk
+else if FileExist("F2\e.url")
+Run,"%A_ScriptFullPath%" /restart 2 e.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & f Up::
+if FileExist("F2\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 f.lnk
+else if FileExist("F2\f.url")
+Run,"%A_ScriptFullPath%" /restart 2 f.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & g Up::
+if FileExist("F2\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 g.lnk
+else if FileExist("F2\g.url")
+Run,"%A_ScriptFullPath%" /restart 2 g.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & h Up::
+if FileExist("F2\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 h.lnk
+else if FileExist("F2\h.url")
+Run,"%A_ScriptFullPath%" /restart 2 h.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & i Up::
+if FileExist("F2\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 i.lnk
+else if FileExist("F2\i.url")
+Run,"%A_ScriptFullPath%" /restart 2 i.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & j Up::
+if FileExist("F2\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 j.lnk
+else if FileExist("F2\j.url")
+Run,"%A_ScriptFullPath%" /restart 2 j.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & k Up::
+if FileExist("F2\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 k.lnk
+else if FileExist("F2\k.url")
+Run,"%A_ScriptFullPath%" /restart 2 k.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & l Up::
+if FileExist("F2\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 l.lnk
+else if FileExist("F2\l.url")
+Run,"%A_ScriptFullPath%" /restart 2 l.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & m Up::
+if FileExist("F2\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 m.lnk
+else if FileExist("F2\m.url")
+Run,"%A_ScriptFullPath%" /restart 2 m.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & n Up::
+if FileExist("F2\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 n.lnk
+else if FileExist("F2\n.url")
+Run,"%A_ScriptFullPath%" /restart 2 n.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & o Up::
+if FileExist("F2\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 o.lnk
+else if FileExist("F2\o.url")
+Run,"%A_ScriptFullPath%" /restart 2 o.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & p Up::
+if FileExist("F2\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 p.lnk
+else if FileExist("F2\p.url")
+Run,"%A_ScriptFullPath%" /restart 2 p.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & q Up::
+if FileExist("F2\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 q.lnk
+else if FileExist("F2\q.url")
+Run,"%A_ScriptFullPath%" /restart 2 q.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & r Up::
+if FileExist("F2\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 r.lnk
+else if FileExist("F2\r.url")
+Run,"%A_ScriptFullPath%" /restart 2 r.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & s Up::
+if FileExist("F2\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 s.lnk
+else if FileExist("F2\s.url")
+Run,"%A_ScriptFullPath%" /restart 2 s.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & t Up::
+if FileExist("F2\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 t.lnk
+else if FileExist("F2\t.url")
+Run,"%A_ScriptFullPath%" /restart 2 t.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & u Up::
+if FileExist("F2\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 u.lnk
+else if FileExist("F2\u.url")
+Run,"%A_ScriptFullPath%" /restart 2 u.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & v Up::
+if FileExist("F2\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 v.lnk
+else if FileExist("F2\v.url")
+Run,"%A_ScriptFullPath%" /restart 2 v.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & w Up::
+if FileExist("F2\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 w.lnk
+else if FileExist("F2\w.url")
+Run,"%A_ScriptFullPath%" /restart 2 w.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & x Up::
+if FileExist("F2\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 x.lnk
+else if FileExist("F2\x.url")
+Run,"%A_ScriptFullPath%" /restart 2 x.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & y Up::
+if FileExist("F2\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 y.lnk
+else if FileExist("F2\y.url")
+Run,"%A_ScriptFullPath%" /restart 2 y.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & z Up::
+if FileExist("F2\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 z.lnk
+else if FileExist("F2\z.url")
+Run,"%A_ScriptFullPath%" /restart 2 z.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 1 Up::
+if FileExist("F2\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 1.lnk
+else if FileExist("F2\1.url")
+Run,"%A_ScriptFullPath%" /restart 2 1.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 2 Up::
+if FileExist("F2\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 2.lnk
+else if FileExist("F2\2.url")
+Run,"%A_ScriptFullPath%" /restart 2 2.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 3 Up::
+if FileExist("F2\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 3.lnk
+else if FileExist("F2\3.url")
+Run,"%A_ScriptFullPath%" /restart 2 3.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 4 Up::
+if FileExist("F2\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 4.lnk
+else if FileExist("F2\4.url")
+Run,"%A_ScriptFullPath%" /restart 2 4.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 5 Up::
+if FileExist("F2\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 5.lnk
+else if FileExist("F2\5.url")
+Run,"%A_ScriptFullPath%" /restart 2 5.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 6 Up::
+if FileExist("F2\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 6.lnk
+else if FileExist("F2\6.url")
+Run,"%A_ScriptFullPath%" /restart 2 6.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 7 Up::
+if FileExist("F2\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 7.lnk
+else if FileExist("F2\7.url")
+Run,"%A_ScriptFullPath%" /restart 2 7.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 8 Up::
+if FileExist("F2\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 8.lnk
+else if FileExist("F2\8.url")
+Run,"%A_ScriptFullPath%" /restart 2 8.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 9 Up::
+if FileExist("F2\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 9.lnk
+else if FileExist("F2\9.url")
+Run,"%A_ScriptFullPath%" /restart 2 9.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
+F2 & 0 Up::
+if FileExist("F2\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 2 0.lnk
+else if FileExist("F2\0.url")
+Run,"%A_ScriptFullPath%" /restart 2 0.url
+else
+{
+FileCreateDir,F2
+Run,F2
+}
+Return
+
 
 F3 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F3
-Run, %LocalAppData%\Power Keys\F3
+FileCreateDir,F3
+Run,F3
 Return
 
-F3 & a Up::Run,"%A_ScriptFullPath%" 3 a
-F3 & b Up::Run,"%A_ScriptFullPath%" 3 b
-F3 & c Up::Run,"%A_ScriptFullPath%" 3 c
-F3 & d Up::Run,"%A_ScriptFullPath%" 3 d
-F3 & e Up::Run,"%A_ScriptFullPath%" 3 e
-F3 & f Up::Run,"%A_ScriptFullPath%" 3 f
-F3 & g Up::Run,"%A_ScriptFullPath%" 3 g
-F3 & h Up::Run,"%A_ScriptFullPath%" 3 h
-F3 & i Up::Run,"%A_ScriptFullPath%" 3 i
-F3 & j Up::Run,"%A_ScriptFullPath%" 3 j
-F3 & k Up::Run,"%A_ScriptFullPath%" 3 k
-F3 & l Up::Run,"%A_ScriptFullPath%" 3 l
-F3 & m Up::Run,"%A_ScriptFullPath%" 3 m
-F3 & n Up::Run,"%A_ScriptFullPath%" 3 n
-F3 & o Up::Run,"%A_ScriptFullPath%" 3 o
-F3 & p Up::Run,"%A_ScriptFullPath%" 3 p
-F3 & q Up::Run,"%A_ScriptFullPath%" 3 q
-F3 & r Up::Run,"%A_ScriptFullPath%" 3 r
-F3 & s Up::Run,"%A_ScriptFullPath%" 3 s
-F3 & t Up::Run,"%A_ScriptFullPath%" 3 t
-F3 & u Up::Run,"%A_ScriptFullPath%" 3 u
-F3 & v Up::Run,"%A_ScriptFullPath%" 3 v
-F3 & w Up::Run,"%A_ScriptFullPath%" 3 w
-F3 & x Up::Run,"%A_ScriptFullPath%" 3 x
-F3 & y Up::Run,"%A_ScriptFullPath%" 3 y
-F3 & z Up::Run,"%A_ScriptFullPath%" 3 z
-F3 & 1 Up::Run,"%A_ScriptFullPath%" 3 1
-F3 & 2 Up::Run,"%A_ScriptFullPath%" 3 2
-F3 & 3 Up::Run,"%A_ScriptFullPath%" 3 3
-F3 & 4 Up::Run,"%A_ScriptFullPath%" 3 4
-F3 & 5 Up::Run,"%A_ScriptFullPath%" 3 5
-F3 & 6 Up::Run,"%A_ScriptFullPath%" 3 6
-F3 & 7 Up::Run,"%A_ScriptFullPath%" 3 7
-F3 & 8 Up::Run,"%A_ScriptFullPath%" 3 8
-F3 & 9 Up::Run,"%A_ScriptFullPath%" 3 9
-F3 & 0 Up::Run,"%A_ScriptFullPath%" 3 0
+F3 & a Up::
+if FileExist("F3\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 a.lnk
+else if FileExist("F3\a.url")
+Run,"%A_ScriptFullPath%" /restart 3 a.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & b Up::
+if FileExist("F3\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 b.lnk
+else if FileExist("F3\b.url")
+Run,"%A_ScriptFullPath%" /restart 3 b.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & c Up::
+if FileExist("F3\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 c.lnk
+else if FileExist("F3\c.url")
+Run,"%A_ScriptFullPath%" /restart 3 c.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & d Up::
+if FileExist("F3\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 d.lnk
+else if FileExist("F3\d.url")
+Run,"%A_ScriptFullPath%" /restart 3 d.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & e Up::
+if FileExist("F3\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 e.lnk
+else if FileExist("F3\e.url")
+Run,"%A_ScriptFullPath%" /restart 3 e.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & f Up::
+if FileExist("F3\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 f.lnk
+else if FileExist("F3\f.url")
+Run,"%A_ScriptFullPath%" /restart 3 f.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & g Up::
+if FileExist("F3\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 g.lnk
+else if FileExist("F3\g.url")
+Run,"%A_ScriptFullPath%" /restart 3 g.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & h Up::
+if FileExist("F3\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 h.lnk
+else if FileExist("F3\h.url")
+Run,"%A_ScriptFullPath%" /restart 3 h.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & i Up::
+if FileExist("F3\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 i.lnk
+else if FileExist("F3\i.url")
+Run,"%A_ScriptFullPath%" /restart 3 i.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & j Up::
+if FileExist("F3\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 j.lnk
+else if FileExist("F3\j.url")
+Run,"%A_ScriptFullPath%" /restart 3 j.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & k Up::
+if FileExist("F3\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 k.lnk
+else if FileExist("F3\k.url")
+Run,"%A_ScriptFullPath%" /restart 3 k.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & l Up::
+if FileExist("F3\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 l.lnk
+else if FileExist("F3\l.url")
+Run,"%A_ScriptFullPath%" /restart 3 l.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & m Up::
+if FileExist("F3\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 m.lnk
+else if FileExist("F3\m.url")
+Run,"%A_ScriptFullPath%" /restart 3 m.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & n Up::
+if FileExist("F3\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 n.lnk
+else if FileExist("F3\n.url")
+Run,"%A_ScriptFullPath%" /restart 3 n.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & o Up::
+if FileExist("F3\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 o.lnk
+else if FileExist("F3\o.url")
+Run,"%A_ScriptFullPath%" /restart 3 o.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & p Up::
+if FileExist("F3\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 p.lnk
+else if FileExist("F3\p.url")
+Run,"%A_ScriptFullPath%" /restart 3 p.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & q Up::
+if FileExist("F3\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 q.lnk
+else if FileExist("F3\q.url")
+Run,"%A_ScriptFullPath%" /restart 3 q.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & r Up::
+if FileExist("F3\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 r.lnk
+else if FileExist("F3\r.url")
+Run,"%A_ScriptFullPath%" /restart 3 r.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & s Up::
+if FileExist("F3\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 s.lnk
+else if FileExist("F3\s.url")
+Run,"%A_ScriptFullPath%" /restart 3 s.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & t Up::
+if FileExist("F3\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 t.lnk
+else if FileExist("F3\t.url")
+Run,"%A_ScriptFullPath%" /restart 3 t.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & u Up::
+if FileExist("F3\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 u.lnk
+else if FileExist("F3\u.url")
+Run,"%A_ScriptFullPath%" /restart 3 u.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & v Up::
+if FileExist("F3\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 v.lnk
+else if FileExist("F3\v.url")
+Run,"%A_ScriptFullPath%" /restart 3 v.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & w Up::
+if FileExist("F3\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 w.lnk
+else if FileExist("F3\w.url")
+Run,"%A_ScriptFullPath%" /restart 3 w.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & x Up::
+if FileExist("F3\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 x.lnk
+else if FileExist("F3\x.url")
+Run,"%A_ScriptFullPath%" /restart 3 x.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & y Up::
+if FileExist("F3\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 y.lnk
+else if FileExist("F3\y.url")
+Run,"%A_ScriptFullPath%" /restart 3 y.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & z Up::
+if FileExist("F3\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 z.lnk
+else if FileExist("F3\z.url")
+Run,"%A_ScriptFullPath%" /restart 3 z.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 1 Up::
+if FileExist("F3\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 1.lnk
+else if FileExist("F3\1.url")
+Run,"%A_ScriptFullPath%" /restart 3 1.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 2 Up::
+if FileExist("F3\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 2.lnk
+else if FileExist("F3\2.url")
+Run,"%A_ScriptFullPath%" /restart 3 2.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 3 Up::
+if FileExist("F3\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 3.lnk
+else if FileExist("F3\3.url")
+Run,"%A_ScriptFullPath%" /restart 3 3.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 4 Up::
+if FileExist("F3\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 4.lnk
+else if FileExist("F3\4.url")
+Run,"%A_ScriptFullPath%" /restart 3 4.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 5 Up::
+if FileExist("F3\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 5.lnk
+else if FileExist("F3\5.url")
+Run,"%A_ScriptFullPath%" /restart 3 5.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 6 Up::
+if FileExist("F3\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 6.lnk
+else if FileExist("F3\6.url")
+Run,"%A_ScriptFullPath%" /restart 3 6.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 7 Up::
+if FileExist("F3\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 7.lnk
+else if FileExist("F3\7.url")
+Run,"%A_ScriptFullPath%" /restart 3 7.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 8 Up::
+if FileExist("F3\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 8.lnk
+else if FileExist("F3\8.url")
+Run,"%A_ScriptFullPath%" /restart 3 8.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 9 Up::
+if FileExist("F3\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 9.lnk
+else if FileExist("F3\9.url")
+Run,"%A_ScriptFullPath%" /restart 3 9.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
+F3 & 0 Up::
+if FileExist("F3\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 3 0.lnk
+else if FileExist("F3\0.url")
+Run,"%A_ScriptFullPath%" /restart 3 0.url
+else
+{
+FileCreateDir,F3
+Run,F3
+}
+Return
+
 
 F4 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F4
-Run, %LocalAppData%\Power Keys\F4
+FileCreateDir,F4
+Run,F4
 Return
 
-F4 & a Up::Run,"%A_ScriptFullPath%" 4 a
-F4 & b Up::Run,"%A_ScriptFullPath%" 4 b
-F4 & c Up::Run,"%A_ScriptFullPath%" 4 c
-F4 & d Up::Run,"%A_ScriptFullPath%" 4 d
-F4 & e Up::Run,"%A_ScriptFullPath%" 4 e
-F4 & f Up::Run,"%A_ScriptFullPath%" 4 f
-F4 & g Up::Run,"%A_ScriptFullPath%" 4 g
-F4 & h Up::Run,"%A_ScriptFullPath%" 4 h
-F4 & i Up::Run,"%A_ScriptFullPath%" 4 i
-F4 & j Up::Run,"%A_ScriptFullPath%" 4 j
-F4 & k Up::Run,"%A_ScriptFullPath%" 4 k
-F4 & l Up::Run,"%A_ScriptFullPath%" 4 l
-F4 & m Up::Run,"%A_ScriptFullPath%" 4 m
-F4 & n Up::Run,"%A_ScriptFullPath%" 4 n
-F4 & o Up::Run,"%A_ScriptFullPath%" 4 o
-F4 & p Up::Run,"%A_ScriptFullPath%" 4 p
-F4 & q Up::Run,"%A_ScriptFullPath%" 4 q
-F4 & r Up::Run,"%A_ScriptFullPath%" 4 r
-F4 & s Up::Run,"%A_ScriptFullPath%" 4 s
-F4 & t Up::Run,"%A_ScriptFullPath%" 4 t
-F4 & u Up::Run,"%A_ScriptFullPath%" 4 u
-F4 & v Up::Run,"%A_ScriptFullPath%" 4 v
-F4 & w Up::Run,"%A_ScriptFullPath%" 4 w
-F4 & x Up::Run,"%A_ScriptFullPath%" 4 x
-F4 & y Up::Run,"%A_ScriptFullPath%" 4 y
-F4 & z Up::Run,"%A_ScriptFullPath%" 4 z
-F4 & 1 Up::Run,"%A_ScriptFullPath%" 4 1
-F4 & 2 Up::Run,"%A_ScriptFullPath%" 4 2
-F4 & 3 Up::Run,"%A_ScriptFullPath%" 4 3
-F4 & 4 Up::Run,"%A_ScriptFullPath%" 4 4
-F4 & 5 Up::Run,"%A_ScriptFullPath%" 4 5
-F4 & 6 Up::Run,"%A_ScriptFullPath%" 4 6
-F4 & 7 Up::Run,"%A_ScriptFullPath%" 4 7
-F4 & 8 Up::Run,"%A_ScriptFullPath%" 4 8
-F4 & 9 Up::Run,"%A_ScriptFullPath%" 4 9
-F4 & 0 Up::Run,"%A_ScriptFullPath%" 4 0
+F4 & a Up::
+if FileExist("F4\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 a.lnk
+else if FileExist("F4\a.url")
+Run,"%A_ScriptFullPath%" /restart 4 a.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & b Up::
+if FileExist("F4\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 b.lnk
+else if FileExist("F4\b.url")
+Run,"%A_ScriptFullPath%" /restart 4 b.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & c Up::
+if FileExist("F4\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 c.lnk
+else if FileExist("F4\c.url")
+Run,"%A_ScriptFullPath%" /restart 4 c.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & d Up::
+if FileExist("F4\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 d.lnk
+else if FileExist("F4\d.url")
+Run,"%A_ScriptFullPath%" /restart 4 d.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & e Up::
+if FileExist("F4\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 e.lnk
+else if FileExist("F4\e.url")
+Run,"%A_ScriptFullPath%" /restart 4 e.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & f Up::
+if FileExist("F4\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 f.lnk
+else if FileExist("F4\f.url")
+Run,"%A_ScriptFullPath%" /restart 4 f.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & g Up::
+if FileExist("F4\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 g.lnk
+else if FileExist("F4\g.url")
+Run,"%A_ScriptFullPath%" /restart 4 g.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & h Up::
+if FileExist("F4\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 h.lnk
+else if FileExist("F4\h.url")
+Run,"%A_ScriptFullPath%" /restart 4 h.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & i Up::
+if FileExist("F4\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 i.lnk
+else if FileExist("F4\i.url")
+Run,"%A_ScriptFullPath%" /restart 4 i.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & j Up::
+if FileExist("F4\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 j.lnk
+else if FileExist("F4\j.url")
+Run,"%A_ScriptFullPath%" /restart 4 j.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & k Up::
+if FileExist("F4\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 k.lnk
+else if FileExist("F4\k.url")
+Run,"%A_ScriptFullPath%" /restart 4 k.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & l Up::
+if FileExist("F4\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 l.lnk
+else if FileExist("F4\l.url")
+Run,"%A_ScriptFullPath%" /restart 4 l.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & m Up::
+if FileExist("F4\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 m.lnk
+else if FileExist("F4\m.url")
+Run,"%A_ScriptFullPath%" /restart 4 m.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & n Up::
+if FileExist("F4\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 n.lnk
+else if FileExist("F4\n.url")
+Run,"%A_ScriptFullPath%" /restart 4 n.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & o Up::
+if FileExist("F4\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 o.lnk
+else if FileExist("F4\o.url")
+Run,"%A_ScriptFullPath%" /restart 4 o.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & p Up::
+if FileExist("F4\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 p.lnk
+else if FileExist("F4\p.url")
+Run,"%A_ScriptFullPath%" /restart 4 p.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & q Up::
+if FileExist("F4\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 q.lnk
+else if FileExist("F4\q.url")
+Run,"%A_ScriptFullPath%" /restart 4 q.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & r Up::
+if FileExist("F4\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 r.lnk
+else if FileExist("F4\r.url")
+Run,"%A_ScriptFullPath%" /restart 4 r.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & s Up::
+if FileExist("F4\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 s.lnk
+else if FileExist("F4\s.url")
+Run,"%A_ScriptFullPath%" /restart 4 s.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & t Up::
+if FileExist("F4\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 t.lnk
+else if FileExist("F4\t.url")
+Run,"%A_ScriptFullPath%" /restart 4 t.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & u Up::
+if FileExist("F4\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 u.lnk
+else if FileExist("F4\u.url")
+Run,"%A_ScriptFullPath%" /restart 4 u.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & v Up::
+if FileExist("F4\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 v.lnk
+else if FileExist("F4\v.url")
+Run,"%A_ScriptFullPath%" /restart 4 v.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & w Up::
+if FileExist("F4\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 w.lnk
+else if FileExist("F4\w.url")
+Run,"%A_ScriptFullPath%" /restart 4 w.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & x Up::
+if FileExist("F4\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 x.lnk
+else if FileExist("F4\x.url")
+Run,"%A_ScriptFullPath%" /restart 4 x.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & y Up::
+if FileExist("F4\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 y.lnk
+else if FileExist("F4\y.url")
+Run,"%A_ScriptFullPath%" /restart 4 y.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & z Up::
+if FileExist("F4\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 z.lnk
+else if FileExist("F4\z.url")
+Run,"%A_ScriptFullPath%" /restart 4 z.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 1 Up::
+if FileExist("F4\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 1.lnk
+else if FileExist("F4\1.url")
+Run,"%A_ScriptFullPath%" /restart 4 1.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 2 Up::
+if FileExist("F4\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 2.lnk
+else if FileExist("F4\2.url")
+Run,"%A_ScriptFullPath%" /restart 4 2.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 3 Up::
+if FileExist("F4\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 3.lnk
+else if FileExist("F4\3.url")
+Run,"%A_ScriptFullPath%" /restart 4 3.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 4 Up::
+if FileExist("F4\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 4.lnk
+else if FileExist("F4\4.url")
+Run,"%A_ScriptFullPath%" /restart 4 4.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 5 Up::
+if FileExist("F4\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 5.lnk
+else if FileExist("F4\5.url")
+Run,"%A_ScriptFullPath%" /restart 4 5.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 6 Up::
+if FileExist("F4\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 6.lnk
+else if FileExist("F4\6.url")
+Run,"%A_ScriptFullPath%" /restart 4 6.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 7 Up::
+if FileExist("F4\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 7.lnk
+else if FileExist("F4\7.url")
+Run,"%A_ScriptFullPath%" /restart 4 7.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 8 Up::
+if FileExist("F4\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 8.lnk
+else if FileExist("F4\8.url")
+Run,"%A_ScriptFullPath%" /restart 4 8.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 9 Up::
+if FileExist("F4\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 9.lnk
+else if FileExist("F4\9.url")
+Run,"%A_ScriptFullPath%" /restart 4 9.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
+F4 & 0 Up::
+if FileExist("F4\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 4 0.lnk
+else if FileExist("F4\0.url")
+Run,"%A_ScriptFullPath%" /restart 4 0.url
+else
+{
+FileCreateDir,F4
+Run,F4
+}
+Return
+
 
 F5 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F5
-Run, %LocalAppData%\Power Keys\F5
+FileCreateDir,F5
+Run,F5
 Return
 
-F5 & a Up::Run,"%A_ScriptFullPath%" 5 a
-F5 & b Up::Run,"%A_ScriptFullPath%" 5 b
-F5 & c Up::Run,"%A_ScriptFullPath%" 5 c
-F5 & d Up::Run,"%A_ScriptFullPath%" 5 d
-F5 & e Up::Run,"%A_ScriptFullPath%" 5 e
-F5 & f Up::Run,"%A_ScriptFullPath%" 5 f
-F5 & g Up::Run,"%A_ScriptFullPath%" 5 g
-F5 & h Up::Run,"%A_ScriptFullPath%" 5 h
-F5 & i Up::Run,"%A_ScriptFullPath%" 5 i
-F5 & j Up::Run,"%A_ScriptFullPath%" 5 j
-F5 & k Up::Run,"%A_ScriptFullPath%" 5 k
-F5 & l Up::Run,"%A_ScriptFullPath%" 5 l
-F5 & m Up::Run,"%A_ScriptFullPath%" 5 m
-F5 & n Up::Run,"%A_ScriptFullPath%" 5 n
-F5 & o Up::Run,"%A_ScriptFullPath%" 5 o
-F5 & p Up::Run,"%A_ScriptFullPath%" 5 p
-F5 & q Up::Run,"%A_ScriptFullPath%" 5 q
-F5 & r Up::Run,"%A_ScriptFullPath%" 5 r
-F5 & s Up::Run,"%A_ScriptFullPath%" 5 s
-F5 & t Up::Run,"%A_ScriptFullPath%" 5 t
-F5 & u Up::Run,"%A_ScriptFullPath%" 5 u
-F5 & v Up::Run,"%A_ScriptFullPath%" 5 v
-F5 & w Up::Run,"%A_ScriptFullPath%" 5 w
-F5 & x Up::Run,"%A_ScriptFullPath%" 5 x
-F5 & y Up::Run,"%A_ScriptFullPath%" 5 y
-F5 & z Up::Run,"%A_ScriptFullPath%" 5 z
-F5 & 1 Up::Run,"%A_ScriptFullPath%" 5 1
-F5 & 2 Up::Run,"%A_ScriptFullPath%" 5 2
-F5 & 3 Up::Run,"%A_ScriptFullPath%" 5 3
-F5 & 4 Up::Run,"%A_ScriptFullPath%" 5 4
-F5 & 5 Up::Run,"%A_ScriptFullPath%" 5 5
-F5 & 6 Up::Run,"%A_ScriptFullPath%" 5 6
-F5 & 7 Up::Run,"%A_ScriptFullPath%" 5 7
-F5 & 8 Up::Run,"%A_ScriptFullPath%" 5 8
-F5 & 9 Up::Run,"%A_ScriptFullPath%" 5 9
-F5 & 0 Up::Run,"%A_ScriptFullPath%" 5 0
+F5 & a Up::
+if FileExist("F5\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 a.lnk
+else if FileExist("F5\a.url")
+Run,"%A_ScriptFullPath%" /restart 5 a.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & b Up::
+if FileExist("F5\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 b.lnk
+else if FileExist("F5\b.url")
+Run,"%A_ScriptFullPath%" /restart 5 b.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & c Up::
+if FileExist("F5\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 c.lnk
+else if FileExist("F5\c.url")
+Run,"%A_ScriptFullPath%" /restart 5 c.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & d Up::
+if FileExist("F5\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 d.lnk
+else if FileExist("F5\d.url")
+Run,"%A_ScriptFullPath%" /restart 5 d.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & e Up::
+if FileExist("F5\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 e.lnk
+else if FileExist("F5\e.url")
+Run,"%A_ScriptFullPath%" /restart 5 e.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & f Up::
+if FileExist("F5\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 f.lnk
+else if FileExist("F5\f.url")
+Run,"%A_ScriptFullPath%" /restart 5 f.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & g Up::
+if FileExist("F5\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 g.lnk
+else if FileExist("F5\g.url")
+Run,"%A_ScriptFullPath%" /restart 5 g.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & h Up::
+if FileExist("F5\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 h.lnk
+else if FileExist("F5\h.url")
+Run,"%A_ScriptFullPath%" /restart 5 h.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & i Up::
+if FileExist("F5\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 i.lnk
+else if FileExist("F5\i.url")
+Run,"%A_ScriptFullPath%" /restart 5 i.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & j Up::
+if FileExist("F5\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 j.lnk
+else if FileExist("F5\j.url")
+Run,"%A_ScriptFullPath%" /restart 5 j.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & k Up::
+if FileExist("F5\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 k.lnk
+else if FileExist("F5\k.url")
+Run,"%A_ScriptFullPath%" /restart 5 k.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & l Up::
+if FileExist("F5\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 l.lnk
+else if FileExist("F5\l.url")
+Run,"%A_ScriptFullPath%" /restart 5 l.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & m Up::
+if FileExist("F5\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 m.lnk
+else if FileExist("F5\m.url")
+Run,"%A_ScriptFullPath%" /restart 5 m.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & n Up::
+if FileExist("F5\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 n.lnk
+else if FileExist("F5\n.url")
+Run,"%A_ScriptFullPath%" /restart 5 n.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & o Up::
+if FileExist("F5\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 o.lnk
+else if FileExist("F5\o.url")
+Run,"%A_ScriptFullPath%" /restart 5 o.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & p Up::
+if FileExist("F5\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 p.lnk
+else if FileExist("F5\p.url")
+Run,"%A_ScriptFullPath%" /restart 5 p.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & q Up::
+if FileExist("F5\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 q.lnk
+else if FileExist("F5\q.url")
+Run,"%A_ScriptFullPath%" /restart 5 q.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & r Up::
+if FileExist("F5\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 r.lnk
+else if FileExist("F5\r.url")
+Run,"%A_ScriptFullPath%" /restart 5 r.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & s Up::
+if FileExist("F5\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 s.lnk
+else if FileExist("F5\s.url")
+Run,"%A_ScriptFullPath%" /restart 5 s.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & t Up::
+if FileExist("F5\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 t.lnk
+else if FileExist("F5\t.url")
+Run,"%A_ScriptFullPath%" /restart 5 t.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & u Up::
+if FileExist("F5\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 u.lnk
+else if FileExist("F5\u.url")
+Run,"%A_ScriptFullPath%" /restart 5 u.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & v Up::
+if FileExist("F5\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 v.lnk
+else if FileExist("F5\v.url")
+Run,"%A_ScriptFullPath%" /restart 5 v.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & w Up::
+if FileExist("F5\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 w.lnk
+else if FileExist("F5\w.url")
+Run,"%A_ScriptFullPath%" /restart 5 w.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & x Up::
+if FileExist("F5\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 x.lnk
+else if FileExist("F5\x.url")
+Run,"%A_ScriptFullPath%" /restart 5 x.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & y Up::
+if FileExist("F5\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 y.lnk
+else if FileExist("F5\y.url")
+Run,"%A_ScriptFullPath%" /restart 5 y.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & z Up::
+if FileExist("F5\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 z.lnk
+else if FileExist("F5\z.url")
+Run,"%A_ScriptFullPath%" /restart 5 z.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 1 Up::
+if FileExist("F5\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 1.lnk
+else if FileExist("F5\1.url")
+Run,"%A_ScriptFullPath%" /restart 5 1.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 2 Up::
+if FileExist("F5\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 2.lnk
+else if FileExist("F5\2.url")
+Run,"%A_ScriptFullPath%" /restart 5 2.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 3 Up::
+if FileExist("F5\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 3.lnk
+else if FileExist("F5\3.url")
+Run,"%A_ScriptFullPath%" /restart 5 3.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 4 Up::
+if FileExist("F5\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 4.lnk
+else if FileExist("F5\4.url")
+Run,"%A_ScriptFullPath%" /restart 5 4.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 5 Up::
+if FileExist("F5\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 5.lnk
+else if FileExist("F5\5.url")
+Run,"%A_ScriptFullPath%" /restart 5 5.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 6 Up::
+if FileExist("F5\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 6.lnk
+else if FileExist("F5\6.url")
+Run,"%A_ScriptFullPath%" /restart 5 6.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 7 Up::
+if FileExist("F5\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 7.lnk
+else if FileExist("F5\7.url")
+Run,"%A_ScriptFullPath%" /restart 5 7.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 8 Up::
+if FileExist("F5\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 8.lnk
+else if FileExist("F5\8.url")
+Run,"%A_ScriptFullPath%" /restart 5 8.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 9 Up::
+if FileExist("F5\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 9.lnk
+else if FileExist("F5\9.url")
+Run,"%A_ScriptFullPath%" /restart 5 9.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
+F5 & 0 Up::
+if FileExist("F5\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 5 0.lnk
+else if FileExist("F5\0.url")
+Run,"%A_ScriptFullPath%" /restart 5 0.url
+else
+{
+FileCreateDir,F5
+Run,F5
+}
+Return
+
 
 F6 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F6
-Run, %LocalAppData%\Power Keys\F6
+FileCreateDir,F6
+Run,F6
 Return
 
-F6 & a Up::Run,"%A_ScriptFullPath%" 6 a
-F6 & b Up::Run,"%A_ScriptFullPath%" 6 b
-F6 & c Up::Run,"%A_ScriptFullPath%" 6 c
-F6 & d Up::Run,"%A_ScriptFullPath%" 6 d
-F6 & e Up::Run,"%A_ScriptFullPath%" 6 e
-F6 & f Up::Run,"%A_ScriptFullPath%" 6 f
-F6 & g Up::Run,"%A_ScriptFullPath%" 6 g
-F6 & h Up::Run,"%A_ScriptFullPath%" 6 h
-F6 & i Up::Run,"%A_ScriptFullPath%" 6 i
-F6 & j Up::Run,"%A_ScriptFullPath%" 6 j
-F6 & k Up::Run,"%A_ScriptFullPath%" 6 k
-F6 & l Up::Run,"%A_ScriptFullPath%" 6 l
-F6 & m Up::Run,"%A_ScriptFullPath%" 6 m
-F6 & n Up::Run,"%A_ScriptFullPath%" 6 n
-F6 & o Up::Run,"%A_ScriptFullPath%" 6 o
-F6 & p Up::Run,"%A_ScriptFullPath%" 6 p
-F6 & q Up::Run,"%A_ScriptFullPath%" 6 q
-F6 & r Up::Run,"%A_ScriptFullPath%" 6 r
-F6 & s Up::Run,"%A_ScriptFullPath%" 6 s
-F6 & t Up::Run,"%A_ScriptFullPath%" 6 t
-F6 & u Up::Run,"%A_ScriptFullPath%" 6 u
-F6 & v Up::Run,"%A_ScriptFullPath%" 6 v
-F6 & w Up::Run,"%A_ScriptFullPath%" 6 w
-F6 & x Up::Run,"%A_ScriptFullPath%" 6 x
-F6 & y Up::Run,"%A_ScriptFullPath%" 6 y
-F6 & z Up::Run,"%A_ScriptFullPath%" 6 z
-F6 & 1 Up::Run,"%A_ScriptFullPath%" 6 1
-F6 & 2 Up::Run,"%A_ScriptFullPath%" 6 2
-F6 & 3 Up::Run,"%A_ScriptFullPath%" 6 3
-F6 & 4 Up::Run,"%A_ScriptFullPath%" 6 4
-F6 & 5 Up::Run,"%A_ScriptFullPath%" 6 5
-F6 & 6 Up::Run,"%A_ScriptFullPath%" 6 6
-F6 & 7 Up::Run,"%A_ScriptFullPath%" 6 7
-F6 & 8 Up::Run,"%A_ScriptFullPath%" 6 8
-F6 & 9 Up::Run,"%A_ScriptFullPath%" 6 9
-F6 & 0 Up::Run,"%A_ScriptFullPath%" 6 0
+F6 & a Up::
+if FileExist("F6\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 a.lnk
+else if FileExist("F6\a.url")
+Run,"%A_ScriptFullPath%" /restart 6 a.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & b Up::
+if FileExist("F6\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 b.lnk
+else if FileExist("F6\b.url")
+Run,"%A_ScriptFullPath%" /restart 6 b.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & c Up::
+if FileExist("F6\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 c.lnk
+else if FileExist("F6\c.url")
+Run,"%A_ScriptFullPath%" /restart 6 c.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & d Up::
+if FileExist("F6\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 d.lnk
+else if FileExist("F6\d.url")
+Run,"%A_ScriptFullPath%" /restart 6 d.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & e Up::
+if FileExist("F6\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 e.lnk
+else if FileExist("F6\e.url")
+Run,"%A_ScriptFullPath%" /restart 6 e.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & f Up::
+if FileExist("F6\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 f.lnk
+else if FileExist("F6\f.url")
+Run,"%A_ScriptFullPath%" /restart 6 f.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & g Up::
+if FileExist("F6\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 g.lnk
+else if FileExist("F6\g.url")
+Run,"%A_ScriptFullPath%" /restart 6 g.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & h Up::
+if FileExist("F6\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 h.lnk
+else if FileExist("F6\h.url")
+Run,"%A_ScriptFullPath%" /restart 6 h.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & i Up::
+if FileExist("F6\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 i.lnk
+else if FileExist("F6\i.url")
+Run,"%A_ScriptFullPath%" /restart 6 i.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & j Up::
+if FileExist("F6\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 j.lnk
+else if FileExist("F6\j.url")
+Run,"%A_ScriptFullPath%" /restart 6 j.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & k Up::
+if FileExist("F6\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 k.lnk
+else if FileExist("F6\k.url")
+Run,"%A_ScriptFullPath%" /restart 6 k.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & l Up::
+if FileExist("F6\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 l.lnk
+else if FileExist("F6\l.url")
+Run,"%A_ScriptFullPath%" /restart 6 l.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & m Up::
+if FileExist("F6\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 m.lnk
+else if FileExist("F6\m.url")
+Run,"%A_ScriptFullPath%" /restart 6 m.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & n Up::
+if FileExist("F6\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 n.lnk
+else if FileExist("F6\n.url")
+Run,"%A_ScriptFullPath%" /restart 6 n.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & o Up::
+if FileExist("F6\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 o.lnk
+else if FileExist("F6\o.url")
+Run,"%A_ScriptFullPath%" /restart 6 o.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & p Up::
+if FileExist("F6\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 p.lnk
+else if FileExist("F6\p.url")
+Run,"%A_ScriptFullPath%" /restart 6 p.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & q Up::
+if FileExist("F6\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 q.lnk
+else if FileExist("F6\q.url")
+Run,"%A_ScriptFullPath%" /restart 6 q.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & r Up::
+if FileExist("F6\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 r.lnk
+else if FileExist("F6\r.url")
+Run,"%A_ScriptFullPath%" /restart 6 r.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & s Up::
+if FileExist("F6\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 s.lnk
+else if FileExist("F6\s.url")
+Run,"%A_ScriptFullPath%" /restart 6 s.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & t Up::
+if FileExist("F6\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 t.lnk
+else if FileExist("F6\t.url")
+Run,"%A_ScriptFullPath%" /restart 6 t.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & u Up::
+if FileExist("F6\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 u.lnk
+else if FileExist("F6\u.url")
+Run,"%A_ScriptFullPath%" /restart 6 u.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & v Up::
+if FileExist("F6\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 v.lnk
+else if FileExist("F6\v.url")
+Run,"%A_ScriptFullPath%" /restart 6 v.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & w Up::
+if FileExist("F6\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 w.lnk
+else if FileExist("F6\w.url")
+Run,"%A_ScriptFullPath%" /restart 6 w.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & x Up::
+if FileExist("F6\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 x.lnk
+else if FileExist("F6\x.url")
+Run,"%A_ScriptFullPath%" /restart 6 x.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & y Up::
+if FileExist("F6\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 y.lnk
+else if FileExist("F6\y.url")
+Run,"%A_ScriptFullPath%" /restart 6 y.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & z Up::
+if FileExist("F6\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 z.lnk
+else if FileExist("F6\z.url")
+Run,"%A_ScriptFullPath%" /restart 6 z.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 1 Up::
+if FileExist("F6\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 1.lnk
+else if FileExist("F6\1.url")
+Run,"%A_ScriptFullPath%" /restart 6 1.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 2 Up::
+if FileExist("F6\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 2.lnk
+else if FileExist("F6\2.url")
+Run,"%A_ScriptFullPath%" /restart 6 2.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 3 Up::
+if FileExist("F6\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 3.lnk
+else if FileExist("F6\3.url")
+Run,"%A_ScriptFullPath%" /restart 6 3.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 4 Up::
+if FileExist("F6\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 4.lnk
+else if FileExist("F6\4.url")
+Run,"%A_ScriptFullPath%" /restart 6 4.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 5 Up::
+if FileExist("F6\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 5.lnk
+else if FileExist("F6\5.url")
+Run,"%A_ScriptFullPath%" /restart 6 5.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 6 Up::
+if FileExist("F6\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 6.lnk
+else if FileExist("F6\6.url")
+Run,"%A_ScriptFullPath%" /restart 6 6.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 7 Up::
+if FileExist("F6\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 7.lnk
+else if FileExist("F6\7.url")
+Run,"%A_ScriptFullPath%" /restart 6 7.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 8 Up::
+if FileExist("F6\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 8.lnk
+else if FileExist("F6\8.url")
+Run,"%A_ScriptFullPath%" /restart 6 8.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 9 Up::
+if FileExist("F6\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 9.lnk
+else if FileExist("F6\9.url")
+Run,"%A_ScriptFullPath%" /restart 6 9.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
+F6 & 0 Up::
+if FileExist("F6\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 6 0.lnk
+else if FileExist("F6\0.url")
+Run,"%A_ScriptFullPath%" /restart 6 0.url
+else
+{
+FileCreateDir,F6
+Run,F6
+}
+Return
+
 
 F7 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F7
-Run, %LocalAppData%\Power Keys\F7
+FileCreateDir,F7
+Run,F7
 Return
 
-F7 & a Up::Run,"%A_ScriptFullPath%" 7 a
-F7 & b Up::Run,"%A_ScriptFullPath%" 7 b
-F7 & c Up::Run,"%A_ScriptFullPath%" 7 c
-F7 & d Up::Run,"%A_ScriptFullPath%" 7 d
-F7 & e Up::Run,"%A_ScriptFullPath%" 7 e
-F7 & f Up::Run,"%A_ScriptFullPath%" 7 f
-F7 & g Up::Run,"%A_ScriptFullPath%" 7 g
-F7 & h Up::Run,"%A_ScriptFullPath%" 7 h
-F7 & i Up::Run,"%A_ScriptFullPath%" 7 i
-F7 & j Up::Run,"%A_ScriptFullPath%" 7 j
-F7 & k Up::Run,"%A_ScriptFullPath%" 7 k
-F7 & l Up::Run,"%A_ScriptFullPath%" 7 l
-F7 & m Up::Run,"%A_ScriptFullPath%" 7 m
-F7 & n Up::Run,"%A_ScriptFullPath%" 7 n
-F7 & o Up::Run,"%A_ScriptFullPath%" 7 o
-F7 & p Up::Run,"%A_ScriptFullPath%" 7 p
-F7 & q Up::Run,"%A_ScriptFullPath%" 7 q
-F7 & r Up::Run,"%A_ScriptFullPath%" 7 r
-F7 & s Up::Run,"%A_ScriptFullPath%" 7 s
-F7 & t Up::Run,"%A_ScriptFullPath%" 7 t
-F7 & u Up::Run,"%A_ScriptFullPath%" 7 u
-F7 & v Up::Run,"%A_ScriptFullPath%" 7 v
-F7 & w Up::Run,"%A_ScriptFullPath%" 7 w
-F7 & x Up::Run,"%A_ScriptFullPath%" 7 x
-F7 & y Up::Run,"%A_ScriptFullPath%" 7 y
-F7 & z Up::Run,"%A_ScriptFullPath%" 7 z
-F7 & 1 Up::Run,"%A_ScriptFullPath%" 7 1
-F7 & 2 Up::Run,"%A_ScriptFullPath%" 7 2
-F7 & 3 Up::Run,"%A_ScriptFullPath%" 7 3
-F7 & 4 Up::Run,"%A_ScriptFullPath%" 7 4
-F7 & 5 Up::Run,"%A_ScriptFullPath%" 7 5
-F7 & 6 Up::Run,"%A_ScriptFullPath%" 7 6
-F7 & 7 Up::Run,"%A_ScriptFullPath%" 7 7
-F7 & 8 Up::Run,"%A_ScriptFullPath%" 7 8
-F7 & 9 Up::Run,"%A_ScriptFullPath%" 7 9
-F7 & 0 Up::Run,"%A_ScriptFullPath%" 7 0
+F7 & a Up::
+if FileExist("F7\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 a.lnk
+else if FileExist("F7\a.url")
+Run,"%A_ScriptFullPath%" /restart 7 a.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & b Up::
+if FileExist("F7\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 b.lnk
+else if FileExist("F7\b.url")
+Run,"%A_ScriptFullPath%" /restart 7 b.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & c Up::
+if FileExist("F7\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 c.lnk
+else if FileExist("F7\c.url")
+Run,"%A_ScriptFullPath%" /restart 7 c.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & d Up::
+if FileExist("F7\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 d.lnk
+else if FileExist("F7\d.url")
+Run,"%A_ScriptFullPath%" /restart 7 d.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & e Up::
+if FileExist("F7\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 e.lnk
+else if FileExist("F7\e.url")
+Run,"%A_ScriptFullPath%" /restart 7 e.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & f Up::
+if FileExist("F7\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 f.lnk
+else if FileExist("F7\f.url")
+Run,"%A_ScriptFullPath%" /restart 7 f.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & g Up::
+if FileExist("F7\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 g.lnk
+else if FileExist("F7\g.url")
+Run,"%A_ScriptFullPath%" /restart 7 g.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & h Up::
+if FileExist("F7\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 h.lnk
+else if FileExist("F7\h.url")
+Run,"%A_ScriptFullPath%" /restart 7 h.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & i Up::
+if FileExist("F7\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 i.lnk
+else if FileExist("F7\i.url")
+Run,"%A_ScriptFullPath%" /restart 7 i.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & j Up::
+if FileExist("F7\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 j.lnk
+else if FileExist("F7\j.url")
+Run,"%A_ScriptFullPath%" /restart 7 j.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & k Up::
+if FileExist("F7\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 k.lnk
+else if FileExist("F7\k.url")
+Run,"%A_ScriptFullPath%" /restart 7 k.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & l Up::
+if FileExist("F7\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 l.lnk
+else if FileExist("F7\l.url")
+Run,"%A_ScriptFullPath%" /restart 7 l.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & m Up::
+if FileExist("F7\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 m.lnk
+else if FileExist("F7\m.url")
+Run,"%A_ScriptFullPath%" /restart 7 m.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & n Up::
+if FileExist("F7\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 n.lnk
+else if FileExist("F7\n.url")
+Run,"%A_ScriptFullPath%" /restart 7 n.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & o Up::
+if FileExist("F7\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 o.lnk
+else if FileExist("F7\o.url")
+Run,"%A_ScriptFullPath%" /restart 7 o.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & p Up::
+if FileExist("F7\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 p.lnk
+else if FileExist("F7\p.url")
+Run,"%A_ScriptFullPath%" /restart 7 p.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & q Up::
+if FileExist("F7\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 q.lnk
+else if FileExist("F7\q.url")
+Run,"%A_ScriptFullPath%" /restart 7 q.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & r Up::
+if FileExist("F7\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 r.lnk
+else if FileExist("F7\r.url")
+Run,"%A_ScriptFullPath%" /restart 7 r.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & s Up::
+if FileExist("F7\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 s.lnk
+else if FileExist("F7\s.url")
+Run,"%A_ScriptFullPath%" /restart 7 s.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & t Up::
+if FileExist("F7\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 t.lnk
+else if FileExist("F7\t.url")
+Run,"%A_ScriptFullPath%" /restart 7 t.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & u Up::
+if FileExist("F7\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 u.lnk
+else if FileExist("F7\u.url")
+Run,"%A_ScriptFullPath%" /restart 7 u.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & v Up::
+if FileExist("F7\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 v.lnk
+else if FileExist("F7\v.url")
+Run,"%A_ScriptFullPath%" /restart 7 v.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & w Up::
+if FileExist("F7\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 w.lnk
+else if FileExist("F7\w.url")
+Run,"%A_ScriptFullPath%" /restart 7 w.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & x Up::
+if FileExist("F7\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 x.lnk
+else if FileExist("F7\x.url")
+Run,"%A_ScriptFullPath%" /restart 7 x.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & y Up::
+if FileExist("F7\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 y.lnk
+else if FileExist("F7\y.url")
+Run,"%A_ScriptFullPath%" /restart 7 y.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & z Up::
+if FileExist("F7\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 z.lnk
+else if FileExist("F7\z.url")
+Run,"%A_ScriptFullPath%" /restart 7 z.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 1 Up::
+if FileExist("F7\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 1.lnk
+else if FileExist("F7\1.url")
+Run,"%A_ScriptFullPath%" /restart 7 1.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 2 Up::
+if FileExist("F7\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 2.lnk
+else if FileExist("F7\2.url")
+Run,"%A_ScriptFullPath%" /restart 7 2.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 3 Up::
+if FileExist("F7\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 3.lnk
+else if FileExist("F7\3.url")
+Run,"%A_ScriptFullPath%" /restart 7 3.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 4 Up::
+if FileExist("F7\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 4.lnk
+else if FileExist("F7\4.url")
+Run,"%A_ScriptFullPath%" /restart 7 4.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 5 Up::
+if FileExist("F7\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 5.lnk
+else if FileExist("F7\5.url")
+Run,"%A_ScriptFullPath%" /restart 7 5.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 6 Up::
+if FileExist("F7\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 6.lnk
+else if FileExist("F7\6.url")
+Run,"%A_ScriptFullPath%" /restart 7 6.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 7 Up::
+if FileExist("F7\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 7.lnk
+else if FileExist("F7\7.url")
+Run,"%A_ScriptFullPath%" /restart 7 7.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 8 Up::
+if FileExist("F7\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 8.lnk
+else if FileExist("F7\8.url")
+Run,"%A_ScriptFullPath%" /restart 7 8.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 9 Up::
+if FileExist("F7\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 9.lnk
+else if FileExist("F7\9.url")
+Run,"%A_ScriptFullPath%" /restart 7 9.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
+F7 & 0 Up::
+if FileExist("F7\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 7 0.lnk
+else if FileExist("F7\0.url")
+Run,"%A_ScriptFullPath%" /restart 7 0.url
+else
+{
+FileCreateDir,F7
+Run,F7
+}
+Return
+
 
 F8 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F8
-Run, %LocalAppData%\Power Keys\F8
+FileCreateDir,F8
+Run,F8
 Return
 
-F8 & a Up::Run,"%A_ScriptFullPath%" 8 a
-F8 & b Up::Run,"%A_ScriptFullPath%" 8 b
-F8 & c Up::Run,"%A_ScriptFullPath%" 8 c
-F8 & d Up::Run,"%A_ScriptFullPath%" 8 d
-F8 & e Up::Run,"%A_ScriptFullPath%" 8 e
-F8 & f Up::Run,"%A_ScriptFullPath%" 8 f
-F8 & g Up::Run,"%A_ScriptFullPath%" 8 g
-F8 & h Up::Run,"%A_ScriptFullPath%" 8 h
-F8 & i Up::Run,"%A_ScriptFullPath%" 8 i
-F8 & j Up::Run,"%A_ScriptFullPath%" 8 j
-F8 & k Up::Run,"%A_ScriptFullPath%" 8 k
-F8 & l Up::Run,"%A_ScriptFullPath%" 8 l
-F8 & m Up::Run,"%A_ScriptFullPath%" 8 m
-F8 & n Up::Run,"%A_ScriptFullPath%" 8 n
-F8 & o Up::Run,"%A_ScriptFullPath%" 8 o
-F8 & p Up::Run,"%A_ScriptFullPath%" 8 p
-F8 & q Up::Run,"%A_ScriptFullPath%" 8 q
-F8 & r Up::Run,"%A_ScriptFullPath%" 8 r
-F8 & s Up::Run,"%A_ScriptFullPath%" 8 s
-F8 & t Up::Run,"%A_ScriptFullPath%" 8 t
-F8 & u Up::Run,"%A_ScriptFullPath%" 8 u
-F8 & v Up::Run,"%A_ScriptFullPath%" 8 v
-F8 & w Up::Run,"%A_ScriptFullPath%" 8 w
-F8 & x Up::Run,"%A_ScriptFullPath%" 8 x
-F8 & y Up::Run,"%A_ScriptFullPath%" 8 y
-F8 & z Up::Run,"%A_ScriptFullPath%" 8 z
-F8 & 1 Up::Run,"%A_ScriptFullPath%" 8 1
-F8 & 2 Up::Run,"%A_ScriptFullPath%" 8 2
-F8 & 3 Up::Run,"%A_ScriptFullPath%" 8 3
-F8 & 4 Up::Run,"%A_ScriptFullPath%" 8 4
-F8 & 5 Up::Run,"%A_ScriptFullPath%" 8 5
-F8 & 6 Up::Run,"%A_ScriptFullPath%" 8 6
-F8 & 7 Up::Run,"%A_ScriptFullPath%" 8 7
-F8 & 8 Up::Run,"%A_ScriptFullPath%" 8 8
-F8 & 9 Up::Run,"%A_ScriptFullPath%" 8 9
-F8 & 0 Up::Run,"%A_ScriptFullPath%" 8 0
+F8 & a Up::
+if FileExist("F8\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 a.lnk
+else if FileExist("F8\a.url")
+Run,"%A_ScriptFullPath%" /restart 8 a.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & b Up::
+if FileExist("F8\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 b.lnk
+else if FileExist("F8\b.url")
+Run,"%A_ScriptFullPath%" /restart 8 b.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & c Up::
+if FileExist("F8\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 c.lnk
+else if FileExist("F8\c.url")
+Run,"%A_ScriptFullPath%" /restart 8 c.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & d Up::
+if FileExist("F8\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 d.lnk
+else if FileExist("F8\d.url")
+Run,"%A_ScriptFullPath%" /restart 8 d.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & e Up::
+if FileExist("F8\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 e.lnk
+else if FileExist("F8\e.url")
+Run,"%A_ScriptFullPath%" /restart 8 e.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & f Up::
+if FileExist("F8\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 f.lnk
+else if FileExist("F8\f.url")
+Run,"%A_ScriptFullPath%" /restart 8 f.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & g Up::
+if FileExist("F8\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 g.lnk
+else if FileExist("F8\g.url")
+Run,"%A_ScriptFullPath%" /restart 8 g.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & h Up::
+if FileExist("F8\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 h.lnk
+else if FileExist("F8\h.url")
+Run,"%A_ScriptFullPath%" /restart 8 h.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & i Up::
+if FileExist("F8\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 i.lnk
+else if FileExist("F8\i.url")
+Run,"%A_ScriptFullPath%" /restart 8 i.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & j Up::
+if FileExist("F8\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 j.lnk
+else if FileExist("F8\j.url")
+Run,"%A_ScriptFullPath%" /restart 8 j.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & k Up::
+if FileExist("F8\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 k.lnk
+else if FileExist("F8\k.url")
+Run,"%A_ScriptFullPath%" /restart 8 k.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & l Up::
+if FileExist("F8\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 l.lnk
+else if FileExist("F8\l.url")
+Run,"%A_ScriptFullPath%" /restart 8 l.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & m Up::
+if FileExist("F8\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 m.lnk
+else if FileExist("F8\m.url")
+Run,"%A_ScriptFullPath%" /restart 8 m.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & n Up::
+if FileExist("F8\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 n.lnk
+else if FileExist("F8\n.url")
+Run,"%A_ScriptFullPath%" /restart 8 n.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & o Up::
+if FileExist("F8\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 o.lnk
+else if FileExist("F8\o.url")
+Run,"%A_ScriptFullPath%" /restart 8 o.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & p Up::
+if FileExist("F8\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 p.lnk
+else if FileExist("F8\p.url")
+Run,"%A_ScriptFullPath%" /restart 8 p.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & q Up::
+if FileExist("F8\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 q.lnk
+else if FileExist("F8\q.url")
+Run,"%A_ScriptFullPath%" /restart 8 q.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & r Up::
+if FileExist("F8\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 r.lnk
+else if FileExist("F8\r.url")
+Run,"%A_ScriptFullPath%" /restart 8 r.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & s Up::
+if FileExist("F8\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 s.lnk
+else if FileExist("F8\s.url")
+Run,"%A_ScriptFullPath%" /restart 8 s.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & t Up::
+if FileExist("F8\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 t.lnk
+else if FileExist("F8\t.url")
+Run,"%A_ScriptFullPath%" /restart 8 t.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & u Up::
+if FileExist("F8\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 u.lnk
+else if FileExist("F8\u.url")
+Run,"%A_ScriptFullPath%" /restart 8 u.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & v Up::
+if FileExist("F8\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 v.lnk
+else if FileExist("F8\v.url")
+Run,"%A_ScriptFullPath%" /restart 8 v.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & w Up::
+if FileExist("F8\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 w.lnk
+else if FileExist("F8\w.url")
+Run,"%A_ScriptFullPath%" /restart 8 w.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & x Up::
+if FileExist("F8\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 x.lnk
+else if FileExist("F8\x.url")
+Run,"%A_ScriptFullPath%" /restart 8 x.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & y Up::
+if FileExist("F8\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 y.lnk
+else if FileExist("F8\y.url")
+Run,"%A_ScriptFullPath%" /restart 8 y.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & z Up::
+if FileExist("F8\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 z.lnk
+else if FileExist("F8\z.url")
+Run,"%A_ScriptFullPath%" /restart 8 z.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 1 Up::
+if FileExist("F8\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 1.lnk
+else if FileExist("F8\1.url")
+Run,"%A_ScriptFullPath%" /restart 8 1.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 2 Up::
+if FileExist("F8\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 2.lnk
+else if FileExist("F8\2.url")
+Run,"%A_ScriptFullPath%" /restart 8 2.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 3 Up::
+if FileExist("F8\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 3.lnk
+else if FileExist("F8\3.url")
+Run,"%A_ScriptFullPath%" /restart 8 3.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 4 Up::
+if FileExist("F8\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 4.lnk
+else if FileExist("F8\4.url")
+Run,"%A_ScriptFullPath%" /restart 8 4.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 5 Up::
+if FileExist("F8\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 5.lnk
+else if FileExist("F8\5.url")
+Run,"%A_ScriptFullPath%" /restart 8 5.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 6 Up::
+if FileExist("F8\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 6.lnk
+else if FileExist("F8\6.url")
+Run,"%A_ScriptFullPath%" /restart 8 6.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 7 Up::
+if FileExist("F8\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 7.lnk
+else if FileExist("F8\7.url")
+Run,"%A_ScriptFullPath%" /restart 8 7.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 8 Up::
+if FileExist("F8\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 8.lnk
+else if FileExist("F8\8.url")
+Run,"%A_ScriptFullPath%" /restart 8 8.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 9 Up::
+if FileExist("F8\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 9.lnk
+else if FileExist("F8\9.url")
+Run,"%A_ScriptFullPath%" /restart 8 9.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
+F8 & 0 Up::
+if FileExist("F8\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 8 0.lnk
+else if FileExist("F8\0.url")
+Run,"%A_ScriptFullPath%" /restart 8 0.url
+else
+{
+FileCreateDir,F8
+Run,F8
+}
+Return
+
 
 F9 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F9
-Run, %LocalAppData%\Power Keys\F9
+FileCreateDir,F9
+Run,F9
 Return
 
-F9 & a Up::Run,"%A_ScriptFullPath%" 9 a
-F9 & b Up::Run,"%A_ScriptFullPath%" 9 b
-F9 & c Up::Run,"%A_ScriptFullPath%" 9 c
-F9 & d Up::Run,"%A_ScriptFullPath%" 9 d
-F9 & e Up::Run,"%A_ScriptFullPath%" 9 e
-F9 & f Up::Run,"%A_ScriptFullPath%" 9 f
-F9 & g Up::Run,"%A_ScriptFullPath%" 9 g
-F9 & h Up::Run,"%A_ScriptFullPath%" 9 h
-F9 & i Up::Run,"%A_ScriptFullPath%" 9 i
-F9 & j Up::Run,"%A_ScriptFullPath%" 9 j
-F9 & k Up::Run,"%A_ScriptFullPath%" 9 k
-F9 & l Up::Run,"%A_ScriptFullPath%" 9 l
-F9 & m Up::Run,"%A_ScriptFullPath%" 9 m
-F9 & n Up::Run,"%A_ScriptFullPath%" 9 n
-F9 & o Up::Run,"%A_ScriptFullPath%" 9 o
-F9 & p Up::Run,"%A_ScriptFullPath%" 9 p
-F9 & q Up::Run,"%A_ScriptFullPath%" 9 q
-F9 & r Up::Run,"%A_ScriptFullPath%" 9 r
-F9 & s Up::Run,"%A_ScriptFullPath%" 9 s
-F9 & t Up::Run,"%A_ScriptFullPath%" 9 t
-F9 & u Up::Run,"%A_ScriptFullPath%" 9 u
-F9 & v Up::Run,"%A_ScriptFullPath%" 9 v
-F9 & w Up::Run,"%A_ScriptFullPath%" 9 w
-F9 & x Up::Run,"%A_ScriptFullPath%" 9 x
-F9 & y Up::Run,"%A_ScriptFullPath%" 9 y
-F9 & z Up::Run,"%A_ScriptFullPath%" 9 z
-F9 & 1 Up::Run,"%A_ScriptFullPath%" 9 1
-F9 & 2 Up::Run,"%A_ScriptFullPath%" 9 2
-F9 & 3 Up::Run,"%A_ScriptFullPath%" 9 3
-F9 & 4 Up::Run,"%A_ScriptFullPath%" 9 4
-F9 & 5 Up::Run,"%A_ScriptFullPath%" 9 5
-F9 & 6 Up::Run,"%A_ScriptFullPath%" 9 6
-F9 & 7 Up::Run,"%A_ScriptFullPath%" 9 7
-F9 & 8 Up::Run,"%A_ScriptFullPath%" 9 8
-F9 & 9 Up::Run,"%A_ScriptFullPath%" 9 9
-F9 & 0 Up::Run,"%A_ScriptFullPath%" 9 0
+F9 & a Up::
+if FileExist("F9\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 a.lnk
+else if FileExist("F9\a.url")
+Run,"%A_ScriptFullPath%" /restart 9 a.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & b Up::
+if FileExist("F9\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 b.lnk
+else if FileExist("F9\b.url")
+Run,"%A_ScriptFullPath%" /restart 9 b.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & c Up::
+if FileExist("F9\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 c.lnk
+else if FileExist("F9\c.url")
+Run,"%A_ScriptFullPath%" /restart 9 c.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & d Up::
+if FileExist("F9\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 d.lnk
+else if FileExist("F9\d.url")
+Run,"%A_ScriptFullPath%" /restart 9 d.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & e Up::
+if FileExist("F9\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 e.lnk
+else if FileExist("F9\e.url")
+Run,"%A_ScriptFullPath%" /restart 9 e.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & f Up::
+if FileExist("F9\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 f.lnk
+else if FileExist("F9\f.url")
+Run,"%A_ScriptFullPath%" /restart 9 f.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & g Up::
+if FileExist("F9\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 g.lnk
+else if FileExist("F9\g.url")
+Run,"%A_ScriptFullPath%" /restart 9 g.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & h Up::
+if FileExist("F9\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 h.lnk
+else if FileExist("F9\h.url")
+Run,"%A_ScriptFullPath%" /restart 9 h.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & i Up::
+if FileExist("F9\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 i.lnk
+else if FileExist("F9\i.url")
+Run,"%A_ScriptFullPath%" /restart 9 i.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & j Up::
+if FileExist("F9\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 j.lnk
+else if FileExist("F9\j.url")
+Run,"%A_ScriptFullPath%" /restart 9 j.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & k Up::
+if FileExist("F9\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 k.lnk
+else if FileExist("F9\k.url")
+Run,"%A_ScriptFullPath%" /restart 9 k.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & l Up::
+if FileExist("F9\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 l.lnk
+else if FileExist("F9\l.url")
+Run,"%A_ScriptFullPath%" /restart 9 l.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & m Up::
+if FileExist("F9\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 m.lnk
+else if FileExist("F9\m.url")
+Run,"%A_ScriptFullPath%" /restart 9 m.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & n Up::
+if FileExist("F9\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 n.lnk
+else if FileExist("F9\n.url")
+Run,"%A_ScriptFullPath%" /restart 9 n.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & o Up::
+if FileExist("F9\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 o.lnk
+else if FileExist("F9\o.url")
+Run,"%A_ScriptFullPath%" /restart 9 o.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & p Up::
+if FileExist("F9\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 p.lnk
+else if FileExist("F9\p.url")
+Run,"%A_ScriptFullPath%" /restart 9 p.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & q Up::
+if FileExist("F9\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 q.lnk
+else if FileExist("F9\q.url")
+Run,"%A_ScriptFullPath%" /restart 9 q.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & r Up::
+if FileExist("F9\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 r.lnk
+else if FileExist("F9\r.url")
+Run,"%A_ScriptFullPath%" /restart 9 r.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & s Up::
+if FileExist("F9\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 s.lnk
+else if FileExist("F9\s.url")
+Run,"%A_ScriptFullPath%" /restart 9 s.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & t Up::
+if FileExist("F9\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 t.lnk
+else if FileExist("F9\t.url")
+Run,"%A_ScriptFullPath%" /restart 9 t.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & u Up::
+if FileExist("F9\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 u.lnk
+else if FileExist("F9\u.url")
+Run,"%A_ScriptFullPath%" /restart 9 u.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & v Up::
+if FileExist("F9\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 v.lnk
+else if FileExist("F9\v.url")
+Run,"%A_ScriptFullPath%" /restart 9 v.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & w Up::
+if FileExist("F9\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 w.lnk
+else if FileExist("F9\w.url")
+Run,"%A_ScriptFullPath%" /restart 9 w.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & x Up::
+if FileExist("F9\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 x.lnk
+else if FileExist("F9\x.url")
+Run,"%A_ScriptFullPath%" /restart 9 x.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & y Up::
+if FileExist("F9\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 y.lnk
+else if FileExist("F9\y.url")
+Run,"%A_ScriptFullPath%" /restart 9 y.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & z Up::
+if FileExist("F9\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 z.lnk
+else if FileExist("F9\z.url")
+Run,"%A_ScriptFullPath%" /restart 9 z.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 1 Up::
+if FileExist("F9\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 1.lnk
+else if FileExist("F9\1.url")
+Run,"%A_ScriptFullPath%" /restart 9 1.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 2 Up::
+if FileExist("F9\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 2.lnk
+else if FileExist("F9\2.url")
+Run,"%A_ScriptFullPath%" /restart 9 2.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 3 Up::
+if FileExist("F9\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 3.lnk
+else if FileExist("F9\3.url")
+Run,"%A_ScriptFullPath%" /restart 9 3.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 4 Up::
+if FileExist("F9\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 4.lnk
+else if FileExist("F9\4.url")
+Run,"%A_ScriptFullPath%" /restart 9 4.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 5 Up::
+if FileExist("F9\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 5.lnk
+else if FileExist("F9\5.url")
+Run,"%A_ScriptFullPath%" /restart 9 5.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 6 Up::
+if FileExist("F9\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 6.lnk
+else if FileExist("F9\6.url")
+Run,"%A_ScriptFullPath%" /restart 9 6.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 7 Up::
+if FileExist("F9\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 7.lnk
+else if FileExist("F9\7.url")
+Run,"%A_ScriptFullPath%" /restart 9 7.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 8 Up::
+if FileExist("F9\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 8.lnk
+else if FileExist("F9\8.url")
+Run,"%A_ScriptFullPath%" /restart 9 8.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 9 Up::
+if FileExist("F9\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 9.lnk
+else if FileExist("F9\9.url")
+Run,"%A_ScriptFullPath%" /restart 9 9.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
+F9 & 0 Up::
+if FileExist("F9\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 9 0.lnk
+else if FileExist("F9\0.url")
+Run,"%A_ScriptFullPath%" /restart 9 0.url
+else
+{
+FileCreateDir,F9
+Run,F9
+}
+Return
+
 
 F10 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F10
-Run, %LocalAppData%\Power Keys\F10
+FileCreateDir,F10
+Run,F10
 Return
 
-F10 & a Up::Run,"%A_ScriptFullPath%" 10 a
-F10 & b Up::Run,"%A_ScriptFullPath%" 10 b
-F10 & c Up::Run,"%A_ScriptFullPath%" 10 c
-F10 & d Up::Run,"%A_ScriptFullPath%" 10 d
-F10 & e Up::Run,"%A_ScriptFullPath%" 10 e
-F10 & f Up::Run,"%A_ScriptFullPath%" 10 f
-F10 & g Up::Run,"%A_ScriptFullPath%" 10 g
-F10 & h Up::Run,"%A_ScriptFullPath%" 10 h
-F10 & i Up::Run,"%A_ScriptFullPath%" 10 i
-F10 & j Up::Run,"%A_ScriptFullPath%" 10 j
-F10 & k Up::Run,"%A_ScriptFullPath%" 10 k
-F10 & l Up::Run,"%A_ScriptFullPath%" 10 l
-F10 & m Up::Run,"%A_ScriptFullPath%" 10 m
-F10 & n Up::Run,"%A_ScriptFullPath%" 10 n
-F10 & o Up::Run,"%A_ScriptFullPath%" 10 o
-F10 & p Up::Run,"%A_ScriptFullPath%" 10 p
-F10 & q Up::Run,"%A_ScriptFullPath%" 10 q
-F10 & r Up::Run,"%A_ScriptFullPath%" 10 r
-F10 & s Up::Run,"%A_ScriptFullPath%" 10 s
-F10 & t Up::Run,"%A_ScriptFullPath%" 10 t
-F10 & u Up::Run,"%A_ScriptFullPath%" 10 u
-F10 & v Up::Run,"%A_ScriptFullPath%" 10 v
-F10 & w Up::Run,"%A_ScriptFullPath%" 10 w
-F10 & x Up::Run,"%A_ScriptFullPath%" 10 x
-F10 & y Up::Run,"%A_ScriptFullPath%" 10 y
-F10 & z Up::Run,"%A_ScriptFullPath%" 10 z
-F10 & 1 Up::Run,"%A_ScriptFullPath%" 10 1
-F10 & 2 Up::Run,"%A_ScriptFullPath%" 10 2
-F10 & 3 Up::Run,"%A_ScriptFullPath%" 10 3
-F10 & 4 Up::Run,"%A_ScriptFullPath%" 10 4
-F10 & 5 Up::Run,"%A_ScriptFullPath%" 10 5
-F10 & 6 Up::Run,"%A_ScriptFullPath%" 10 6
-F10 & 7 Up::Run,"%A_ScriptFullPath%" 10 7
-F10 & 8 Up::Run,"%A_ScriptFullPath%" 10 8
-F10 & 9 Up::Run,"%A_ScriptFullPath%" 10 9
-F10 & 0 Up::Run,"%A_ScriptFullPath%" 10 0
+F10 & a Up::
+if FileExist("F10\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 a.lnk
+else if FileExist("F10\a.url")
+Run,"%A_ScriptFullPath%" /restart 10 a.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & b Up::
+if FileExist("F10\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 b.lnk
+else if FileExist("F10\b.url")
+Run,"%A_ScriptFullPath%" /restart 10 b.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & c Up::
+if FileExist("F10\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 c.lnk
+else if FileExist("F10\c.url")
+Run,"%A_ScriptFullPath%" /restart 10 c.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & d Up::
+if FileExist("F10\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 d.lnk
+else if FileExist("F10\d.url")
+Run,"%A_ScriptFullPath%" /restart 10 d.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & e Up::
+if FileExist("F10\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 e.lnk
+else if FileExist("F10\e.url")
+Run,"%A_ScriptFullPath%" /restart 10 e.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & f Up::
+if FileExist("F10\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 f.lnk
+else if FileExist("F10\f.url")
+Run,"%A_ScriptFullPath%" /restart 10 f.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & g Up::
+if FileExist("F10\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 g.lnk
+else if FileExist("F10\g.url")
+Run,"%A_ScriptFullPath%" /restart 10 g.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & h Up::
+if FileExist("F10\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 h.lnk
+else if FileExist("F10\h.url")
+Run,"%A_ScriptFullPath%" /restart 10 h.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & i Up::
+if FileExist("F10\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 i.lnk
+else if FileExist("F10\i.url")
+Run,"%A_ScriptFullPath%" /restart 10 i.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & j Up::
+if FileExist("F10\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 j.lnk
+else if FileExist("F10\j.url")
+Run,"%A_ScriptFullPath%" /restart 10 j.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & k Up::
+if FileExist("F10\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 k.lnk
+else if FileExist("F10\k.url")
+Run,"%A_ScriptFullPath%" /restart 10 k.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & l Up::
+if FileExist("F10\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 l.lnk
+else if FileExist("F10\l.url")
+Run,"%A_ScriptFullPath%" /restart 10 l.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & m Up::
+if FileExist("F10\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 m.lnk
+else if FileExist("F10\m.url")
+Run,"%A_ScriptFullPath%" /restart 10 m.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & n Up::
+if FileExist("F10\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 n.lnk
+else if FileExist("F10\n.url")
+Run,"%A_ScriptFullPath%" /restart 10 n.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & o Up::
+if FileExist("F10\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 o.lnk
+else if FileExist("F10\o.url")
+Run,"%A_ScriptFullPath%" /restart 10 o.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & p Up::
+if FileExist("F10\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 p.lnk
+else if FileExist("F10\p.url")
+Run,"%A_ScriptFullPath%" /restart 10 p.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & q Up::
+if FileExist("F10\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 q.lnk
+else if FileExist("F10\q.url")
+Run,"%A_ScriptFullPath%" /restart 10 q.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & r Up::
+if FileExist("F10\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 r.lnk
+else if FileExist("F10\r.url")
+Run,"%A_ScriptFullPath%" /restart 10 r.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & s Up::
+if FileExist("F10\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 s.lnk
+else if FileExist("F10\s.url")
+Run,"%A_ScriptFullPath%" /restart 10 s.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & t Up::
+if FileExist("F10\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 t.lnk
+else if FileExist("F10\t.url")
+Run,"%A_ScriptFullPath%" /restart 10 t.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & u Up::
+if FileExist("F10\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 u.lnk
+else if FileExist("F10\u.url")
+Run,"%A_ScriptFullPath%" /restart 10 u.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & v Up::
+if FileExist("F10\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 v.lnk
+else if FileExist("F10\v.url")
+Run,"%A_ScriptFullPath%" /restart 10 v.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & w Up::
+if FileExist("F10\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 w.lnk
+else if FileExist("F10\w.url")
+Run,"%A_ScriptFullPath%" /restart 10 w.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & x Up::
+if FileExist("F10\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 x.lnk
+else if FileExist("F10\x.url")
+Run,"%A_ScriptFullPath%" /restart 10 x.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & y Up::
+if FileExist("F10\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 y.lnk
+else if FileExist("F10\y.url")
+Run,"%A_ScriptFullPath%" /restart 10 y.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & z Up::
+if FileExist("F10\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 z.lnk
+else if FileExist("F10\z.url")
+Run,"%A_ScriptFullPath%" /restart 10 z.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 1 Up::
+if FileExist("F10\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 1.lnk
+else if FileExist("F10\1.url")
+Run,"%A_ScriptFullPath%" /restart 10 1.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 2 Up::
+if FileExist("F10\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 2.lnk
+else if FileExist("F10\2.url")
+Run,"%A_ScriptFullPath%" /restart 10 2.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 3 Up::
+if FileExist("F10\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 3.lnk
+else if FileExist("F10\3.url")
+Run,"%A_ScriptFullPath%" /restart 10 3.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 4 Up::
+if FileExist("F10\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 4.lnk
+else if FileExist("F10\4.url")
+Run,"%A_ScriptFullPath%" /restart 10 4.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 5 Up::
+if FileExist("F10\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 5.lnk
+else if FileExist("F10\5.url")
+Run,"%A_ScriptFullPath%" /restart 10 5.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 6 Up::
+if FileExist("F10\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 6.lnk
+else if FileExist("F10\6.url")
+Run,"%A_ScriptFullPath%" /restart 10 6.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 7 Up::
+if FileExist("F10\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 7.lnk
+else if FileExist("F10\7.url")
+Run,"%A_ScriptFullPath%" /restart 10 7.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 8 Up::
+if FileExist("F10\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 8.lnk
+else if FileExist("F10\8.url")
+Run,"%A_ScriptFullPath%" /restart 10 8.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 9 Up::
+if FileExist("F10\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 9.lnk
+else if FileExist("F10\9.url")
+Run,"%A_ScriptFullPath%" /restart 10 9.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
+F10 & 0 Up::
+if FileExist("F10\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 10 0.lnk
+else if FileExist("F10\0.url")
+Run,"%A_ScriptFullPath%" /restart 10 0.url
+else
+{
+FileCreateDir,F10
+Run,F10
+}
+Return
+
 
 F11 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F11
-Run, %LocalAppData%\Power Keys\F11
+FileCreateDir,F11
+Run,F11
 Return
 
-F11 & a Up::Run,"%A_ScriptFullPath%" 11 a
-F11 & b Up::Run,"%A_ScriptFullPath%" 11 b
-F11 & c Up::Run,"%A_ScriptFullPath%" 11 c
-F11 & d Up::Run,"%A_ScriptFullPath%" 11 d
-F11 & e Up::Run,"%A_ScriptFullPath%" 11 e
-F11 & f Up::Run,"%A_ScriptFullPath%" 11 f
-F11 & g Up::Run,"%A_ScriptFullPath%" 11 g
-F11 & h Up::Run,"%A_ScriptFullPath%" 11 h
-F11 & i Up::Run,"%A_ScriptFullPath%" 11 i
-F11 & j Up::Run,"%A_ScriptFullPath%" 11 j
-F11 & k Up::Run,"%A_ScriptFullPath%" 11 k
-F11 & l Up::Run,"%A_ScriptFullPath%" 11 l
-F11 & m Up::Run,"%A_ScriptFullPath%" 11 m
-F11 & n Up::Run,"%A_ScriptFullPath%" 11 n
-F11 & o Up::Run,"%A_ScriptFullPath%" 11 o
-F11 & p Up::Run,"%A_ScriptFullPath%" 11 p
-F11 & q Up::Run,"%A_ScriptFullPath%" 11 q
-F11 & r Up::Run,"%A_ScriptFullPath%" 11 r
-F11 & s Up::Run,"%A_ScriptFullPath%" 11 s
-F11 & t Up::Run,"%A_ScriptFullPath%" 11 t
-F11 & u Up::Run,"%A_ScriptFullPath%" 11 u
-F11 & v Up::Run,"%A_ScriptFullPath%" 11 v
-F11 & w Up::Run,"%A_ScriptFullPath%" 11 w
-F11 & x Up::Run,"%A_ScriptFullPath%" 11 x
-F11 & y Up::Run,"%A_ScriptFullPath%" 11 y
-F11 & z Up::Run,"%A_ScriptFullPath%" 11 z
-F11 & 1 Up::Run,"%A_ScriptFullPath%" 11 1
-F11 & 2 Up::Run,"%A_ScriptFullPath%" 11 2
-F11 & 3 Up::Run,"%A_ScriptFullPath%" 11 3
-F11 & 4 Up::Run,"%A_ScriptFullPath%" 11 4
-F11 & 5 Up::Run,"%A_ScriptFullPath%" 11 5
-F11 & 6 Up::Run,"%A_ScriptFullPath%" 11 6
-F11 & 7 Up::Run,"%A_ScriptFullPath%" 11 7
-F11 & 8 Up::Run,"%A_ScriptFullPath%" 11 8
-F11 & 9 Up::Run,"%A_ScriptFullPath%" 11 9
-F11 & 0 Up::Run,"%A_ScriptFullPath%" 11 0
+F11 & a Up::
+if FileExist("F11\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 a.lnk
+else if FileExist("F11\a.url")
+Run,"%A_ScriptFullPath%" /restart 11 a.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & b Up::
+if FileExist("F11\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 b.lnk
+else if FileExist("F11\b.url")
+Run,"%A_ScriptFullPath%" /restart 11 b.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & c Up::
+if FileExist("F11\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 c.lnk
+else if FileExist("F11\c.url")
+Run,"%A_ScriptFullPath%" /restart 11 c.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & d Up::
+if FileExist("F11\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 d.lnk
+else if FileExist("F11\d.url")
+Run,"%A_ScriptFullPath%" /restart 11 d.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & e Up::
+if FileExist("F11\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 e.lnk
+else if FileExist("F11\e.url")
+Run,"%A_ScriptFullPath%" /restart 11 e.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & f Up::
+if FileExist("F11\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 f.lnk
+else if FileExist("F11\f.url")
+Run,"%A_ScriptFullPath%" /restart 11 f.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & g Up::
+if FileExist("F11\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 g.lnk
+else if FileExist("F11\g.url")
+Run,"%A_ScriptFullPath%" /restart 11 g.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & h Up::
+if FileExist("F11\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 h.lnk
+else if FileExist("F11\h.url")
+Run,"%A_ScriptFullPath%" /restart 11 h.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & i Up::
+if FileExist("F11\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 i.lnk
+else if FileExist("F11\i.url")
+Run,"%A_ScriptFullPath%" /restart 11 i.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & j Up::
+if FileExist("F11\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 j.lnk
+else if FileExist("F11\j.url")
+Run,"%A_ScriptFullPath%" /restart 11 j.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & k Up::
+if FileExist("F11\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 k.lnk
+else if FileExist("F11\k.url")
+Run,"%A_ScriptFullPath%" /restart 11 k.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & l Up::
+if FileExist("F11\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 l.lnk
+else if FileExist("F11\l.url")
+Run,"%A_ScriptFullPath%" /restart 11 l.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & m Up::
+if FileExist("F11\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 m.lnk
+else if FileExist("F11\m.url")
+Run,"%A_ScriptFullPath%" /restart 11 m.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & n Up::
+if FileExist("F11\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 n.lnk
+else if FileExist("F11\n.url")
+Run,"%A_ScriptFullPath%" /restart 11 n.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & o Up::
+if FileExist("F11\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 o.lnk
+else if FileExist("F11\o.url")
+Run,"%A_ScriptFullPath%" /restart 11 o.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & p Up::
+if FileExist("F11\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 p.lnk
+else if FileExist("F11\p.url")
+Run,"%A_ScriptFullPath%" /restart 11 p.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & q Up::
+if FileExist("F11\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 q.lnk
+else if FileExist("F11\q.url")
+Run,"%A_ScriptFullPath%" /restart 11 q.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & r Up::
+if FileExist("F11\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 r.lnk
+else if FileExist("F11\r.url")
+Run,"%A_ScriptFullPath%" /restart 11 r.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & s Up::
+if FileExist("F11\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 s.lnk
+else if FileExist("F11\s.url")
+Run,"%A_ScriptFullPath%" /restart 11 s.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & t Up::
+if FileExist("F11\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 t.lnk
+else if FileExist("F11\t.url")
+Run,"%A_ScriptFullPath%" /restart 11 t.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & u Up::
+if FileExist("F11\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 u.lnk
+else if FileExist("F11\u.url")
+Run,"%A_ScriptFullPath%" /restart 11 u.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & v Up::
+if FileExist("F11\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 v.lnk
+else if FileExist("F11\v.url")
+Run,"%A_ScriptFullPath%" /restart 11 v.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & w Up::
+if FileExist("F11\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 w.lnk
+else if FileExist("F11\w.url")
+Run,"%A_ScriptFullPath%" /restart 11 w.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & x Up::
+if FileExist("F11\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 x.lnk
+else if FileExist("F11\x.url")
+Run,"%A_ScriptFullPath%" /restart 11 x.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & y Up::
+if FileExist("F11\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 y.lnk
+else if FileExist("F11\y.url")
+Run,"%A_ScriptFullPath%" /restart 11 y.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & z Up::
+if FileExist("F11\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 z.lnk
+else if FileExist("F11\z.url")
+Run,"%A_ScriptFullPath%" /restart 11 z.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 1 Up::
+if FileExist("F11\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 1.lnk
+else if FileExist("F11\1.url")
+Run,"%A_ScriptFullPath%" /restart 11 1.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 2 Up::
+if FileExist("F11\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 2.lnk
+else if FileExist("F11\2.url")
+Run,"%A_ScriptFullPath%" /restart 11 2.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 3 Up::
+if FileExist("F11\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 3.lnk
+else if FileExist("F11\3.url")
+Run,"%A_ScriptFullPath%" /restart 11 3.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 4 Up::
+if FileExist("F11\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 4.lnk
+else if FileExist("F11\4.url")
+Run,"%A_ScriptFullPath%" /restart 11 4.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 5 Up::
+if FileExist("F11\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 5.lnk
+else if FileExist("F11\5.url")
+Run,"%A_ScriptFullPath%" /restart 11 5.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 6 Up::
+if FileExist("F11\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 6.lnk
+else if FileExist("F11\6.url")
+Run,"%A_ScriptFullPath%" /restart 11 6.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 7 Up::
+if FileExist("F11\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 7.lnk
+else if FileExist("F11\7.url")
+Run,"%A_ScriptFullPath%" /restart 11 7.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 8 Up::
+if FileExist("F11\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 8.lnk
+else if FileExist("F11\8.url")
+Run,"%A_ScriptFullPath%" /restart 11 8.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 9 Up::
+if FileExist("F11\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 9.lnk
+else if FileExist("F11\9.url")
+Run,"%A_ScriptFullPath%" /restart 11 9.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
+F11 & 0 Up::
+if FileExist("F11\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 11 0.lnk
+else if FileExist("F11\0.url")
+Run,"%A_ScriptFullPath%" /restart 11 0.url
+else
+{
+FileCreateDir,F11
+Run,F11
+}
+Return
+
 
 F12 & Enter Up::
-FileCreateDir,%LocalAppData%\Power Keys\F12
-Run, %LocalAppData%\Power Keys\F12
+FileCreateDir,F12
+Run,F12
 Return
 
-F12 & a Up::Run,"%A_ScriptFullPath%" 12 a
-F12 & b Up::Run,"%A_ScriptFullPath%" 12 b
-F12 & c Up::Run,"%A_ScriptFullPath%" 12 c
-F12 & d Up::Run,"%A_ScriptFullPath%" 12 d
-F12 & e Up::Run,"%A_ScriptFullPath%" 12 e
-F12 & f Up::Run,"%A_ScriptFullPath%" 12 f
-F12 & g Up::Run,"%A_ScriptFullPath%" 12 g
-F12 & h Up::Run,"%A_ScriptFullPath%" 12 h
-F12 & i Up::Run,"%A_ScriptFullPath%" 12 i
-F12 & j Up::Run,"%A_ScriptFullPath%" 12 j
-F12 & k Up::Run,"%A_ScriptFullPath%" 12 k
-F12 & l Up::Run,"%A_ScriptFullPath%" 12 l
-F12 & m Up::Run,"%A_ScriptFullPath%" 12 m
-F12 & n Up::Run,"%A_ScriptFullPath%" 12 n
-F12 & o Up::Run,"%A_ScriptFullPath%" 12 o
-F12 & p Up::Run,"%A_ScriptFullPath%" 12 p
-F12 & q Up::Run,"%A_ScriptFullPath%" 12 q
-F12 & r Up::Run,"%A_ScriptFullPath%" 12 r
-F12 & s Up::Run,"%A_ScriptFullPath%" 12 s
-F12 & t Up::Run,"%A_ScriptFullPath%" 12 t
-F12 & u Up::Run,"%A_ScriptFullPath%" 12 u
-F12 & v Up::Run,"%A_ScriptFullPath%" 12 v
-F12 & w Up::Run,"%A_ScriptFullPath%" 12 w
-F12 & x Up::Run,"%A_ScriptFullPath%" 12 x
-F12 & y Up::Run,"%A_ScriptFullPath%" 12 y
-F12 & z Up::Run,"%A_ScriptFullPath%" 12 z
-F12 & 1 Up::Run,"%A_ScriptFullPath%" 12 1
-F12 & 2 Up::Run,"%A_ScriptFullPath%" 12 2
-F12 & 3 Up::Run,"%A_ScriptFullPath%" 12 3
-F12 & 4 Up::Run,"%A_ScriptFullPath%" 12 4
-F12 & 5 Up::Run,"%A_ScriptFullPath%" 12 5
-F12 & 6 Up::Run,"%A_ScriptFullPath%" 12 6
-F12 & 7 Up::Run,"%A_ScriptFullPath%" 12 7
-F12 & 8 Up::Run,"%A_ScriptFullPath%" 12 8
-F12 & 9 Up::Run,"%A_ScriptFullPath%" 12 9
-F12 & 0 Up::Run,"%A_ScriptFullPath%" 12 0
+F12 & a Up::
+if FileExist("F12\a.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 a.lnk
+else if FileExist("F12\a.url")
+Run,"%A_ScriptFullPath%" /restart 12 a.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & b Up::
+if FileExist("F12\b.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 b.lnk
+else if FileExist("F12\b.url")
+Run,"%A_ScriptFullPath%" /restart 12 b.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & c Up::
+if FileExist("F12\c.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 c.lnk
+else if FileExist("F12\c.url")
+Run,"%A_ScriptFullPath%" /restart 12 c.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & d Up::
+if FileExist("F12\d.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 d.lnk
+else if FileExist("F12\d.url")
+Run,"%A_ScriptFullPath%" /restart 12 d.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & e Up::
+if FileExist("F12\e.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 e.lnk
+else if FileExist("F12\e.url")
+Run,"%A_ScriptFullPath%" /restart 12 e.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & f Up::
+if FileExist("F12\f.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 f.lnk
+else if FileExist("F12\f.url")
+Run,"%A_ScriptFullPath%" /restart 12 f.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & g Up::
+if FileExist("F12\g.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 g.lnk
+else if FileExist("F12\g.url")
+Run,"%A_ScriptFullPath%" /restart 12 g.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & h Up::
+if FileExist("F12\h.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 h.lnk
+else if FileExist("F12\h.url")
+Run,"%A_ScriptFullPath%" /restart 12 h.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & i Up::
+if FileExist("F12\i.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 i.lnk
+else if FileExist("F12\i.url")
+Run,"%A_ScriptFullPath%" /restart 12 i.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & j Up::
+if FileExist("F12\j.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 j.lnk
+else if FileExist("F12\j.url")
+Run,"%A_ScriptFullPath%" /restart 12 j.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & k Up::
+if FileExist("F12\k.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 k.lnk
+else if FileExist("F12\k.url")
+Run,"%A_ScriptFullPath%" /restart 12 k.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & l Up::
+if FileExist("F12\l.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 l.lnk
+else if FileExist("F12\l.url")
+Run,"%A_ScriptFullPath%" /restart 12 l.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & m Up::
+if FileExist("F12\m.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 m.lnk
+else if FileExist("F12\m.url")
+Run,"%A_ScriptFullPath%" /restart 12 m.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & n Up::
+if FileExist("F12\n.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 n.lnk
+else if FileExist("F12\n.url")
+Run,"%A_ScriptFullPath%" /restart 12 n.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & o Up::
+if FileExist("F12\o.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 o.lnk
+else if FileExist("F12\o.url")
+Run,"%A_ScriptFullPath%" /restart 12 o.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & p Up::
+if FileExist("F12\p.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 p.lnk
+else if FileExist("F12\p.url")
+Run,"%A_ScriptFullPath%" /restart 12 p.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & q Up::
+if FileExist("F12\q.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 q.lnk
+else if FileExist("F12\q.url")
+Run,"%A_ScriptFullPath%" /restart 12 q.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & r Up::
+if FileExist("F12\r.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 r.lnk
+else if FileExist("F12\r.url")
+Run,"%A_ScriptFullPath%" /restart 12 r.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & s Up::
+if FileExist("F12\s.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 s.lnk
+else if FileExist("F12\s.url")
+Run,"%A_ScriptFullPath%" /restart 12 s.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & t Up::
+if FileExist("F12\t.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 t.lnk
+else if FileExist("F12\t.url")
+Run,"%A_ScriptFullPath%" /restart 12 t.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & u Up::
+if FileExist("F12\u.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 u.lnk
+else if FileExist("F12\u.url")
+Run,"%A_ScriptFullPath%" /restart 12 u.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & v Up::
+if FileExist("F12\v.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 v.lnk
+else if FileExist("F12\v.url")
+Run,"%A_ScriptFullPath%" /restart 12 v.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & w Up::
+if FileExist("F12\w.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 w.lnk
+else if FileExist("F12\w.url")
+Run,"%A_ScriptFullPath%" /restart 12 w.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & x Up::
+if FileExist("F12\x.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 x.lnk
+else if FileExist("F12\x.url")
+Run,"%A_ScriptFullPath%" /restart 12 x.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & y Up::
+if FileExist("F12\y.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 y.lnk
+else if FileExist("F12\y.url")
+Run,"%A_ScriptFullPath%" /restart 12 y.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & z Up::
+if FileExist("F12\z.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 z.lnk
+else if FileExist("F12\z.url")
+Run,"%A_ScriptFullPath%" /restart 12 z.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 1 Up::
+if FileExist("F12\1.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 1.lnk
+else if FileExist("F12\1.url")
+Run,"%A_ScriptFullPath%" /restart 12 1.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 2 Up::
+if FileExist("F12\2.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 2.lnk
+else if FileExist("F12\2.url")
+Run,"%A_ScriptFullPath%" /restart 12 2.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 3 Up::
+if FileExist("F12\3.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 3.lnk
+else if FileExist("F12\3.url")
+Run,"%A_ScriptFullPath%" /restart 12 3.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 4 Up::
+if FileExist("F12\4.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 4.lnk
+else if FileExist("F12\4.url")
+Run,"%A_ScriptFullPath%" /restart 12 4.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 5 Up::
+if FileExist("F12\5.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 5.lnk
+else if FileExist("F12\5.url")
+Run,"%A_ScriptFullPath%" /restart 12 5.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 6 Up::
+if FileExist("F12\6.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 6.lnk
+else if FileExist("F12\6.url")
+Run,"%A_ScriptFullPath%" /restart 12 6.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 7 Up::
+if FileExist("F12\7.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 7.lnk
+else if FileExist("F12\7.url")
+Run,"%A_ScriptFullPath%" /restart 12 7.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 8 Up::
+if FileExist("F12\8.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 8.lnk
+else if FileExist("F12\8.url")
+Run,"%A_ScriptFullPath%" /restart 12 8.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 9 Up::
+if FileExist("F12\9.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 9.lnk
+else if FileExist("F12\9.url")
+Run,"%A_ScriptFullPath%" /restart 12 9.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
+F12 & 0 Up::
+if FileExist("F12\0.lnk")
+Run,"%A_ScriptFullPath%" /restart 12 0.lnk
+else if FileExist("F12\0.url")
+Run,"%A_ScriptFullPath%" /restart 12 0.url
+else
+{
+FileCreateDir,F12
+Run,F12
+}
+Return
+
