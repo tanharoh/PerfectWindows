@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="3.0.7"
+v:="3.0.8"
 
 isenabled=0
 
