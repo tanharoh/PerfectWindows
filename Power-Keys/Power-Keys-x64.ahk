@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.2"
+v:="4.0.3"
 
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir,%LocalAppData%\Power Keys
@@ -224,8 +224,19 @@ isenabled=0
 ;MsgBox,0x40040,Power Keys,游戏模式已开启。
 Return
 
-Space::Space
-Space & Shift::Space
+Space::Send {Space}
+^Space::Send ^{Space}
++Space::Send +{Space}
+!Space::Send !{Space}
+^!Space::Send ^!{Space}
+!+Space::Send !+{Space}
+^+Space::Send ^+{Space}
+^+!Space::Send ^+!{Space}
+#Space::Send #{Space}
+^#Space::Send ^#{Space}
+#+Space::Send #+{Space}
+#!Space::Send #!{Space}
+Space & Shift::Send {Space}
 Space & F::Send {Left}
 Space & J::Send {Right}
 Space & G::Send +{WheelUp}
@@ -262,10 +273,6 @@ Space & 5::Send ^{l}
 Space & 6::Send ^{e}
 Space & 7::Send ^{r}
 Space & `::Send ^j
-Space & 1::Send ^{1}
-Space & 2::Send ^{2}
-Space & 3::Send ^{3}
-Space & 4::Send ^{4}
 Space & Tab::Send ^{a}
 Space & O::Send ^+,
 Space & P::Send ^+.
