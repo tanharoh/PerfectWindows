@@ -154,9 +154,9 @@
 |**`<` <big>`"`</big> `>`**|**上一首歌曲 / 暂停（继续）播放歌曲/ 下一首歌曲**
 |**`{`** **`}`**<br>**`Enter`**<br>**`Backspace`**|**切换至上一个 / 下一个虚拟桌面<br>新建虚拟桌面<br>关闭虚拟桌面**
 |**`Caps Lock`**|**（不再）将窗口锁定至最前**
-|**`Alt + Print Screen`**|**启动 Windows 截图工具**
-|**`0` 或 `NumLock`**|**启动计算器**
-|**`Delete`**|**打开回收站**
+|**`Shift + Print Screen`**|**启动 Windows 截图工具**
+|**`0`**|**启动计算器**
+|**`Delete`<br>`Shift + Delete`**|**打开回收站<br>清空回收站**
 |**`End`**|**休眠 Windows**
 |**`Page Up` `Page Down`<br>`Esc`**|**放大 / 缩小屏幕<br>退出放大镜**
 
