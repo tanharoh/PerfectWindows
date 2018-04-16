@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.1"
+v:="4.0.2"
 
 if A_Is64bitOS
 {
@@ -108,9 +108,9 @@ Return
 Lwin & / Up::
 Rwin & / Up::
 if GameMode=1
-MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
+MsgBox,0x40040,Power Keys,版本：%v%`n作者：知阳`n游戏模式：已开启
 else
-MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式未开启。
+MsgBox,0x40040,Power Keys,版本：%v%`n作者：知阳`n游戏模式：未开启
 Return
 
 LWin & NumLock Up::
@@ -130,9 +130,16 @@ RWin & CapsLock::
 winset,AlwaysOnTop,, A
 Return
 
-LWin & Delete Up::
-RWin & Delete Up::
+#Delete::
 Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
+Return
+
+#+Delete::
+msgbox,0x40131,Power Keys,确定清空回收站？
+ifmsgbox,ok
+{
+FileRecycleEmpty
+}
 Return
 
 LWin & Enter Up::
@@ -163,9 +170,15 @@ Return
 
 Lwin & F4::
 Rwin & F4::
-MsgBox,0x40114,Power Keys %v% by 知阳,退出 Power Keys？
-ifMsgBox,yes
+MsgBox,0x40131,Power Keys,确定退出 Power Keys？
+ifMsgBox,ok
+{
+RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 ExitApp
+}
 Return
 
 LWin & F5::
@@ -195,7 +208,7 @@ Return
 
 #if isenabled
 
-#!PrintScreen::
+#+PrintScreen::
 toRun="%systemroot%\system32\snippingtool.exe"
 ShellRun(toRun)
 Return
@@ -210,11 +223,10 @@ Rwin & PgDn::
 Send #-
 Return
 
-LWin & G::
-RWin & G::
+#G::
 GameMode=1
 isenabled=0
-;MsgBox,0x40040,Power Keys %v% by 知阳,游戏模式已开启。
+;MsgBox,0x40040,Power Keys,游戏模式已开启。
 Return
 
 Space::Space
