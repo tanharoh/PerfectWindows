@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.3"
+v:="4.0.4"
 
 FileCreateDir,%LocalAppData%\Power Keys
 SetWorkingDir,%LocalAppData%\Power Keys
@@ -225,17 +225,19 @@ isenabled=0
 Return
 
 Space::Send {Space}
-^Space::Send ^{Space}
-+Space::Send +{Space}
-!Space::Send !{Space}
-^!Space::Send ^!{Space}
-!+Space::Send !+{Space}
-^+Space::Send ^+{Space}
-^+!Space::Send ^+!{Space}
-#Space::Send #{Space}
-^#Space::Send ^#{Space}
-#+Space::Send #+{Space}
-#!Space::Send #!{Space}
+
+^Space::^Space
++Space::+Space
+!Space::!Space
+^!Space::^!Space
+!+Space::!+Space
+^+Space::^+Space
+^+!Space::^+!Space
+#Space::#Space
+^#Space::^#Space
+#+Space::#+Space
+#!Space::#!Space
+
 Space & Shift::Send {Space}
 Space & F::Send {Left}
 Space & J::Send {Right}
