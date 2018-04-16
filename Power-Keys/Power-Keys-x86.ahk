@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.0"
+v:="4.0.1"
 
 if A_Is64bitOS
 {
@@ -157,7 +157,8 @@ Return
 
 LWin & F1::
 RWin & F1::
-Run, https://github.com/szzhiyang/PerfectWindows/blob/master/Power-Keys/Power-Keys.md,,UseErrorLevel
+toRun="https://github.com/szzhiyang/PerfectWindows/blob/master/Power-Keys/Power-Keys.md"
+ShellRun(toRun)
 Return
 
 Lwin & F4::
