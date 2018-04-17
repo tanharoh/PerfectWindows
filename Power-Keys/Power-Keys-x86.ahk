@@ -4,7 +4,7 @@
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.4"
+v:="5.0.0"
 
 if A_Is64bitOS
 {
@@ -229,64 +229,50 @@ isenabled=0
 ;MsgBox,0x40040,Power Keys,游戏模式已开启。
 Return
 
-Space::Send {Space}
-
-^Space::^Space
-+Space::+Space
-!Space::!Space
-^!Space::^!Space
-!+Space::!+Space
-^+Space::^+Space
-^+!Space::^+!Space
-#Space::#Space
-^#Space::^#Space
-#+Space::#+Space
-#!Space::#!Space
-
-Space & Shift::Send {Space}
-Space & F::Send {Left}
-Space & J::Send {Right}
-Space & G::Send +{WheelUp}
-Space & H::Send +{WheelDown}
-Space & CapsLock::Send {Backspace}
-Space & LCtrl::Send {Backspace}
-Space & RCtrl::Send {Backspace}
-Space & '::Send {Enter}
-Space & A::Send {Home}
-Space & `;::Send {End}
-Space & K::Send +{Right}
-Space & D::Send +{Left}
-Space & Q::Send ^{Home}
-Space & /::Send ^{End}
-Space & R::Send {Up}
-Space & T::Send {PgUp}
-Space & E::Send +{Up}
-Space & M::Send {Down}
-Space & N::Send {PgDn}
-Space & ,::Send +{Down}
-Space & S::Send +{Home}
-Space & L::Send +{End}
-Space & W::Send ^+{Home}
-Space & .::Send ^+{End}
-Space & B::Send ^{b}
-Space & I::Send ^{i}
-Space & U::Send ^{u}
-Space & Z::Send ^{z}
-Space & X::Send ^{x}
-Space & C::Send ^{c}
-Space & V::Send ^{v}
-Space & Y::Send ^{y}
-Space & 5::Send ^{l}
-Space & 6::Send ^{e}
-Space & 7::Send ^{r}
-Space & `::Send ^j
-Space & Tab::Send ^{a}
-Space & O::Send ^+,
-Space & P::Send ^+.
-Space & =::Send ^{WheelUp}
-Space & -::Send ^{WheelDown}
-Space & [::Send {!Left}
-Space & ]::Send {!Right}
+RAlt & F::Send {Left}
+RAlt & J::Send {Right}
+RAlt & G::Send +{WheelUp}
+RAlt & H::Send +{WheelDown}
+RAlt & CapsLock::Send {Backspace}
+RAlt & LCtrl::Send {Backspace}
+RAlt & RCtrl::Send {Backspace}
+RAlt & '::Send {Enter}
+RAlt & A::Send {Home}
+RAlt & `;::Send {End}
+RAlt & K::Send +{Right}
+RAlt & D::Send +{Left}
+RAlt & Q::Send ^{Home}
+RAlt & /::Send ^{End}
+RAlt & R::Send {Up}
+RAlt & T::Send {PgUp}
+RAlt & E::Send +{Up}
+RAlt & M::Send {Down}
+RAlt & N::Send {PgDn}
+RAlt & ,::Send +{Down}
+RAlt & S::Send +{Home}
+RAlt & L::Send +{End}
+RAlt & W::Send ^+{Home}
+RAlt & .::Send ^+{End}
+RAlt & B::Send ^{b}
+RAlt & I::Send ^{i}
+RAlt & U::Send ^{u}
+RAlt & Z::Send ^{z}
+RAlt & X::Send ^{x}
+RAlt & C::Send ^{c}
+RAlt & V::Send ^{v}
+RAlt & Y::Send ^{y}
+RAlt & 5::Send ^{l}
+RAlt & 6::Send ^{e}
+RAlt & 7::Send ^{r}
+RAlt & `::Send ^j
+RAlt & Tab::Send ^{a}
+RAlt & O::Send ^+,
+RAlt & P::Send ^+.
+RAlt & =::Send ^{WheelUp}
+RAlt & -::Send ^{WheelDown}
+RAlt & [::Send {!Left}
+RAlt & ]::Send {!Right}
+RAlt & Space::Send {Space}
 
 SetStoreCapsLockMode, Off
 
