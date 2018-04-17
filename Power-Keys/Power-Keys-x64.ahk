@@ -1,13 +1,21 @@
-﻿#SingleInstance ignore
+﻿#NoEnv
+
+SetBatchLines -1
+ListLines Off
+Process, Priority, , High
+
+#SingleInstance ignore
 #MaxHotkeysPerInterval 1000
 #Persistent
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.4"
+v:="4.0.5"
 
-FileCreateDir,%LocalAppData%\Power Keys
-SetWorkingDir,%LocalAppData%\Power Keys
+EnvGet,AppDataLocal,LocalAppData
+
+FileCreateDir,%AppDataLocal%\Power Keys
+SetWorkingDir,%AppDataLocal%\Power Keys
 
 if !A_IsAdmin
 {
@@ -52,16 +60,12 @@ ShellRun(prms*)
     }
 }
 
-isenabled=0
-
-Process, Priority, , High
-
 isenabled=1
 GameMode=0
 
 if A_Args.Length()=2
 {
-toRun="%LocalAppData%\Power Keys\F%1%\%2%"
+toRun="%AppDataLocal%\Power Keys\F%1%\%2%"
 ShellRun(toRun)
 }
 
@@ -110,13 +114,13 @@ Return
 
 LWin & NumLock Up::
 RWin & NumLock Up::
-toRun="%systemroot%\system32\calc.exe"
+toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
 Return
 
 LWin & 0 Up::
 RWin & 0 Up::
-toRun="%systemroot%\system32\calc.exe"
+toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
 Return
 
@@ -204,7 +208,7 @@ Return
 #if isenabled
 
 #+PrintScreen::
-toRun="%systemroot%\system32\snippingtool.exe"
+toRun="%A_WinDir%\system32\snippingtool.exe"
 ShellRun(toRun)
 Return
 
@@ -505,7 +509,7 @@ Tab & =::Send ^!{=}
 Tab & Space::Send ^!{Space}
 Tab & Enter::Send ^!{Enter}
 Tab & Backspace::Send ^!{Backspace}
-Tab & Delete::Run,"%systemroot%\system32\taskmgr.exe",,UseErrorLevel
+Tab & Delete::Run,"%A_WinDir%\system32\taskmgr.exe",,UseErrorLevel
 Tab & Insert::Send ^!{Insert}
 Tab & Home::Send ^!{Home}
 Tab & End::Send ^!{End}
