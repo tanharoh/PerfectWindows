@@ -233,65 +233,6 @@ isenabled=0
 ;MsgBox,0x40040,Power Keys,游戏模式已开启。
 Return
 
-Space::Send {Space}
-
-^Space::^Space
-+Space::+Space
-!Space::!Space
-^!Space::^!Space
-!+Space::!+Space
-^+Space::^+Space
-^+!Space::^+!Space
-#Space::#Space
-^#Space::^#Space
-#+Space::#+Space
-#!Space::#!Space
-
-Space & Shift::Send {Space}
-Space & F::Send {Left}
-Space & J::Send {Right}
-Space & G::Send +{WheelUp}
-Space & H::Send +{WheelDown}
-Space & CapsLock::Send {Backspace}
-Space & LCtrl::Send {Backspace}
-Space & RCtrl::Send {Backspace}
-Space & '::Send {Enter}
-Space & A::Send {Home}
-Space & `;::Send {End}
-Space & K::Send +{Right}
-Space & D::Send +{Left}
-Space & Q::Send ^{Home}
-Space & /::Send ^{End}
-Space & R::Send {Up}
-Space & T::Send {PgUp}
-Space & E::Send +{Up}
-Space & M::Send {Down}
-Space & N::Send {PgDn}
-Space & ,::Send +{Down}
-Space & S::Send +{Home}
-Space & L::Send +{End}
-Space & W::Send ^+{Home}
-Space & .::Send ^+{End}
-Space & B::Send ^{b}
-Space & I::Send ^{i}
-Space & U::Send ^{u}
-Space & Z::Send ^{z}
-Space & X::Send ^{x}
-Space & C::Send ^{c}
-Space & V::Send ^{v}
-Space & Y::Send ^{y}
-Space & 5::Send ^{l}
-Space & 6::Send ^{e}
-Space & 7::Send ^{r}
-Space & `::Send ^j
-Space & Tab::Send ^{a}
-Space & O::Send ^+,
-Space & P::Send ^+.
-Space & =::Send ^{WheelUp}
-Space & -::Send ^{WheelDown}
-Space & [::Send {!Left}
-Space & ]::Send {!Right}
-
 SetStoreCapsLockMode, Off
 
 CapsLock::
