@@ -10,12 +10,12 @@ Process, Priority, , High
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="5.0.0"
-
 if A_Is64bitOS
 {
 exitapp
 }
+
+v:="5.0.1"
 
 EnvGet,AppDataLocal,LocalAppData
 
@@ -71,7 +71,6 @@ isenabled2=1
 space1=0
 space2=0
 withSpace=0
-time=0
 
 if A_Args.Length()=2
 {
@@ -91,6 +90,7 @@ Gui +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui, Color, Black
 gui, font,s20 bold q5, segoe ui
 Gui, Add, Text,cwhite,Power Space
+height:=A_screenheight-200
 
 Return
 
@@ -220,31 +220,35 @@ Return
 
 #if
 
-#if isenabled
+#if isenabled 
 
 $space::
-SetTimer, enablespace1, 100
+settimer,timer,300
+spacesent=0
 withSpace=0
 space1=0
 space2=1
 isenabled2=0
+keywait,space
 return
 
-enablespace1::
-SetTimer, enablespace1, Delete
+timer:
+settimer,timer,delete
 space1=1
 space2=0
-isenabled2=0
+Gui, Show, xCenter y%height% NoActivate
 return
 
-$space Up::
-if (space1=0)&(withSpace=0)&(space2=0)
-{
-send {Space}
-}
-withSpace=0
-space1=0
+$space up::
+settimer,timer,delete
+if (!space1)&(!spacesent)&(!withSpace)
+send {space} 
+space1=0  
+space2=0
+spacesent=1
 isenabled2=1
+withSpace=0
+Gui, Hide
 return
 
 #+PrintScreen::
@@ -316,57 +320,247 @@ Shift::Send {Space}
 
 #if
 
-#if space2
+#if space2&(spacesent=0)
 
-$a::Send {Space}{a}
-$b::Send {Space}{b}
-$c::Send {Space}{c}
-$d::Send {Space}{d}
-$e::Send {Space}{e}
-$f::Send {Space}{f}
-$g::Send {Space}{g}
-$h::Send {Space}{h}
-$i::Send {Space}{i}
-$j::Send {Space}{j}
-$k::Send {Space}{k}
-$l::Send {Space}{l}
-$m::Send {Space}{m}
-$n::Send {Space}{n}
-$o::Send {Space}{o}
-$p::Send {Space}{p}
-$q::Send {Space}{q}
-$r::Send {Space}{r}
-$s::Send {Space}{s}
-$t::Send {Space}{t}
-$u::Send {Space}{u}
-$v::Send {Space}{v}
-$w::Send {Space}{w}
-$x::Send {Space}{x}
-$y::Send {Space}{y}
-$z::Send {Space}{z}
-$1::Send {Space}{1}
-$2::Send {Space}{2}
-$3::Send {Space}{3}
-$4::Send {Space}{4}
-$5::Send {Space}{5}
-$6::Send {Space}{6}
-$7::Send {Space}{7}
-$8::Send {Space}{8}
-$9::Send {Space}{9}
-$0::Send {Space}{0}
-$,::Send {Space}{,}
-$.::Send {Space}{.}
-$`;::Send {Space}{;}
-$'::Send {Space}{'}
-$[::Send {Space}{[}
-$]::Send {Space}{]}
-$\::Send {Space}{\}
-$-::Send {Space}{-}
-$=::Send {Space}{=}
-$`::Send {Space}{`}
-$Tab::Send {Space}{Tab}
-$Enter::Send {Space}{Enter}
-$BackSpace::Send {Space}{BackSpace}
+$a::
+spacesent=1
+Send {space}{a}
+Return
+
+$b::
+spacesent=1
+Send {space}{b}
+Return
+
+$c::
+spacesent=1
+Send {space}{c}
+Return
+
+$d::
+spacesent=1
+Send {space}{d}
+Return
+
+$e::
+spacesent=1
+Send {space}{e}
+Return
+
+$f::
+spacesent=1
+Send {space}{f}
+Return
+
+$g::
+spacesent=1
+Send {space}{g}
+Return
+
+$h::
+spacesent=1
+Send {space}{h}
+Return
+
+$i::
+spacesent=1
+Send {space}{i}
+Return
+
+$j::
+spacesent=1
+Send {space}{j}
+Return
+
+$k::
+spacesent=1
+Send {space}{k}
+Return
+
+$l::
+spacesent=1
+Send {space}{l}
+Return
+
+$m::
+spacesent=1
+Send {space}{m}
+Return
+
+$n::
+spacesent=1
+Send {space}{n}
+Return
+
+$o::
+spacesent=1
+Send {space}{o}
+Return
+
+$p::
+spacesent=1
+Send {space}{p}
+Return
+
+$q::
+spacesent=1
+Send {space}{q}
+Return
+
+$r::
+spacesent=1
+Send {space}{r}
+Return
+
+$s::
+spacesent=1
+Send {space}{s}
+Return
+
+$t::
+spacesent=1
+Send {space}{t}
+Return
+
+$u::
+spacesent=1
+Send {space}{u}
+Return
+
+$v::
+spacesent=1
+Send {space}{v}
+Return
+
+$w::
+spacesent=1
+Send {space}{w}
+Return
+
+$x::
+spacesent=1
+Send {space}{x}
+Return
+
+$y::
+spacesent=1
+Send {space}{y}
+Return
+
+$z::
+spacesent=1
+Send {space}{z}
+Return
+
+$1::
+spacesent=1
+Send {space}{1}
+Return
+
+$2::
+spacesent=1
+Send {space}{2}
+Return
+
+$3::
+spacesent=1
+Send {space}{3}
+Return
+
+$4::
+spacesent=1
+Send {space}{4}
+Return
+
+$5::
+spacesent=1
+Send {space}{5}
+Return
+
+$6::
+spacesent=1
+Send {space}{6}
+Return
+
+$7::
+spacesent=1
+Send {space}{7}
+Return
+
+$8::
+spacesent=1
+Send {space}{8}
+Return
+
+$9::
+spacesent=1
+Send {space}{9}
+Return
+
+$0::
+spacesent=1
+Send {space}{0}
+Return
+
+$,::
+spacesent=1
+Send {space}{,}
+Return
+
+$.::
+spacesent=1
+Send {space}{.}
+Return
+
+$'::
+spacesent=1
+Send {space}{'}
+Return
+
+$[::
+spacesent=1
+Send {space}{[}
+Return
+
+$]::
+spacesent=1
+Send {space}{]}
+Return
+
+$\::
+spacesent=1
+Send {space}{\}
+Return
+
+$-::
+spacesent=1
+Send {space}{-}
+Return
+
+$=::
+spacesent=1
+Send {space}{=}
+Return
+
+$`::
+spacesent=1
+Send {space}{`}
+Return
+
+$Tab::
+spacesent=1
+Send {space}{Tab}
+Return
+
+$Enter::
+spacesent=1
+Send {space}{Enter}
+Return
+
+$BackSpace::
+spacesent=1
+Send {space}{BackSpace}
+Return
 
 #if
 

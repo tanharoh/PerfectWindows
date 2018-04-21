@@ -40,7 +40,7 @@
 
 <br>
 
-#### 下载 Power Keys 5.0.0
+#### 下载 Power Keys 5.0.1
 
 [32 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe) （无法在 64 位 Windows 上运行）
 
