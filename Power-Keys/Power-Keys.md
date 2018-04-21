@@ -40,7 +40,7 @@
 
 <br>
 
-#### 下载 Power Keys
+#### 下载 Power Keys 5.0.0
 
 [32 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe) （无法在 64 位 Windows 上运行）
 
@@ -182,7 +182,6 @@
 <br>
 
 #### 更重要的是，Power Keys 还可以让您码字的过程更加流畅，因为您的右手将无需在码字的过程中在主键区、方向键区和导航键区来回移动。
-> 该功能暂时不可用。
 
 <br>
 
