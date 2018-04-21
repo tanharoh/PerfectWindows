@@ -1,5 +1,5 @@
 ﻿#NoEnv
-
+setkeydelay -1
 SetBatchLines -1
 ListLines Off
 Process, Priority, , High
@@ -10,7 +10,7 @@ Process, Priority, , High
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="4.0.5"
+v:="5.0.0"
 
 EnvGet,AppDataLocal,LocalAppData
 
@@ -60,8 +60,13 @@ ShellRun(prms*)
     }
 }
 
-isenabled=1
 GameMode=0
+isenabled=1
+isenabled2=1
+space1=0
+space2=0
+withSpace=0
+time=0
 
 if A_Args.Length()=2
 {
@@ -76,6 +81,11 @@ RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
 RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
 RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+
+Gui +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui, Color, Black
+gui, font,s20 bold q5, segoe ui
+Gui, Add, Text,cwhite,Power Space
 
 Return
 
@@ -124,11 +134,6 @@ toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
 Return
 
-LWin & CapsLock::
-RWin & CapsLock::
-winset,AlwaysOnTop,, A
-Return
-
 #Delete::
 Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
 Return
@@ -139,6 +144,11 @@ ifmsgbox,ok
 {
 FileRecycleEmpty
 }
+Return
+
+LWin & CapsLock::
+RWin & CapsLock::
+winset,AlwaysOnTop,, A
 Return
 
 LWin & Enter Up::
@@ -207,6 +217,31 @@ Return
 
 #if isenabled
 
+$space::
+SetTimer, enablespace1, 100
+withSpace=0
+space1=0
+space2=1
+isenabled2=0
+return
+
+enablespace1::
+SetTimer, enablespace1, Delete
+space1=1
+space2=0
+isenabled2=0
+return
+
+$space Up::
+if (space1=0)&(withSpace=0)&(space2=0)
+{
+send {Space}
+}
+withSpace=0
+space1=0
+isenabled2=1
+return
+
 #+PrintScreen::
 toRun="%A_WinDir%\system32\snippingtool.exe"
 ShellRun(toRun)
@@ -228,6 +263,110 @@ isenabled=0
 ;MsgBox,0x40040,Power Keys,游戏模式已开启。
 Return
 
+#if
+
+#if space1
+
+$F::Send {Left}
+$J::Send {Right}
+$G::Send +{WheelUp}
+$H::Send +{WheelDown}
+$'::Send {Enter}
+$A::Send {Home}
+$`;::Send {End}
+$K::Send +{Right}
+$D::Send +{Left}
+$Q::Send ^{Home}
+$/::Send ^{End}
+$R::Send {Up}
+$T::Send {PgUp}
+$E::Send +{Up}
+$M::Send {Down}
+$N::Send {PgDn}
+$,::Send +{Down}
+$S::Send +{Home}
+$L::Send +{End}
+$W::Send ^+{Home}
+$.::Send ^+{End}
+$B::Send ^{b}
+$I::Send ^{i}
+$U::Send ^{u}
+$Z::Send ^{z}
+$X::Send ^{x}
+$C::Send ^{c}
+$V::Send ^{v}
+$Y::Send ^{y}
+$5::Send ^{l}
+$6::Send ^{e}
+$7::Send ^{r}
+Tab::Send ^{a}
+$O::Send ^+,
+$P::Send ^+.
+$=::Send ^{WheelUp}
+$-::Send ^{WheelDown}
+LCtrl::Send {BackSpace}
+RCtrl::Send {BackSpace}
+CapsLock::Send {BackSpace}
+Shift::Send {Space}
+
+#if
+
+#if space2
+
+$a::Send {Space}{a}
+$b::Send {Space}{b}
+$c::Send {Space}{c}
+$d::Send {Space}{d}
+$e::Send {Space}{e}
+$f::Send {Space}{f}
+$g::Send {Space}{g}
+$h::Send {Space}{h}
+$i::Send {Space}{i}
+$j::Send {Space}{j}
+$k::Send {Space}{k}
+$l::Send {Space}{l}
+$m::Send {Space}{m}
+$n::Send {Space}{n}
+$o::Send {Space}{o}
+$p::Send {Space}{p}
+$q::Send {Space}{q}
+$r::Send {Space}{r}
+$s::Send {Space}{s}
+$t::Send {Space}{t}
+$u::Send {Space}{u}
+$v::Send {Space}{v}
+$w::Send {Space}{w}
+$x::Send {Space}{x}
+$y::Send {Space}{y}
+$z::Send {Space}{z}
+$1::Send {Space}{1}
+$2::Send {Space}{2}
+$3::Send {Space}{3}
+$4::Send {Space}{4}
+$5::Send {Space}{5}
+$6::Send {Space}{6}
+$7::Send {Space}{7}
+$8::Send {Space}{8}
+$9::Send {Space}{9}
+$0::Send {Space}{0}
+$,::Send {Space}{,}
+$.::Send {Space}{.}
+$`;::Send {Space}{;}
+$'::Send {Space}{'}
+$[::Send {Space}{[}
+$]::Send {Space}{]}
+$\::Send {Space}{\}
+$-::Send {Space}{-}
+$=::Send {Space}{=}
+$`::Send {Space}{`}
+$Tab::Send {Space}{Tab}
+$Enter::Send {Space}{Enter}
+$BackSpace::Send {Space}{BackSpace}
+
+#if
+
+#if isenabled&&isenabled2
+
 SetStoreCapsLockMode, Off
 
 CapsLock::
@@ -241,6 +380,9 @@ Return
 CapsLock & Tab::AltTab
 CapsLock & `::Send !{Esc}
 CapsLock & Esc::Send !{F4}
+
+CapsLock & Shift::Space
+
 CapsLock & a::Send ^+!{a}
 CapsLock & b::Send ^+!{b}
 CapsLock & c::Send ^+!{c}
@@ -298,7 +440,12 @@ CapsLock & ]::Send ^+!{]}
 CapsLock & \::Send ^+!{\}
 CapsLock & -::Send ^+!{-}
 CapsLock & =::Send ^+!{=}
-CapsLock & Space::Send ^+!{Space}
+
+CapsLock & Space::
+withSpace=1
+Send ^+!{Space}
+Return
+
 CapsLock & Enter::Send ^+!{Enter}
 CapsLock & Backspace::Send ^+!{Backspace}
 CapsLock & Delete::Send ^+!{Delete}
@@ -372,7 +519,12 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & \::Send +!{\}
 ` & -::Send +!{-}
 ` & =::Send +!{=}
-` & Space::Send +!{Space}
+
+` & Space::
+withSpace=1
+Send +!{Space}
+Return
+
 ` & Enter::Send +!{Enter}
 ` & Backspace::Send +!{Backspace}
 ` & Delete::Send +!{Delete}
@@ -388,7 +540,18 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & PrintScreen::Send +!{PrintScreen}
 ` & Tab::ShiftAltTab
 
-Tab::Tab
+Tab::Send {Tab}
+^Tab::^Tab
++Tab::+Tab
+!Tab::!Tab
+^!Tab::^!Tab
+!+Tab::!+Tab
+^+Tab::^+Tab
+^+!Tab::^+!Tab
+#Tab::#Tab
+^#Tab::^#Tab
+#+Tab::#+Tab
+#!Tab::#!Tab
 Tab & Shift::Tab
 Tab & a::Send ^!{a}
 Tab & b::Send ^!{b}
@@ -447,7 +610,12 @@ Tab & ]::Send ^!{]}
 Tab & \::Send ^!{\}
 Tab & -::Send ^!{-}
 Tab & =::Send ^!{=}
-Tab & Space::Send ^!{Space}
+
+Tab & Space::
+withSpace=1
+Send ^!{Space}
+Return
+
 Tab & Enter::Send ^!{Enter}
 Tab & Backspace::Send ^!{Backspace}
 Tab & Delete::Run,"%A_WinDir%\system32\taskmgr.exe",,UseErrorLevel
@@ -521,7 +689,11 @@ Esc & ]::Send ^+{]}
 Esc & \::Send ^+{\}
 Esc & -::Send ^+{-}
 Esc & =::Send ^+{=}
-Esc & Space::Send ^+{Space}
+
+Esc & Space::
+withSpace=1
+Send ^+{Space}
+
 Esc & Enter::Send ^+{Enter}
 Esc & Backspace::Send ^+{Backspace}
 Esc & Delete::Send ^+{Delete}
@@ -563,18 +735,21 @@ F10 & Shift::F10
 F11 & Shift::F11
 F12 & Shift::F12
 
-F1 & Space::Send !{F4}
-F2 & Space::Send !{F4}
-F3 & Space::Send !{F4}
-F4 & Space::Send !{F4}
-F5 & Space::Send !{F4}
-F6 & Space::Send !{F4}
-F7 & Space::Send !{F4}
-F8 & Space::Send !{F4}
-F9 & Space::Send !{F4}
-F10 & Space::Send !{F4}
-F11 & Space::Send !{F4}
-F12 & Space::Send !{F4}
+F1 & Space::
+F2 & Space::
+F3 & Space::
+F4 & Space::
+F5 & Space::
+F6 & Space::
+F7 & Space::
+F8 & Space::
+F9 & Space::
+F10 & Space::
+F11 & Space::
+F12 & Space::
+withSpace=1
+Send !{F4}
+Return
 
 F1 & PrintScreen::^+!F1
 F2 & PrintScreen::^+!F2
@@ -589,12 +764,12 @@ F10 & PrintScreen::^+!F10
 F11 & PrintScreen::^+!F11
 F12 & PrintScreen::^+!F12
 
-F1 & Enter Up::
+F1 & Enter::
 FileCreateDir,F1
 Run,F1
 Return
 
-F1 & a Up::
+F1 & a::
 if FileExist("F1\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 a.lnk
 else if FileExist("F1\a.url")
@@ -606,7 +781,7 @@ Run,F1
 }
 Return
 
-F1 & b Up::
+F1 & b::
 if FileExist("F1\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 b.lnk
 else if FileExist("F1\b.url")
@@ -618,7 +793,7 @@ Run,F1
 }
 Return
 
-F1 & c Up::
+F1 & c::
 if FileExist("F1\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 c.lnk
 else if FileExist("F1\c.url")
@@ -630,7 +805,7 @@ Run,F1
 }
 Return
 
-F1 & d Up::
+F1 & d::
 if FileExist("F1\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 d.lnk
 else if FileExist("F1\d.url")
@@ -642,7 +817,7 @@ Run,F1
 }
 Return
 
-F1 & e Up::
+F1 & e::
 if FileExist("F1\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 e.lnk
 else if FileExist("F1\e.url")
@@ -654,7 +829,7 @@ Run,F1
 }
 Return
 
-F1 & f Up::
+F1 & f::
 if FileExist("F1\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 f.lnk
 else if FileExist("F1\f.url")
@@ -666,7 +841,7 @@ Run,F1
 }
 Return
 
-F1 & g Up::
+F1 & g::
 if FileExist("F1\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 g.lnk
 else if FileExist("F1\g.url")
@@ -678,7 +853,7 @@ Run,F1
 }
 Return
 
-F1 & h Up::
+F1 & h::
 if FileExist("F1\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 h.lnk
 else if FileExist("F1\h.url")
@@ -690,7 +865,7 @@ Run,F1
 }
 Return
 
-F1 & i Up::
+F1 & i::
 if FileExist("F1\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 i.lnk
 else if FileExist("F1\i.url")
@@ -702,7 +877,7 @@ Run,F1
 }
 Return
 
-F1 & j Up::
+F1 & j::
 if FileExist("F1\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 j.lnk
 else if FileExist("F1\j.url")
@@ -714,7 +889,7 @@ Run,F1
 }
 Return
 
-F1 & k Up::
+F1 & k::
 if FileExist("F1\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 k.lnk
 else if FileExist("F1\k.url")
@@ -726,7 +901,7 @@ Run,F1
 }
 Return
 
-F1 & l Up::
+F1 & l::
 if FileExist("F1\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 l.lnk
 else if FileExist("F1\l.url")
@@ -738,7 +913,7 @@ Run,F1
 }
 Return
 
-F1 & m Up::
+F1 & m::
 if FileExist("F1\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 m.lnk
 else if FileExist("F1\m.url")
@@ -750,7 +925,7 @@ Run,F1
 }
 Return
 
-F1 & n Up::
+F1 & n::
 if FileExist("F1\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 n.lnk
 else if FileExist("F1\n.url")
@@ -762,7 +937,7 @@ Run,F1
 }
 Return
 
-F1 & o Up::
+F1 & o::
 if FileExist("F1\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 o.lnk
 else if FileExist("F1\o.url")
@@ -774,7 +949,7 @@ Run,F1
 }
 Return
 
-F1 & p Up::
+F1 & p::
 if FileExist("F1\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 p.lnk
 else if FileExist("F1\p.url")
@@ -786,7 +961,7 @@ Run,F1
 }
 Return
 
-F1 & q Up::
+F1 & q::
 if FileExist("F1\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 q.lnk
 else if FileExist("F1\q.url")
@@ -798,7 +973,7 @@ Run,F1
 }
 Return
 
-F1 & r Up::
+F1 & r::
 if FileExist("F1\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 r.lnk
 else if FileExist("F1\r.url")
@@ -810,7 +985,7 @@ Run,F1
 }
 Return
 
-F1 & s Up::
+F1 & s::
 if FileExist("F1\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 s.lnk
 else if FileExist("F1\s.url")
@@ -822,7 +997,7 @@ Run,F1
 }
 Return
 
-F1 & t Up::
+F1 & t::
 if FileExist("F1\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 t.lnk
 else if FileExist("F1\t.url")
@@ -834,7 +1009,7 @@ Run,F1
 }
 Return
 
-F1 & u Up::
+F1 & u::
 if FileExist("F1\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 u.lnk
 else if FileExist("F1\u.url")
@@ -846,7 +1021,7 @@ Run,F1
 }
 Return
 
-F1 & v Up::
+F1 & v::
 if FileExist("F1\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 v.lnk
 else if FileExist("F1\v.url")
@@ -858,7 +1033,7 @@ Run,F1
 }
 Return
 
-F1 & w Up::
+F1 & w::
 if FileExist("F1\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 w.lnk
 else if FileExist("F1\w.url")
@@ -870,7 +1045,7 @@ Run,F1
 }
 Return
 
-F1 & x Up::
+F1 & x::
 if FileExist("F1\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 x.lnk
 else if FileExist("F1\x.url")
@@ -882,7 +1057,7 @@ Run,F1
 }
 Return
 
-F1 & y Up::
+F1 & y::
 if FileExist("F1\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 y.lnk
 else if FileExist("F1\y.url")
@@ -894,7 +1069,7 @@ Run,F1
 }
 Return
 
-F1 & z Up::
+F1 & z::
 if FileExist("F1\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 z.lnk
 else if FileExist("F1\z.url")
@@ -906,7 +1081,7 @@ Run,F1
 }
 Return
 
-F1 & 1 Up::
+F1 & 1::
 if FileExist("F1\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 1.lnk
 else if FileExist("F1\1.url")
@@ -918,7 +1093,7 @@ Run,F1
 }
 Return
 
-F1 & 2 Up::
+F1 & 2::
 if FileExist("F1\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 2.lnk
 else if FileExist("F1\2.url")
@@ -930,7 +1105,7 @@ Run,F1
 }
 Return
 
-F1 & 3 Up::
+F1 & 3::
 if FileExist("F1\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 3.lnk
 else if FileExist("F1\3.url")
@@ -942,7 +1117,7 @@ Run,F1
 }
 Return
 
-F1 & 4 Up::
+F1 & 4::
 if FileExist("F1\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 4.lnk
 else if FileExist("F1\4.url")
@@ -954,7 +1129,7 @@ Run,F1
 }
 Return
 
-F1 & 5 Up::
+F1 & 5::
 if FileExist("F1\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 5.lnk
 else if FileExist("F1\5.url")
@@ -966,7 +1141,7 @@ Run,F1
 }
 Return
 
-F1 & 6 Up::
+F1 & 6::
 if FileExist("F1\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 6.lnk
 else if FileExist("F1\6.url")
@@ -978,7 +1153,7 @@ Run,F1
 }
 Return
 
-F1 & 7 Up::
+F1 & 7::
 if FileExist("F1\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 7.lnk
 else if FileExist("F1\7.url")
@@ -990,7 +1165,7 @@ Run,F1
 }
 Return
 
-F1 & 8 Up::
+F1 & 8::
 if FileExist("F1\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 8.lnk
 else if FileExist("F1\8.url")
@@ -1002,7 +1177,7 @@ Run,F1
 }
 Return
 
-F1 & 9 Up::
+F1 & 9::
 if FileExist("F1\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 9.lnk
 else if FileExist("F1\9.url")
@@ -1014,7 +1189,7 @@ Run,F1
 }
 Return
 
-F1 & 0 Up::
+F1 & 0::
 if FileExist("F1\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 1 0.lnk
 else if FileExist("F1\0.url")
@@ -1027,12 +1202,12 @@ Run,F1
 Return
 
 
-F2 & Enter Up::
+F2 & Enter::
 FileCreateDir,F2
 Run,F2
 Return
 
-F2 & a Up::
+F2 & a::
 if FileExist("F2\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 a.lnk
 else if FileExist("F2\a.url")
@@ -1044,7 +1219,7 @@ Run,F2
 }
 Return
 
-F2 & b Up::
+F2 & b::
 if FileExist("F2\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 b.lnk
 else if FileExist("F2\b.url")
@@ -1056,7 +1231,7 @@ Run,F2
 }
 Return
 
-F2 & c Up::
+F2 & c::
 if FileExist("F2\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 c.lnk
 else if FileExist("F2\c.url")
@@ -1068,7 +1243,7 @@ Run,F2
 }
 Return
 
-F2 & d Up::
+F2 & d::
 if FileExist("F2\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 d.lnk
 else if FileExist("F2\d.url")
@@ -1080,7 +1255,7 @@ Run,F2
 }
 Return
 
-F2 & e Up::
+F2 & e::
 if FileExist("F2\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 e.lnk
 else if FileExist("F2\e.url")
@@ -1092,7 +1267,7 @@ Run,F2
 }
 Return
 
-F2 & f Up::
+F2 & f::
 if FileExist("F2\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 f.lnk
 else if FileExist("F2\f.url")
@@ -1104,7 +1279,7 @@ Run,F2
 }
 Return
 
-F2 & g Up::
+F2 & g::
 if FileExist("F2\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 g.lnk
 else if FileExist("F2\g.url")
@@ -1116,7 +1291,7 @@ Run,F2
 }
 Return
 
-F2 & h Up::
+F2 & h::
 if FileExist("F2\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 h.lnk
 else if FileExist("F2\h.url")
@@ -1128,7 +1303,7 @@ Run,F2
 }
 Return
 
-F2 & i Up::
+F2 & i::
 if FileExist("F2\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 i.lnk
 else if FileExist("F2\i.url")
@@ -1140,7 +1315,7 @@ Run,F2
 }
 Return
 
-F2 & j Up::
+F2 & j::
 if FileExist("F2\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 j.lnk
 else if FileExist("F2\j.url")
@@ -1152,7 +1327,7 @@ Run,F2
 }
 Return
 
-F2 & k Up::
+F2 & k::
 if FileExist("F2\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 k.lnk
 else if FileExist("F2\k.url")
@@ -1164,7 +1339,7 @@ Run,F2
 }
 Return
 
-F2 & l Up::
+F2 & l::
 if FileExist("F2\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 l.lnk
 else if FileExist("F2\l.url")
@@ -1176,7 +1351,7 @@ Run,F2
 }
 Return
 
-F2 & m Up::
+F2 & m::
 if FileExist("F2\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 m.lnk
 else if FileExist("F2\m.url")
@@ -1188,7 +1363,7 @@ Run,F2
 }
 Return
 
-F2 & n Up::
+F2 & n::
 if FileExist("F2\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 n.lnk
 else if FileExist("F2\n.url")
@@ -1200,7 +1375,7 @@ Run,F2
 }
 Return
 
-F2 & o Up::
+F2 & o::
 if FileExist("F2\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 o.lnk
 else if FileExist("F2\o.url")
@@ -1212,7 +1387,7 @@ Run,F2
 }
 Return
 
-F2 & p Up::
+F2 & p::
 if FileExist("F2\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 p.lnk
 else if FileExist("F2\p.url")
@@ -1224,7 +1399,7 @@ Run,F2
 }
 Return
 
-F2 & q Up::
+F2 & q::
 if FileExist("F2\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 q.lnk
 else if FileExist("F2\q.url")
@@ -1236,7 +1411,7 @@ Run,F2
 }
 Return
 
-F2 & r Up::
+F2 & r::
 if FileExist("F2\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 r.lnk
 else if FileExist("F2\r.url")
@@ -1248,7 +1423,7 @@ Run,F2
 }
 Return
 
-F2 & s Up::
+F2 & s::
 if FileExist("F2\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 s.lnk
 else if FileExist("F2\s.url")
@@ -1260,7 +1435,7 @@ Run,F2
 }
 Return
 
-F2 & t Up::
+F2 & t::
 if FileExist("F2\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 t.lnk
 else if FileExist("F2\t.url")
@@ -1272,7 +1447,7 @@ Run,F2
 }
 Return
 
-F2 & u Up::
+F2 & u::
 if FileExist("F2\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 u.lnk
 else if FileExist("F2\u.url")
@@ -1284,7 +1459,7 @@ Run,F2
 }
 Return
 
-F2 & v Up::
+F2 & v::
 if FileExist("F2\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 v.lnk
 else if FileExist("F2\v.url")
@@ -1296,7 +1471,7 @@ Run,F2
 }
 Return
 
-F2 & w Up::
+F2 & w::
 if FileExist("F2\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 w.lnk
 else if FileExist("F2\w.url")
@@ -1308,7 +1483,7 @@ Run,F2
 }
 Return
 
-F2 & x Up::
+F2 & x::
 if FileExist("F2\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 x.lnk
 else if FileExist("F2\x.url")
@@ -1320,7 +1495,7 @@ Run,F2
 }
 Return
 
-F2 & y Up::
+F2 & y::
 if FileExist("F2\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 y.lnk
 else if FileExist("F2\y.url")
@@ -1332,7 +1507,7 @@ Run,F2
 }
 Return
 
-F2 & z Up::
+F2 & z::
 if FileExist("F2\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 z.lnk
 else if FileExist("F2\z.url")
@@ -1344,7 +1519,7 @@ Run,F2
 }
 Return
 
-F2 & 1 Up::
+F2 & 1::
 if FileExist("F2\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 1.lnk
 else if FileExist("F2\1.url")
@@ -1356,7 +1531,7 @@ Run,F2
 }
 Return
 
-F2 & 2 Up::
+F2 & 2::
 if FileExist("F2\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 2.lnk
 else if FileExist("F2\2.url")
@@ -1368,7 +1543,7 @@ Run,F2
 }
 Return
 
-F2 & 3 Up::
+F2 & 3::
 if FileExist("F2\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 3.lnk
 else if FileExist("F2\3.url")
@@ -1380,7 +1555,7 @@ Run,F2
 }
 Return
 
-F2 & 4 Up::
+F2 & 4::
 if FileExist("F2\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 4.lnk
 else if FileExist("F2\4.url")
@@ -1392,7 +1567,7 @@ Run,F2
 }
 Return
 
-F2 & 5 Up::
+F2 & 5::
 if FileExist("F2\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 5.lnk
 else if FileExist("F2\5.url")
@@ -1404,7 +1579,7 @@ Run,F2
 }
 Return
 
-F2 & 6 Up::
+F2 & 6::
 if FileExist("F2\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 6.lnk
 else if FileExist("F2\6.url")
@@ -1416,7 +1591,7 @@ Run,F2
 }
 Return
 
-F2 & 7 Up::
+F2 & 7::
 if FileExist("F2\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 7.lnk
 else if FileExist("F2\7.url")
@@ -1428,7 +1603,7 @@ Run,F2
 }
 Return
 
-F2 & 8 Up::
+F2 & 8::
 if FileExist("F2\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 8.lnk
 else if FileExist("F2\8.url")
@@ -1440,7 +1615,7 @@ Run,F2
 }
 Return
 
-F2 & 9 Up::
+F2 & 9::
 if FileExist("F2\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 9.lnk
 else if FileExist("F2\9.url")
@@ -1452,7 +1627,7 @@ Run,F2
 }
 Return
 
-F2 & 0 Up::
+F2 & 0::
 if FileExist("F2\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 2 0.lnk
 else if FileExist("F2\0.url")
@@ -1465,12 +1640,12 @@ Run,F2
 Return
 
 
-F3 & Enter Up::
+F3 & Enter::
 FileCreateDir,F3
 Run,F3
 Return
 
-F3 & a Up::
+F3 & a::
 if FileExist("F3\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 a.lnk
 else if FileExist("F3\a.url")
@@ -1482,7 +1657,7 @@ Run,F3
 }
 Return
 
-F3 & b Up::
+F3 & b::
 if FileExist("F3\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 b.lnk
 else if FileExist("F3\b.url")
@@ -1494,7 +1669,7 @@ Run,F3
 }
 Return
 
-F3 & c Up::
+F3 & c::
 if FileExist("F3\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 c.lnk
 else if FileExist("F3\c.url")
@@ -1506,7 +1681,7 @@ Run,F3
 }
 Return
 
-F3 & d Up::
+F3 & d::
 if FileExist("F3\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 d.lnk
 else if FileExist("F3\d.url")
@@ -1518,7 +1693,7 @@ Run,F3
 }
 Return
 
-F3 & e Up::
+F3 & e::
 if FileExist("F3\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 e.lnk
 else if FileExist("F3\e.url")
@@ -1530,7 +1705,7 @@ Run,F3
 }
 Return
 
-F3 & f Up::
+F3 & f::
 if FileExist("F3\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 f.lnk
 else if FileExist("F3\f.url")
@@ -1542,7 +1717,7 @@ Run,F3
 }
 Return
 
-F3 & g Up::
+F3 & g::
 if FileExist("F3\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 g.lnk
 else if FileExist("F3\g.url")
@@ -1554,7 +1729,7 @@ Run,F3
 }
 Return
 
-F3 & h Up::
+F3 & h::
 if FileExist("F3\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 h.lnk
 else if FileExist("F3\h.url")
@@ -1566,7 +1741,7 @@ Run,F3
 }
 Return
 
-F3 & i Up::
+F3 & i::
 if FileExist("F3\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 i.lnk
 else if FileExist("F3\i.url")
@@ -1578,7 +1753,7 @@ Run,F3
 }
 Return
 
-F3 & j Up::
+F3 & j::
 if FileExist("F3\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 j.lnk
 else if FileExist("F3\j.url")
@@ -1590,7 +1765,7 @@ Run,F3
 }
 Return
 
-F3 & k Up::
+F3 & k::
 if FileExist("F3\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 k.lnk
 else if FileExist("F3\k.url")
@@ -1602,7 +1777,7 @@ Run,F3
 }
 Return
 
-F3 & l Up::
+F3 & l::
 if FileExist("F3\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 l.lnk
 else if FileExist("F3\l.url")
@@ -1614,7 +1789,7 @@ Run,F3
 }
 Return
 
-F3 & m Up::
+F3 & m::
 if FileExist("F3\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 m.lnk
 else if FileExist("F3\m.url")
@@ -1626,7 +1801,7 @@ Run,F3
 }
 Return
 
-F3 & n Up::
+F3 & n::
 if FileExist("F3\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 n.lnk
 else if FileExist("F3\n.url")
@@ -1638,7 +1813,7 @@ Run,F3
 }
 Return
 
-F3 & o Up::
+F3 & o::
 if FileExist("F3\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 o.lnk
 else if FileExist("F3\o.url")
@@ -1650,7 +1825,7 @@ Run,F3
 }
 Return
 
-F3 & p Up::
+F3 & p::
 if FileExist("F3\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 p.lnk
 else if FileExist("F3\p.url")
@@ -1662,7 +1837,7 @@ Run,F3
 }
 Return
 
-F3 & q Up::
+F3 & q::
 if FileExist("F3\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 q.lnk
 else if FileExist("F3\q.url")
@@ -1674,7 +1849,7 @@ Run,F3
 }
 Return
 
-F3 & r Up::
+F3 & r::
 if FileExist("F3\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 r.lnk
 else if FileExist("F3\r.url")
@@ -1686,7 +1861,7 @@ Run,F3
 }
 Return
 
-F3 & s Up::
+F3 & s::
 if FileExist("F3\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 s.lnk
 else if FileExist("F3\s.url")
@@ -1698,7 +1873,7 @@ Run,F3
 }
 Return
 
-F3 & t Up::
+F3 & t::
 if FileExist("F3\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 t.lnk
 else if FileExist("F3\t.url")
@@ -1710,7 +1885,7 @@ Run,F3
 }
 Return
 
-F3 & u Up::
+F3 & u::
 if FileExist("F3\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 u.lnk
 else if FileExist("F3\u.url")
@@ -1722,7 +1897,7 @@ Run,F3
 }
 Return
 
-F3 & v Up::
+F3 & v::
 if FileExist("F3\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 v.lnk
 else if FileExist("F3\v.url")
@@ -1734,7 +1909,7 @@ Run,F3
 }
 Return
 
-F3 & w Up::
+F3 & w::
 if FileExist("F3\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 w.lnk
 else if FileExist("F3\w.url")
@@ -1746,7 +1921,7 @@ Run,F3
 }
 Return
 
-F3 & x Up::
+F3 & x::
 if FileExist("F3\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 x.lnk
 else if FileExist("F3\x.url")
@@ -1758,7 +1933,7 @@ Run,F3
 }
 Return
 
-F3 & y Up::
+F3 & y::
 if FileExist("F3\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 y.lnk
 else if FileExist("F3\y.url")
@@ -1770,7 +1945,7 @@ Run,F3
 }
 Return
 
-F3 & z Up::
+F3 & z::
 if FileExist("F3\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 z.lnk
 else if FileExist("F3\z.url")
@@ -1782,7 +1957,7 @@ Run,F3
 }
 Return
 
-F3 & 1 Up::
+F3 & 1::
 if FileExist("F3\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 1.lnk
 else if FileExist("F3\1.url")
@@ -1794,7 +1969,7 @@ Run,F3
 }
 Return
 
-F3 & 2 Up::
+F3 & 2::
 if FileExist("F3\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 2.lnk
 else if FileExist("F3\2.url")
@@ -1806,7 +1981,7 @@ Run,F3
 }
 Return
 
-F3 & 3 Up::
+F3 & 3::
 if FileExist("F3\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 3.lnk
 else if FileExist("F3\3.url")
@@ -1818,7 +1993,7 @@ Run,F3
 }
 Return
 
-F3 & 4 Up::
+F3 & 4::
 if FileExist("F3\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 4.lnk
 else if FileExist("F3\4.url")
@@ -1830,7 +2005,7 @@ Run,F3
 }
 Return
 
-F3 & 5 Up::
+F3 & 5::
 if FileExist("F3\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 5.lnk
 else if FileExist("F3\5.url")
@@ -1842,7 +2017,7 @@ Run,F3
 }
 Return
 
-F3 & 6 Up::
+F3 & 6::
 if FileExist("F3\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 6.lnk
 else if FileExist("F3\6.url")
@@ -1854,7 +2029,7 @@ Run,F3
 }
 Return
 
-F3 & 7 Up::
+F3 & 7::
 if FileExist("F3\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 7.lnk
 else if FileExist("F3\7.url")
@@ -1866,7 +2041,7 @@ Run,F3
 }
 Return
 
-F3 & 8 Up::
+F3 & 8::
 if FileExist("F3\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 8.lnk
 else if FileExist("F3\8.url")
@@ -1878,7 +2053,7 @@ Run,F3
 }
 Return
 
-F3 & 9 Up::
+F3 & 9::
 if FileExist("F3\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 9.lnk
 else if FileExist("F3\9.url")
@@ -1890,7 +2065,7 @@ Run,F3
 }
 Return
 
-F3 & 0 Up::
+F3 & 0::
 if FileExist("F3\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 3 0.lnk
 else if FileExist("F3\0.url")
@@ -1903,12 +2078,12 @@ Run,F3
 Return
 
 
-F4 & Enter Up::
+F4 & Enter::
 FileCreateDir,F4
 Run,F4
 Return
 
-F4 & a Up::
+F4 & a::
 if FileExist("F4\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 a.lnk
 else if FileExist("F4\a.url")
@@ -1920,7 +2095,7 @@ Run,F4
 }
 Return
 
-F4 & b Up::
+F4 & b::
 if FileExist("F4\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 b.lnk
 else if FileExist("F4\b.url")
@@ -1932,7 +2107,7 @@ Run,F4
 }
 Return
 
-F4 & c Up::
+F4 & c::
 if FileExist("F4\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 c.lnk
 else if FileExist("F4\c.url")
@@ -1944,7 +2119,7 @@ Run,F4
 }
 Return
 
-F4 & d Up::
+F4 & d::
 if FileExist("F4\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 d.lnk
 else if FileExist("F4\d.url")
@@ -1956,7 +2131,7 @@ Run,F4
 }
 Return
 
-F4 & e Up::
+F4 & e::
 if FileExist("F4\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 e.lnk
 else if FileExist("F4\e.url")
@@ -1968,7 +2143,7 @@ Run,F4
 }
 Return
 
-F4 & f Up::
+F4 & f::
 if FileExist("F4\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 f.lnk
 else if FileExist("F4\f.url")
@@ -1980,7 +2155,7 @@ Run,F4
 }
 Return
 
-F4 & g Up::
+F4 & g::
 if FileExist("F4\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 g.lnk
 else if FileExist("F4\g.url")
@@ -1992,7 +2167,7 @@ Run,F4
 }
 Return
 
-F4 & h Up::
+F4 & h::
 if FileExist("F4\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 h.lnk
 else if FileExist("F4\h.url")
@@ -2004,7 +2179,7 @@ Run,F4
 }
 Return
 
-F4 & i Up::
+F4 & i::
 if FileExist("F4\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 i.lnk
 else if FileExist("F4\i.url")
@@ -2016,7 +2191,7 @@ Run,F4
 }
 Return
 
-F4 & j Up::
+F4 & j::
 if FileExist("F4\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 j.lnk
 else if FileExist("F4\j.url")
@@ -2028,7 +2203,7 @@ Run,F4
 }
 Return
 
-F4 & k Up::
+F4 & k::
 if FileExist("F4\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 k.lnk
 else if FileExist("F4\k.url")
@@ -2040,7 +2215,7 @@ Run,F4
 }
 Return
 
-F4 & l Up::
+F4 & l::
 if FileExist("F4\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 l.lnk
 else if FileExist("F4\l.url")
@@ -2052,7 +2227,7 @@ Run,F4
 }
 Return
 
-F4 & m Up::
+F4 & m::
 if FileExist("F4\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 m.lnk
 else if FileExist("F4\m.url")
@@ -2064,7 +2239,7 @@ Run,F4
 }
 Return
 
-F4 & n Up::
+F4 & n::
 if FileExist("F4\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 n.lnk
 else if FileExist("F4\n.url")
@@ -2076,7 +2251,7 @@ Run,F4
 }
 Return
 
-F4 & o Up::
+F4 & o::
 if FileExist("F4\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 o.lnk
 else if FileExist("F4\o.url")
@@ -2088,7 +2263,7 @@ Run,F4
 }
 Return
 
-F4 & p Up::
+F4 & p::
 if FileExist("F4\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 p.lnk
 else if FileExist("F4\p.url")
@@ -2100,7 +2275,7 @@ Run,F4
 }
 Return
 
-F4 & q Up::
+F4 & q::
 if FileExist("F4\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 q.lnk
 else if FileExist("F4\q.url")
@@ -2112,7 +2287,7 @@ Run,F4
 }
 Return
 
-F4 & r Up::
+F4 & r::
 if FileExist("F4\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 r.lnk
 else if FileExist("F4\r.url")
@@ -2124,7 +2299,7 @@ Run,F4
 }
 Return
 
-F4 & s Up::
+F4 & s::
 if FileExist("F4\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 s.lnk
 else if FileExist("F4\s.url")
@@ -2136,7 +2311,7 @@ Run,F4
 }
 Return
 
-F4 & t Up::
+F4 & t::
 if FileExist("F4\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 t.lnk
 else if FileExist("F4\t.url")
@@ -2148,7 +2323,7 @@ Run,F4
 }
 Return
 
-F4 & u Up::
+F4 & u::
 if FileExist("F4\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 u.lnk
 else if FileExist("F4\u.url")
@@ -2160,7 +2335,7 @@ Run,F4
 }
 Return
 
-F4 & v Up::
+F4 & v::
 if FileExist("F4\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 v.lnk
 else if FileExist("F4\v.url")
@@ -2172,7 +2347,7 @@ Run,F4
 }
 Return
 
-F4 & w Up::
+F4 & w::
 if FileExist("F4\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 w.lnk
 else if FileExist("F4\w.url")
@@ -2184,7 +2359,7 @@ Run,F4
 }
 Return
 
-F4 & x Up::
+F4 & x::
 if FileExist("F4\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 x.lnk
 else if FileExist("F4\x.url")
@@ -2196,7 +2371,7 @@ Run,F4
 }
 Return
 
-F4 & y Up::
+F4 & y::
 if FileExist("F4\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 y.lnk
 else if FileExist("F4\y.url")
@@ -2208,7 +2383,7 @@ Run,F4
 }
 Return
 
-F4 & z Up::
+F4 & z::
 if FileExist("F4\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 z.lnk
 else if FileExist("F4\z.url")
@@ -2220,7 +2395,7 @@ Run,F4
 }
 Return
 
-F4 & 1 Up::
+F4 & 1::
 if FileExist("F4\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 1.lnk
 else if FileExist("F4\1.url")
@@ -2232,7 +2407,7 @@ Run,F4
 }
 Return
 
-F4 & 2 Up::
+F4 & 2::
 if FileExist("F4\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 2.lnk
 else if FileExist("F4\2.url")
@@ -2244,7 +2419,7 @@ Run,F4
 }
 Return
 
-F4 & 3 Up::
+F4 & 3::
 if FileExist("F4\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 3.lnk
 else if FileExist("F4\3.url")
@@ -2256,7 +2431,7 @@ Run,F4
 }
 Return
 
-F4 & 4 Up::
+F4 & 4::
 if FileExist("F4\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 4.lnk
 else if FileExist("F4\4.url")
@@ -2268,7 +2443,7 @@ Run,F4
 }
 Return
 
-F4 & 5 Up::
+F4 & 5::
 if FileExist("F4\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 5.lnk
 else if FileExist("F4\5.url")
@@ -2280,7 +2455,7 @@ Run,F4
 }
 Return
 
-F4 & 6 Up::
+F4 & 6::
 if FileExist("F4\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 6.lnk
 else if FileExist("F4\6.url")
@@ -2292,7 +2467,7 @@ Run,F4
 }
 Return
 
-F4 & 7 Up::
+F4 & 7::
 if FileExist("F4\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 7.lnk
 else if FileExist("F4\7.url")
@@ -2304,7 +2479,7 @@ Run,F4
 }
 Return
 
-F4 & 8 Up::
+F4 & 8::
 if FileExist("F4\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 8.lnk
 else if FileExist("F4\8.url")
@@ -2316,7 +2491,7 @@ Run,F4
 }
 Return
 
-F4 & 9 Up::
+F4 & 9::
 if FileExist("F4\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 9.lnk
 else if FileExist("F4\9.url")
@@ -2328,7 +2503,7 @@ Run,F4
 }
 Return
 
-F4 & 0 Up::
+F4 & 0::
 if FileExist("F4\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 4 0.lnk
 else if FileExist("F4\0.url")
@@ -2341,12 +2516,12 @@ Run,F4
 Return
 
 
-F5 & Enter Up::
+F5 & Enter::
 FileCreateDir,F5
 Run,F5
 Return
 
-F5 & a Up::
+F5 & a::
 if FileExist("F5\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 a.lnk
 else if FileExist("F5\a.url")
@@ -2358,7 +2533,7 @@ Run,F5
 }
 Return
 
-F5 & b Up::
+F5 & b::
 if FileExist("F5\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 b.lnk
 else if FileExist("F5\b.url")
@@ -2370,7 +2545,7 @@ Run,F5
 }
 Return
 
-F5 & c Up::
+F5 & c::
 if FileExist("F5\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 c.lnk
 else if FileExist("F5\c.url")
@@ -2382,7 +2557,7 @@ Run,F5
 }
 Return
 
-F5 & d Up::
+F5 & d::
 if FileExist("F5\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 d.lnk
 else if FileExist("F5\d.url")
@@ -2394,7 +2569,7 @@ Run,F5
 }
 Return
 
-F5 & e Up::
+F5 & e::
 if FileExist("F5\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 e.lnk
 else if FileExist("F5\e.url")
@@ -2406,7 +2581,7 @@ Run,F5
 }
 Return
 
-F5 & f Up::
+F5 & f::
 if FileExist("F5\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 f.lnk
 else if FileExist("F5\f.url")
@@ -2418,7 +2593,7 @@ Run,F5
 }
 Return
 
-F5 & g Up::
+F5 & g::
 if FileExist("F5\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 g.lnk
 else if FileExist("F5\g.url")
@@ -2430,7 +2605,7 @@ Run,F5
 }
 Return
 
-F5 & h Up::
+F5 & h::
 if FileExist("F5\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 h.lnk
 else if FileExist("F5\h.url")
@@ -2442,7 +2617,7 @@ Run,F5
 }
 Return
 
-F5 & i Up::
+F5 & i::
 if FileExist("F5\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 i.lnk
 else if FileExist("F5\i.url")
@@ -2454,7 +2629,7 @@ Run,F5
 }
 Return
 
-F5 & j Up::
+F5 & j::
 if FileExist("F5\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 j.lnk
 else if FileExist("F5\j.url")
@@ -2466,7 +2641,7 @@ Run,F5
 }
 Return
 
-F5 & k Up::
+F5 & k::
 if FileExist("F5\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 k.lnk
 else if FileExist("F5\k.url")
@@ -2478,7 +2653,7 @@ Run,F5
 }
 Return
 
-F5 & l Up::
+F5 & l::
 if FileExist("F5\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 l.lnk
 else if FileExist("F5\l.url")
@@ -2490,7 +2665,7 @@ Run,F5
 }
 Return
 
-F5 & m Up::
+F5 & m::
 if FileExist("F5\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 m.lnk
 else if FileExist("F5\m.url")
@@ -2502,7 +2677,7 @@ Run,F5
 }
 Return
 
-F5 & n Up::
+F5 & n::
 if FileExist("F5\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 n.lnk
 else if FileExist("F5\n.url")
@@ -2514,7 +2689,7 @@ Run,F5
 }
 Return
 
-F5 & o Up::
+F5 & o::
 if FileExist("F5\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 o.lnk
 else if FileExist("F5\o.url")
@@ -2526,7 +2701,7 @@ Run,F5
 }
 Return
 
-F5 & p Up::
+F5 & p::
 if FileExist("F5\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 p.lnk
 else if FileExist("F5\p.url")
@@ -2538,7 +2713,7 @@ Run,F5
 }
 Return
 
-F5 & q Up::
+F5 & q::
 if FileExist("F5\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 q.lnk
 else if FileExist("F5\q.url")
@@ -2550,7 +2725,7 @@ Run,F5
 }
 Return
 
-F5 & r Up::
+F5 & r::
 if FileExist("F5\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 r.lnk
 else if FileExist("F5\r.url")
@@ -2562,7 +2737,7 @@ Run,F5
 }
 Return
 
-F5 & s Up::
+F5 & s::
 if FileExist("F5\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 s.lnk
 else if FileExist("F5\s.url")
@@ -2574,7 +2749,7 @@ Run,F5
 }
 Return
 
-F5 & t Up::
+F5 & t::
 if FileExist("F5\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 t.lnk
 else if FileExist("F5\t.url")
@@ -2586,7 +2761,7 @@ Run,F5
 }
 Return
 
-F5 & u Up::
+F5 & u::
 if FileExist("F5\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 u.lnk
 else if FileExist("F5\u.url")
@@ -2598,7 +2773,7 @@ Run,F5
 }
 Return
 
-F5 & v Up::
+F5 & v::
 if FileExist("F5\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 v.lnk
 else if FileExist("F5\v.url")
@@ -2610,7 +2785,7 @@ Run,F5
 }
 Return
 
-F5 & w Up::
+F5 & w::
 if FileExist("F5\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 w.lnk
 else if FileExist("F5\w.url")
@@ -2622,7 +2797,7 @@ Run,F5
 }
 Return
 
-F5 & x Up::
+F5 & x::
 if FileExist("F5\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 x.lnk
 else if FileExist("F5\x.url")
@@ -2634,7 +2809,7 @@ Run,F5
 }
 Return
 
-F5 & y Up::
+F5 & y::
 if FileExist("F5\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 y.lnk
 else if FileExist("F5\y.url")
@@ -2646,7 +2821,7 @@ Run,F5
 }
 Return
 
-F5 & z Up::
+F5 & z::
 if FileExist("F5\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 z.lnk
 else if FileExist("F5\z.url")
@@ -2658,7 +2833,7 @@ Run,F5
 }
 Return
 
-F5 & 1 Up::
+F5 & 1::
 if FileExist("F5\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 1.lnk
 else if FileExist("F5\1.url")
@@ -2670,7 +2845,7 @@ Run,F5
 }
 Return
 
-F5 & 2 Up::
+F5 & 2::
 if FileExist("F5\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 2.lnk
 else if FileExist("F5\2.url")
@@ -2682,7 +2857,7 @@ Run,F5
 }
 Return
 
-F5 & 3 Up::
+F5 & 3::
 if FileExist("F5\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 3.lnk
 else if FileExist("F5\3.url")
@@ -2694,7 +2869,7 @@ Run,F5
 }
 Return
 
-F5 & 4 Up::
+F5 & 4::
 if FileExist("F5\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 4.lnk
 else if FileExist("F5\4.url")
@@ -2706,7 +2881,7 @@ Run,F5
 }
 Return
 
-F5 & 5 Up::
+F5 & 5::
 if FileExist("F5\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 5.lnk
 else if FileExist("F5\5.url")
@@ -2718,7 +2893,7 @@ Run,F5
 }
 Return
 
-F5 & 6 Up::
+F5 & 6::
 if FileExist("F5\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 6.lnk
 else if FileExist("F5\6.url")
@@ -2730,7 +2905,7 @@ Run,F5
 }
 Return
 
-F5 & 7 Up::
+F5 & 7::
 if FileExist("F5\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 7.lnk
 else if FileExist("F5\7.url")
@@ -2742,7 +2917,7 @@ Run,F5
 }
 Return
 
-F5 & 8 Up::
+F5 & 8::
 if FileExist("F5\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 8.lnk
 else if FileExist("F5\8.url")
@@ -2754,7 +2929,7 @@ Run,F5
 }
 Return
 
-F5 & 9 Up::
+F5 & 9::
 if FileExist("F5\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 9.lnk
 else if FileExist("F5\9.url")
@@ -2766,7 +2941,7 @@ Run,F5
 }
 Return
 
-F5 & 0 Up::
+F5 & 0::
 if FileExist("F5\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 5 0.lnk
 else if FileExist("F5\0.url")
@@ -2779,12 +2954,12 @@ Run,F5
 Return
 
 
-F6 & Enter Up::
+F6 & Enter::
 FileCreateDir,F6
 Run,F6
 Return
 
-F6 & a Up::
+F6 & a::
 if FileExist("F6\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 a.lnk
 else if FileExist("F6\a.url")
@@ -2796,7 +2971,7 @@ Run,F6
 }
 Return
 
-F6 & b Up::
+F6 & b::
 if FileExist("F6\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 b.lnk
 else if FileExist("F6\b.url")
@@ -2808,7 +2983,7 @@ Run,F6
 }
 Return
 
-F6 & c Up::
+F6 & c::
 if FileExist("F6\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 c.lnk
 else if FileExist("F6\c.url")
@@ -2820,7 +2995,7 @@ Run,F6
 }
 Return
 
-F6 & d Up::
+F6 & d::
 if FileExist("F6\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 d.lnk
 else if FileExist("F6\d.url")
@@ -2832,7 +3007,7 @@ Run,F6
 }
 Return
 
-F6 & e Up::
+F6 & e::
 if FileExist("F6\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 e.lnk
 else if FileExist("F6\e.url")
@@ -2844,7 +3019,7 @@ Run,F6
 }
 Return
 
-F6 & f Up::
+F6 & f::
 if FileExist("F6\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 f.lnk
 else if FileExist("F6\f.url")
@@ -2856,7 +3031,7 @@ Run,F6
 }
 Return
 
-F6 & g Up::
+F6 & g::
 if FileExist("F6\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 g.lnk
 else if FileExist("F6\g.url")
@@ -2868,7 +3043,7 @@ Run,F6
 }
 Return
 
-F6 & h Up::
+F6 & h::
 if FileExist("F6\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 h.lnk
 else if FileExist("F6\h.url")
@@ -2880,7 +3055,7 @@ Run,F6
 }
 Return
 
-F6 & i Up::
+F6 & i::
 if FileExist("F6\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 i.lnk
 else if FileExist("F6\i.url")
@@ -2892,7 +3067,7 @@ Run,F6
 }
 Return
 
-F6 & j Up::
+F6 & j::
 if FileExist("F6\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 j.lnk
 else if FileExist("F6\j.url")
@@ -2904,7 +3079,7 @@ Run,F6
 }
 Return
 
-F6 & k Up::
+F6 & k::
 if FileExist("F6\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 k.lnk
 else if FileExist("F6\k.url")
@@ -2916,7 +3091,7 @@ Run,F6
 }
 Return
 
-F6 & l Up::
+F6 & l::
 if FileExist("F6\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 l.lnk
 else if FileExist("F6\l.url")
@@ -2928,7 +3103,7 @@ Run,F6
 }
 Return
 
-F6 & m Up::
+F6 & m::
 if FileExist("F6\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 m.lnk
 else if FileExist("F6\m.url")
@@ -2940,7 +3115,7 @@ Run,F6
 }
 Return
 
-F6 & n Up::
+F6 & n::
 if FileExist("F6\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 n.lnk
 else if FileExist("F6\n.url")
@@ -2952,7 +3127,7 @@ Run,F6
 }
 Return
 
-F6 & o Up::
+F6 & o::
 if FileExist("F6\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 o.lnk
 else if FileExist("F6\o.url")
@@ -2964,7 +3139,7 @@ Run,F6
 }
 Return
 
-F6 & p Up::
+F6 & p::
 if FileExist("F6\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 p.lnk
 else if FileExist("F6\p.url")
@@ -2976,7 +3151,7 @@ Run,F6
 }
 Return
 
-F6 & q Up::
+F6 & q::
 if FileExist("F6\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 q.lnk
 else if FileExist("F6\q.url")
@@ -2988,7 +3163,7 @@ Run,F6
 }
 Return
 
-F6 & r Up::
+F6 & r::
 if FileExist("F6\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 r.lnk
 else if FileExist("F6\r.url")
@@ -3000,7 +3175,7 @@ Run,F6
 }
 Return
 
-F6 & s Up::
+F6 & s::
 if FileExist("F6\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 s.lnk
 else if FileExist("F6\s.url")
@@ -3012,7 +3187,7 @@ Run,F6
 }
 Return
 
-F6 & t Up::
+F6 & t::
 if FileExist("F6\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 t.lnk
 else if FileExist("F6\t.url")
@@ -3024,7 +3199,7 @@ Run,F6
 }
 Return
 
-F6 & u Up::
+F6 & u::
 if FileExist("F6\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 u.lnk
 else if FileExist("F6\u.url")
@@ -3036,7 +3211,7 @@ Run,F6
 }
 Return
 
-F6 & v Up::
+F6 & v::
 if FileExist("F6\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 v.lnk
 else if FileExist("F6\v.url")
@@ -3048,7 +3223,7 @@ Run,F6
 }
 Return
 
-F6 & w Up::
+F6 & w::
 if FileExist("F6\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 w.lnk
 else if FileExist("F6\w.url")
@@ -3060,7 +3235,7 @@ Run,F6
 }
 Return
 
-F6 & x Up::
+F6 & x::
 if FileExist("F6\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 x.lnk
 else if FileExist("F6\x.url")
@@ -3072,7 +3247,7 @@ Run,F6
 }
 Return
 
-F6 & y Up::
+F6 & y::
 if FileExist("F6\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 y.lnk
 else if FileExist("F6\y.url")
@@ -3084,7 +3259,7 @@ Run,F6
 }
 Return
 
-F6 & z Up::
+F6 & z::
 if FileExist("F6\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 z.lnk
 else if FileExist("F6\z.url")
@@ -3096,7 +3271,7 @@ Run,F6
 }
 Return
 
-F6 & 1 Up::
+F6 & 1::
 if FileExist("F6\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 1.lnk
 else if FileExist("F6\1.url")
@@ -3108,7 +3283,7 @@ Run,F6
 }
 Return
 
-F6 & 2 Up::
+F6 & 2::
 if FileExist("F6\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 2.lnk
 else if FileExist("F6\2.url")
@@ -3120,7 +3295,7 @@ Run,F6
 }
 Return
 
-F6 & 3 Up::
+F6 & 3::
 if FileExist("F6\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 3.lnk
 else if FileExist("F6\3.url")
@@ -3132,7 +3307,7 @@ Run,F6
 }
 Return
 
-F6 & 4 Up::
+F6 & 4::
 if FileExist("F6\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 4.lnk
 else if FileExist("F6\4.url")
@@ -3144,7 +3319,7 @@ Run,F6
 }
 Return
 
-F6 & 5 Up::
+F6 & 5::
 if FileExist("F6\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 5.lnk
 else if FileExist("F6\5.url")
@@ -3156,7 +3331,7 @@ Run,F6
 }
 Return
 
-F6 & 6 Up::
+F6 & 6::
 if FileExist("F6\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 6.lnk
 else if FileExist("F6\6.url")
@@ -3168,7 +3343,7 @@ Run,F6
 }
 Return
 
-F6 & 7 Up::
+F6 & 7::
 if FileExist("F6\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 7.lnk
 else if FileExist("F6\7.url")
@@ -3180,7 +3355,7 @@ Run,F6
 }
 Return
 
-F6 & 8 Up::
+F6 & 8::
 if FileExist("F6\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 8.lnk
 else if FileExist("F6\8.url")
@@ -3192,7 +3367,7 @@ Run,F6
 }
 Return
 
-F6 & 9 Up::
+F6 & 9::
 if FileExist("F6\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 9.lnk
 else if FileExist("F6\9.url")
@@ -3204,7 +3379,7 @@ Run,F6
 }
 Return
 
-F6 & 0 Up::
+F6 & 0::
 if FileExist("F6\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 6 0.lnk
 else if FileExist("F6\0.url")
@@ -3217,12 +3392,12 @@ Run,F6
 Return
 
 
-F7 & Enter Up::
+F7 & Enter::
 FileCreateDir,F7
 Run,F7
 Return
 
-F7 & a Up::
+F7 & a::
 if FileExist("F7\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 a.lnk
 else if FileExist("F7\a.url")
@@ -3234,7 +3409,7 @@ Run,F7
 }
 Return
 
-F7 & b Up::
+F7 & b::
 if FileExist("F7\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 b.lnk
 else if FileExist("F7\b.url")
@@ -3246,7 +3421,7 @@ Run,F7
 }
 Return
 
-F7 & c Up::
+F7 & c::
 if FileExist("F7\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 c.lnk
 else if FileExist("F7\c.url")
@@ -3258,7 +3433,7 @@ Run,F7
 }
 Return
 
-F7 & d Up::
+F7 & d::
 if FileExist("F7\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 d.lnk
 else if FileExist("F7\d.url")
@@ -3270,7 +3445,7 @@ Run,F7
 }
 Return
 
-F7 & e Up::
+F7 & e::
 if FileExist("F7\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 e.lnk
 else if FileExist("F7\e.url")
@@ -3282,7 +3457,7 @@ Run,F7
 }
 Return
 
-F7 & f Up::
+F7 & f::
 if FileExist("F7\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 f.lnk
 else if FileExist("F7\f.url")
@@ -3294,7 +3469,7 @@ Run,F7
 }
 Return
 
-F7 & g Up::
+F7 & g::
 if FileExist("F7\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 g.lnk
 else if FileExist("F7\g.url")
@@ -3306,7 +3481,7 @@ Run,F7
 }
 Return
 
-F7 & h Up::
+F7 & h::
 if FileExist("F7\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 h.lnk
 else if FileExist("F7\h.url")
@@ -3318,7 +3493,7 @@ Run,F7
 }
 Return
 
-F7 & i Up::
+F7 & i::
 if FileExist("F7\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 i.lnk
 else if FileExist("F7\i.url")
@@ -3330,7 +3505,7 @@ Run,F7
 }
 Return
 
-F7 & j Up::
+F7 & j::
 if FileExist("F7\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 j.lnk
 else if FileExist("F7\j.url")
@@ -3342,7 +3517,7 @@ Run,F7
 }
 Return
 
-F7 & k Up::
+F7 & k::
 if FileExist("F7\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 k.lnk
 else if FileExist("F7\k.url")
@@ -3354,7 +3529,7 @@ Run,F7
 }
 Return
 
-F7 & l Up::
+F7 & l::
 if FileExist("F7\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 l.lnk
 else if FileExist("F7\l.url")
@@ -3366,7 +3541,7 @@ Run,F7
 }
 Return
 
-F7 & m Up::
+F7 & m::
 if FileExist("F7\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 m.lnk
 else if FileExist("F7\m.url")
@@ -3378,7 +3553,7 @@ Run,F7
 }
 Return
 
-F7 & n Up::
+F7 & n::
 if FileExist("F7\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 n.lnk
 else if FileExist("F7\n.url")
@@ -3390,7 +3565,7 @@ Run,F7
 }
 Return
 
-F7 & o Up::
+F7 & o::
 if FileExist("F7\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 o.lnk
 else if FileExist("F7\o.url")
@@ -3402,7 +3577,7 @@ Run,F7
 }
 Return
 
-F7 & p Up::
+F7 & p::
 if FileExist("F7\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 p.lnk
 else if FileExist("F7\p.url")
@@ -3414,7 +3589,7 @@ Run,F7
 }
 Return
 
-F7 & q Up::
+F7 & q::
 if FileExist("F7\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 q.lnk
 else if FileExist("F7\q.url")
@@ -3426,7 +3601,7 @@ Run,F7
 }
 Return
 
-F7 & r Up::
+F7 & r::
 if FileExist("F7\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 r.lnk
 else if FileExist("F7\r.url")
@@ -3438,7 +3613,7 @@ Run,F7
 }
 Return
 
-F7 & s Up::
+F7 & s::
 if FileExist("F7\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 s.lnk
 else if FileExist("F7\s.url")
@@ -3450,7 +3625,7 @@ Run,F7
 }
 Return
 
-F7 & t Up::
+F7 & t::
 if FileExist("F7\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 t.lnk
 else if FileExist("F7\t.url")
@@ -3462,7 +3637,7 @@ Run,F7
 }
 Return
 
-F7 & u Up::
+F7 & u::
 if FileExist("F7\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 u.lnk
 else if FileExist("F7\u.url")
@@ -3474,7 +3649,7 @@ Run,F7
 }
 Return
 
-F7 & v Up::
+F7 & v::
 if FileExist("F7\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 v.lnk
 else if FileExist("F7\v.url")
@@ -3486,7 +3661,7 @@ Run,F7
 }
 Return
 
-F7 & w Up::
+F7 & w::
 if FileExist("F7\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 w.lnk
 else if FileExist("F7\w.url")
@@ -3498,7 +3673,7 @@ Run,F7
 }
 Return
 
-F7 & x Up::
+F7 & x::
 if FileExist("F7\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 x.lnk
 else if FileExist("F7\x.url")
@@ -3510,7 +3685,7 @@ Run,F7
 }
 Return
 
-F7 & y Up::
+F7 & y::
 if FileExist("F7\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 y.lnk
 else if FileExist("F7\y.url")
@@ -3522,7 +3697,7 @@ Run,F7
 }
 Return
 
-F7 & z Up::
+F7 & z::
 if FileExist("F7\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 z.lnk
 else if FileExist("F7\z.url")
@@ -3534,7 +3709,7 @@ Run,F7
 }
 Return
 
-F7 & 1 Up::
+F7 & 1::
 if FileExist("F7\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 1.lnk
 else if FileExist("F7\1.url")
@@ -3546,7 +3721,7 @@ Run,F7
 }
 Return
 
-F7 & 2 Up::
+F7 & 2::
 if FileExist("F7\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 2.lnk
 else if FileExist("F7\2.url")
@@ -3558,7 +3733,7 @@ Run,F7
 }
 Return
 
-F7 & 3 Up::
+F7 & 3::
 if FileExist("F7\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 3.lnk
 else if FileExist("F7\3.url")
@@ -3570,7 +3745,7 @@ Run,F7
 }
 Return
 
-F7 & 4 Up::
+F7 & 4::
 if FileExist("F7\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 4.lnk
 else if FileExist("F7\4.url")
@@ -3582,7 +3757,7 @@ Run,F7
 }
 Return
 
-F7 & 5 Up::
+F7 & 5::
 if FileExist("F7\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 5.lnk
 else if FileExist("F7\5.url")
@@ -3594,7 +3769,7 @@ Run,F7
 }
 Return
 
-F7 & 6 Up::
+F7 & 6::
 if FileExist("F7\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 6.lnk
 else if FileExist("F7\6.url")
@@ -3606,7 +3781,7 @@ Run,F7
 }
 Return
 
-F7 & 7 Up::
+F7 & 7::
 if FileExist("F7\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 7.lnk
 else if FileExist("F7\7.url")
@@ -3618,7 +3793,7 @@ Run,F7
 }
 Return
 
-F7 & 8 Up::
+F7 & 8::
 if FileExist("F7\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 8.lnk
 else if FileExist("F7\8.url")
@@ -3630,7 +3805,7 @@ Run,F7
 }
 Return
 
-F7 & 9 Up::
+F7 & 9::
 if FileExist("F7\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 9.lnk
 else if FileExist("F7\9.url")
@@ -3642,7 +3817,7 @@ Run,F7
 }
 Return
 
-F7 & 0 Up::
+F7 & 0::
 if FileExist("F7\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 7 0.lnk
 else if FileExist("F7\0.url")
@@ -3655,12 +3830,12 @@ Run,F7
 Return
 
 
-F8 & Enter Up::
+F8 & Enter::
 FileCreateDir,F8
 Run,F8
 Return
 
-F8 & a Up::
+F8 & a::
 if FileExist("F8\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 a.lnk
 else if FileExist("F8\a.url")
@@ -3672,7 +3847,7 @@ Run,F8
 }
 Return
 
-F8 & b Up::
+F8 & b::
 if FileExist("F8\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 b.lnk
 else if FileExist("F8\b.url")
@@ -3684,7 +3859,7 @@ Run,F8
 }
 Return
 
-F8 & c Up::
+F8 & c::
 if FileExist("F8\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 c.lnk
 else if FileExist("F8\c.url")
@@ -3696,7 +3871,7 @@ Run,F8
 }
 Return
 
-F8 & d Up::
+F8 & d::
 if FileExist("F8\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 d.lnk
 else if FileExist("F8\d.url")
@@ -3708,7 +3883,7 @@ Run,F8
 }
 Return
 
-F8 & e Up::
+F8 & e::
 if FileExist("F8\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 e.lnk
 else if FileExist("F8\e.url")
@@ -3720,7 +3895,7 @@ Run,F8
 }
 Return
 
-F8 & f Up::
+F8 & f::
 if FileExist("F8\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 f.lnk
 else if FileExist("F8\f.url")
@@ -3732,7 +3907,7 @@ Run,F8
 }
 Return
 
-F8 & g Up::
+F8 & g::
 if FileExist("F8\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 g.lnk
 else if FileExist("F8\g.url")
@@ -3744,7 +3919,7 @@ Run,F8
 }
 Return
 
-F8 & h Up::
+F8 & h::
 if FileExist("F8\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 h.lnk
 else if FileExist("F8\h.url")
@@ -3756,7 +3931,7 @@ Run,F8
 }
 Return
 
-F8 & i Up::
+F8 & i::
 if FileExist("F8\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 i.lnk
 else if FileExist("F8\i.url")
@@ -3768,7 +3943,7 @@ Run,F8
 }
 Return
 
-F8 & j Up::
+F8 & j::
 if FileExist("F8\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 j.lnk
 else if FileExist("F8\j.url")
@@ -3780,7 +3955,7 @@ Run,F8
 }
 Return
 
-F8 & k Up::
+F8 & k::
 if FileExist("F8\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 k.lnk
 else if FileExist("F8\k.url")
@@ -3792,7 +3967,7 @@ Run,F8
 }
 Return
 
-F8 & l Up::
+F8 & l::
 if FileExist("F8\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 l.lnk
 else if FileExist("F8\l.url")
@@ -3804,7 +3979,7 @@ Run,F8
 }
 Return
 
-F8 & m Up::
+F8 & m::
 if FileExist("F8\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 m.lnk
 else if FileExist("F8\m.url")
@@ -3816,7 +3991,7 @@ Run,F8
 }
 Return
 
-F8 & n Up::
+F8 & n::
 if FileExist("F8\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 n.lnk
 else if FileExist("F8\n.url")
@@ -3828,7 +4003,7 @@ Run,F8
 }
 Return
 
-F8 & o Up::
+F8 & o::
 if FileExist("F8\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 o.lnk
 else if FileExist("F8\o.url")
@@ -3840,7 +4015,7 @@ Run,F8
 }
 Return
 
-F8 & p Up::
+F8 & p::
 if FileExist("F8\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 p.lnk
 else if FileExist("F8\p.url")
@@ -3852,7 +4027,7 @@ Run,F8
 }
 Return
 
-F8 & q Up::
+F8 & q::
 if FileExist("F8\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 q.lnk
 else if FileExist("F8\q.url")
@@ -3864,7 +4039,7 @@ Run,F8
 }
 Return
 
-F8 & r Up::
+F8 & r::
 if FileExist("F8\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 r.lnk
 else if FileExist("F8\r.url")
@@ -3876,7 +4051,7 @@ Run,F8
 }
 Return
 
-F8 & s Up::
+F8 & s::
 if FileExist("F8\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 s.lnk
 else if FileExist("F8\s.url")
@@ -3888,7 +4063,7 @@ Run,F8
 }
 Return
 
-F8 & t Up::
+F8 & t::
 if FileExist("F8\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 t.lnk
 else if FileExist("F8\t.url")
@@ -3900,7 +4075,7 @@ Run,F8
 }
 Return
 
-F8 & u Up::
+F8 & u::
 if FileExist("F8\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 u.lnk
 else if FileExist("F8\u.url")
@@ -3912,7 +4087,7 @@ Run,F8
 }
 Return
 
-F8 & v Up::
+F8 & v::
 if FileExist("F8\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 v.lnk
 else if FileExist("F8\v.url")
@@ -3924,7 +4099,7 @@ Run,F8
 }
 Return
 
-F8 & w Up::
+F8 & w::
 if FileExist("F8\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 w.lnk
 else if FileExist("F8\w.url")
@@ -3936,7 +4111,7 @@ Run,F8
 }
 Return
 
-F8 & x Up::
+F8 & x::
 if FileExist("F8\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 x.lnk
 else if FileExist("F8\x.url")
@@ -3948,7 +4123,7 @@ Run,F8
 }
 Return
 
-F8 & y Up::
+F8 & y::
 if FileExist("F8\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 y.lnk
 else if FileExist("F8\y.url")
@@ -3960,7 +4135,7 @@ Run,F8
 }
 Return
 
-F8 & z Up::
+F8 & z::
 if FileExist("F8\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 z.lnk
 else if FileExist("F8\z.url")
@@ -3972,7 +4147,7 @@ Run,F8
 }
 Return
 
-F8 & 1 Up::
+F8 & 1::
 if FileExist("F8\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 1.lnk
 else if FileExist("F8\1.url")
@@ -3984,7 +4159,7 @@ Run,F8
 }
 Return
 
-F8 & 2 Up::
+F8 & 2::
 if FileExist("F8\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 2.lnk
 else if FileExist("F8\2.url")
@@ -3996,7 +4171,7 @@ Run,F8
 }
 Return
 
-F8 & 3 Up::
+F8 & 3::
 if FileExist("F8\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 3.lnk
 else if FileExist("F8\3.url")
@@ -4008,7 +4183,7 @@ Run,F8
 }
 Return
 
-F8 & 4 Up::
+F8 & 4::
 if FileExist("F8\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 4.lnk
 else if FileExist("F8\4.url")
@@ -4020,7 +4195,7 @@ Run,F8
 }
 Return
 
-F8 & 5 Up::
+F8 & 5::
 if FileExist("F8\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 5.lnk
 else if FileExist("F8\5.url")
@@ -4032,7 +4207,7 @@ Run,F8
 }
 Return
 
-F8 & 6 Up::
+F8 & 6::
 if FileExist("F8\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 6.lnk
 else if FileExist("F8\6.url")
@@ -4044,7 +4219,7 @@ Run,F8
 }
 Return
 
-F8 & 7 Up::
+F8 & 7::
 if FileExist("F8\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 7.lnk
 else if FileExist("F8\7.url")
@@ -4056,7 +4231,7 @@ Run,F8
 }
 Return
 
-F8 & 8 Up::
+F8 & 8::
 if FileExist("F8\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 8.lnk
 else if FileExist("F8\8.url")
@@ -4068,7 +4243,7 @@ Run,F8
 }
 Return
 
-F8 & 9 Up::
+F8 & 9::
 if FileExist("F8\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 9.lnk
 else if FileExist("F8\9.url")
@@ -4080,7 +4255,7 @@ Run,F8
 }
 Return
 
-F8 & 0 Up::
+F8 & 0::
 if FileExist("F8\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 8 0.lnk
 else if FileExist("F8\0.url")
@@ -4093,12 +4268,12 @@ Run,F8
 Return
 
 
-F9 & Enter Up::
+F9 & Enter::
 FileCreateDir,F9
 Run,F9
 Return
 
-F9 & a Up::
+F9 & a::
 if FileExist("F9\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 a.lnk
 else if FileExist("F9\a.url")
@@ -4110,7 +4285,7 @@ Run,F9
 }
 Return
 
-F9 & b Up::
+F9 & b::
 if FileExist("F9\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 b.lnk
 else if FileExist("F9\b.url")
@@ -4122,7 +4297,7 @@ Run,F9
 }
 Return
 
-F9 & c Up::
+F9 & c::
 if FileExist("F9\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 c.lnk
 else if FileExist("F9\c.url")
@@ -4134,7 +4309,7 @@ Run,F9
 }
 Return
 
-F9 & d Up::
+F9 & d::
 if FileExist("F9\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 d.lnk
 else if FileExist("F9\d.url")
@@ -4146,7 +4321,7 @@ Run,F9
 }
 Return
 
-F9 & e Up::
+F9 & e::
 if FileExist("F9\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 e.lnk
 else if FileExist("F9\e.url")
@@ -4158,7 +4333,7 @@ Run,F9
 }
 Return
 
-F9 & f Up::
+F9 & f::
 if FileExist("F9\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 f.lnk
 else if FileExist("F9\f.url")
@@ -4170,7 +4345,7 @@ Run,F9
 }
 Return
 
-F9 & g Up::
+F9 & g::
 if FileExist("F9\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 g.lnk
 else if FileExist("F9\g.url")
@@ -4182,7 +4357,7 @@ Run,F9
 }
 Return
 
-F9 & h Up::
+F9 & h::
 if FileExist("F9\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 h.lnk
 else if FileExist("F9\h.url")
@@ -4194,7 +4369,7 @@ Run,F9
 }
 Return
 
-F9 & i Up::
+F9 & i::
 if FileExist("F9\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 i.lnk
 else if FileExist("F9\i.url")
@@ -4206,7 +4381,7 @@ Run,F9
 }
 Return
 
-F9 & j Up::
+F9 & j::
 if FileExist("F9\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 j.lnk
 else if FileExist("F9\j.url")
@@ -4218,7 +4393,7 @@ Run,F9
 }
 Return
 
-F9 & k Up::
+F9 & k::
 if FileExist("F9\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 k.lnk
 else if FileExist("F9\k.url")
@@ -4230,7 +4405,7 @@ Run,F9
 }
 Return
 
-F9 & l Up::
+F9 & l::
 if FileExist("F9\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 l.lnk
 else if FileExist("F9\l.url")
@@ -4242,7 +4417,7 @@ Run,F9
 }
 Return
 
-F9 & m Up::
+F9 & m::
 if FileExist("F9\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 m.lnk
 else if FileExist("F9\m.url")
@@ -4254,7 +4429,7 @@ Run,F9
 }
 Return
 
-F9 & n Up::
+F9 & n::
 if FileExist("F9\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 n.lnk
 else if FileExist("F9\n.url")
@@ -4266,7 +4441,7 @@ Run,F9
 }
 Return
 
-F9 & o Up::
+F9 & o::
 if FileExist("F9\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 o.lnk
 else if FileExist("F9\o.url")
@@ -4278,7 +4453,7 @@ Run,F9
 }
 Return
 
-F9 & p Up::
+F9 & p::
 if FileExist("F9\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 p.lnk
 else if FileExist("F9\p.url")
@@ -4290,7 +4465,7 @@ Run,F9
 }
 Return
 
-F9 & q Up::
+F9 & q::
 if FileExist("F9\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 q.lnk
 else if FileExist("F9\q.url")
@@ -4302,7 +4477,7 @@ Run,F9
 }
 Return
 
-F9 & r Up::
+F9 & r::
 if FileExist("F9\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 r.lnk
 else if FileExist("F9\r.url")
@@ -4314,7 +4489,7 @@ Run,F9
 }
 Return
 
-F9 & s Up::
+F9 & s::
 if FileExist("F9\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 s.lnk
 else if FileExist("F9\s.url")
@@ -4326,7 +4501,7 @@ Run,F9
 }
 Return
 
-F9 & t Up::
+F9 & t::
 if FileExist("F9\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 t.lnk
 else if FileExist("F9\t.url")
@@ -4338,7 +4513,7 @@ Run,F9
 }
 Return
 
-F9 & u Up::
+F9 & u::
 if FileExist("F9\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 u.lnk
 else if FileExist("F9\u.url")
@@ -4350,7 +4525,7 @@ Run,F9
 }
 Return
 
-F9 & v Up::
+F9 & v::
 if FileExist("F9\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 v.lnk
 else if FileExist("F9\v.url")
@@ -4362,7 +4537,7 @@ Run,F9
 }
 Return
 
-F9 & w Up::
+F9 & w::
 if FileExist("F9\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 w.lnk
 else if FileExist("F9\w.url")
@@ -4374,7 +4549,7 @@ Run,F9
 }
 Return
 
-F9 & x Up::
+F9 & x::
 if FileExist("F9\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 x.lnk
 else if FileExist("F9\x.url")
@@ -4386,7 +4561,7 @@ Run,F9
 }
 Return
 
-F9 & y Up::
+F9 & y::
 if FileExist("F9\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 y.lnk
 else if FileExist("F9\y.url")
@@ -4398,7 +4573,7 @@ Run,F9
 }
 Return
 
-F9 & z Up::
+F9 & z::
 if FileExist("F9\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 z.lnk
 else if FileExist("F9\z.url")
@@ -4410,7 +4585,7 @@ Run,F9
 }
 Return
 
-F9 & 1 Up::
+F9 & 1::
 if FileExist("F9\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 1.lnk
 else if FileExist("F9\1.url")
@@ -4422,7 +4597,7 @@ Run,F9
 }
 Return
 
-F9 & 2 Up::
+F9 & 2::
 if FileExist("F9\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 2.lnk
 else if FileExist("F9\2.url")
@@ -4434,7 +4609,7 @@ Run,F9
 }
 Return
 
-F9 & 3 Up::
+F9 & 3::
 if FileExist("F9\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 3.lnk
 else if FileExist("F9\3.url")
@@ -4446,7 +4621,7 @@ Run,F9
 }
 Return
 
-F9 & 4 Up::
+F9 & 4::
 if FileExist("F9\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 4.lnk
 else if FileExist("F9\4.url")
@@ -4458,7 +4633,7 @@ Run,F9
 }
 Return
 
-F9 & 5 Up::
+F9 & 5::
 if FileExist("F9\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 5.lnk
 else if FileExist("F9\5.url")
@@ -4470,7 +4645,7 @@ Run,F9
 }
 Return
 
-F9 & 6 Up::
+F9 & 6::
 if FileExist("F9\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 6.lnk
 else if FileExist("F9\6.url")
@@ -4482,7 +4657,7 @@ Run,F9
 }
 Return
 
-F9 & 7 Up::
+F9 & 7::
 if FileExist("F9\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 7.lnk
 else if FileExist("F9\7.url")
@@ -4494,7 +4669,7 @@ Run,F9
 }
 Return
 
-F9 & 8 Up::
+F9 & 8::
 if FileExist("F9\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 8.lnk
 else if FileExist("F9\8.url")
@@ -4506,7 +4681,7 @@ Run,F9
 }
 Return
 
-F9 & 9 Up::
+F9 & 9::
 if FileExist("F9\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 9.lnk
 else if FileExist("F9\9.url")
@@ -4518,7 +4693,7 @@ Run,F9
 }
 Return
 
-F9 & 0 Up::
+F9 & 0::
 if FileExist("F9\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 9 0.lnk
 else if FileExist("F9\0.url")
@@ -4531,12 +4706,12 @@ Run,F9
 Return
 
 
-F10 & Enter Up::
+F10 & Enter::
 FileCreateDir,F10
 Run,F10
 Return
 
-F10 & a Up::
+F10 & a::
 if FileExist("F10\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 a.lnk
 else if FileExist("F10\a.url")
@@ -4548,7 +4723,7 @@ Run,F10
 }
 Return
 
-F10 & b Up::
+F10 & b::
 if FileExist("F10\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 b.lnk
 else if FileExist("F10\b.url")
@@ -4560,7 +4735,7 @@ Run,F10
 }
 Return
 
-F10 & c Up::
+F10 & c::
 if FileExist("F10\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 c.lnk
 else if FileExist("F10\c.url")
@@ -4572,7 +4747,7 @@ Run,F10
 }
 Return
 
-F10 & d Up::
+F10 & d::
 if FileExist("F10\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 d.lnk
 else if FileExist("F10\d.url")
@@ -4584,7 +4759,7 @@ Run,F10
 }
 Return
 
-F10 & e Up::
+F10 & e::
 if FileExist("F10\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 e.lnk
 else if FileExist("F10\e.url")
@@ -4596,7 +4771,7 @@ Run,F10
 }
 Return
 
-F10 & f Up::
+F10 & f::
 if FileExist("F10\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 f.lnk
 else if FileExist("F10\f.url")
@@ -4608,7 +4783,7 @@ Run,F10
 }
 Return
 
-F10 & g Up::
+F10 & g::
 if FileExist("F10\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 g.lnk
 else if FileExist("F10\g.url")
@@ -4620,7 +4795,7 @@ Run,F10
 }
 Return
 
-F10 & h Up::
+F10 & h::
 if FileExist("F10\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 h.lnk
 else if FileExist("F10\h.url")
@@ -4632,7 +4807,7 @@ Run,F10
 }
 Return
 
-F10 & i Up::
+F10 & i::
 if FileExist("F10\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 i.lnk
 else if FileExist("F10\i.url")
@@ -4644,7 +4819,7 @@ Run,F10
 }
 Return
 
-F10 & j Up::
+F10 & j::
 if FileExist("F10\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 j.lnk
 else if FileExist("F10\j.url")
@@ -4656,7 +4831,7 @@ Run,F10
 }
 Return
 
-F10 & k Up::
+F10 & k::
 if FileExist("F10\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 k.lnk
 else if FileExist("F10\k.url")
@@ -4668,7 +4843,7 @@ Run,F10
 }
 Return
 
-F10 & l Up::
+F10 & l::
 if FileExist("F10\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 l.lnk
 else if FileExist("F10\l.url")
@@ -4680,7 +4855,7 @@ Run,F10
 }
 Return
 
-F10 & m Up::
+F10 & m::
 if FileExist("F10\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 m.lnk
 else if FileExist("F10\m.url")
@@ -4692,7 +4867,7 @@ Run,F10
 }
 Return
 
-F10 & n Up::
+F10 & n::
 if FileExist("F10\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 n.lnk
 else if FileExist("F10\n.url")
@@ -4704,7 +4879,7 @@ Run,F10
 }
 Return
 
-F10 & o Up::
+F10 & o::
 if FileExist("F10\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 o.lnk
 else if FileExist("F10\o.url")
@@ -4716,7 +4891,7 @@ Run,F10
 }
 Return
 
-F10 & p Up::
+F10 & p::
 if FileExist("F10\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 p.lnk
 else if FileExist("F10\p.url")
@@ -4728,7 +4903,7 @@ Run,F10
 }
 Return
 
-F10 & q Up::
+F10 & q::
 if FileExist("F10\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 q.lnk
 else if FileExist("F10\q.url")
@@ -4740,7 +4915,7 @@ Run,F10
 }
 Return
 
-F10 & r Up::
+F10 & r::
 if FileExist("F10\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 r.lnk
 else if FileExist("F10\r.url")
@@ -4752,7 +4927,7 @@ Run,F10
 }
 Return
 
-F10 & s Up::
+F10 & s::
 if FileExist("F10\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 s.lnk
 else if FileExist("F10\s.url")
@@ -4764,7 +4939,7 @@ Run,F10
 }
 Return
 
-F10 & t Up::
+F10 & t::
 if FileExist("F10\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 t.lnk
 else if FileExist("F10\t.url")
@@ -4776,7 +4951,7 @@ Run,F10
 }
 Return
 
-F10 & u Up::
+F10 & u::
 if FileExist("F10\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 u.lnk
 else if FileExist("F10\u.url")
@@ -4788,7 +4963,7 @@ Run,F10
 }
 Return
 
-F10 & v Up::
+F10 & v::
 if FileExist("F10\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 v.lnk
 else if FileExist("F10\v.url")
@@ -4800,7 +4975,7 @@ Run,F10
 }
 Return
 
-F10 & w Up::
+F10 & w::
 if FileExist("F10\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 w.lnk
 else if FileExist("F10\w.url")
@@ -4812,7 +4987,7 @@ Run,F10
 }
 Return
 
-F10 & x Up::
+F10 & x::
 if FileExist("F10\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 x.lnk
 else if FileExist("F10\x.url")
@@ -4824,7 +4999,7 @@ Run,F10
 }
 Return
 
-F10 & y Up::
+F10 & y::
 if FileExist("F10\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 y.lnk
 else if FileExist("F10\y.url")
@@ -4836,7 +5011,7 @@ Run,F10
 }
 Return
 
-F10 & z Up::
+F10 & z::
 if FileExist("F10\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 z.lnk
 else if FileExist("F10\z.url")
@@ -4848,7 +5023,7 @@ Run,F10
 }
 Return
 
-F10 & 1 Up::
+F10 & 1::
 if FileExist("F10\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 1.lnk
 else if FileExist("F10\1.url")
@@ -4860,7 +5035,7 @@ Run,F10
 }
 Return
 
-F10 & 2 Up::
+F10 & 2::
 if FileExist("F10\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 2.lnk
 else if FileExist("F10\2.url")
@@ -4872,7 +5047,7 @@ Run,F10
 }
 Return
 
-F10 & 3 Up::
+F10 & 3::
 if FileExist("F10\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 3.lnk
 else if FileExist("F10\3.url")
@@ -4884,7 +5059,7 @@ Run,F10
 }
 Return
 
-F10 & 4 Up::
+F10 & 4::
 if FileExist("F10\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 4.lnk
 else if FileExist("F10\4.url")
@@ -4896,7 +5071,7 @@ Run,F10
 }
 Return
 
-F10 & 5 Up::
+F10 & 5::
 if FileExist("F10\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 5.lnk
 else if FileExist("F10\5.url")
@@ -4908,7 +5083,7 @@ Run,F10
 }
 Return
 
-F10 & 6 Up::
+F10 & 6::
 if FileExist("F10\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 6.lnk
 else if FileExist("F10\6.url")
@@ -4920,7 +5095,7 @@ Run,F10
 }
 Return
 
-F10 & 7 Up::
+F10 & 7::
 if FileExist("F10\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 7.lnk
 else if FileExist("F10\7.url")
@@ -4932,7 +5107,7 @@ Run,F10
 }
 Return
 
-F10 & 8 Up::
+F10 & 8::
 if FileExist("F10\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 8.lnk
 else if FileExist("F10\8.url")
@@ -4944,7 +5119,7 @@ Run,F10
 }
 Return
 
-F10 & 9 Up::
+F10 & 9::
 if FileExist("F10\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 9.lnk
 else if FileExist("F10\9.url")
@@ -4956,7 +5131,7 @@ Run,F10
 }
 Return
 
-F10 & 0 Up::
+F10 & 0::
 if FileExist("F10\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 10 0.lnk
 else if FileExist("F10\0.url")
@@ -4969,12 +5144,12 @@ Run,F10
 Return
 
 
-F11 & Enter Up::
+F11 & Enter::
 FileCreateDir,F11
 Run,F11
 Return
 
-F11 & a Up::
+F11 & a::
 if FileExist("F11\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 a.lnk
 else if FileExist("F11\a.url")
@@ -4986,7 +5161,7 @@ Run,F11
 }
 Return
 
-F11 & b Up::
+F11 & b::
 if FileExist("F11\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 b.lnk
 else if FileExist("F11\b.url")
@@ -4998,7 +5173,7 @@ Run,F11
 }
 Return
 
-F11 & c Up::
+F11 & c::
 if FileExist("F11\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 c.lnk
 else if FileExist("F11\c.url")
@@ -5010,7 +5185,7 @@ Run,F11
 }
 Return
 
-F11 & d Up::
+F11 & d::
 if FileExist("F11\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 d.lnk
 else if FileExist("F11\d.url")
@@ -5022,7 +5197,7 @@ Run,F11
 }
 Return
 
-F11 & e Up::
+F11 & e::
 if FileExist("F11\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 e.lnk
 else if FileExist("F11\e.url")
@@ -5034,7 +5209,7 @@ Run,F11
 }
 Return
 
-F11 & f Up::
+F11 & f::
 if FileExist("F11\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 f.lnk
 else if FileExist("F11\f.url")
@@ -5046,7 +5221,7 @@ Run,F11
 }
 Return
 
-F11 & g Up::
+F11 & g::
 if FileExist("F11\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 g.lnk
 else if FileExist("F11\g.url")
@@ -5058,7 +5233,7 @@ Run,F11
 }
 Return
 
-F11 & h Up::
+F11 & h::
 if FileExist("F11\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 h.lnk
 else if FileExist("F11\h.url")
@@ -5070,7 +5245,7 @@ Run,F11
 }
 Return
 
-F11 & i Up::
+F11 & i::
 if FileExist("F11\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 i.lnk
 else if FileExist("F11\i.url")
@@ -5082,7 +5257,7 @@ Run,F11
 }
 Return
 
-F11 & j Up::
+F11 & j::
 if FileExist("F11\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 j.lnk
 else if FileExist("F11\j.url")
@@ -5094,7 +5269,7 @@ Run,F11
 }
 Return
 
-F11 & k Up::
+F11 & k::
 if FileExist("F11\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 k.lnk
 else if FileExist("F11\k.url")
@@ -5106,7 +5281,7 @@ Run,F11
 }
 Return
 
-F11 & l Up::
+F11 & l::
 if FileExist("F11\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 l.lnk
 else if FileExist("F11\l.url")
@@ -5118,7 +5293,7 @@ Run,F11
 }
 Return
 
-F11 & m Up::
+F11 & m::
 if FileExist("F11\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 m.lnk
 else if FileExist("F11\m.url")
@@ -5130,7 +5305,7 @@ Run,F11
 }
 Return
 
-F11 & n Up::
+F11 & n::
 if FileExist("F11\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 n.lnk
 else if FileExist("F11\n.url")
@@ -5142,7 +5317,7 @@ Run,F11
 }
 Return
 
-F11 & o Up::
+F11 & o::
 if FileExist("F11\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 o.lnk
 else if FileExist("F11\o.url")
@@ -5154,7 +5329,7 @@ Run,F11
 }
 Return
 
-F11 & p Up::
+F11 & p::
 if FileExist("F11\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 p.lnk
 else if FileExist("F11\p.url")
@@ -5166,7 +5341,7 @@ Run,F11
 }
 Return
 
-F11 & q Up::
+F11 & q::
 if FileExist("F11\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 q.lnk
 else if FileExist("F11\q.url")
@@ -5178,7 +5353,7 @@ Run,F11
 }
 Return
 
-F11 & r Up::
+F11 & r::
 if FileExist("F11\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 r.lnk
 else if FileExist("F11\r.url")
@@ -5190,7 +5365,7 @@ Run,F11
 }
 Return
 
-F11 & s Up::
+F11 & s::
 if FileExist("F11\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 s.lnk
 else if FileExist("F11\s.url")
@@ -5202,7 +5377,7 @@ Run,F11
 }
 Return
 
-F11 & t Up::
+F11 & t::
 if FileExist("F11\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 t.lnk
 else if FileExist("F11\t.url")
@@ -5214,7 +5389,7 @@ Run,F11
 }
 Return
 
-F11 & u Up::
+F11 & u::
 if FileExist("F11\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 u.lnk
 else if FileExist("F11\u.url")
@@ -5226,7 +5401,7 @@ Run,F11
 }
 Return
 
-F11 & v Up::
+F11 & v::
 if FileExist("F11\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 v.lnk
 else if FileExist("F11\v.url")
@@ -5238,7 +5413,7 @@ Run,F11
 }
 Return
 
-F11 & w Up::
+F11 & w::
 if FileExist("F11\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 w.lnk
 else if FileExist("F11\w.url")
@@ -5250,7 +5425,7 @@ Run,F11
 }
 Return
 
-F11 & x Up::
+F11 & x::
 if FileExist("F11\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 x.lnk
 else if FileExist("F11\x.url")
@@ -5262,7 +5437,7 @@ Run,F11
 }
 Return
 
-F11 & y Up::
+F11 & y::
 if FileExist("F11\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 y.lnk
 else if FileExist("F11\y.url")
@@ -5274,7 +5449,7 @@ Run,F11
 }
 Return
 
-F11 & z Up::
+F11 & z::
 if FileExist("F11\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 z.lnk
 else if FileExist("F11\z.url")
@@ -5286,7 +5461,7 @@ Run,F11
 }
 Return
 
-F11 & 1 Up::
+F11 & 1::
 if FileExist("F11\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 1.lnk
 else if FileExist("F11\1.url")
@@ -5298,7 +5473,7 @@ Run,F11
 }
 Return
 
-F11 & 2 Up::
+F11 & 2::
 if FileExist("F11\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 2.lnk
 else if FileExist("F11\2.url")
@@ -5310,7 +5485,7 @@ Run,F11
 }
 Return
 
-F11 & 3 Up::
+F11 & 3::
 if FileExist("F11\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 3.lnk
 else if FileExist("F11\3.url")
@@ -5322,7 +5497,7 @@ Run,F11
 }
 Return
 
-F11 & 4 Up::
+F11 & 4::
 if FileExist("F11\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 4.lnk
 else if FileExist("F11\4.url")
@@ -5334,7 +5509,7 @@ Run,F11
 }
 Return
 
-F11 & 5 Up::
+F11 & 5::
 if FileExist("F11\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 5.lnk
 else if FileExist("F11\5.url")
@@ -5346,7 +5521,7 @@ Run,F11
 }
 Return
 
-F11 & 6 Up::
+F11 & 6::
 if FileExist("F11\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 6.lnk
 else if FileExist("F11\6.url")
@@ -5358,7 +5533,7 @@ Run,F11
 }
 Return
 
-F11 & 7 Up::
+F11 & 7::
 if FileExist("F11\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 7.lnk
 else if FileExist("F11\7.url")
@@ -5370,7 +5545,7 @@ Run,F11
 }
 Return
 
-F11 & 8 Up::
+F11 & 8::
 if FileExist("F11\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 8.lnk
 else if FileExist("F11\8.url")
@@ -5382,7 +5557,7 @@ Run,F11
 }
 Return
 
-F11 & 9 Up::
+F11 & 9::
 if FileExist("F11\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 9.lnk
 else if FileExist("F11\9.url")
@@ -5394,7 +5569,7 @@ Run,F11
 }
 Return
 
-F11 & 0 Up::
+F11 & 0::
 if FileExist("F11\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 11 0.lnk
 else if FileExist("F11\0.url")
@@ -5407,12 +5582,12 @@ Run,F11
 Return
 
 
-F12 & Enter Up::
+F12 & Enter::
 FileCreateDir,F12
 Run,F12
 Return
 
-F12 & a Up::
+F12 & a::
 if FileExist("F12\a.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 a.lnk
 else if FileExist("F12\a.url")
@@ -5424,7 +5599,7 @@ Run,F12
 }
 Return
 
-F12 & b Up::
+F12 & b::
 if FileExist("F12\b.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 b.lnk
 else if FileExist("F12\b.url")
@@ -5436,7 +5611,7 @@ Run,F12
 }
 Return
 
-F12 & c Up::
+F12 & c::
 if FileExist("F12\c.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 c.lnk
 else if FileExist("F12\c.url")
@@ -5448,7 +5623,7 @@ Run,F12
 }
 Return
 
-F12 & d Up::
+F12 & d::
 if FileExist("F12\d.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 d.lnk
 else if FileExist("F12\d.url")
@@ -5460,7 +5635,7 @@ Run,F12
 }
 Return
 
-F12 & e Up::
+F12 & e::
 if FileExist("F12\e.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 e.lnk
 else if FileExist("F12\e.url")
@@ -5472,7 +5647,7 @@ Run,F12
 }
 Return
 
-F12 & f Up::
+F12 & f::
 if FileExist("F12\f.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 f.lnk
 else if FileExist("F12\f.url")
@@ -5484,7 +5659,7 @@ Run,F12
 }
 Return
 
-F12 & g Up::
+F12 & g::
 if FileExist("F12\g.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 g.lnk
 else if FileExist("F12\g.url")
@@ -5496,7 +5671,7 @@ Run,F12
 }
 Return
 
-F12 & h Up::
+F12 & h::
 if FileExist("F12\h.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 h.lnk
 else if FileExist("F12\h.url")
@@ -5508,7 +5683,7 @@ Run,F12
 }
 Return
 
-F12 & i Up::
+F12 & i::
 if FileExist("F12\i.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 i.lnk
 else if FileExist("F12\i.url")
@@ -5520,7 +5695,7 @@ Run,F12
 }
 Return
 
-F12 & j Up::
+F12 & j::
 if FileExist("F12\j.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 j.lnk
 else if FileExist("F12\j.url")
@@ -5532,7 +5707,7 @@ Run,F12
 }
 Return
 
-F12 & k Up::
+F12 & k::
 if FileExist("F12\k.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 k.lnk
 else if FileExist("F12\k.url")
@@ -5544,7 +5719,7 @@ Run,F12
 }
 Return
 
-F12 & l Up::
+F12 & l::
 if FileExist("F12\l.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 l.lnk
 else if FileExist("F12\l.url")
@@ -5556,7 +5731,7 @@ Run,F12
 }
 Return
 
-F12 & m Up::
+F12 & m::
 if FileExist("F12\m.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 m.lnk
 else if FileExist("F12\m.url")
@@ -5568,7 +5743,7 @@ Run,F12
 }
 Return
 
-F12 & n Up::
+F12 & n::
 if FileExist("F12\n.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 n.lnk
 else if FileExist("F12\n.url")
@@ -5580,7 +5755,7 @@ Run,F12
 }
 Return
 
-F12 & o Up::
+F12 & o::
 if FileExist("F12\o.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 o.lnk
 else if FileExist("F12\o.url")
@@ -5592,7 +5767,7 @@ Run,F12
 }
 Return
 
-F12 & p Up::
+F12 & p::
 if FileExist("F12\p.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 p.lnk
 else if FileExist("F12\p.url")
@@ -5604,7 +5779,7 @@ Run,F12
 }
 Return
 
-F12 & q Up::
+F12 & q::
 if FileExist("F12\q.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 q.lnk
 else if FileExist("F12\q.url")
@@ -5616,7 +5791,7 @@ Run,F12
 }
 Return
 
-F12 & r Up::
+F12 & r::
 if FileExist("F12\r.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 r.lnk
 else if FileExist("F12\r.url")
@@ -5628,7 +5803,7 @@ Run,F12
 }
 Return
 
-F12 & s Up::
+F12 & s::
 if FileExist("F12\s.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 s.lnk
 else if FileExist("F12\s.url")
@@ -5640,7 +5815,7 @@ Run,F12
 }
 Return
 
-F12 & t Up::
+F12 & t::
 if FileExist("F12\t.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 t.lnk
 else if FileExist("F12\t.url")
@@ -5652,7 +5827,7 @@ Run,F12
 }
 Return
 
-F12 & u Up::
+F12 & u::
 if FileExist("F12\u.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 u.lnk
 else if FileExist("F12\u.url")
@@ -5664,7 +5839,7 @@ Run,F12
 }
 Return
 
-F12 & v Up::
+F12 & v::
 if FileExist("F12\v.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 v.lnk
 else if FileExist("F12\v.url")
@@ -5676,7 +5851,7 @@ Run,F12
 }
 Return
 
-F12 & w Up::
+F12 & w::
 if FileExist("F12\w.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 w.lnk
 else if FileExist("F12\w.url")
@@ -5688,7 +5863,7 @@ Run,F12
 }
 Return
 
-F12 & x Up::
+F12 & x::
 if FileExist("F12\x.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 x.lnk
 else if FileExist("F12\x.url")
@@ -5700,7 +5875,7 @@ Run,F12
 }
 Return
 
-F12 & y Up::
+F12 & y::
 if FileExist("F12\y.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 y.lnk
 else if FileExist("F12\y.url")
@@ -5712,7 +5887,7 @@ Run,F12
 }
 Return
 
-F12 & z Up::
+F12 & z::
 if FileExist("F12\z.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 z.lnk
 else if FileExist("F12\z.url")
@@ -5724,7 +5899,7 @@ Run,F12
 }
 Return
 
-F12 & 1 Up::
+F12 & 1::
 if FileExist("F12\1.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 1.lnk
 else if FileExist("F12\1.url")
@@ -5736,7 +5911,7 @@ Run,F12
 }
 Return
 
-F12 & 2 Up::
+F12 & 2::
 if FileExist("F12\2.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 2.lnk
 else if FileExist("F12\2.url")
@@ -5748,7 +5923,7 @@ Run,F12
 }
 Return
 
-F12 & 3 Up::
+F12 & 3::
 if FileExist("F12\3.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 3.lnk
 else if FileExist("F12\3.url")
@@ -5760,7 +5935,7 @@ Run,F12
 }
 Return
 
-F12 & 4 Up::
+F12 & 4::
 if FileExist("F12\4.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 4.lnk
 else if FileExist("F12\4.url")
@@ -5772,7 +5947,7 @@ Run,F12
 }
 Return
 
-F12 & 5 Up::
+F12 & 5::
 if FileExist("F12\5.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 5.lnk
 else if FileExist("F12\5.url")
@@ -5784,7 +5959,7 @@ Run,F12
 }
 Return
 
-F12 & 6 Up::
+F12 & 6::
 if FileExist("F12\6.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 6.lnk
 else if FileExist("F12\6.url")
@@ -5796,7 +5971,7 @@ Run,F12
 }
 Return
 
-F12 & 7 Up::
+F12 & 7::
 if FileExist("F12\7.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 7.lnk
 else if FileExist("F12\7.url")
@@ -5808,7 +5983,7 @@ Run,F12
 }
 Return
 
-F12 & 8 Up::
+F12 & 8::
 if FileExist("F12\8.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 8.lnk
 else if FileExist("F12\8.url")
@@ -5820,7 +5995,7 @@ Run,F12
 }
 Return
 
-F12 & 9 Up::
+F12 & 9::
 if FileExist("F12\9.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 9.lnk
 else if FileExist("F12\9.url")
@@ -5832,7 +6007,7 @@ Run,F12
 }
 Return
 
-F12 & 0 Up::
+F12 & 0::
 if FileExist("F12\0.lnk")
 Run,"%A_ScriptFullPath%" /restart 12 0.lnk
 else if FileExist("F12\0.url")
@@ -5843,3 +6018,5 @@ FileCreateDir,F12
 Run,F12
 }
 Return
+
+#if
