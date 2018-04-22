@@ -15,7 +15,7 @@ if A_Is64bitOS
 exitapp
 }
 
-v:="5.0.1"
+v:="5.0.2"
 
 EnvGet,AppDataLocal,LocalAppData
 
@@ -322,244 +322,55 @@ Shift::Send {Space}
 
 #if space2&(spacesent=0)
 
-$a::
+a::
+b::
+c::
+d::
+e::
+f::
+g::
+h::
+i::
+j::
+k::
+l::
+m::
+n::
+o::
+p::
+q::
+r::
+s::
+t::
+u::
+v::
+w::
+x::
+y::
+z::
+1::
+2::
+3::
+4::
+5::
+6::
+7::
+8::
+9::
+0::
+,::
+.::
+'::
+[::
+]::
+\::
+-::
+=::
+Tab::
+Enter::
+BackSpace::
 spacesent=1
-Send {space}{a}
-Return
-
-$b::
-spacesent=1
-Send {space}{b}
-Return
-
-$c::
-spacesent=1
-Send {space}{c}
-Return
-
-$d::
-spacesent=1
-Send {space}{d}
-Return
-
-$e::
-spacesent=1
-Send {space}{e}
-Return
-
-$f::
-spacesent=1
-Send {space}{f}
-Return
-
-$g::
-spacesent=1
-Send {space}{g}
-Return
-
-$h::
-spacesent=1
-Send {space}{h}
-Return
-
-$i::
-spacesent=1
-Send {space}{i}
-Return
-
-$j::
-spacesent=1
-Send {space}{j}
-Return
-
-$k::
-spacesent=1
-Send {space}{k}
-Return
-
-$l::
-spacesent=1
-Send {space}{l}
-Return
-
-$m::
-spacesent=1
-Send {space}{m}
-Return
-
-$n::
-spacesent=1
-Send {space}{n}
-Return
-
-$o::
-spacesent=1
-Send {space}{o}
-Return
-
-$p::
-spacesent=1
-Send {space}{p}
-Return
-
-$q::
-spacesent=1
-Send {space}{q}
-Return
-
-$r::
-spacesent=1
-Send {space}{r}
-Return
-
-$s::
-spacesent=1
-Send {space}{s}
-Return
-
-$t::
-spacesent=1
-Send {space}{t}
-Return
-
-$u::
-spacesent=1
-Send {space}{u}
-Return
-
-$v::
-spacesent=1
-Send {space}{v}
-Return
-
-$w::
-spacesent=1
-Send {space}{w}
-Return
-
-$x::
-spacesent=1
-Send {space}{x}
-Return
-
-$y::
-spacesent=1
-Send {space}{y}
-Return
-
-$z::
-spacesent=1
-Send {space}{z}
-Return
-
-$1::
-spacesent=1
-Send {space}{1}
-Return
-
-$2::
-spacesent=1
-Send {space}{2}
-Return
-
-$3::
-spacesent=1
-Send {space}{3}
-Return
-
-$4::
-spacesent=1
-Send {space}{4}
-Return
-
-$5::
-spacesent=1
-Send {space}{5}
-Return
-
-$6::
-spacesent=1
-Send {space}{6}
-Return
-
-$7::
-spacesent=1
-Send {space}{7}
-Return
-
-$8::
-spacesent=1
-Send {space}{8}
-Return
-
-$9::
-spacesent=1
-Send {space}{9}
-Return
-
-$0::
-spacesent=1
-Send {space}{0}
-Return
-
-$,::
-spacesent=1
-Send {space}{,}
-Return
-
-$.::
-spacesent=1
-Send {space}{.}
-Return
-
-$'::
-spacesent=1
-Send {space}{'}
-Return
-
-$[::
-spacesent=1
-Send {space}{[}
-Return
-
-$]::
-spacesent=1
-Send {space}{]}
-Return
-
-$\::
-spacesent=1
-Send {space}{\}
-Return
-
-$-::
-spacesent=1
-Send {space}{-}
-Return
-
-$=::
-spacesent=1
-Send {space}{=}
-Return
-
-$`::
-spacesent=1
-Send {space}{`}
-Return
-
-$Tab::
-spacesent=1
-Send {space}{Tab}
-Return
-
-$Enter::
-spacesent=1
-Send {space}{Enter}
-Return
-
-$BackSpace::
-spacesent=1
-Send {space}{BackSpace}
+Send {space}{%A_ThisLabel%}
 Return
 
 #if
