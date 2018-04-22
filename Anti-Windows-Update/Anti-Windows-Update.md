@@ -7,6 +7,15 @@
 
 <br>
 
+[**点此了解 Anti Windows Update 的优良特性**。](https://zhuanlan.zhihu.com/p/33788671)
+
+
+<br>
+
+---
+
+<br>
+
 **警告：点击下载链接即代表您同意全权负责使用非最新版本的 Windows 的后果！**
 
 <br>
