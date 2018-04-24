@@ -10,7 +10,7 @@ Process, Priority, , High
 #InstallKeybdHook
 #NoTrayIcon
 
-v:="5.0.3"
+v:="5.0.4"
 
 EnvGet,AppDataLocal,LocalAppData
 
@@ -731,7 +731,10 @@ FileGetAttrib,temp,%url%
 if !ErrorLevel
 ShellRun(url)
 else
+{
+FileCreateDir,%fn%
 run,%fn%
+}
 }
 }
 return
@@ -808,6 +811,7 @@ return
 
 enter::
 launchcode=terminate
+FileCreateDir,%fn%
 run,%A_workingdir%\%fn%
 return
 
