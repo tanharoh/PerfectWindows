@@ -1,16 +1,26 @@
-﻿#NoEnv
-setkeydelay -1
-SetBatchLines -1
-ListLines Off
-Process, Priority, , High
-
+﻿bit=64
 #SingleInstance ignore
 #MaxHotkeysPerInterval 1000
 #Persistent
 #InstallKeybdHook
 #NoTrayIcon
+#NoEnv
+SendMode Input
+setkeydelay -1
+SetBatchLines -1
+ListLines Off
+Process, Priority, , High
 
-v:="5.0.4"
+v:="6.0.0"
+CurrentVersion=600
+
+Suspend, on
+
+if A_Is64bitOS&(bit=86)
+{
+    msgbox,0x40010,Power Keys,必须使用 64 位 Power Keys。
+    exitapp
+}
 
 EnvGet,AppDataLocal,LocalAppData
 
@@ -19,40 +29,53 @@ SetWorkingDir,%AppDataLocal%\Power Keys
 
 if !A_IsAdmin
 {
-try
-{
-Run *RunAs "%A_ScriptFullPath%" /restart
+    try
+    {
+        Run *RunAs "%A_ScriptFullPath%" /restart
+    }
+    ExitApp
 }
-ExitApp
-}
+
+SetNumLockState, alwayson
+
+Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,welcome: Color, red
+Gui,welcome: Font,cwhite s30 wbold q5,Segoe UI
+Gui,welcome: Add, Text, ,Power Keys %v%
+Gui,welcome: Show,AutoSize Center NoActivate
+Gui,updating: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,updating: Color, red
+Gui,updating: Font,cwhite s30 wbold q5,Segoe UI
+Gui,updating: Add, Text, ,Power Keys 正在更新...
+Gui,GameMode: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,GameMode: Color, red
+Gui,GameMode: Font,cwhite s30 wbold q5,Segoe UI
+Gui,GameMode: Add, Text, ,游戏模式已启用
+Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,indicator: Color, red
+h:=A_ScreenHeight*0.01
+y:=A_ScreenHeight*0.99
 
 ShellRun(prms*)
 {
     shellWindows := ComObjCreate("{9BA05972-F6A8-11CF-A442-00A0C90A8F39}")
     
-    desktop := shellWindows.Item(ComObj(19, 8)) ; VT_UI4, SCW_DESKTOP                
+    desktop := shellWindows.Item(ComObj(19, 8))
    
-    ; Retrieve top-level browser object.
     if ptlb := ComObjQuery(desktop
-        , "{4C96BE40-915C-11CF-99D3-00AA004AE837}"  ; SID_STopLevelBrowser
-        , "{000214E2-0000-0000-C000-000000000046}") ; IID_IShellBrowser
+        , "{4C96BE40-915C-11CF-99D3-00AA004AE837}"
+        , "{000214E2-0000-0000-C000-000000000046}")
     {
-        ; IShellBrowser.QueryActiveShellView -> IShellView
         if DllCall(NumGet(NumGet(ptlb+0)+15*A_PtrSize), "ptr", ptlb, "ptr*", psv:=0) = 0
         {
-            ; Define IID_IDispatch.
             VarSetCapacity(IID_IDispatch, 16)
             NumPut(0x46000000000000C0, NumPut(0x20400, IID_IDispatch, "int64"), "int64")
            
-            ; IShellView.GetItemObject -> IDispatch (object which implements IShellFolderViewDual)
             DllCall(NumGet(NumGet(psv+0)+15*A_PtrSize), "ptr", psv
                 , "uint", 0, "ptr", &IID_IDispatch, "ptr*", pdisp:=0)
            
-            ; Get Shell object.
             shell := ComObj(9,pdisp,1).Application
-           
-            ; IShellDispatch2.ShellExecute
-            test:=shell.ShellExecute(prms*)
+            shell.ShellExecute(prms*)
            
             ObjRelease(psv)
         }
@@ -63,251 +86,411 @@ ShellRun(prms*)
 GameMode=0
 isenabled=1
 isenabled2=1
+spaceenabled=1
 space1=0
 space2=0
+oneenabled=1
+one1=0
+one2=0
+twoenabled=1
+two1=0
+two2=0
 flaunch=0
 launchcode=null
 fn=0
 
-if A_Args.Length()=1
-DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
-
 RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
 RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
-RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-RegWrite, REG_SZ, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 
-Gui +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui, Color, Black
-gui, font,s20 bold q5, segoe ui
-Gui, Add, Text,cwhite,Power Space
-height:=A_screenheight-200
+FileRemoveDir,update,1
+FileCreateDir,update
+UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Version.txt,update\version.txt
+if errorlevel
+{
+    sleep 1000
+    gui,welcome:hide
+    FileRemoveDir,update,1
+    Suspend,off
+}
+else
+{
+    FileReadLine, latestversion, update\version.txt, 1
+    sleep 500
+    gui,welcome:hide
+    if (latestversion>CurrentVersion)
+    {
+        gui,updating:Show,AutoSize Center NoActivate
+        UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Power-Keys-x%bit%.exe,update\latest.exe
+        FileAppend,
+        (
+            :start
+            taskkill /im "%A_scriptname%" /f
+            move /y "%A_workingdir%\update\latest.exe" "%A_scriptfullpath%"
+            if exist "%A_workingdir%\update\latest.exe" (goto start)
+            start "" "%A_scriptfullpath%"
+            exit
+        ),update/update.bat
+        runwait,%ComSpec% /c start "" /B "%A_workingdir%\update\update.bat",,hide
+    }
+    else
+    {
+        FileRemoveDir,update,1
+        Suspend,off
+    }
+}
 
-Return
+return
 
 Lwin & =::
 Rwin & =::
 Send {Volume_Up}
-Return
+return
 
 Lwin & -::
 Rwin & -::
 Send {Volume_Down}
-Return
+return
 
 Lwin & , Up::
 Rwin & , Up::
 Send {Media_Prev}
-Return
+return
 
 Lwin & . Up::
 Rwin & . Up::
 Send {Media_Next}
-Return
+return
 
 Lwin & ' Up::
 Rwin & ' Up::
 Send {Media_Play_Pause}
-Return
+return
 
-Lwin & / Up::
-Rwin & / Up::
-if GameMode=1
-MsgBox,0x40040,Power Keys,版本：%v%`n作者：知阳`n游戏模式：已开启
-else
-MsgBox,0x40040,Power Keys,版本：%v%`n作者：知阳`n游戏模式：未开启
-Return
-
-LWin & NumLock Up::
-RWin & NumLock Up::
+#NumLock Up::
 toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
-Return
+return
 
-LWin & 0 Up::
-RWin & 0 Up::
+#0 Up::
 toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
-Return
+return
 
 #Delete::
 Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
-Return
+return
 
 #+Delete::
 msgbox,0x40131,Power Keys,确定清空回收站？
 ifmsgbox,ok
 {
-FileRecycleEmpty
+    FileRecycleEmpty
 }
-Return
+return
 
-LWin & CapsLock::
-RWin & CapsLock::
+#CapsLock::
 winset,AlwaysOnTop,, A
-Return
+return
 
-LWin & Enter Up::
-RWin & Enter Up::
+#Enter Up::
 Send ^#d
-Return
+return
 
-LWin & BackSpace Up::
-RWin & BackSpace Up::
+#Backspace Up::
 Send ^#{F4}
-Return
+return
 
-LWin & [ Up::
-RWin & [ Up::
+#[ Up::
 Send ^#{Left}
-Return
+return
 
-LWin & ] Up::
-RWin & ] Up::
+#] Up::
 Send ^#{Right}
-Return
+return
 
 LWin & F1::
 RWin & F1::
 toRun="https://github.com/szzhiyang/PerfectWindows/blob/master/Power-Keys/Power-Keys.md"
 ShellRun(toRun)
-Return
+return
 
 Lwin & F4::
 Rwin & F4::
 MsgBox,0x40131,Power Keys,确定退出 Power Keys？
 ifMsgBox,ok
 {
-RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
-RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
-ExitApp
+    RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+    RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+    RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+    RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
+    FileRemoveDir,update,1
+    ExitApp
 }
-Return
+return
 
 LWin & F5::
 RWin & F5::
-Send {LWin Up}
-Send {RWin Up}
+keywait,LWin
+keywait,Rwin
 Run,"%A_ScriptFullPath%" /restart
-Return
+return
 
 LWin & End::
 RWin & End::
-Send {LWin Up}
-Send {RWin Up}
-Run,"%A_ScriptFullPath%" /restart /hibernate
-Return
+keywait,LWin
+keywait,Rwin
+DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
+return
 
 #if GameMode=1
 
-LWin::Return
-RWin::Return
+LWin::return
+RWin::return
 
 LWin & F1::
 RWin & F1::
-Return
+return
 
 #if
 
-#if isenabled
-
-#if !flaunch
+#if !flaunch&&spaceenabled&&isenabled
 
 space::
-settimer,timer,300
+settimer,spacetimer,300
+oneenabled=0
+twoenabled=0
 spacesent=0
 space1=0
 space2=1
 isenabled2=0
 keywait,space
-settimer,timer,delete
+BlockInput,off
+settimer,spacetimer,delete
 if (!space1)&(!spacesent)
 send {space} 
 space1=0 
 space2=0
 spacesent=1
 isenabled2=1
-Gui, Hide
+oneenabled=1
+twoenabled=1
+Gui,indicator: Hide
 return
 
-timer:
-settimer,timer,delete
+spacetimer:
+settimer,spacetimer,delete
+BlockInput, on
 space1=1
 space2=0
-Gui, Show, xCenter y%height% NoActivate
+Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+return
+
+#If
+
+#if !flaunch&&oneenabled&&!two1&&!two2&&isenabled
+
+1::
+settimer,onetimer,300
+spaceenabled=0
+onesent=0
+one1=0
+one2=1
+isenabled2=0
+keywait,1
+settimer,onetimer,delete
+BlockInput,off
+if (!one1)&(!onesent)
+send {1} 
+one1=0 
+one2=0
+onesent=1
+isenabled2=1
+spaceenabled=1
+Gui,indicator: Hide
+return
+
+onetimer:
+BlockInput,on
+settimer,onetimer,delete
+one1=1
+one2=0
+Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
 return
 
 #if
+
+#if !flaunch&&twoenabled&&!one1&&!one2&&isenabled
+
+2::
+settimer,twotimer,300
+spaceenabled=0
+twosent=0
+two1=0
+two2=1
+isenabled2=0
+keywait,2
+settimer,twotimer,delete
+BlockInput,off
+if (!two1)&(!twosent)
+send {2} 
+two1=0 
+two2=0
+twosent=1
+isenabled2=1
+spaceenabled=1
+send {alt up}
+Gui,indicator: Hide
+return
+
+twotimer:
+BlockInput,on
+settimer,twotimer,delete
+send {alt down}
+two1=1
+two2=0
+Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+return
+
+#if
+
+#if isenabled
 
 #+PrintScreen::
 toRun="%A_WinDir%\system32\snippingtool.exe"
 ShellRun(toRun)
-Return
+return
 
 Lwin & PgUp::
 Rwin & PgUp::
 Send #=
-Return
+return
 
 Lwin & PgDn::
 Rwin & PgDn::
 Send #-
-Return
+return
 
-#G::
+Lwin & G::
+Rwin & G::
 GameMode=1
 isenabled=0
-;MsgBox,0x40040,Power Keys,游戏模式已开启。
-Return
+gui,GameMode:show,center NoActivate
+sleep 1000
+gui,GameMode:hide
+return
 
 #if
 
 #if space1
+Space & F::Send {Left}
+Space & J::Send {Right}
+Space & H::Send +{F10}
+Space & G::Send {Esc}
+Space & 9::Send +{WheelUp}
+Space & 0::Send +{WheelDown}
+Space & '::Send {Enter}
+Space & A::Send {Home}
+Space & `;::Send {End}
+Space & K::Send +{Right}
+Space & D::Send +{Left}
+Space & Q::Send ^{Home}
+Space & /::Send ^{End}
+Space & R::Send {Up}
+Space & T::Send {PgUp}
+Space & E::Send +{Up}
+Space & M::Send {Down}
+Space & N::Send {PgDn}
+Space & ,::Send +{Down}
+Space & S::Send +{Home}
+Space & L::Send +{End}
+Space & W::Send ^+{Home}
+Space & .::Send ^+{End}
+Space & B::Send ^{b}
+Space & I::Send ^{i}
+Space & U::Send ^{u}
+Space & Z::Send ^{z}
+Space & X::Send ^{x}
+Space & C::Send ^{c}
+Space & V::Send ^{v}
+Space & Y::Send ^{y}
+Space & 5::Send ^{l}
+Space & 6::Send ^{e}
+Space & 7::Send ^{r}
+Space & Tab::Send ^{a}
+Space & O::Send ^+{,}
+Space & P::Send ^+{.}
+Space & =::Send ^{WheelUp}
+Space & -::Send ^{WheelDown}
+Space & LCtrl::Send {BackSpace}
+Space & RCtrl::Send {BackSpace}
+Space & CapsLock::Send {BackSpace}
+Space & Shift::Space
+Space & ]::Send {Tab}
+Space & [::Send +{Tab}
+Space & 1::Send ^{s}
+Space & 3::Send +{3}
+Space & `::Send {``}
+Space & 8::Send +{8}
+Space & Enter::Send +{Enter}
+Space & bs::Send {Delete}
+Space & Esc::Send !{F4}
+Space & F1::Send {F1}
+Space & F2::Send {F2}
+Space & F3::Send {F3}
+Space & F4::Send {F4}
+Space & F5::Send {F5}
+Space & F6::Send {F6}
+Space & F7::Send {F7}
+Space & F8::Send {F8}
+Space & F9::Send {F9}
+Space & F10::Send {F10}
+Space & F11::Send {F11}
+Space & F12::Send {F12}
 
-F::Send {Left}
-J::Send {Right}
-G::Send +{WheelUp}
-H::Send +{WheelDown}
-'::Send {Enter}
-A::Send {Home}
-`;::Send {End}
-K::Send +{Right}
-D::Send +{Left}
-Q::Send ^{Home}
-/::Send ^{End}
-R::Send {Up}
-T::Send {PgUp}
-E::Send +{Up}
-M::Send {Down}
-N::Send {PgDn}
-,::Send +{Down}
-S::Send +{Home}
-L::Send +{End}
-W::Send ^+{Home}
-.::Send ^+{End}
-B::Send ^{b}
-I::Send ^{i}
-U::Send ^{u}
-Z::Send ^{z}
-X::Send ^{x}
-C::Send ^{c}
-V::Send ^{v}
-Y::Send ^{y}
-5::Send ^{l}
-6::Send ^{e}
-7::Send ^{r}
-Tab::Send ^{a}
-O::Send ^+,
-P::Send ^+.
-=::Send ^{WheelUp}
--::Send ^{WheelDown}
-LCtrl::Send {BackSpace}
-RCtrl::Send {BackSpace}
-CapsLock::Send {BackSpace}
-Shift::Send {Space}
+#if
 
+#if one1
+1 & n::Send {Numpad1}
+1 & m::Send {Numpad2}
+1 & ,::Send {Numpad3}
+1 & h::Send {Numpad4}
+1 & j::Send {Numpad5}
+1 & k::Send {Numpad6}
+1 & y::Send {Numpad7}
+1 & u::Send {Numpad8}
+1 & i::Send {Numpad9}
+1 & Space::Send {Numpad0}
+1 & Alt::Send {NumpadDot}
+1 & Ctrl::Send {NumpadEnter}
+1 & .::Send {NumpadEnter}
+1 & Enter::Send {NumpadEnter}
+1 & l::Send {NumpadAdd}
+1 & o::Send {NumpadAdd}
+1 & =::Send {NumpadAdd}
+1 & -::Send {NumpadSub}
+1 & 9::Send {NumpadSub}
+1 & 8::Send {NumpadMult}
+1 & /::Send {NumpadDiv}
+1 & 7::Send {NumpadDiv}
+1 & Backspace::Send {bs}
+#if
+
+#if two1
+2 & n::Numpad1
+2 & m::Numpad2
+2 & ,::Numpad3
+2 & h::Numpad4
+2 & j::Numpad5
+2 & k::Numpad6
+2 & y::Numpad7
+2 & u::Numpad8
+2 & i::Numpad9
+2 & Space::Numpad0
 #if
 
 #if space2&(spacesent=0)
@@ -356,16 +539,186 @@ z::
 \::
 -::
 =::
-Tab::
 Enter::
-BackSpace::
+Backspace::
+Delete::
+Insert::
+Home::
+End::
+PgUp::
+PgDn::
+Up::
+Down::
+Left::
+Right::
+PrintScreen::
 spacesent=1
 Send {space}{%A_ThisLabel%}
-Return
+return
+
+`::
+spacesent=1
+Send {Space}{``}
+return
+
+`;::
+spacesent=1
+Send {Space}{;}
+return
 
 #if
 
-#if isenabled&&isenabled2
+#if one2&(onesent=0)
+
+a::
+b::
+c::
+d::
+e::
+f::
+g::
+h::
+i::
+j::
+k::
+l::
+m::
+n::
+o::
+p::
+q::
+r::
+s::
+t::
+u::
+v::
+w::
+x::
+y::
+z::
+2::
+3::
+4::
+5::
+6::
+7::
+8::
+9::
+0::
+,::
+.::
+'::
+[::
+]::
+\::
+-::
+=::
+space::
+Enter::
+Backspace::
+Delete::
+Insert::
+Home::
+End::
+PgUp::
+PgDn::
+Up::
+Down::
+Left::
+Right::
+PrintScreen::
+onesent=1
+Send {1}{%A_ThisLabel%}
+return
+
+`::
+onesent=1
+Send {1}{``}
+return
+
+`;::
+onesent=1
+Send {1}{;}
+return
+
+#if
+
+#if two2&(twosent=0)
+
+a::
+b::
+c::
+d::
+e::
+f::
+g::
+h::
+i::
+j::
+k::
+l::
+m::
+n::
+o::
+p::
+q::
+r::
+s::
+t::
+u::
+v::
+w::
+x::
+y::
+z::
+1::
+3::
+4::
+5::
+6::
+7::
+8::
+9::
+0::
+,::
+.::
+'::
+[::
+]::
+\::
+-::
+=::
+Enter::
+Space::
+Backspace::
+Delete::
+Insert::
+Home::
+End::
+PgUp::
+PgDn::
+Up::
+Down::
+Left::
+Right::
+PrintScreen::
+twosent=1
+Send {2}{%A_ThisLabel%}
+return
+
+`::
+twosent=1
+Send {2}{``}
+return
+
+`;::
+twosent=1
+Send {2}{;}
+return
+
+#if
+
+#if isenabled&&isenabled2&&!flaunch
 
 SetStoreCapsLockMode, Off
 
@@ -375,14 +728,11 @@ if caps=D
 setcapslockstate,off
 else
 setcapslockstate,on
-Return
+return
 
 CapsLock & Tab::AltTab
 CapsLock & `::Send !{Esc}
 CapsLock & Esc::Send !{F4}
-
-CapsLock & Shift::Space
-
 CapsLock & a::Send ^+!{a}
 CapsLock & b::Send ^+!{b}
 CapsLock & c::Send ^+!{c}
@@ -455,7 +805,22 @@ CapsLock & Left::Send ^+!{Left}
 CapsLock & Right::Send ^+!{Right}
 CapsLock & PrintScreen::Send ^+!{PrintScreen}
 
-`::`
+`::Send {``}
+^`::Send ^{``}
++`::Send +{``}
+!`::Send !{``}
+^+`::Send ^+{``}
+^!`::Send ^!{``}
+!+`::Send !+{``}
+^!+`::Send ^!+{``}
+#`::Send #{``}
+^#`::Send ^#{``}
++#`::Send +#{``}
+!#`::Send !#{``}
+^!#`::Send ^!#{``}
+^+#`::Send ^+#{``}
++!#`::Send +!#{``}
+^+!#`::Send ^+!#{``}
 ` & Shift::`
 ` & a::Send +!{a}
 ` & b::Send +!{b}
@@ -531,17 +896,21 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & Tab::ShiftAltTab
 
 Tab::Send {Tab}
-^Tab::^Tab
-+Tab::+Tab
-!Tab::!Tab
-^!Tab::^!Tab
-!+Tab::!+Tab
-^+Tab::^+Tab
-^+!Tab::^+!Tab
+^Tab::Send ^{Tab}
++Tab::Send +{Tab}
+<!Tab::AltTab
+>!Tab::AltTab
+^+Tab::Send ^+{Tab}
+^!Tab::Send ^!{Tab}
+^!+Tab::Send ^!+{Tab}
 #Tab::#Tab
-^#Tab::^#Tab
-#+Tab::#+Tab
-#!Tab::#!Tab
+^#Tab::Send ^#{Tab}
++#Tab::Send +#{Tab}
+!#Tab::Send !#{Tab}
+^!#Tab::Send ^!#{Tab}
+^+#Tab::Send ^+#{Tab}
++!#Tab::Send +!#{Tab}
+^+!#Tab::Send ^+!#{Tab}
 Tab & Shift::Tab
 Tab & a::Send ^!{a}
 Tab & b::Send ^!{b}
@@ -592,6 +961,7 @@ Tab & F10::Send ^!{F10}
 Tab & F11::Send ^!{F11}
 Tab & F12::Send ^!{F12}
 Tab & ,::Send ^!{,}
+Tab & `::Send ^!{``}
 Tab & .::Send ^!{.}
 Tab & /::Send ^!{/}
 Tab & '::Send ^!{'}
@@ -615,7 +985,22 @@ Tab & Left::Send ^!{Left}
 Tab & Right::Send ^!{Right}
 Tab & PrintScreen::Send ^!{PrintScreen}
 
-Esc::Esc
+Esc::Send {Esc}
+^Esc::Send ^{Esc}
++Esc::Send +{Esc}
+!Esc::Send !{Esc}
+^+Esc::Send ^+{Esc}
+^!Esc::Send ^!{Esc}
+!+Esc::Send !+{Esc}
+^!+Esc::Send ^!+{Esc}
+#Esc::Send #{Esc}
+^#Esc::Send ^#{Esc}
++#Esc::Send +#{Esc}
+!#Esc::Send !#{Esc}
+^!#Esc::Send ^!#{Esc}
+^+#Esc::Send ^+#{Esc}
++!#Esc::Send +!#{Esc}
+^+!#Esc::Send ^+!#{Esc}
 Esc & Shift::Esc
 Esc & a::Send ^+{a}
 Esc & b::Send ^+{b}
@@ -666,6 +1051,7 @@ Esc & F10::Send ^+{F10}
 Esc & F11::Send ^+{F11}
 Esc & F12::Send ^+{F12}
 Esc & ,::Send ^+{,}
+Esc & `::Send ^+{``}
 Esc & .::Send ^+{.}
 Esc & /::Send ^+{/}
 Esc & '::Send ^+{'}
@@ -690,6 +1076,10 @@ Esc & Right::Send ^+{Right}
 Esc & PrintScreen::Send ^+{PrintScreen}
 Esc & Tab::Send ^+{Tab}
 
+#If
+
+#if isenabled
+
 F1::
 F2::
 F3::
@@ -711,31 +1101,31 @@ keywait,%launchcode%
 flaunch=0
 if (launchcode="null")
 {
-send {%fn%}
-return
+    send {%fn%}
+    return
 }
 else if (launchcode="terminate")
 {
-return
+    return
 }
 else
 {
-lnk=%A_workingdir%\%fn%\%launchcode%.lnk
-url=%A_workingdir%\%fn%\%launchcode%.url
-FileGetAttrib,temp,%lnk%
-if !errorlevel
-ShellRun(lnk)
-else
-{
-FileGetAttrib,temp,%url%
-if !ErrorLevel
-ShellRun(url)
-else
-{
-FileCreateDir,%fn%
-run,%fn%
-}
-}
+    lnk=%A_workingdir%\%fn%\%launchcode%.lnk
+    url=%A_workingdir%\%fn%\%launchcode%.url
+    FileGetAttrib,temp,%lnk%
+    if !errorlevel
+    ShellRun(lnk)
+    else
+    {
+        FileGetAttrib,temp,%url%
+        if !ErrorLevel
+        ShellRun(url)
+        else
+        {
+            FileCreateDir,%fn%
+            run,%fn%
+        }
+    }
 }
 return
 
@@ -743,6 +1133,8 @@ disablefn:
 settimer,disablefn,off
 launchcode=terminate
 return
+
+#if
 
 #if flaunch
 a::
@@ -771,7 +1163,6 @@ w::
 x::
 y::
 z::
-1::
 2::
 3::
 4::
@@ -783,7 +1174,6 @@ z::
 0::
 ,::
 .::
-/::
 '::
 [::
 ]::
@@ -801,25 +1191,46 @@ Up::
 Down::
 Left::
 Right::
+Gosub, disablefn
 launchcode=%A_ThisLabel%
 return
 
+`;::
+Gosub, disablefn
+launchcode=`;
+return
+
 space::
-launchcode=terminate
+Gosub, disablefn
 send !{F4}
 return
 
 enter::
-launchcode=terminate
+Gosub, disablefn
 FileCreateDir,%fn%
 run,%A_workingdir%\%fn%
 return
 
 PrintScreen::
-launchcode=terminate
+Gosub, disablefn
 send ^+!{%fn%}
 return
 
-#if
+Esc::
+Gosub, disablefn
+return
+
+F1 & Shift::F1
+F2 & Shift::F2
+F3 & Shift::F3
+F4 & Shift::F4
+F5 & Shift::F5
+F6 & Shift::F6
+F7 & Shift::F7
+F8 & Shift::F8
+F9 & Shift::F9
+F10 & Shift::F10
+F11 & Shift::F11
+F12 & Shift::F12
 
 #if
