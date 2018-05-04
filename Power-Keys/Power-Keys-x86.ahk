@@ -11,8 +11,8 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 
-v:="6.0.0"
-CurrentVersion=600
+v:="6.0.1"
+CurrentVersion=601
 
 Suspend, on
 
@@ -266,7 +266,6 @@ space1=0
 space2=1
 isenabled2=0
 keywait,space
-BlockInput,off
 settimer,spacetimer,delete
 if (!space1)&(!spacesent)
 send {space} 
@@ -281,7 +280,6 @@ return
 
 spacetimer:
 settimer,spacetimer,delete
-BlockInput, on
 space1=1
 space2=0
 Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
