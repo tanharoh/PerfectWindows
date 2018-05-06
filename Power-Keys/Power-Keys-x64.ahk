@@ -11,8 +11,8 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 
-v:="6.0.1"
-CurrentVersion=601
+v:="6.0.2"
+CurrentVersion=602
 
 Suspend, on
 
@@ -100,7 +100,7 @@ launchcode=null
 fn=0
 
 RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
-RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys, %A_ScriptFullPath%
+RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 
@@ -222,9 +222,6 @@ MsgBox,0x40131,Power Keys,确定退出 Power Keys？
 ifMsgBox,ok
 {
     RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-    RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
-    RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-    RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
     FileRemoveDir,update,1
     ExitApp
 }
@@ -387,6 +384,8 @@ return
 #if space1
 Space & F::Send {Left}
 Space & J::Send {Right}
+Space & D::Send +{Left}
+Space & K::Send +{Right}
 Space & H::Send +{F10}
 Space & G::Send {Esc}
 Space & 9::Send +{WheelUp}
@@ -394,8 +393,6 @@ Space & 0::Send +{WheelDown}
 Space & '::Send {Enter}
 Space & A::Send {Home}
 Space & `;::Send {End}
-Space & K::Send +{Right}
-Space & D::Send +{Left}
 Space & Q::Send ^{Home}
 Space & /::Send ^{End}
 Space & R::Send {Up}
