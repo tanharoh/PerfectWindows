@@ -11,8 +11,8 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 
-v:="7.0.0"
-CurrentVersion=700
+v:="7.0.1"
+CurrentVersion=701
 
 Suspend, on
 
@@ -255,7 +255,7 @@ return
 #if !flaunch&&spaceenabled&&isenabled
 
 space::
-settimer,spacetimer,300
+settimer,spacetimer,250
 oneenabled=0
 twoenabled=0
 spacesent=0
@@ -291,7 +291,7 @@ return
 #if !flaunch&&oneenabled&&!two1&&!two2&&isenabled
 
 1::
-settimer,onetimer,300
+settimer,onetimer,250
 spaceenabled=0
 onesent=0
 one1=0
@@ -324,7 +324,7 @@ return
 #if !flaunch&&twoenabled&&!one1&&!one2&&isenabled
 
 2::
-settimer,twotimer,300
+settimer,twotimer,250
 spaceenabled=0
 twosent=0
 two1=0
@@ -1195,7 +1195,7 @@ F9::
 F10::
 F11::
 F12::
-settimer,disablefn,500
+settimer,disablefn,250
 fn=%A_ThisLabel%
 flaunch=1
 launchcode=null
