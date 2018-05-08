@@ -11,8 +11,8 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 
-v:="6.0.2"
-CurrentVersion=602
+v:="7.0.0"
+CurrentVersion=700
 
 Suspend, on
 
@@ -43,16 +43,14 @@ Gui,welcome: Color, red
 Gui,welcome: Font,cwhite s30 wbold q5,Segoe UI
 Gui,welcome: Add, Text, ,Power Keys %v%
 Gui,welcome: Show,AutoSize Center NoActivate
-Gui,updating: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,updating: Color, red
 Gui,updating: Font,cwhite s30 wbold q5,Segoe UI
 Gui,updating: Add, Text, ,Power Keys 正在更新...
-Gui,GameMode: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,GameMode: Color, red
 Gui,GameMode: Font,cwhite s30 wbold q5,Segoe UI
 Gui,GameMode: Add, Text, ,游戏模式已启用
-Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,indicator: Color, red
+Gui,indicator2: Color, yellow
 h:=A_ScreenHeight*0.01
 y:=A_ScreenHeight*0.99
 
@@ -89,6 +87,7 @@ isenabled2=1
 spaceenabled=1
 space1=0
 space2=0
+space3=0
 oneenabled=1
 one1=0
 one2=0
@@ -121,6 +120,7 @@ else
     gui,welcome:hide
     if (latestversion>CurrentVersion)
     {
+        Gui,updating: +LastFound +AlwaysOnTop -Caption +ToolWindow
         gui,updating:Show,AutoSize Center NoActivate
         UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Power-Keys-x%bit%.exe,update\latest.exe
         FileAppend,
@@ -261,6 +261,7 @@ twoenabled=0
 spacesent=0
 space1=0
 space2=1
+space3=0
 isenabled2=0
 keywait,space
 settimer,spacetimer,delete
@@ -268,6 +269,7 @@ if (!space1)&(!spacesent)
 send {space} 
 space1=0 
 space2=0
+space3=0
 spacesent=1
 isenabled2=1
 oneenabled=1
@@ -279,6 +281,7 @@ spacetimer:
 settimer,spacetimer,delete
 space1=1
 space2=0
+space3=0
 Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
 return
@@ -374,6 +377,7 @@ Lwin & G::
 Rwin & G::
 GameMode=1
 isenabled=0
+Gui,GameMode: +LastFound +AlwaysOnTop -Caption +ToolWindow
 gui,GameMode:show,center NoActivate
 sleep 1000
 gui,GameMode:hide
@@ -381,30 +385,43 @@ return
 
 #if
 
+#if space1|space3
+
+Space & A::
+Space & `;::
+space1=0
+space3=1
+Gui,indicator2: +LastFound +AlwaysOnTop -Caption +ToolWindow
+Gui,indicator2: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+KeyWait, a
+KeyWait, `;
+space1=1
+space3=0
+Gui,indicator2: Hide
+return
+
+#if
+
 #if space1
 Space & F::Send {Left}
 Space & J::Send {Right}
-Space & D::Send +{Left}
-Space & K::Send +{Right}
+Space & D::Send ^{Left}
+Space & K::Send ^{Right}
 Space & H::Send +{F10}
 Space & G::Send {Esc}
 Space & 9::Send +{WheelUp}
 Space & 0::Send +{WheelDown}
 Space & '::Send {Enter}
-Space & A::Send {Home}
-Space & `;::Send {End}
-Space & Q::Send ^{Home}
-Space & /::Send ^{End}
+Space & S::Send {Home}
+Space & L::Send {End}
+Space & W::Send ^{Home}
+Space & .::Send ^{End}
 Space & R::Send {Up}
 Space & T::Send {PgUp}
-Space & E::Send +{Up}
+Space & E::Send ^{Up}
 Space & M::Send {Down}
 Space & N::Send {PgDn}
-Space & ,::Send +{Down}
-Space & S::Send +{Home}
-Space & L::Send +{End}
-Space & W::Send ^+{Home}
-Space & .::Send ^+{End}
+Space & ,::Send ^{Down}
 Space & B::Send ^{b}
 Space & I::Send ^{i}
 Space & U::Send ^{u}
@@ -427,10 +444,11 @@ Space & CapsLock::Send {BackSpace}
 Space & Shift::Space
 Space & ]::Send {Tab}
 Space & [::Send +{Tab}
-Space & 1::Send ^{s}
+Space & Q::Send ^{s}
 Space & 3::Send +{3}
 Space & `::Send {``}
 Space & 8::Send +{8}
+Space & /::Send ^{Enter}
 Space & Enter::Send +{Enter}
 Space & bs::Send {Delete}
 Space & Esc::Send !{F4}
@@ -446,6 +464,87 @@ Space & F9::Send {F9}
 Space & F10::Send {F10}
 Space & F11::Send {F11}
 Space & F12::Send {F12}
+Space & Up::Send {Up}
+Space & Down::Send {Down}
+Space & Left::Send {Left}
+Space & Right::Send {Right}
+Space & Home::Send {Home}
+Space & End::Send {End}
+Space & PgUp::Send {PgUp}
+Space & PgDn::Send {PgDn}
+
+#if
+
+#if space3
+Space & F::Send +{Left}
+Space & J::Send +{Right}
+Space & D::Send ^+{Left}
+Space & K::Send ^+{Right}
+Space & H::Send +{F10}
+Space & G::Send {Esc}
+Space & 9::Send +{WheelUp}
+Space & 0::Send +{WheelDown}
+Space & '::Send {Enter}
+Space & S::Send +{Home}
+Space & L::Send +{End}
+Space & W::Send ^+{Home}
+Space & .::Send ^+{End}
+Space & R::Send +{Up}
+Space & T::Send {PgUp}
+Space & E::Send +^{Up}
+Space & M::Send +{Down}
+Space & N::Send {PgDn}
+Space & ,::Send ^+{Down}
+Space & B::Send ^{b}
+Space & I::Send ^{i}
+Space & U::Send ^{u}
+Space & Z::Send ^{z}
+Space & X::Send ^{x}
+Space & C::Send ^{c}
+Space & V::Send ^{v}
+Space & Y::Send ^{y}
+Space & 5::Send ^{l}
+Space & 6::Send ^{e}
+Space & 7::Send ^{r}
+Space & Tab::Send ^{a}
+Space & O::Send ^+{,}
+Space & P::Send ^+{.}
+Space & =::Send ^{WheelUp}
+Space & -::Send ^{WheelDown}
+Space & LCtrl::Send {BackSpace}
+Space & RCtrl::Send {BackSpace}
+Space & CapsLock::Send {BackSpace}
+Space & Shift::Space
+Space & ]::Send {Tab}
+Space & [::Send +{Tab}
+Space & Q::Send ^{s}
+Space & 3::Send +{3}
+Space & `::Send {``}
+Space & 8::Send +{8}
+Space & /::Send ^{Enter}
+Space & Enter::Send +{Enter}
+Space & bs::Send {Delete}
+Space & Esc::Send !{F4}
+Space & F1::Send {F1}
+Space & F2::Send {F2}
+Space & F3::Send {F3}
+Space & F4::Send {F4}
+Space & F5::Send {F5}
+Space & F6::Send {F6}
+Space & F7::Send {F7}
+Space & F8::Send {F8}
+Space & F9::Send {F9}
+Space & F10::Send {F10}
+Space & F11::Send {F11}
+Space & F12::Send {F12}
+Space & Up::Send {Up}
+Space & Down::Send {Down}
+Space & Left::Send {Left}
+Space & Right::Send {Right}
+Space & Home::Send {Home}
+Space & End::Send {End}
+Space & PgUp::Send {PgUp}
+Space & PgDn::Send {PgDn}
 
 #if
 
@@ -547,16 +646,19 @@ Down::
 Left::
 Right::
 PrintScreen::
+settimer,spacetimer,delete
 spacesent=1
 Send {space}{%A_ThisLabel%}
 return
 
 `::
+settimer,spacetimer,delete
 spacesent=1
 Send {Space}{``}
 return
 
 `;::
+settimer,spacetimer,delete
 spacesent=1
 Send {Space}{;}
 return
@@ -622,16 +724,19 @@ Down::
 Left::
 Right::
 PrintScreen::
+settimer,onetimer,delete
 onesent=1
 Send {1}{%A_ThisLabel%}
 return
 
 `::
+settimer,onetimer,delete
 onesent=1
 Send {1}{``}
 return
 
 `;::
+settimer,onetimer,delete
 onesent=1
 Send {1}{;}
 return
@@ -697,16 +802,19 @@ Down::
 Left::
 Right::
 PrintScreen::
+settimer,twotimer,delete
 twosent=1
 Send {2}{%A_ThisLabel%}
 return
 
 `::
+settimer,twotimer,delete
 twosent=1
 Send {2}{``}
 return
 
 `;::
+settimer,twotimer,delete
 twosent=1
 Send {2}{;}
 return
