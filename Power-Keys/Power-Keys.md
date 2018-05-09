@@ -319,7 +319,7 @@ Power Keys 启动时，会连接到 `GitHub.com` 检查更新并向 Windows 添�
 
 **虽然 Power Keys 把许多按键当作了快捷键的修饰键，但是这完全不影响您正常使用它们的功能！** 另外，如果您需要按住它们以实现连击操作，请在按住对应按键的同时按下 `Shift` 键，或者按下 `Win + G` 以进入游戏模式。
 
-**Power Keys 所使用的快捷键在极罕见的情况下（比如在您按下快捷键的瞬间突然有其他软件向您请求管理员权限）会出现异常。** 虽然这种事情的发生概率仅有 0.00001%，但是 Power Keys 还是对此提供了应对措施。如果您真的遇到了与 Power Keys 相关的异常，仅需通过按下快捷键 `Win + F5` 重启 Power Keys。
+**快捷键失灵了？** 虽然这种事情的发生概率仅有 0.00001%，但是 Power Keys 还是对此提供了应对措施。如果您真的遇到了与 Power Keys 相关的异常，仅需按下 `Win + F5` 重启 Power Keys。
 
 Power Keys 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 Power-Keys.ahk。
 
