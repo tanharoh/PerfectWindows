@@ -50,6 +50,10 @@
 
 [64 位版本](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) （无法在 32 位 Windows 上运行）
 
+Power Keys 成功运行后，将会显示一个简单的启动界面。启动界面消失后，您就可以通过快捷键来使用它的所有功能。
+
+**您随时都可以按下 `Win + F1` 来查看它的帮助文件，也就是您现在浏览的页面。**
+
 <br>
 
 ---
