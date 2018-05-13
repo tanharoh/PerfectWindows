@@ -1,6 +1,7 @@
 ﻿Updater:
 SetTimer,RestartUpdater,1800000
-FileRemoveDir,%UpdateDir%,1
+FileDelete, %UpdateDir%\latest.exe
+FileDelete, %UpdateDir%\version.txt
 UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Version.txt,%UpdateDir%\version.txt
 FileReadLine, latestversion, %UpdateDir%\version.txt, 1
 RegRead, temp, HKLM\Software\szzhiyang\Power Keys,GameMode
