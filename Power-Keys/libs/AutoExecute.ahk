@@ -29,6 +29,7 @@ EnvGet,AppDataLocal,LocalAppData
 
 FileCreateDir,%AppDataLocal%\Power Keys
 SetWorkingDir,%AppDataLocal%\Power Keys
+FileRemoveDir,update,1
 
 gosub,update
 

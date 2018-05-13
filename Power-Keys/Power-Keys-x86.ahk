@@ -13,8 +13,8 @@ ListLines Off
 Process, Priority, , High
 Suspend, on
 
-v:="8.0.0"
-CurrentVersion=800
+v:="8.0.1"
+CurrentVersion=801
 
 UpdateDir=%A_ProgramFiles%\szzhiyang\Power Keys\Update
 isenabled=1

@@ -1,5 +1,5 @@
 ﻿Updater:
-SetTimer, RestartUpdater, 60000
+SetTimer,RestartUpdater,1800000
 FileRemoveDir,%UpdateDir%,1
 UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Version.txt,%UpdateDir%\version.txt
 FileReadLine, latestversion, %UpdateDir%\version.txt, 1
