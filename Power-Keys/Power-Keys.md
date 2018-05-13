@@ -66,6 +66,12 @@
 
 <br>
 
+**游戏模式**
+
+>**在打游戏时轻松自如地切歌、调整音量，并屏蔽 Windows 徽标键。**
+
+<br>
+
 **您所期望的功能**
 
 >[**快来提建议！**](https://github.com/szzhiyang/PerfectWindows/issues)
