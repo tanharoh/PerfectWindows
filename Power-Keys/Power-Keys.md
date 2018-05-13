@@ -12,7 +12,7 @@
 
 <br>
 
-[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)    [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki)
+[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)    [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
 
 <br>
 
