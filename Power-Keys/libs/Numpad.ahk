@@ -17,7 +17,8 @@ one2=0
 onesent=1
 isenabled2=1
 spaceenabled=1
-Gui,indicator: Hide
+SetNumLockState, off
+gosub,HideRed
 return
 
 onetimer:
@@ -25,36 +26,36 @@ BlockInput,on
 settimer,onetimer,delete
 one1=1
 one2=0
-Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+SetNumLockState, on
+gosub,ShowRed
 return
 
 #if
 
 #if one1
-1 & n::Send {Numpad1}
-1 & m::Send {Numpad2}
-1 & ,::Send {Numpad3}
-1 & h::Send {Numpad4}
-1 & j::Send {Numpad5}
-1 & k::Send {Numpad6}
-1 & y::Send {Numpad7}
-1 & u::Send {Numpad8}
-1 & i::Send {Numpad9}
-1 & Space::Send {Numpad0}
-1 & Alt::Send {NumpadDot}
-1 & Ctrl::Send {NumpadEnter}
-1 & .::Send {NumpadEnter}
-1 & Enter::Send {NumpadEnter}
-1 & l::Send {NumpadAdd}
-1 & o::Send {NumpadAdd}
-1 & =::Send {NumpadAdd}
-1 & -::Send {NumpadSub}
-1 & 9::Send {NumpadSub}
-1 & 8::Send {NumpadMult}
-1 & /::Send {NumpadDiv}
-1 & 7::Send {NumpadDiv}
-1 & Backspace::Send {bs}
+n::Send {Numpad1}
+m::Send {Numpad2}
+,::Send {Numpad3}
+h::Send {Numpad4}
+j::Send {Numpad5}
+k::Send {Numpad6}
+y::Send {Numpad7}
+u::Send {Numpad8}
+i::Send {Numpad9}
+Space::Send {Numpad0}
+Alt::Send {NumpadDot}
+Ctrl::Send {NumpadEnter}
+.::Send {NumpadEnter}
+Enter::Send {NumpadEnter}
+l::Send {NumpadAdd}
+o::Send {NumpadAdd}
+=::Send {NumpadAdd}
+-::Send {NumpadSub}
+9::Send {NumpadSub}
+8::Send {NumpadMult}
+/::Send {NumpadDiv}
+7::Send {NumpadDiv}
+bs::Send {bs}
 #if
 
 #if one2&(onesent=0)
@@ -100,6 +101,7 @@ z::
 [::
 ]::
 \::
+/::
 -::
 =::
 space::

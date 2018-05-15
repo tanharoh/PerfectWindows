@@ -6,8 +6,8 @@ oneenabled=0
 twoenabled=0
 spacesent=0
 space1=0
-space2=1
 space3=0
+space2=1
 isenabled2=0
 keywait,space
 settimer,spacetimer,delete
@@ -20,180 +20,138 @@ spacesent=1
 isenabled2=1
 oneenabled=1
 twoenabled=1
-Gui,indicator: Hide
+gosub,HideRed
 return
 
 spacetimer:
 settimer,spacetimer,delete
-space1=1
 space2=0
 space3=0
-Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+space1=1
+gosub,ShowRed
 return
 
 #If
 
 #if space1|space3
 
-Space & A::
-Space & `;::
+A::
+`;::
 space1=0
 space3=1
-Gui,indicator2: +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui,indicator2: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+gosub,ShowYellow
 KeyWait, a
 KeyWait, `;
-space1=1
 space3=0
-Gui,indicator2: Hide
+space1=1
+gosub,HideYellow
 return
 
 #if
 
 #if space1
-Space & F::Send {Left}
-Space & J::Send {Right}
-Space & D::Send ^{Left}
-Space & K::Send ^{Right}
-Space & H::Send +{F10}
-Space & G::Send {Esc}
-Space & 9::Send +{WheelUp}
-Space & 0::Send +{WheelDown}
-Space & '::Send {Enter}
-Space & S::Send {Home}
-Space & L::Send {End}
-Space & W::Send ^{Home}
-Space & .::Send ^{End}
-Space & R::Send {Up}
-Space & T::Send {PgUp}
-Space & E::Send ^{Up}
-Space & M::Send {Down}
-Space & N::Send {PgDn}
-Space & ,::Send ^{Down}
-Space & B::Send ^{b}
-Space & I::Send ^{i}
-Space & U::Send ^{u}
-Space & Z::Send ^{z}
-Space & X::Send ^{x}
-Space & C::Send ^{c}
-Space & V::Send ^{v}
-Space & Y::Send ^{y}
-Space & 5::Send ^{l}
-Space & 6::Send ^{e}
-Space & 7::Send ^{r}
-Space & Tab::Send ^{a}
-Space & O::Send ^+{,}
-Space & P::Send ^+{.}
-Space & =::Send ^{WheelUp}
-Space & -::Send ^{WheelDown}
-Space & LCtrl::Send {BackSpace}
-Space & RCtrl::Send {BackSpace}
-Space & CapsLock::Send {BackSpace}
-Space & Shift::Space
-Space & ]::Send {Tab}
-Space & [::Send +{Tab}
-Space & Q::Send ^{s}
-Space & 3::Send +{3}
-Space & `::Send {``}
-Space & 8::Send +{8}
-Space & /::Send ^{Enter}
-Space & Enter::Send +{Enter}
-Space & bs::Send {Delete}
-Space & Esc::Send !{F4}
-Space & F1::Send {F1}
-Space & F2::Send {F2}
-Space & F3::Send {F3}
-Space & F4::Send {F4}
-Space & F5::Send {F5}
-Space & F6::Send {F6}
-Space & F7::Send {F7}
-Space & F8::Send {F8}
-Space & F9::Send {F9}
-Space & F10::Send {F10}
-Space & F11::Send {F11}
-Space & F12::Send {F12}
-Space & Up::Send {Up}
-Space & Down::Send {Down}
-Space & Left::Send {Left}
-Space & Right::Send {Right}
-Space & Home::Send {Home}
-Space & End::Send {End}
-Space & PgUp::Send {PgUp}
-Space & PgDn::Send {PgDn}
+F::Send {Left}
+J::Send {Right}
+D::Send ^{Left}
+K::Send ^{Right}
+H::Send +{F10}
+G::Send {Esc}
+9::Send +{WheelUp}
+0::Send +{WheelDown}
+'::Send {Enter}
+S::Send {Home}
+L::Send {End}
+W::Send ^{Home}
+.::Send ^{End}
+R::Send {Up}
+T::Send {PgUp}
+E::Send ^{Up}
+M::Send {Down}
+N::Send {PgDn}
+,::Send ^{Down}
+B::Send ^{b}
+I::Send ^{i}
+U::Send ^{u}
+Z::Send ^{z}
+X::Send ^{x}
+C::Send ^{c}
+V::Send ^{v}
+Y::Send ^{y}
+5::Send ^{l}
+6::Send ^{e}
+7::Send ^{r}
+Tab::Send ^{a}
+O::Send ^+{,}
+P::Send ^+{.}
+=::Send ^{WheelUp}
+-::Send ^{WheelDown}
+LCtrl::Send {bs}
+RCtrl::Send {bs}
+CapsLock::Send {bs}
+Shift::Space
+]::Send {Tab}
+[::Send +{Tab}
+Q::Send ^{s}
+3::Send +{3}
+`::Send {``}
+8::Send +{8}
+/::Send ^{Enter}
+Enter::Send +{Enter}
+bs::Send {Delete}
+Esc::Send !{F4}
 
 #if
 
 #if space3
-Space & F::Send +{Left}
-Space & J::Send +{Right}
-Space & D::Send ^+{Left}
-Space & K::Send ^+{Right}
-Space & H::Send +{F10}
-Space & G::Send {Esc}
-Space & 9::Send +{WheelUp}
-Space & 0::Send +{WheelDown}
-Space & '::Send {Enter}
-Space & S::Send +{Home}
-Space & L::Send +{End}
-Space & W::Send ^+{Home}
-Space & .::Send ^+{End}
-Space & R::Send +{Up}
-Space & T::Send {PgUp}
-Space & E::Send +^{Up}
-Space & M::Send +{Down}
-Space & N::Send {PgDn}
-Space & ,::Send ^+{Down}
-Space & B::Send ^{b}
-Space & I::Send ^{i}
-Space & U::Send ^{u}
-Space & Z::Send ^{z}
-Space & X::Send ^{x}
-Space & C::Send ^{c}
-Space & V::Send ^{v}
-Space & Y::Send ^{y}
-Space & 5::Send ^{l}
-Space & 6::Send ^{e}
-Space & 7::Send ^{r}
-Space & Tab::Send ^{a}
-Space & O::Send ^+{,}
-Space & P::Send ^+{.}
-Space & =::Send ^{WheelUp}
-Space & -::Send ^{WheelDown}
-Space & LCtrl::Send {BackSpace}
-Space & RCtrl::Send {BackSpace}
-Space & CapsLock::Send {BackSpace}
-Space & Shift::Space
-Space & ]::Send {Tab}
-Space & [::Send +{Tab}
-Space & Q::Send ^{s}
-Space & 3::Send +{3}
-Space & `::Send {``}
-Space & 8::Send +{8}
-Space & /::Send ^{Enter}
-Space & Enter::Send +{Enter}
-Space & bs::Send {Delete}
-Space & Esc::Send !{F4}
-Space & F1::Send {F1}
-Space & F2::Send {F2}
-Space & F3::Send {F3}
-Space & F4::Send {F4}
-Space & F5::Send {F5}
-Space & F6::Send {F6}
-Space & F7::Send {F7}
-Space & F8::Send {F8}
-Space & F9::Send {F9}
-Space & F10::Send {F10}
-Space & F11::Send {F11}
-Space & F12::Send {F12}
-Space & Up::Send {Up}
-Space & Down::Send {Down}
-Space & Left::Send {Left}
-Space & Right::Send {Right}
-Space & Home::Send {Home}
-Space & End::Send {End}
-Space & PgUp::Send {PgUp}
-Space & PgDn::Send {PgDn}
+F::Send +{Left}
+J::Send +{Right}
+D::Send ^+{Left}
+K::Send ^+{Right}
+H::Send +{F10}
+G::Send {Esc}
+9::Send +{WheelUp}
+0::Send +{WheelDown}
+'::Send {Enter}
+S::Send +{Home}
+L::Send +{End}
+W::Send ^+{Home}
+.::Send ^+{End}
+R::Send +{Up}
+T::Send {PgUp}
+E::Send +^{Up}
+M::Send +{Down}
+N::Send {PgDn}
+,::Send ^+{Down}
+B::Send ^{b}
+I::Send ^{i}
+U::Send ^{u}
+Z::Send ^{z}
+X::Send ^{x}
+C::Send ^{c}
+V::Send ^{v}
+Y::Send ^{y}
+5::Send ^{l}
+6::Send ^{e}
+7::Send ^{r}
+Tab::Send ^{a}
+O::Send ^+{,}
+P::Send ^+{.}
+=::Send ^{WheelUp}
+-::Send ^{WheelDown}
+LCtrl::Send {bs}
+RCtrl::Send {bs}
+CapsLock::Send {bs}
+Shift::Space
+]::Send {Tab}
+[::Send +{Tab}
+Q::Send ^{s}
+3::Send +{3}
+`::Send {``}
+8::Send +{8}
+/::Send ^{Enter}
+Enter::Send +{Enter}
+bs::Send {Delete}
+Esc::Send !{F4}
 
 #if
 
@@ -240,6 +198,7 @@ z::
 '::
 [::
 ]::
+/::
 \::
 -::
 =::
@@ -258,7 +217,7 @@ Right::
 PrintScreen::
 settimer,spacetimer,delete
 spacesent=1
-Send {space}{%A_ThisLabel%}
+Send {Space}{%A_ThisLabel%}
 return
 
 `::

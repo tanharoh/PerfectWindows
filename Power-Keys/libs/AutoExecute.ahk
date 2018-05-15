@@ -33,8 +33,6 @@ FileRemoveDir,update,1
 
 gosub,update
 
-SetNumLockState, alwayson
-
 Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,welcome: Color, red
 Gui,welcome: Font,cwhite s30 wbold q5,Segoe UI
@@ -45,14 +43,13 @@ if 1!=silent
     sleep 1000
     Gui,welcome: Hide
 }
-Gui,indicator: Color, red
-Gui,indicator2: Color, yellow
 
 RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 
 Gosub, Createtray
+Gosub, CreateGUI
 
 return
 

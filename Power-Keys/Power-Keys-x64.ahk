@@ -12,9 +12,10 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 Suspend, on
+SetStoreCapsLockMode, On
 
-v:="8.0.2"
-CurrentVersion=802
+v:="8.0.4"
+CurrentVersion=804
 
 UpdateDir=%A_ProgramFiles%\szzhiyang\Power Keys\Update
 isenabled=1
@@ -36,8 +37,6 @@ delay=250
 SpaceDisabled=0
 GameMode=0
 StartUp=0
-h:=A_ScreenHeight*0.01
-y:=A_ScreenHeight*0.99
 
 if 1=update
 {
@@ -60,3 +59,4 @@ Return
 #Include libs\Updater.ahk
 #Include libs\Numpad.ahk
 #Include libs\AltNumpad.ahk
+#Include libs\GUI.ahk

@@ -1,4 +1,4 @@
-﻿#if !GameMode
+﻿#if !GameMode&&!space1&&!space2&&!space3
 
 F1::
 F2::

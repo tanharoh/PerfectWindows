@@ -1,4 +1,4 @@
-﻿#if !flaunch&&!GameMode
+﻿#if !flaunch&&!GameMode&&!space1&&!space2&&!space3
 
 CapsLock::
 GetKeyState,caps,CapsLock,T

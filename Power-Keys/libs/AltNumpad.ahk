@@ -18,7 +18,8 @@ twosent=1
 isenabled2=1
 spaceenabled=1
 send {alt up}
-Gui,indicator: Hide
+SetNumLockState, off
+gosub,HideRed
 return
 
 twotimer:
@@ -27,23 +28,23 @@ settimer,twotimer,delete
 send {alt down}
 two1=1
 two2=0
-Gui,indicator: +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui,indicator: Show, xCenter y%y% h%h% w%A_ScreenWidth% NoActivate
+SetNumLockState, on
+gosub,ShowRed
 return
 
 #if
 
 #if two1
-2 & n::Numpad1
-2 & m::Numpad2
-2 & ,::Numpad3
-2 & h::Numpad4
-2 & j::Numpad5
-2 & k::Numpad6
-2 & y::Numpad7
-2 & u::Numpad8
-2 & i::Numpad9
-2 & Space::Numpad0
+n::Numpad1
+m::Numpad2
+,::Numpad3
+h::Numpad4
+j::Numpad5
+k::Numpad6
+y::Numpad7
+u::Numpad8
+i::Numpad9
+Space::Numpad0
 #if
 
 #if two2&(twosent=0)
@@ -89,6 +90,7 @@ z::
 [::
 ]::
 \::
+/::
 -::
 =::
 Enter::
