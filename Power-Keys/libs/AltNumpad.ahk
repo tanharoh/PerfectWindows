@@ -2,7 +2,7 @@
 
 2::
 settimer,twotimer,%delay%
-isNumLockOn=GetKeyState("NumLock","T")
+isNumLockOn:=GetKeyState("NumLock","T")
 spaceenabled=0
 twosent=0
 two1=0

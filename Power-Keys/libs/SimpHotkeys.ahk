@@ -1,8 +1,7 @@
 ﻿#if !flaunch&&!GameMode&&!space1&&!space2&&!space3
 
 CapsLock::
-GetKeyState,caps,CapsLock,T
-if caps=D
+if GetKeyState("CapsLock","T")
 setcapslockstate,off
 else
 setcapslockstate,on

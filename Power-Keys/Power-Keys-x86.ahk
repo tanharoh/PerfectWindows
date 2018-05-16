@@ -14,8 +14,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.0.5"
-CurrentVersion=805
+v:="8.0.6"
+CurrentVersion=806
 
 UpdateDir=%A_ProgramFiles%\szzhiyang\Power Keys\Update
 isenabled=1
