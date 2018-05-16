@@ -2,6 +2,7 @@
 
 2::
 settimer,twotimer,%delay%
+isNumLockOn=GetKeyState("NumLock","T")
 spaceenabled=0
 twosent=0
 two1=0
@@ -18,6 +19,9 @@ twosent=1
 isenabled2=1
 spaceenabled=1
 send {alt up}
+if isNumLockOn
+SetNumLockState, on
+Else
 SetNumLockState, off
 gosub,HideRed
 return
