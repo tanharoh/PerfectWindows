@@ -1,4 +1,32 @@
-﻿Lwin & =::
+﻿Lwin & Esc::
+Rwin & Esc::
+if Magnify
+    {
+        Send #{Esc}
+        Magnify=0
+    }
+Else
+{
+    if GameMode
+    gosub,DisableGameMode
+    Else
+    gosub,EnableGameMode
+}
+return
+
+Lwin & PgUp::
+Rwin & PgUp::
+Magnify=1
+Send #=
+return
+
+Lwin & PgDn::
+Rwin & PgDn::
+Magnify=1
+Send #-
+return
+
+Lwin & =::
 Rwin & =::
 Send {Volume_Up}
 return
@@ -66,16 +94,6 @@ return
 #+PrintScreen::
 toRun="%A_WinDir%\system32\snippingtool.exe"
 ShellRun(toRun)
-return
-
-Lwin & PgUp::
-Rwin & PgUp::
-Send #=
-return
-
-Lwin & PgDn::
-Rwin & PgDn::
-Send #-
 return
 
 #if

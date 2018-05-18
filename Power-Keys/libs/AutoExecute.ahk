@@ -35,7 +35,7 @@ gosub,update
 
 Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,welcome: Color, red
-Gui,welcome: Font,cwhite s30 wbold q5,Segoe UI
+Gui,welcome: Font,cwhite s%FontSize% wbold q5,Segoe UI
 Gui,welcome: Add, Text, ,Power Keys
 if 1!=silent
 {
