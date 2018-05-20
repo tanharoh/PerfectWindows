@@ -174,8 +174,7 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 Tab::Send {Tab}
 ^Tab::Send ^{Tab}
 +Tab::Send +{Tab}
-<!Tab::AltTab
->!Tab::AltTab
+Alt & Tab::AltTab
 ^+Tab::Send ^+{Tab}
 ^!Tab::Send ^!{Tab}
 ^!+Tab::Send ^!+{Tab}
