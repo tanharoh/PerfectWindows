@@ -103,11 +103,8 @@ ShellRun(FeedbackLink)
 return
 
 Restart:
-Loop,5
-{
-    Process,Close,Power-Keys-Updater.exe
-    FileRemoveDir,%UpdateDir%,1
-}   
+RunWait, %A_WinDir%\system32\taskkill.exe /im Power-Keys-Updater.exe,,Hide
+FileRemoveDir,%UpdateDir%,1
 run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
 return
 
@@ -128,10 +125,7 @@ run,%A_WorkingDir%
 return
 
 Exit:
-Loop,5
-{
-    Process,Close,Power-Keys-Updater.exe
-    FileRemoveDir,%UpdateDir%,1
-}
+RunWait, %A_WinDir%\system32\taskkill.exe /im Power-Keys-Updater.exe,,Hide
+FileRemoveDir,%UpdateDir%,1
 exitapp
 Return
