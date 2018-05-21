@@ -117,10 +117,10 @@ L::Send +{End}
 W::Send ^+{Home}
 .::Send ^+{End}
 R::Send +{Up}
-T::Send {PgUp}
+T::Send +{PgUp}
 E::Send +^{Up}
 M::Send +{Down}
-N::Send {PgDn}
+N::Send +{PgDn}
 ,::Send ^+{Down}
 B::Send ^{b}
 I::Send ^{i}
