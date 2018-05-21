@@ -11,7 +11,7 @@ if (latestversion>CurrentVersion)&&(temp!=1)
     RegRead, temp, HKLM\Software\szzhiyang\Power Keys,GameMode
     if temp!=1
     {
-        RunWait, %A_WinDir%\system32\taskkill.exe /im %2%,,Hide
+        RunWait, %A_WinDir%\system32\taskkill.exe /im "%2%",,Hide
         filecopy,%UpdateDir%\latest.exe,%3%,1
         run,"%3%" silent,,UseErrorLevel
     }
