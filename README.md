@@ -6,7 +6,7 @@
 
 ## [Power Keys](Power-Keys/Power-Keys.md)
 
-> **快捷键效率工具中的瑞士军刀。**
+> **键盘流效率软件中的瑞士军刀！**
 
 <br>
 
@@ -18,4 +18,4 @@
 
 ## [Windows 高级控制面板](Control-Panel-Plus/Control-Panel-Plus.md)
 
-> **轻松自如地自定义 Windows 的隐藏设置！**
+> **最简洁的系统优化工具！**
