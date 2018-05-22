@@ -6,13 +6,13 @@
 
 ## [Power Keys](Power-Keys/Power-Keys.md)
 
-> **用简洁、生动、强大且毫不冲突的全局快捷键全方位提升您的 Windows 使用效率！**
+> **快捷键效率工具中的瑞士军刀。**
 
 <br>
 
 ## [Anti Windows Update](Anti-Windows-Update/Anti-Windows-Update.md)
 
-> **有它在，Windows 再也不敢自作主张地更新自己！**
+> **Windows 自动更新的完美克星！**
 
 <br>
 
