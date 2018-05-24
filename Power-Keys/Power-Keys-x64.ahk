@@ -14,10 +14,9 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.1.6"
-CurrentVersion=816
+v:="8.2.0"
+CurrentVersion=820
 
-UpdateDir=%A_ProgramFiles%\szzhiyang\Power Keys\Update
 isenabled=1
 isenabled2=1
 spaceenabled=1
@@ -41,14 +40,7 @@ isNumLockOn=1
 FontSize=50
 Magnify=0
 
-if 1=update
-{
-    gosub,Updater
-}
-Else
-{
-    gosub,AutoExecute
-}
+gosub,AutoExecute
 
 Return
 
@@ -59,7 +51,6 @@ Return
 #Include libs\SimpHotkeys.ahk
 #Include libs\WinHotkeys.ahk
 #Include libs\TrayMenu.ahk
-#Include libs\Updater.ahk
 #Include libs\Numpad.ahk
 #Include libs\AltNumpad.ahk
 #Include libs\GUI.ahk

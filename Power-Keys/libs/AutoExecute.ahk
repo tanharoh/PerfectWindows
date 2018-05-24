@@ -18,8 +18,15 @@ if !A_IsAdmin
 Suspend,off
 
 regread,temp,HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-if !ErrorLevel
-StartUp=1
+if (temp==A_ScriptFullPath)
+{
+    StartUp=1
+}
+Else
+{
+    StartUp=0
+    RegDelete,HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
+}
 
 regread,temp,HKLM\Software\szzhiyang\Power Keys,SpaceDisabled
 if temp
@@ -29,20 +36,14 @@ EnvGet,AppDataLocal,LocalAppData
 
 FileCreateDir,%AppDataLocal%\Power Keys
 SetWorkingDir,%AppDataLocal%\Power Keys
-FileRemoveDir,update,1
-
-gosub,update
 
 Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,welcome: Color, red
 Gui,welcome: Font,cwhite s%FontSize% wbold q5,Segoe UI
 Gui,welcome: Add, Text, ,Power Keys
-if 1!=silent
-{
-    Gui,welcome: Show,AutoSize Center NoActivate
-    sleep 1000
-    Gui,welcome: Hide
-}
+Gui,welcome: Show,AutoSize Center NoActivate
+sleep 1000
+Gui,welcome: Hide
 
 RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
@@ -51,14 +52,4 @@ RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run,
 Gosub, Createtray
 Gosub, CreateGUI
 
-return
-
-Update:
-Loop,5
-{
-    Process,Close,Power-Keys-Updater.exe
-    FileCreateDir,%UpdateDir%
-    filecopy,%A_ScriptFullPath%,%UpdateDir%\Power-Keys-Updater.exe,1
-}
-run,"%UpdateDir%\Power-Keys-Updater.exe" update "%A_ScriptName%" "%A_ScriptFullPath%",,UseErrorLevel
 return

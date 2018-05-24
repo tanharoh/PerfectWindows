@@ -7,7 +7,6 @@ menu,tray,click,1
 menu,tray,tip,Power Keys
 menu,tray,add,Power Keys %v% by %_Author%,About
 menu,tray,disable,Power Keys %v% by %_Author%
-;menu,tray,add,%_Author%,Author
 menu,tray,disable,%_Author%
 menu,tray,add
 menu,tray,add,%_StartUp%,StartUp
@@ -16,6 +15,7 @@ menu,tray,check,%_StartUp%
 menu,tray,add,%_Help%,Help
 menu,tray,add,%_Feedback%,Feedback
 menu,tray,add
+menu,tray,add,%_Update%,Update
 menu,tray,add,%_Exit%,Exit
 menu,tray,add,%_Restart%,Restart
 menu,tray,add
@@ -103,9 +103,14 @@ ShellRun(FeedbackLink)
 return
 
 Restart:
-RunWait, %A_WinDir%\system32\taskkill.exe /im Power-Keys-Updater.exe,,Hide
-FileRemoveDir,%UpdateDir%,1
 run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
+return
+
+Update:
+HelpLink=https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys
+ShellRun(HelpLink)
+Run,%ComSpec% /c Del /F "%A_ScriptFullPath%",,Hide
+exitapp
 return
 
 Config:
@@ -125,7 +130,5 @@ run,%A_WorkingDir%
 return
 
 Exit:
-RunWait, %A_WinDir%\system32\taskkill.exe /im Power-Keys-Updater.exe,,Hide
-FileRemoveDir,%UpdateDir%,1
 exitapp
 Return
