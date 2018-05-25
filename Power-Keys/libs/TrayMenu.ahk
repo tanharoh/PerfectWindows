@@ -107,9 +107,9 @@ run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
 return
 
 Update:
-HelpLink=https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys
-ShellRun(HelpLink)
-Run,%ComSpec% /c Del /F "%A_ScriptFullPath%",,Hide
+FileCreateDir, %UpdaterDir%
+FileCopy, %A_ScriptFullPath%, %UpdaterDir%\Power-Keys-Updater.exe,1
+run,%UpdaterDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
 exitapp
 return
 
@@ -130,5 +130,6 @@ run,%A_WorkingDir%
 return
 
 Exit:
+FileDelete, %UpdaterDir%\Power-Keys-Updater.exe
 exitapp
 Return

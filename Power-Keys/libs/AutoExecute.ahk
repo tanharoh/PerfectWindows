@@ -18,14 +18,14 @@ if !A_IsAdmin
 Suspend,off
 
 regread,temp,HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
-if (temp==A_ScriptFullPath)
+if !ErrorLevel
 {
+    RegWrite, REG_SZ, HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys, %A_ScriptFullPath%
     StartUp=1
 }
 Else
 {
     StartUp=0
-    RegDelete,HKLM\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys
 }
 
 regread,temp,HKLM\Software\szzhiyang\Power Keys,SpaceDisabled
