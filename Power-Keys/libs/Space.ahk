@@ -1,7 +1,7 @@
 ﻿#if !flaunch&&spaceenabled&&!SpaceDisabled&&!GameMode
 
 space::
-settimer,spacetimer,%delay%
+settimer,spacetimer,%delay%,2018
 oneenabled=0
 twoenabled=0
 spacesent=0
