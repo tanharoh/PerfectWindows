@@ -32,6 +32,8 @@ Rwin & WheelUp::
 Rwin & WheelDown::
 Rwin & WheelLeft::
 Rwin & WheelRight::
+Send {LWin Up}
+Send {RWin Up}
 return
 
 Lwin & PgUp::
