@@ -14,6 +14,26 @@ Else
 }
 return
 
+Lwin & LButton::
+Lwin & RButton::
+Lwin & MButton::
+Lwin & XButton1::
+Lwin & XButton2::
+Lwin & WheelUp::
+Lwin & WheelDown::
+Lwin & WheelLeft::
+Lwin & WheelRight::
+Rwin & LButton::
+Rwin & RButton::
+Rwin & MButton::
+Rwin & XButton1::
+Rwin & XButton2::
+Rwin & WheelUp::
+Rwin & WheelDown::
+Rwin & WheelLeft::
+Rwin & WheelRight::
+return
+
 Lwin & PgUp::
 Rwin & PgUp::
 Magnify=1
@@ -36,8 +56,8 @@ Rwin & -::
 Send {Volume_Down}
 return
 
-Lwin & \::
-Rwin & \::
+Lwin & \ Up::
+Rwin & \ Up::
 Send {Volume_Mute}
 return
 
