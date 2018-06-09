@@ -4,7 +4,7 @@
 
 <br>
 
-## [Power Keys](Power-Keys/Power-Keys.md)
+## [Power Keys](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
 
 > **键盘流效率软件中的瑞士军刀！**
 
