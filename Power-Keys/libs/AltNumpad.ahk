@@ -1,6 +1,6 @@
 #if !flaunch&&twoenabled&&!one1&&!one2&&!GameMode
 
-$2::
+2::
 settimer,twotimer,%delay%,2018
 isNumLockOn:=GetKeyState("NumLock","T")
 spaceenabled=0

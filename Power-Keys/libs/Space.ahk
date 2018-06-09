@@ -1,6 +1,6 @@
 ﻿#if !flaunch&&spaceenabled&&!SpaceDisabled&&!GameMode
 
-$space::
+space::
 settimer,spacetimer,%delay%,2018
 oneenabled=0
 twoenabled=0
