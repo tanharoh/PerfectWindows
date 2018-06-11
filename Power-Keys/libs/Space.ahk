@@ -1,7 +1,8 @@
 ﻿#if !flaunch&&spaceenabled&&!SpaceDisabled&&!GameMode
 
 space::
-settimer,spacetimer,%delay%,2018
+settimer,spacetimer,%delay1%,2018
+settimer,spaceDisabler,%delay2%,1009
 oneenabled=0
 twoenabled=0
 spacesent=0
@@ -11,8 +12,9 @@ space2=1
 isenabled2=0
 keywait,space
 settimer,spacetimer,delete
-if (!space1)&(!spacesent)
-send {space} 
+settimer,spaceDisabler,delete
+if (!spacesent)
+send {space}
 space1=0 
 space2=0
 space3=0
@@ -20,7 +22,6 @@ spacesent=1
 isenabled2=1
 oneenabled=1
 twoenabled=1
-gosub,HideRed
 return
 
 spacetimer:
@@ -28,7 +29,11 @@ settimer,spacetimer,delete
 space2=0
 space3=0
 space1=1
-gosub,ShowRed
+return
+
+spaceDisabler:
+settimer,spaceDisabler,delete
+spacesent=1
 return
 
 #If
@@ -37,19 +42,21 @@ return
 
 A::
 `;::
+spacesent=1
 space1=0
 space3=1
-gosub,ShowYellow
 KeyWait, a
 KeyWait, `;
 space3=0
 space1=1
-gosub,HideYellow
 return
 
 #if
 
 #if space1
+1::return
+2::return
+4::return
 F::Send {Left}
 J::Send {Right}
 D::Send ^{Left}
@@ -99,10 +106,12 @@ Q::Send ^{s}
 Enter::Send +{Enter}
 bs::Send {Delete}
 Esc::Send !{F4}
-
 #if
 
 #if space3
+1::return
+2::return
+4::return
 F::Send +{Left}
 J::Send +{Right}
 D::Send ^+{Left}

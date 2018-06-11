@@ -12,7 +12,7 @@ F9::
 F10::
 F11::
 F12::
-settimer,disablefn,250
+settimer,disablefn,%delay2%,2018
 fn=%A_ThisLabel%
 flaunch=1
 launchcode=null

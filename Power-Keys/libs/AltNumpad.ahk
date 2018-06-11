@@ -1,7 +1,8 @@
 #if !flaunch&&twoenabled&&!one1&&!one2&&!GameMode
 
 2::
-settimer,twotimer,%delay%,2018
+settimer,twotimer,%delay1%,2018
+settimer,twoDisabler,%delay2%,1009
 isNumLockOn:=GetKeyState("NumLock","T")
 spaceenabled=0
 twosent=0
@@ -10,8 +11,9 @@ two2=1
 isenabled2=0
 keywait,2
 settimer,twotimer,delete
+settimer,twoDisabler,delete
 BlockInput,off
-if (!two1)&(!twosent)
+if (!twosent)
 send {2} 
 two1=0 
 two2=0
@@ -23,7 +25,6 @@ if isNumLockOn
 SetNumLockState, on
 Else
 SetNumLockState, off
-gosub,HideRed
 return
 
 twotimer:
@@ -33,12 +34,17 @@ send {alt down}
 two1=1
 two2=0
 SetNumLockState, on
-gosub,ShowRed
+return
+
+twoDisabler:
+settimer,twoDisabler,delete
+twosent=1
 return
 
 #if
 
 #if two1
+
 n::Numpad1
 m::Numpad2
 ,::Numpad3
@@ -49,6 +55,7 @@ y::Numpad7
 u::Numpad8
 i::Numpad9
 Space::Numpad0
+
 #if
 
 #if two2&(twosent=0)

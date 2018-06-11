@@ -1,7 +1,8 @@
 ﻿#if !flaunch&&oneenabled&&!two1&&!two2&&!GameMode
 
 1::
-settimer,onetimer,%delay%,2018
+settimer,onetimer,%delay1%,2018
+settimer,oneDisabler,%delay2%,1009
 isNumLockOn:=GetKeyState("NumLock","T")
 spaceenabled=0
 onesent=0
@@ -10,8 +11,9 @@ one2=1
 isenabled2=0
 keywait,1
 settimer,onetimer,delete
+settimer,oneDisabler,delete
 BlockInput,off
-if (!one1)&(!onesent)
+if (!onesent)
 send {1} 
 one1=0 
 one2=0
@@ -22,7 +24,6 @@ if isNumLockOn
 SetNumLockState, on
 Else
 SetNumLockState, off
-gosub,HideRed
 return
 
 onetimer:
@@ -31,7 +32,11 @@ settimer,onetimer,delete
 one1=1
 one2=0
 SetNumLockState, on
-gosub,ShowRed
+return
+
+oneDisabler:
+settimer,oneDisabler,delete
+onesent=1
 return
 
 #if
@@ -60,6 +65,7 @@ o::Send {NumpadAdd}
 /::Send {NumpadDiv}
 7::Send {NumpadDiv}
 bs::Send {bs}
+
 #if
 
 #if one2&(onesent=0)

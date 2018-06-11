@@ -14,8 +14,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.3.9"
-CurrentVersion=839
+v:="8.4.0"
+CurrentVersion=840
 
 UpdaterDir=%A_ProgramFiles%\szzhiyang\Power Keys
 isenabled=1
@@ -33,7 +33,8 @@ two2=0
 flaunch=0
 launchcode=null
 fn=0
-delay=250
+delay1=100
+delay2=300
 SpaceDisabled=0
 GameMode=0
 StartUp=0
@@ -62,6 +63,5 @@ Return
 #Include libs\WinHotkeys.ahk
 #Include libs\TrayMenu.ahk
 #Include libs\Numpad.ahk
-#Include libs\AltNumpad.ahk
 #Include libs\GUI.ahk
 #Include libs\Updater.ahk
