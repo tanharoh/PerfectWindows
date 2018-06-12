@@ -6,7 +6,7 @@
 #Persistent
 #InstallKeybdHook
 #NoEnv
-SendMode Input
+SendMode, Input
 setkeydelay -1
 SetBatchLines -1
 ListLines Off
@@ -14,8 +14,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.4.0"
-CurrentVersion=840
+v:="8.4.1"
+CurrentVersion=841
 
 UpdaterDir=%A_ProgramFiles%\szzhiyang\Power Keys
 isenabled=1

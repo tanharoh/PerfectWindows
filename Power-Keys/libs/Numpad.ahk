@@ -3,7 +3,6 @@
 1::
 settimer,onetimer,%delay1%,2018
 settimer,oneDisabler,%delay2%,1009
-isNumLockOn:=GetKeyState("NumLock","T")
 spaceenabled=0
 onesent=0
 one1=0
@@ -14,16 +13,12 @@ settimer,onetimer,delete
 settimer,oneDisabler,delete
 BlockInput,off
 if (!onesent)
-send {1} 
-one1=0 
+send {1}
+one1=0
 one2=0
 onesent=1
 isenabled2=1
 spaceenabled=1
-if isNumLockOn
-SetNumLockState, on
-Else
-SetNumLockState, off
 return
 
 onetimer:
@@ -31,7 +26,6 @@ BlockInput,on
 settimer,onetimer,delete
 one1=1
 one2=0
-SetNumLockState, on
 return
 
 oneDisabler:
@@ -42,28 +36,28 @@ return
 #if
 
 #if one1
-n::Send {Numpad1}
-m::Send {Numpad2}
-,::Send {Numpad3}
-h::Send {Numpad4}
-j::Send {Numpad5}
-k::Send {Numpad6}
-y::Send {Numpad7}
-u::Send {Numpad8}
-i::Send {Numpad9}
-Space::Send {Numpad0}
-Alt::Send {NumpadDot}
-Ctrl::Send {NumpadEnter}
-.::Send {NumpadEnter}
-Enter::Send {NumpadEnter}
-l::Send {NumpadAdd}
-o::Send {NumpadAdd}
-=::Send {NumpadAdd}
--::Send {NumpadSub}
-9::Send {NumpadSub}
-8::Send {NumpadMult}
-/::Send {NumpadDiv}
-7::Send {NumpadDiv}
+n::Send {1}
+m::Send {2}
+,::Send {3}
+h::Send {4}
+j::Send {5}
+k::Send {6}
+y::Send {7}
+u::Send {8}
+i::Send {9}
+Space::Send {0}
+Alt::Send {.}
+Ctrl::Send {Enter}
+.::Send {Enter}
+Enter::Send {Enter}
+l::Send +{=}
+o::Send +{=}
+=::Send +{=}
+-::Send {-}
+9::Send {-}
+8::Send +{8}
+/::Send {/}
+7::Send {/}
 bs::Send {bs}
 
 #if
