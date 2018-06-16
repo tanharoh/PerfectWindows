@@ -80,6 +80,29 @@ return
 
 #if !GameMode
 
+#F4:
+Winget,ProcessName,ProcessName,A
+if !ErrorLevel
+{
+    if ProcessName!=explorer.exe
+    {
+        msgbox,0x40031,Power Keys,确定终止 %ProcessName%？
+        ifmsgbox,ok
+        Process, Close, %ProcessName%
+    }
+    else
+    {
+        msgbox,0x40031,Power Keys,确定关机？
+    }
+}
+return
+
+#F5:
+msgbox,0x40031,Power Keys,确定重启 explorer？
+ifmsgbox,ok
+Process,close,explorer.exe
+return
+
 #NumLock Up::
 toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)

@@ -41,11 +41,20 @@ return
 #if space1|space3
 
 A::
-`;::
+KeyWait, `;
 spacesent=1
 space1=0
 space3=1
 KeyWait, a
+space3=0
+space1=1
+return
+
+`;::
+KeyWait, a
+spacesent=1
+space1=0
+space3=1
 KeyWait, `;
 space3=0
 space1=1
@@ -92,9 +101,8 @@ O::Send ^+{,}
 P::Send ^+{.}
 =::Send ^{WheelUp}
 -::Send ^{WheelDown}
-LCtrl::Send {bs}
-RCtrl::Send {bs}
-CapsLock::Send {bs}
+Ctrl::Send {Backspace}
+CapsLock::Send {Backspace}
 Shift::Space
 ]::Send {Tab}
 [::Send +{Tab}
@@ -104,7 +112,7 @@ Q::Send ^{s}
 8::Send +{8}
 /::Send ^{Enter}
 Enter::Send +{Enter}
-bs::Send {Delete}
+Backspace::Send {Delete}
 Esc::Send !{F4}
 #if
 
@@ -147,9 +155,8 @@ O::Send ^+{,}
 P::Send ^+{.}
 =::Send ^{WheelUp}
 -::Send ^{WheelDown}
-LCtrl::Send {bs}
-RCtrl::Send {bs}
-CapsLock::Send {bs}
+Ctrl::Send {Backspace}
+CapsLock::Send {Backspace}
 Shift::Space
 ]::Send {Tab}
 [::Send +{Tab}
@@ -159,7 +166,7 @@ Q::Send ^{s}
 8::Send +{8}
 /::Send ^{Enter}
 Enter::Send +{Enter}
-bs::Send {Delete}
+Backspace::Send {Delete}
 Esc::Send !{F4}
 
 #if

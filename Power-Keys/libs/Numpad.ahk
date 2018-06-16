@@ -58,7 +58,7 @@ o::Send +{=}
 8::Send +{8}
 /::Send {/}
 7::Send {/}
-bs::Send {bs}
+Backspace::Send {Backspace}
 
 #if
 
