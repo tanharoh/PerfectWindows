@@ -103,6 +103,10 @@ ifmsgbox,ok
 Process,close,explorer.exe
 return
 
+#F1 Up::
+Gosub, Help
+return
+
 #NumLock Up::
 toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)

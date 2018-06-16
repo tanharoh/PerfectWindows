@@ -35,6 +35,7 @@ SpaceDisabled=1
 EnvGet,AppDataLocal,LocalAppData
 
 FileCreateDir,%AppDataLocal%\Power Keys
+FileCreateDir,%ProgramFilesDir%
 SetWorkingDir,%AppDataLocal%\Power Keys
 
 Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow

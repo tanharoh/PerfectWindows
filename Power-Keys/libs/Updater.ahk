@@ -5,16 +5,16 @@ Gui,Updating: Color, red
 Gui,Updating: Font,cwhite s%FontSize% wbold q5,Segoe UI
 Gui,Updating: Add, Text, ,%_Updating%
 Gui,Updating: Show,AutoSize Center NoActivate
-UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Power-Keys-x%bit%.exe, %UpdaterDir%\latest-Power-Keys.exe
+UrlDownloadToFile, https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Power-Keys/Power-Keys-x%bit%.exe, %ProgramFilesDir%\latest-Power-Keys.exe
 if ErrorLevel
 {
-    FileDelete, %UpdaterDir%\latest-Power-Keys.exe
+    FileDelete, %ProgramFilesDir%\latest-Power-Keys.exe
     run,%2%
     ExitApp
 }
 Else
 {
-    FileMove,%UpdaterDir%\latest-Power-Keys.exe, %2%,1
+    FileMove,%ProgramFilesDir%\latest-Power-Keys.exe, %2%,1
     run,%2%
     ExitApp
 }

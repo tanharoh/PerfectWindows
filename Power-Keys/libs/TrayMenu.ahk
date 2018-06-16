@@ -103,13 +103,15 @@ ShellRun(FeedbackLink)
 return
 
 Restart:
+FileRemoveDir,%ProgramFilesDir%,1
 run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
 return
 
 Update:
-FileCreateDir, %UpdaterDir%
-FileCopy, %A_ScriptFullPath%, %UpdaterDir%\Power-Keys-Updater.exe,1
-run,%UpdaterDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
+FileRemoveDir,%ProgramFilesDir%,1
+FileCreateDir, %ProgramFilesDir%
+FileCopy, %A_ScriptFullPath%, %ProgramFilesDir%\Power-Keys-Updater.exe,1
+run,%ProgramFilesDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
 exitapp
 return
 
@@ -130,6 +132,6 @@ run,%A_WorkingDir%
 return
 
 Exit:
-FileDelete, %UpdaterDir%\Power-Keys-Updater.exe
+FileRemoveDir,%ProgramFilesDir%,1
 exitapp
 Return

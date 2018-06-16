@@ -63,9 +63,12 @@ return
 #if
 
 #if space1
-1::return
-2::return
-4::return
+F1::
+Gosub,ShowPowerSpaceLayout
+KeyWait,F1
+Gosub,HidePowerSpaceLayout
+Return
+
 F::Send {Left}
 J::Send {Right}
 D::Send ^{Left}
@@ -114,12 +117,36 @@ Q::Send ^{s}
 Enter::Send +{Enter}
 Backspace::Send {Delete}
 Esc::Send !{F4}
-#if
-
-#if space3
 1::return
 2::return
 4::return
+LWin::return
+RWin::return
+F2::return
+F3::return
+F4::return
+F5::return
+F6::return
+F7::return
+F8::return
+F9::return
+F10::return
+F11::return
+F12::return
+Insert::return
+Home::return
+End::return
+Delete::return
+PgUp::return
+PgDn::return
+Up::return
+Down::return
+Left::return
+Right::return
+PrintScreen::return
+#if
+
+#if space3
 F::Send +{Left}
 J::Send +{Right}
 D::Send ^+{Left}
@@ -168,6 +195,34 @@ Q::Send ^{s}
 Enter::Send +{Enter}
 Backspace::Send {Delete}
 Esc::Send !{F4}
+1::return
+2::return
+4::return
+LWin::return
+RWin::return
+F1::return
+F2::return
+F3::return
+F4::return
+F5::return
+F6::return
+F7::return
+F8::return
+F9::return
+F10::return
+F11::return
+F12::return
+Insert::return
+Home::return
+End::return
+Delete::return
+PgUp::return
+PgDn::return
+Up::return
+Down::return
+Left::return
+Right::return
+PrintScreen::return
 
 #if
 
