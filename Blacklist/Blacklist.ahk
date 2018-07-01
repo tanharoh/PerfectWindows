@@ -7,7 +7,7 @@
 
 EnvGet, OSDrive, systemdrive
 
-version:="1.3"
+version:="1.4"
 BlacklistStatus=%_WillBeDisabled%
 WDStatus=%_WillBeEnabled%
 HelpLink="https://WindowsBlacklist.github.io"

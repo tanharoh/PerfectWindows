@@ -73,6 +73,9 @@ icon=notepad.exe
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command
 @=notepad.exe
 
+HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer
+AuthenticodeFlags=reg_dword 0
+
 HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
 NoDriveTypeAutoRun=reg_dword ff
 NoAutorun=reg_dword 1
@@ -93,15 +96,7 @@ EnableSecureUIAPaths=reg_dword 1
 EnableInstallerDetection=reg_dword 1
 EnableVirtualization=reg_dword 1
 
-HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer
-AuthenticodeFlags=reg_dword 0
-
 ),Apply.Blacklist
-RunWait,regini.exe Apply.Blacklist,,Hide UseErrorLevel
-if ErrorLevel
-{
-    MsgBox,0x40010,Blacklist,%_RuntimeError%
-    ExitApp
-}
+RunWait,regini.exe Apply.Blacklist,,Hide
 FileDelete,Apply.Blacklist
 Return

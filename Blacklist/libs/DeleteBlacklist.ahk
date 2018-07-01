@@ -11,9 +11,11 @@ HKEY_CLASSES_ROOT\Directory\Background\shell\VirusTotal\command [1 7 17]
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit [1 7 17]
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command [1 7 17]
 HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer [1 7 17]
+HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer [1 7 17]
 HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer [DELETE]
 HKEY_CLASSES_ROOT\Directory\Background\shell\VirusTotal [DELETE]
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit [DELETE]
+HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer [DELETE]
 
 ),Delete.Blacklist
 RunWait,regini.exe Delete.Blacklist,,Hide UseErrorLevel
