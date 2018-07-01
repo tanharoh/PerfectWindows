@@ -19,7 +19,7 @@ HKEY_CLASSES_ROOT\Directory\Background\shell\edit [DELETE]
 RunWait,regini.exe Delete.Blacklist,,Hide UseErrorLevel
 if ErrorLevel
 {
-    MsgBox,0x40010,Blacklist,ERROR!
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
     ExitApp
 }
 FileDelete,Delete.Blacklist

@@ -11,7 +11,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows Defender [2 8 19]
 RunWait,regini.exe DisableWD.Blacklist,,Hide UseErrorLevel
 if ErrorLevel
 {
-    MsgBox,0x40010,Blacklist,ERROR!
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
     ExitApp
 }
 FileDelete,DisableWD.Blacklist
@@ -30,7 +30,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows Defender [2 8 19]
 RunWait,regini.exe EnableWD.Blacklist,,Hide UseErrorLevel
 if ErrorLevel
 {
-    MsgBox,0x40010,Blacklist,ERROR!
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
     ExitApp
 }
 FileDelete,EnableWD.Blacklist

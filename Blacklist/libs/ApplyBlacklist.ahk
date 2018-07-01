@@ -1,7 +1,7 @@
 ApplyBlacklist:
 FileDelete,Apply.Blacklist
-DriveGet, DriveList,List,Fixed
-Loop, Parse,DriveList,,
+DriveGet,DriveList,List,Fixed
+Loop,Parse,DriveList,,
 {
     num:=A_Index+10
     FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c0%num%}`n,Apply.Blacklist
@@ -49,6 +49,10 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a
 SaferFlags=reg_dword 0
 ItemData="%OSDrive%\Users\*\AppData\Local\Temp\Temp1*.zip\*"
 
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c203}
+SaferFlags=reg_dword 0
+ItemData="%OSDrive%\Users\*\AppData\Roaming\Foxmail*\Temp*"
+
 HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 AuthenticodeEnabled=reg_dword 0
 DefaultLevel=reg_dword 0
@@ -68,11 +72,34 @@ icon=notepad.exe
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command
 @=notepad.exe
 
+HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+NoDriveTypeAutoRun=reg_dword ff
+NoAutorun=reg_dword 1
+
+HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+NoDriveTypeAutoRun=reg_dword ff
+NoAutorun=reg_dword 1
+
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+EnableLUA=reg_dword 1
+ValidateAdminCodeSignatures=reg_dword 0
+ConsentPromptBehaviorAdmin=reg_dword 5
+ConsentPromptBehaviorUser=reg_dword 3
+PromptOnSecureDesktop=reg_dword 1
+EnableUIADesktopToggle=reg_dword 0
+FilterAdministratorToken=reg_dword 1
+EnableSecureUIAPaths=reg_dword 1
+EnableInstallerDetection=reg_dword 1
+EnableVirtualization=reg_dword 1
+
+HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer
+AuthenticodeFlags=reg_dword 0
+
 ),Apply.Blacklist
 RunWait,regini.exe Apply.Blacklist,,Hide UseErrorLevel
 if ErrorLevel
 {
-    MsgBox,0x40010,Blacklist,ERROR!
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
     ExitApp
 }
 FileDelete,Apply.Blacklist
