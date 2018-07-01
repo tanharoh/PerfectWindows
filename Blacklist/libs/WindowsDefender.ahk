@@ -1,4 +1,4 @@
-DisableWD:
+﻿DisableWD:
 FileDelete,DisableWD.Blacklist
 FileAppend,
 (

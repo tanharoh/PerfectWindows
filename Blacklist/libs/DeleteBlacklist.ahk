@@ -1,4 +1,4 @@
-DeleteBlacklist:
+﻿DeleteBlacklist:
 FileDelete,Delete.Blacklist
 loop,reg,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer,kvr
 {

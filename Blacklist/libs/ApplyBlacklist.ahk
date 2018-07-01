@@ -4,6 +4,7 @@ DriveGet,DriveList,List,Fixed
 Loop,Parse,DriveList,,
 {
     num:=A_Index+10
+    FileCreateDir, %A_LoopField%:\Blacklist
     FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c0%num%}`n,Apply.Blacklist
     FileAppend,SaferFlags=reg_dword 0`n,Apply.Blacklist
     FileAppend,ItemData="%A_LoopField%:\"`n`n,Apply.Blacklist
