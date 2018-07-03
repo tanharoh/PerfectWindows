@@ -4,7 +4,7 @@
 
 <br>
 
-## [Power Keys](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+## [Power Keys](https://PowerKeys.github.io)
 
 > **键盘流效率软件中的瑞士军刀！**
 
@@ -16,7 +16,7 @@
 
 <br>
 
-## [Blacklist](https://windowsblacklist.github.io/)
+## [Blacklist](https://WindowsBlacklist.github.io)
 
 > **零漏毒、零误杀、零占用的新型防病毒解决方案！**
 
