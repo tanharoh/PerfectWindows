@@ -21,11 +21,13 @@ keywait,%launchcode%
 flaunch=0
 if (launchcode="null")
 {
+    SendCtrlW=0
     send {%fn%}
     return
 }
 else if (launchcode="terminate")
 {
+    SendCtrlW=0
     return
 }
 else
@@ -34,12 +36,18 @@ else
     url=%A_workingdir%\%fn%\%launchcode%.url
     FileGetAttrib,temp,%lnk%
     if !errorlevel
-    ShellRun(lnk)
+    {
+        SendCtrlW=0
+        ShellRun(lnk)
+    }
     else
     {
         FileGetAttrib,temp,%url%
         if !ErrorLevel
-        ShellRun(url)
+        {
+            SendCtrlW=1
+            ShellRun(url)
+        }
         else
         {
             FileCreateDir,F1
@@ -134,7 +142,15 @@ return
 
 space::
 Gosub, disablefn
-send !{F4}
+if SendCtrlW
+{
+    send ^w
+    SendCtrlW=0
+}
+else
+{
+    send !{F4}
+}
 return
 
 enter::

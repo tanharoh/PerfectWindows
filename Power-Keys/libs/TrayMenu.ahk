@@ -93,12 +93,10 @@ else
 return
 
 Help:
-HelpLink=https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys
 ShellRun(HelpLink)
 return
 
 Feedback:
-FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 ShellRun(FeedbackLink)
 return
 
