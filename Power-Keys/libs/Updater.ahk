@@ -1,5 +1,5 @@
 ﻿Updater:
-SetTimer,UpdateFailure,20000,20480
+SetTimer,UpdateFailure,20000,4096
 Gui,Updating: +LastFound +AlwaysOnTop -Caption +ToolWindow
 Gui,Updating: Color, red
 Gui,Updating: Font,cwhite s%FontSize% wbold q5,Segoe UI

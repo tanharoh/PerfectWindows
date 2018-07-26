@@ -20,6 +20,7 @@
     global _GameModeEnabled="游戏模式已启用"
     global _GameModeDisabled="游戏模式已禁用"
     global _PoorNetwork="与 GitHub 连接不畅！请稍后再试。"
+    global _PressWinKey="请按徽标键"
 }
 else
 {
@@ -43,4 +44,5 @@ else
     global _GameModeEnabled="Game Mode Enabled"
     global _GameModeDisabled="Game Mode Disabled"
     global _PoorNetwork="Poor connection with GitHub! Please try again later."
+    global _PressWinKey="Please press Windows Key"
 }

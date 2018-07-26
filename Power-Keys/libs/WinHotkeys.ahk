@@ -32,8 +32,10 @@ Rwin & WheelUp::
 Rwin & WheelDown::
 Rwin & WheelLeft::
 Rwin & WheelRight::
-Send {LWin}
-Send {RWin}
+gosub,ShowPressWinKey
+keywait,Lwin
+keywait,Rwin
+gosub,HidePressWinKey
 return
 
 Lwin & PgUp::
