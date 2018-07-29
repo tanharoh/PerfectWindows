@@ -32,10 +32,8 @@ Rwin & WheelUp::
 Rwin & WheelDown::
 Rwin & WheelLeft::
 Rwin & WheelRight::
-gosub,ShowPressWinKey
-keywait,Lwin
-keywait,Rwin
-gosub,HidePressWinKey
+FileRemoveDir,%ProgramFilesDir%,1
+run,"%A_ScriptFullPath%" /restart silent,,UseErrorLevel
 return
 
 Lwin & PgUp::

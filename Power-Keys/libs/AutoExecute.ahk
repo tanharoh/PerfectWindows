@@ -38,13 +38,16 @@ FileCreateDir,%AppDataLocal%\Power Keys
 FileCreateDir,%ProgramFilesDir%
 SetWorkingDir,%AppDataLocal%\Power Keys
 
-Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui,welcome: Color, red
-Gui,welcome: Font,cwhite s%FontSize% wbold q5,Segoe UI
-Gui,welcome: Add, Text, ,Power Keys
-Gui,welcome: Show,AutoSize Center NoActivate
-sleep 1000
-Gui,welcome: Hide
+if (FirstParameter!="silent")
+{
+    Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
+    Gui,welcome: Color, red
+    Gui,welcome: Font,cwhite s%FontSize% wbold q5,Segoe UI
+    Gui,welcome: Add, Text, ,Power Keys
+    Gui,welcome: Show,AutoSize Center NoActivate
+    sleep 1000
+    Gui,welcome: Hide
+}
 
 RegDelete, HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run, Power Keys
 RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Run, Power Keys

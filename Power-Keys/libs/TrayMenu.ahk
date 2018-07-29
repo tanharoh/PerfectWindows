@@ -4,7 +4,7 @@ menu,tray,DeleteAll
 menu,tray,NoStandard
 menu,tray,UseErrorLevel
 menu,tray,click,1
-menu,tray,tip,Power Keys
+menu,tray,tip,Power Keys %v%
 menu,tray,add,Power Keys %v% by %_Author%,About
 menu,tray,disable,Power Keys %v% by %_Author%
 menu,tray,disable,%_Author%
@@ -44,7 +44,7 @@ menu,tray,DeleteAll
 menu,tray,NoStandard
 menu,tray,UseErrorLevel
 menu,tray,click,1
-menu,tray,tip,Power Keys
+menu,tray,tip,Power Keys %v%
 menu,tray,add,Power Keys %v% by %_Author%,About
 menu,tray,disable,Power Keys %v% by %_Author%
 menu,tray,add
