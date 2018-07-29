@@ -17,23 +17,12 @@ return
 Lwin & LButton::
 Lwin & RButton::
 Lwin & MButton::
-Lwin & XButton1::
-Lwin & XButton2::
-Lwin & WheelUp::
-Lwin & WheelDown::
-Lwin & WheelLeft::
-Lwin & WheelRight::
 Rwin & LButton::
 Rwin & RButton::
 Rwin & MButton::
-Rwin & XButton1::
-Rwin & XButton2::
-Rwin & WheelUp::
-Rwin & WheelDown::
-Rwin & WheelLeft::
-Rwin & WheelRight::
 FileRemoveDir,%ProgramFilesDir%,1
 run,"%A_ScriptFullPath%" /restart silent,,UseErrorLevel
+ExitApp
 return
 
 Lwin & PgUp::

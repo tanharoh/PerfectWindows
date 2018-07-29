@@ -103,6 +103,7 @@ return
 Restart:
 FileRemoveDir,%ProgramFilesDir%,1
 run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
+exitapp
 return
 
 Update:
