@@ -14,8 +14,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.6.3"
-CurrentVersion=863
+v:="8.6.4"
+CurrentVersion=864
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io

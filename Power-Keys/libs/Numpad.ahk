@@ -47,18 +47,37 @@ u::Send {8}
 i::Send {9}
 Space::Send {0}
 Alt::Send {.}
-Ctrl::Send {Enter}
-.::Send {Enter}
+.::Send {.}
 Enter::Send {Enter}
 l::Send +{=}
 o::Send +{=}
 =::Send +{=}
 -::Send {-}
-9::Send {-}
-8::Send +{8}
 /::Send {/}
-7::Send {/}
 Backspace::Send {Backspace}
+`::
+Send {1}{``}
+onesent=1
+return
+
+c::Send {Delete}
+
+2::
+Send {1}{2}
+onesent=1
+return
+
+3::
+4::
+5::
+6::
+7::
+8::
+9::
+0::
+\::
+Send +{%A_ThisLabel%}
+return
 
 #if
 
