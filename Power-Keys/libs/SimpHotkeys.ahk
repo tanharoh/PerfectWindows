@@ -8,8 +8,11 @@ setcapslockstate,on
 return
 
 CapsLock & Space::gosub,ToggleSpace
-CapsLock & LWin::^#Left
-CapsLock & LAlt::^#Right
+CapsLock & LWin::return
+CapsLock & RWin::return
+CapsLock & Alt::return
+CapsLock & Ctrl::return
+CapsLock & Shift::return
 CapsLock & a::Send ^+!{a}
 CapsLock & b::Send ^+!{b}
 CapsLock & c::Send ^+!{c}
@@ -98,6 +101,7 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 +!#`::Send +!#{``}
 ^+!#`::Send ^+!#{``}
 ` & Shift::`
+` & Esc::Send {LWin}
 ` & a::Send +!{a}
 ` & b::Send +!{b}
 ` & c::Send +!{c}
@@ -170,6 +174,10 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & Right::Send +!{Right}
 ` & PrintScreen::Send +!{PrintScreen}
 ` & Tab::ShiftAltTab
+` & Ctrl::return
+` & Alt::return
+` & LWin::return
+` & RWin::return
 
 Tab::Send {Tab}
 ^Tab::Send ^{Tab}
@@ -186,10 +194,11 @@ LWin & Tab::#Tab
 ^+#Tab::Send ^+#{Tab}
 +!#Tab::Send +!#{Tab}
 ^+!#Tab::Send ^+!#{Tab}
-Alt & CapsLock::Send !{F4}
+Alt & CapsLock::ShiftAltTab
 Tab & LWin::^#Left
 Tab & LAlt::^#Right
 Tab & Shift::Tab
+Tab & Ctrl::Return
 Tab & a::Send ^!{a}
 Tab & b::Send ^!{b}
 Tab & c::Send ^!{c}
@@ -329,7 +338,6 @@ Esc & F10::Send ^+{F10}
 Esc & F11::Send ^+{F11}
 Esc & F12::Send ^+{F12}
 Esc & ,::Send ^+{,}
-Esc & `::Send ^+{``}
 Esc & .::Send ^+{.}
 Esc & /::Send ^+{/}
 Esc & '::Send ^+{'}
@@ -338,7 +346,6 @@ Esc & ]::Send ^+{]}
 Esc & \::Send ^+{\}
 Esc & -::Send ^+{-}
 Esc & =::Send ^+{=}
-Esc & Space::Send ^+{Space}
 Esc & Enter::Send ^+{Enter}
 Esc & Backspace::Send ^+{Backspace}
 Esc & Delete::Send ^+{Delete}
@@ -353,5 +360,12 @@ Esc & Left::Send ^+{Left}
 Esc & Right::Send ^+{Right}
 Esc & PrintScreen::Send ^+{PrintScreen}
 Esc & Tab::Send ^+{Tab}
+Esc & Space::Send ^+{Space}
+Esc & `::Send {LWin}
+Esc & Ctrl::return
+Esc & LWin::return
+Esc & RWin::return
+Esc & Alt::return
+
 
 #If

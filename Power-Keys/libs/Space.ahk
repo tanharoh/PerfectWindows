@@ -116,7 +116,7 @@ Q::Send ^{s}
 /::Send ^{Enter}
 Enter::Send +{Enter}
 Backspace::Send {Delete}
-Esc::Send !{F4}
+Esc::return
 1::return
 2::return
 4::return
