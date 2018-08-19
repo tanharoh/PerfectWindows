@@ -79,11 +79,11 @@ AuthenticodeFlags=reg_dword 0
 
 HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer [1 8 17]
 HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
-NoDriveTypeAutoRun=reg_dword ff
+NoDriveTypeAutoRun=reg_dword 255
 NoAutorun=reg_dword 1
 
 HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer [1 7 17]
-NoDriveTypeAutoRun=reg_dword ff
+NoDriveTypeAutoRun=reg_dword 255
 NoAutorun=reg_dword 1
 
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System [1 8 17]
