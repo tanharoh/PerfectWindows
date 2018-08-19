@@ -14,6 +14,11 @@ HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer [2 8 
 
 ),Protect.Blacklist
 RunWait,regini.exe Protect.Blacklist,,Hide
+if ErrorLevel
+{
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
+    ExitApp
+}
 FileDelete,Protect.Blacklist
 Return
 

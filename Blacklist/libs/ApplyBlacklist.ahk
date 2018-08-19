@@ -59,10 +59,10 @@ AuthenticodeEnabled=reg_dword 0
 DefaultLevel=reg_dword 0
 TransparentEnabled=reg_dword 1
 PolicyScope=reg_dword 0
-ExecutableTypes=reg_multi_sz "WSC" "VB" "URL" "SHS" "SCR" "RUBY" "REG" "RB" "PYTHON" "PY" "PS1" "PL" "PIF" "PHP" "PCD" "OCX" "MST" "MSP" "MSI" "MSC" "MDE" "MDB" "LUA" "LNK" "JSP" "ISP" "INS" "INF" "HTML" "HTM" "HTA" "HLP" "EXE" "CSS" "CRT" "CPL" "COM" "CMD" "CHM" "BAT" "BAS" "ASP" "AHK" "ADP" "ADE"
+ExecutableTypes=reg_multi_sz "WSH" "WSF" "WSC" "WS" "VSW" "VST" "VSS" "VSMACROS" "VBS" "VBE" "VB" "URL" "TMP" "SHS" "SHB" "SCT" "SCR" "SCF" "RUBY" "REG" "RB" "PYTHON" "PY" "PST" "PS1" "PRG" "PRF" "PL" "PIF" "PHP" "PCD" "OPS" "OCX" "MST" "MSP" "MSI" "MSC" "MDZ" "MDW" "MDT" "MDE" "MDB" "MDA" "MAW" "MAV" "MAU" "MAT" "MAS" "MAR" "MAQ" "MAM" "MAG" "MAF" "MAD" "LUA" "LNK" "KSH" "JSP" "JSE" "JS" "ITS" "ISP" "INS" "INF" "HTA" "HLP" "FXP" "EXE" "CSH" "CRT" "CPL" "COM" "CMD" "CHM" "CER" "BAT" "BAS" "ASP" "APP" "AHK" "ADP" "ADE"
 
 HKEY_CLASSES_ROOT\Directory\Background\shell\VirusTotal\command
-@=mshta vbscript:CreateObject("Shell.Application").ShellExecute("https://www.virustotal.com")(window.close)
+@=mshta vbscript:CreateObject("Shell.Application").ShellExecute("https://www.virustotal.com/#/home/upload")(window.close)
 
 HKEY_CLASSES_ROOT\Directory\Background\shell\VirusTotal
 HasLUAShield=""
@@ -73,18 +73,20 @@ icon=notepad.exe
 HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command
 @=notepad.exe
 
+HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer [1 8 17]
 HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer
 AuthenticodeFlags=reg_dword 0
 
+HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer [1 8 17]
 HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
 NoDriveTypeAutoRun=reg_dword ff
 NoAutorun=reg_dword 1
 
-HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer [1 7 17]
 NoDriveTypeAutoRun=reg_dword ff
 NoAutorun=reg_dword 1
 
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System [1 8 17]
 EnableLUA=reg_dword 1
 ValidateAdminCodeSignatures=reg_dword 0
 ConsentPromptBehaviorAdmin=reg_dword 5
@@ -98,5 +100,10 @@ EnableVirtualization=reg_dword 1
 
 ),Apply.Blacklist
 RunWait,regini.exe Apply.Blacklist,,Hide
+if ErrorLevel
+{
+    MsgBox,0x40010,Blacklist,%_RuntimeError%
+    ExitApp
+}
 FileDelete,Apply.Blacklist
 Return

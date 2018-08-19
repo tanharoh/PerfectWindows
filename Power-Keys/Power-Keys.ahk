@@ -1,5 +1,4 @@
-﻿bit=86
-#NoTrayIcon
+﻿#NoTrayIcon
 #Include libs\Language.ahk
 #SingleInstance ignore
 #MaxHotkeysPerInterval 1000
@@ -14,8 +13,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.7.0"
-CurrentVersion=870
+v:="8.7.1"
+CurrentVersion=871
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io

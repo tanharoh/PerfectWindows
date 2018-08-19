@@ -7,6 +7,7 @@ else
 setcapslockstate,on
 return
 
+Ctrl & CapsLock::Send ^+{Tab}
 CapsLock & Space::gosub,ToggleSpace
 CapsLock & LWin::return
 CapsLock & RWin::return
@@ -70,6 +71,7 @@ CapsLock & ]::Send ^+!{]}
 CapsLock & \::Send ^+!{\}
 CapsLock & -::Send ^+!{-}
 CapsLock & =::Send ^+!{=}
+CapsLock & `;::Send ^+!{`;}
 CapsLock & Enter::Send ^+!{Enter}
 CapsLock & Backspace::Send ^+!{Backspace}
 CapsLock & Delete::Send ^+!{Delete}
@@ -366,6 +368,5 @@ Esc & Ctrl::return
 Esc & LWin::return
 Esc & RWin::return
 Esc & Alt::return
-
 
 #If
