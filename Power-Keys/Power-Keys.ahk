@@ -13,8 +13,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapsLockMode, On
 
-v:="8.7.1"
-CurrentVersion=871
+v:="8.7.2"
+CurrentVersion=872
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io
@@ -44,6 +44,11 @@ FontSize=40
 Magnify=0
 FirstParameter=%1%
 SendCtrlW=0
+
+if A_PtrSize=4
+global bit=86
+Else
+global bit=64
 
 if (FirstParameter="update")
 {
