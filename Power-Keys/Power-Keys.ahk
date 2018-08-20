@@ -11,10 +11,10 @@ SetBatchLines -1
 ListLines Off
 Process, Priority, , High
 Suspend, on
-SetStoreCapsLockMode, On
+SetStoreCapslockMode, off
 
-v:="8.7.3"
-CurrentVersion=873
+v:="8.8.0"
+CurrentVersion=880
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io

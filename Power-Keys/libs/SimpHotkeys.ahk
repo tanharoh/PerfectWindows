@@ -1,13 +1,23 @@
 ﻿#if !flaunch&&!GameMode&&!space1&&!space2&&!space3
 
-CapsLock::
-if GetKeyState("CapsLock","T")
-setcapslockstate,off
-else
-setcapslockstate,on
+LWin & Tab::
+RWin & Tab::
+keywait,Tab
+Send ^#{Right}
 return
 
+LWin & CapsLock::
+RWin & CapsLock::
+keywait,CapsLock
+Send ^#{Left}
+return
+
+Alt & CapsLock::ShiftAltTab
+Alt & Tab::AltTab
+
 Ctrl & CapsLock::Send ^+{Tab}
+^Tab::Send ^{Tab}
+
 CapsLock & Space::gosub,ToggleSpace
 CapsLock & LWin::return
 CapsLock & RWin::return
@@ -182,13 +192,10 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & RWin::return
 
 Tab::Send {Tab}
-^Tab::Send ^{Tab}
 +Tab::Send +{Tab}
-Alt & Tab::AltTab
 ^+Tab::Send ^+{Tab}
 ^!Tab::Send ^!{Tab}
 ^!+Tab::Send ^!+{Tab}
-LWin & Tab::#Tab
 ^#Tab::Send ^#{Tab}
 +#Tab::Send +#{Tab}
 !#Tab::Send !#{Tab}
@@ -196,9 +203,6 @@ LWin & Tab::#Tab
 ^+#Tab::Send ^+#{Tab}
 +!#Tab::Send +!#{Tab}
 ^+!#Tab::Send ^+!#{Tab}
-Alt & CapsLock::ShiftAltTab
-Tab & LWin::^#Left
-Tab & LAlt::^#Right
 Tab & Shift::Tab
 Tab & Ctrl::Return
 Tab & a::Send ^!{a}

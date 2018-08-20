@@ -179,6 +179,8 @@ Esc::
 Gosub, disablefn
 return
 
+CapsLock::winset,AlwaysOnTop,, A
+
 F1 & Shift::F1
 F2 & Shift::F2
 F3 & Shift::F3

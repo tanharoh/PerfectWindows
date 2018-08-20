@@ -1,8 +1,11 @@
-﻿Lwin & Esc::
+﻿Lwin & `::#Tab
+Rwin & `::#Tab
+
+Lwin & Esc::
 Rwin & Esc::
 if Magnify
     {
-        Send #{Esc}
+        Send <#{Esc}
         Magnify=0
     }
 Else
@@ -28,13 +31,13 @@ return
 Lwin & PgUp::
 Rwin & PgUp::
 Magnify=1
-Send #=
+Send <#=
 return
 
 Lwin & PgDn::
 Rwin & PgDn::
 Magnify=1
-Send #-
+Send <#-
 return
 
 Lwin & =::
@@ -47,26 +50,47 @@ Rwin & -::
 Send {Volume_Down}
 return
 
+Lwin & \::return
+Rwin & \::return
 Lwin & \ Up::
 Rwin & \ Up::
 Send {Volume_Mute}
 return
 
+Rwin & [::return
+Lwin & [::return
 Lwin & [ Up::
 Rwin & [ Up::
 Send {Media_Prev}
 return
 
+Rwin & ]::return
+Lwin & ]::return
 Lwin & ] Up::
 Rwin & ] Up::
 Send {Media_Next}
 return
 
+Lwin & '::return
+Rwin & '::return
 Lwin & ' Up::
 Rwin & ' Up::
 Send {Media_Play_Pause}
 return
 
+Lwin & Enter::return
+Rwin & Enter::return
+Lwin & Enter Up::
+Rwin & Enter Up::
+Send ^#d
+return
+
+Lwin & bs::return
+Rwin & bs::return
+Lwin & bs Up::
+Rwin & bs Up::
+Send ^#{f4}
+return
 #if !GameMode
 
 #F4:
@@ -92,15 +116,12 @@ ifmsgbox,ok
 Process,close,explorer.exe
 return
 
+#F1::return
 #F1 Up::
 Gosub, Help
 return
 
-#NumLock Up::
-toRun="%A_WinDir%\system32\calc.exe"
-ShellRun(toRun)
-return
-
+#0::return
 #0 Up::
 toRun="%A_WinDir%\system32\calc.exe"
 ShellRun(toRun)
@@ -115,12 +136,6 @@ ifmsgbox,ok
     FileRecycleEmpty
 }
 return
-
-LWin & CapsLock::winset,AlwaysOnTop,, A
-
-#Enter::^#d
-
-#Backspace::^#F4
 
 LWin & End::
 RWin & End::
