@@ -190,6 +190,7 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & Alt::return
 ` & LWin::return
 ` & RWin::return
+` & CapsLock::return
 
 Tab::Send {Tab}
 +Tab::Send +{Tab}
@@ -203,8 +204,12 @@ Tab::Send {Tab}
 ^+#Tab::Send ^+#{Tab}
 +!#Tab::Send +!#{Tab}
 ^+!#Tab::Send ^+!#{Tab}
+Tab & Ctrl::return
+Tab & Alt::return
+Tab & LWin::return
+Tab & RWin::return
+Tab & CapsLock::return
 Tab & Shift::Tab
-Tab & Ctrl::Return
 Tab & a::Send ^!{a}
 Tab & b::Send ^!{b}
 Tab & c::Send ^!{c}
@@ -294,6 +299,11 @@ Esc::Send {Esc}
 ^+#Esc::Send ^+#{Esc}
 +!#Esc::Send +!#{Esc}
 ^+!#Esc::Send ^+!#{Esc}
+Esc & Ctrl::return
+Esc & Alt::return
+Esc & LWin::return
+Esc & RWin::return
+Esc & CapsLock::return
 Esc & Shift::Esc
 Esc & a::Send ^+{a}
 Esc & b::Send ^+{b}
@@ -368,9 +378,5 @@ Esc & PrintScreen::Send ^+{PrintScreen}
 Esc & Tab::Send ^+{Tab}
 Esc & Space::Send ^+{Space}
 Esc & `::Send {LWin}
-Esc & Ctrl::return
-Esc & LWin::return
-Esc & RWin::return
-Esc & Alt::return
 
 #If

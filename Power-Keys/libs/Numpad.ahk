@@ -1,8 +1,8 @@
 ﻿#if !flaunch&&oneenabled&&!two1&&!two2&&!GameMode
 
 1::
-settimer,onetimer,%delay1%,2018
-settimer,oneDisabler,%delay2%,1009
+settimer,onetimer,300,2018
+settimer,oneDisabler,500,1009
 spaceenabled=0
 onesent=0
 one1=0
