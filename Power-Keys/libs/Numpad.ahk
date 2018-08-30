@@ -13,7 +13,7 @@ settimer,onetimer,delete
 settimer,oneDisabler,delete
 BlockInput,off
 if (!onesent)
-send {1}
+send {1 Down}{1 Up}
 one1=0
 one2=0
 onesent=1
@@ -143,19 +143,19 @@ Right::
 PrintScreen::
 settimer,onetimer,delete
 onesent=1
-Send {1}{%A_ThisLabel%}
+Send {1 Down}{%A_ThisLabel% Down}{1 Up}{%A_ThisLabel% Up}
 return
 
 `::
 settimer,onetimer,delete
 onesent=1
-Send {1}{``}
+Send {1 Down}{`` Down}{1 Up}{`` Up}
 return
 
 `;::
 settimer,onetimer,delete
 onesent=1
-Send {1}{;}
+Send {1 Down}{; Down}{1 Up}{; Up}
 return
 
 #if

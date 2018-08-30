@@ -14,7 +14,7 @@ keywait,space
 settimer,spacetimer,delete
 settimer,spaceDisabler,delete
 if (!spacesent)
-send {space}
+send {space Down}{space Up}
 space1=0 
 space2=0
 space3=0
@@ -288,19 +288,19 @@ Right::
 PrintScreen::
 settimer,spacetimer,delete
 spacesent=1
-Send {Space}{%A_ThisLabel%}
+Send {Space Down}{%A_ThisLabel% Down}{Space Up}{%A_ThisLabel% Up}
 return
 
 `::
 settimer,spacetimer,delete
 spacesent=1
-Send {Space}{``}
+Send {Space Down}{`` Down}{Space Up}{`` Up}
 return
 
 `;::
 settimer,spacetimer,delete
 spacesent=1
-Send {Space}{;}
+Send {Space Down}{; Down}{Space Up}{; Up}
 return
 
 #if
