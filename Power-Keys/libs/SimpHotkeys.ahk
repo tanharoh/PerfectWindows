@@ -82,6 +82,7 @@ CapsLock & \::Send ^+!{\}
 CapsLock & -::Send ^+!{-}
 CapsLock & =::Send ^+!{=}
 CapsLock & `;::Send ^+!{`;}
+CapsLock & `::Send ^+!{``}
 CapsLock & Enter::Send ^+!{Enter}
 CapsLock & Backspace::Send ^+!{Backspace}
 CapsLock & Delete::Send ^+!{Delete}
@@ -171,6 +172,7 @@ CapsLock & PrintScreen::Send ^+!{PrintScreen}
 ` & \::Send +!{\}
 ` & -::Send +!{-}
 ` & =::Send +!{=}
+` & `;::Send +!{`;}
 ` & Space::Send +!{Space}
 ` & Enter::Send +!{Enter}
 ` & Backspace::Send +!{Backspace}
@@ -268,6 +270,7 @@ Tab & ]::Send ^!{]}
 Tab & \::Send ^!{\}
 Tab & -::Send ^!{-}
 Tab & =::Send ^!{=}
+Tab & `;::Send ^!{`;}
 Tab & Space::Send ^!{Space}
 Tab & Enter::Send ^!{Enter}
 Tab & Backspace::Send ^!{Backspace}
@@ -362,6 +365,7 @@ Esc & ]::Send ^+{]}
 Esc & \::Send ^+{\}
 Esc & -::Send ^+{-}
 Esc & =::Send ^+{=}
+Esc & `;::Send ^+{`;}
 Esc & Enter::Send ^+{Enter}
 Esc & Backspace::Send ^+{Backspace}
 Esc & Delete::Send ^+{Delete}

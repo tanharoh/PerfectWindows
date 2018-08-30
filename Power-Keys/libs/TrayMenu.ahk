@@ -39,6 +39,9 @@ return
 EnableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,1
 GameMode=1
+Hotkey,Alt & CapsLock,Off
+Hotkey,Alt & Tab,Off
+Hotkey,`` & Tab,Off
 menu,tray,icon,,,1
 menu,tray,DeleteAll
 menu,tray,NoStandard
@@ -56,6 +59,9 @@ return
 DisableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,0
 GameMode=0
+Hotkey,Alt & CapsLock,ShiftAltTab
+Hotkey,Alt & Tab,AltTab
+Hotkey,`` & Tab,ShiftAltTab
 Gosub,CreateTray
 Gosub,GameModeDisabled
 return

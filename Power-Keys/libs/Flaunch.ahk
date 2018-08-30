@@ -38,6 +38,7 @@ else
     if !errorlevel
     {
         SendCtrlW=0
+        settimer,disableCtrlW,delete
         ShellRun(lnk)
     }
     else
@@ -46,6 +47,7 @@ else
         if !ErrorLevel
         {
             SendCtrlW=1
+            settimer,disableCtrlW,5000,4096
             ShellRun(url)
         }
         else
@@ -66,11 +68,6 @@ else
         }
     }
 }
-return
-
-disablefn:
-settimer,disablefn,off
-launchcode=terminate
 return
 
 #if
@@ -140,6 +137,11 @@ Gosub, disablefn
 launchcode=`;
 return
 
+`::
+Gosub, disablefn
+launchcode=``
+return
+
 space::
 Gosub, disablefn
 if SendCtrlW
@@ -195,3 +197,13 @@ F11 & Shift::F11
 F12 & Shift::F12
 
 #if
+
+disablefn:
+settimer,disablefn,delete
+launchcode=terminate
+return
+
+disableCtrlW:
+settimer,disableCtrlW,delete
+SendCtrlW=0
+return
