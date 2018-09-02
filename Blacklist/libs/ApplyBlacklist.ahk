@@ -5,12 +5,22 @@ Loop,Parse,DriveList,,
 {
     num:=A_Index+10
     FileCreateDir, %A_LoopField%:\Blacklist
+
     FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c0%num%}`n,Apply.Blacklist
     FileAppend,SaferFlags=reg_dword 0`n,Apply.Blacklist
     FileAppend,ItemData="%A_LoopField%:\"`n`n,Apply.Blacklist
+
+    FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c0%num%}`n,Apply.Blacklist
+    FileAppend,SaferFlags=reg_dword 0`n,Apply.Blacklist
+    FileAppend,ItemData="\\?\%A_LoopField%:\"`n`n,Apply.Blacklist
+
     FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c1%num%}`n,Apply.Blacklist
     FileAppend,SaferFlags=reg_dword 0`n,Apply.Blacklist
     FileAppend,ItemData="%A_LoopField%:\Blacklist"`n`n,Apply.Blacklist
+
+    FileAppend,HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c1%num%}`n,Apply.Blacklist
+    FileAppend,SaferFlags=reg_dword 0`n,Apply.Blacklist
+    FileAppend,ItemData="\\?\%A_LoopField%:\Blacklist"`n`n,Apply.Blacklist
 }
 FileAppend,
 (
@@ -53,6 +63,46 @@ ItemData="%OSDrive%\Users\*\AppData\Local\Temp\Temp1*.zip\*"
 HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c203}
 SaferFlags=reg_dword 0
 ItemData="%OSDrive%\Users\*\AppData\Roaming\Foxmail*\Temp*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c000}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c007}
+SaferFlags=reg_dword 0
+ItemData="\\?\X:\"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c008}
+SaferFlags=reg_dword 0
+ItemData="\\?\Y:\"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c009}
+SaferFlags=reg_dword 0
+ItemData="\\?\Z:\"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c002}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Local\Microsoft\Windows\I*\*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c003}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Local\Packages\*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c201}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Local\Temp\7zO*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c202}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Local\Temp\7z*.tmp\*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c203}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Local\Temp\Temp1*.zip\*"
+
+HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba179c203}
+SaferFlags=reg_dword 0
+ItemData="\\?\%OSDrive%\Users\*\AppData\Roaming\Foxmail*\Temp*"
 
 HKLM\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers
 AuthenticodeEnabled=reg_dword 0
