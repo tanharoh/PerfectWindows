@@ -78,7 +78,11 @@
 
 <br>
 
-[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+> [**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+
+<br>
+
+> **仅需在浏览器地址栏中键入 `PowerKeys.GitHub.io` 即可直达本页面！**
 
 <br>
 
