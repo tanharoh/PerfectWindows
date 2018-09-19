@@ -181,7 +181,10 @@ Esc::
 Gosub, disablefn
 return
 
-CapsLock::winset,AlwaysOnTop,, A
+CapsLock::
+Gosub, disablefn
+winset,AlwaysOnTop,, A
+return
 
 F1 & Shift::F1
 F2 & Shift::F2

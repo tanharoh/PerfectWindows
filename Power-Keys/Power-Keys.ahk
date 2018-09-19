@@ -13,7 +13,7 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapslockMode, off
 
-v:="8.8.5"
+v:="8.8.6"
 CurrentVersion=885
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
@@ -44,6 +44,7 @@ FontSize=40
 Magnify=0
 FirstParameter=%1%
 SendCtrlW=0
+SleepTime=900
 
 if A_PtrSize=4
 global bit=86

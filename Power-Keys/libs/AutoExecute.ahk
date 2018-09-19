@@ -46,7 +46,7 @@ if (FirstParameter!="silent")
     Gui,welcome: Font,cwhite s%FontSize% wbold q5,Segoe UI
     Gui,welcome: Add, Text, ,Power Keys
     Gui,welcome: Show,AutoSize Center NoActivate
-    sleep 1000
+    sleep %SleepTime%
     Gui,welcome: Hide
 }
 
