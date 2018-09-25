@@ -1,7 +1,4 @@
-﻿Lwin & `::#Tab
-Rwin & `::#Tab
-
-Lwin & Esc::
+﻿Lwin & Esc::
 Rwin & Esc::
 if Magnify
     {
@@ -78,19 +75,6 @@ Rwin & ' Up::
 Send {Media_Play_Pause}
 return
 
-Lwin & Enter::return
-Rwin & Enter::return
-Lwin & Enter Up::
-Rwin & Enter Up::
-Send ^#d
-return
-
-Lwin & bs::return
-Rwin & bs::return
-Lwin & bs Up::
-Rwin & bs Up::
-Send ^#{f4}
-return
 #if !GameMode
 
 #F4:
@@ -114,6 +98,23 @@ return
 msgbox,0x40031,Power Keys,确定重启 explorer？
 ifmsgbox,ok
 Process,close,explorer.exe
+return
+
+Lwin & `::#Tab
+Rwin & `::#Tab
+
+Lwin & Enter::return
+Rwin & Enter::return
+Lwin & Enter Up::
+Rwin & Enter Up::
+Send ^#d
+return
+
+Lwin & bs::return
+Rwin & bs::return
+Lwin & bs Up::
+Rwin & bs Up::
+Send ^#{f4}
 return
 
 #F1::return
@@ -152,6 +153,8 @@ return
 #if
 
 #if GameMode
+
 LWin::return
 RWin::return
+
 #if
