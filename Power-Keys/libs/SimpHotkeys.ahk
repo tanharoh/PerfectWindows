@@ -1,15 +1,13 @@
 ﻿#if !flaunch&&!GameMode&&!Space1&&!Space2&&!Space3
 
 LWin & Tab::
-RWin & Tab::
 Keywait,Tab
-Send {Ctrl Down}{LWin Down}{Right Down}{Right Up}{LWin Up}{Ctrl Up}
+Send {Ctrl Down}{LWin Down}{Right Down}{Right Up}{Ctrl Up}
 Return
 
 LWin & CapsLock::
-RWin & CapsLock::
 Keywait,CapsLock
-Send {Ctrl Down}{LWin Down}{Left Down}{Left Up}{LWin Up}{Ctrl Up}
+Send {Ctrl Down}{LWin Down}{Left Down}{Left Up}{Ctrl Up}
 Return
 
 Alt & CapsLock::ShiftAltTab

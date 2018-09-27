@@ -84,14 +84,14 @@ LWin & Enter::Return
 RWin & Enter::Return
 LWin & Enter Up::
 RWin & Enter Up::
-Send {Ctrl Down}{LWin Down}{d Down}{d Up}{LWin Up}{Ctrl Up}
+Send {Ctrl Down}{LWin Down}{d Down}{d Up}{Ctrl Up}
 Return
 
 LWin & bs::Return
 RWin & bs::Return
 LWin & bs Up::
 RWin & bs Up::
-Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{LWin Up}{Ctrl Up}
+Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{Ctrl Up}
 Return
 
 #F1::Return
