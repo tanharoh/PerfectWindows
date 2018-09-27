@@ -69,53 +69,53 @@ KeyWait,F1
 Gosub,HidePowerSpaceLayout
 Return
 
-F::Send {Left}
-J::Send {Right}
-D::Send ^{Left}
-K::Send ^{Right}
-H::Send +{F10}
-G::Send {Esc}
-9::Send +{WheelUp}
-0::Send +{WheelDown}
-'::Send {Enter}
-S::Send {Home}
-L::Send {End}
-W::Send ^{Home}
-.::Send ^{End}
-R::Send {Up}
-T::Send {PgUp}
-E::Send ^{Up}
-M::Send {Down}
-N::Send {PgDn}
-,::Send ^{Down}
-B::Send ^{b}
-I::Send ^{i}
-U::Send ^{u}
-Z::Send ^{z}
-X::Send ^{x}
-C::Send ^{c}
-V::Send ^{v}
-Y::Send ^{y}
-5::Send ^{l}
-6::Send ^{e}
-7::Send ^{r}
-Tab::Send ^{a}
-O::Send ^+{,}
-P::Send ^+{.}
-=::Send ^{WheelUp}
--::Send ^{WheelDown}
-Ctrl::Send {BackSpace}
-CapsLock::Send {BackSpace}
+F::Send {Left Down}{Left Up}
+J::Send {Right Down}{Right Up}
+D::Send {Ctrl Down}{Left Down}{Left Up}{Ctrl Up}
+K::Send {Ctrl Down}{Right Down}{Right Up}{Ctrl Up}
+H::Send {Shift Down}{F10 Down}{F10 Up}{Shift Up}
+G::Send {Esc Down}{Esc Up}
+9::Send {Shift Down}{WheelUp Down}{WheelUp Up}{Shift Up}
+0::Send {Shift Down}{WheelDown Down}{WheelDown Up}{Shift Up}
+'::Send {Enter Down}{Enter Up}
+S::Send {Home Down}{Home Up}
+L::Send {End Down}{End Up}
+W::Send {Ctrl Down}{Home Down}{Home Up}{Ctrl Up}
+.::Send {Ctrl Down}{End Down}{End Up}{Ctrl Up}
+R::Send {Up Down}{Up Up}
+T::Send {PgUp Down}{PgDn Up}
+E::Send {Ctrl Down}{Up Down}{Up Up}{Ctrl Up}
+M::Send {Down Down}{Down Up}
+N::Send {PgDn Down}{PgDn Up}
+,::Send {Ctrl Down}{Down Down}{Down Up}{Ctrl Up}
+B::Send {Ctrl Down}{b Down}{b Up}{Ctrl Up}
+I::Send {Ctrl Down}{i Down}{i Up}{Ctrl Up}
+U::Send {Ctrl Down}{u Down}{u Up}{Ctrl Up}
+Z::Send {Ctrl Down}{z Down}{z Up}{Ctrl Up}
+X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
+C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
+V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
+Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
+5::Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
+6::Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
+7::Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
+Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
+O::Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
+P::Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
+=::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
+-::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
+Ctrl::Send {BackSpace Down}{BackSpace Up}
+CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
-]::Send {Tab}
-[::Send +{Tab}
-Q::Send ^{s}
-3::Send +{3}
-`::Send {``}
-8::Send +{8}
-/::Send ^{Enter}
-Enter::Send +{Enter}
-BackSpace::Send {Delete}
+]::Send {Tab Down}{Tab Up}
+[::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
+Q::Send {Ctrl Down}{s Down}{s Up}{Ctrl Up}
+3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
+`::Send {`` Down}{`` Up}
+8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}
+/::Send {Ctrl Down}{Enter Down}{Enter Up}{Ctrl Up}
+Enter::Send {Shift Down}{Enter Down}{Enter Up}{Shift Up}
+BackSpace::Send {Delete Down}{Delete Up}
 Esc::Return
 1::Return
 2::Return
@@ -147,54 +147,54 @@ PrintScreen::Return
 #if
 
 #if Space3
-F::Send +{Left}
-J::Send +{Right}
-D::Send ^+{Left}
-K::Send ^+{Right}
-H::Send +{F10}
-G::Send {Esc}
-9::Send +{WheelUp}
-0::Send +{WheelDown}
-'::Send {Enter}
-S::Send +{Home}
-L::Send +{End}
-W::Send ^+{Home}
-.::Send ^+{End}
-R::Send +{Up}
-T::Send +{PgUp}
-E::Send +^{Up}
-M::Send +{Down}
-N::Send +{PgDn}
-,::Send ^+{Down}
-B::Send ^{b}
-I::Send ^{i}
-U::Send ^{u}
-Z::Send ^{z}
-X::Send ^{x}
-C::Send ^{c}
-V::Send ^{v}
-Y::Send ^{y}
-5::Send ^{l}
-6::Send ^{e}
-7::Send ^{r}
-Tab::Send ^{a}
-O::Send ^+{,}
-P::Send ^+{.}
-=::Send ^{WheelUp}
--::Send ^{WheelDown}
-Ctrl::Send {BackSpace}
-CapsLock::Send {BackSpace}
+F::Send {Shift Down}{Left Down}{Left Up}{Shift Up}
+J::Send {Shift Down}{Right Down}{Right Up}{Shift Up}
+D::Send {Ctrl Down}{Shift Down}{Left Down}{Left Up}{Shift Up}{Ctrl Up}
+K::Send {Ctrl Down}{Shift Down}{Right Down}{Right Up}{Shift Up}{Ctrl Up}
+H::Send {Shift Down}{F10 Down}{F10 Up}{Shift Up}
+G::Send {Esc Down}{Esc Up}
+9::Send {Shift Down}{WheelUp Down}{WheelUp Up}{Shift Up}
+0::Send {Shift Down}{WheelDown Down}{WheelDown Up}{Shift Up}
+'::Send {Enter Down}{Enter Up}
+S::Send {Shift Down}{Home Down}{Home Up}{Shift Up}
+L::Send {Shift Down}{End Down}{End Up}{Shift Up}
+W::Send {Ctrl Down}{Shift Down}{Home Down}{Home Up}{Shift Up}{Ctrl Up}
+.::Send {Ctrl Down}{Shift Down}{End Down}{End Up}{Shift Up}{Ctrl Up}
+R::Send {Shift Down}{Up Down}{Up Up}{Shift Up}
+T::Send {Shift Down}{PgUp Down}{PgDn Up}{Shift Up}
+E::Send {Ctrl Down}{Shift Down}{Up Down}{Up Up}{Shift Up}{Ctrl Up}
+M::Send {Shift Down}{Down Down}{Down Up}{Shift Up}
+N::Send {Shift Down}{PgDn Down}{PgDn Up}{Shift Up}
+,::Send {Ctrl Down}{Shift Down}{Down Down}{Down Up}{Shift Up}{Ctrl Up}
+B::Send {Ctrl Down}{b Down}{b Up}{Ctrl Up}
+I::Send {Ctrl Down}{i Down}{i Up}{Ctrl Up}
+U::Send {Ctrl Down}{u Down}{u Up}{Ctrl Up}
+Z::Send {Ctrl Down}{z Down}{z Up}{Ctrl Up}
+X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
+C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
+V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
+Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
+5::Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
+6::Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
+7::Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
+Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
+O::Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
+P::Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
+=::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
+-::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
+Ctrl::Send {BackSpace Down}{BackSpace Up}
+CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
-]::Send {Tab}
-[::Send +{Tab}
-Q::Send ^{s}
-3::Send +{3}
-`::Send {``}
-8::Send +{8}
-/::Send ^{Enter}
-Enter::Send +{Enter}
-BackSpace::Send {Delete}
-Esc::Send !{F4}
+]::Send {Tab Down}{Tab Up}
+[::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
+Q::Send {Ctrl Down}{s Down}{s Up}{Ctrl Up}
+3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
+`::Send {`` Down}{`` Up}
+8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}
+/::Send {Ctrl Down}{Enter Down}{Enter Up}{Ctrl Up}
+Enter::Send {Shift Down}{Enter Down}{Enter Up}{Shift Up}
+BackSpace::Send {Delete Down}{Delete Up}
+Esc::Return
 1::Return
 2::Return
 4::Return
