@@ -13,18 +13,18 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapslockMode, off
 
-v:="8.8.7"
-CurrentVersion=887
+v:="8.8.8"
+CurrentVersion=888
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io
 ProgramFilesDir=%A_ProgramFiles%\szzhiyang\Power Keys
 isenabled=1
 isenabled2=1
-spaceenabled=1
-space1=0
-space2=0
-space3=0
+Spaceenabled=1
+Space1=0
+Space2=0
+Space3=0
 oneenabled=1
 one1=0
 one2=0
@@ -53,11 +53,11 @@ global bit=64
 
 if (FirstParameter="update")
 {
-    gosub,Updater
+    Gosub,Updater
 }
 Else
 {
-    gosub,AutoExecute
+    Gosub,AutoExecute
 }
 
 

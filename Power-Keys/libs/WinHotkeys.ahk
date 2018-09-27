@@ -1,132 +1,109 @@
-﻿Lwin & Esc::
-Rwin & Esc::
+﻿LWin & Esc::
+RWin & Esc::
 if Magnify
     {
-        Send <#{Esc}
+        Send {LWin Down}{Esc Down}{Esc Up}{LWin Up}
         Magnify=0
     }
 Else
 {
     if GameMode
-    gosub,DisableGameMode
+    Gosub,DisableGameMode
     Else
-    gosub,EnableGameMode
+    Gosub,EnableGameMode
 }
-return
+Return
 
-Lwin & LButton::
-Lwin & RButton::
-Lwin & MButton::
-Rwin & LButton::
-Rwin & RButton::
-Rwin & MButton::
+LWin & LButton::
+LWin & RButton::
+LWin & MButton::
+RWin & LButton::
+RWin & RButton::
+RWin & MButton::
 FileRemoveDir,%ProgramFilesDir%,1
-run,"%A_ScriptFullPath%" /restart silent,,UseErrorLevel
+Run,"%A_ScriptFullPath%" /restart silent,,UseErrorLevel
 ExitApp
-return
+Return
 
-Lwin & PgUp::
-Rwin & PgUp::
+LWin & PgUp::
+RWin & PgUp::
 Magnify=1
-Send <#=
-return
+Send {LWin Down}{= Down}{= Up}{LWin Up}
+Return
 
-Lwin & PgDn::
-Rwin & PgDn::
+LWin & PgDn::
+RWin & PgDn::
 Magnify=1
-Send <#-
-return
+Send {LWin Down}{- Down}{- Up}{LWin Up}
+Return
 
-Lwin & =::
-Rwin & =::
-Send {Volume_Up}
-return
+LWin & =::
+RWin & =::
+Send {Volume_Up Down}{Volume_Up Up}
+Return
 
-Lwin & -::
-Rwin & -::
-Send {Volume_Down}
-return
+LWin & -::
+RWin & -::
+Send {Volume_Down Down}{Volume_Down Up}
+Return
 
-Lwin & \::return
-Rwin & \::return
-Lwin & \ Up::
-Rwin & \ Up::
-Send {Volume_Mute}
-return
+LWin & \::Return
+RWin & \::Return
+LWin & \ Up::
+RWin & \ Up::
+Send {Volume_Mute Down}{Volume_Mute Up}
+Return
 
-Rwin & [::return
-Lwin & [::return
-Lwin & [ Up::
-Rwin & [ Up::
-Send {Media_Prev}
-return
+RWin & [::Return
+LWin & [::Return
+LWin & [ Up::
+RWin & [ Up::
+Send {Media_Prev Down}{Media_Prev Up}
+Return
 
-Rwin & ]::return
-Lwin & ]::return
-Lwin & ] Up::
-Rwin & ] Up::
-Send {Media_Next}
-return
+RWin & ]::Return
+LWin & ]::Return
+LWin & ] Up::
+RWin & ] Up::
+Send {Media_Next Down}{Media_Next Up}
+Return
 
-Lwin & '::return
-Rwin & '::return
-Lwin & ' Up::
-Rwin & ' Up::
-Send {Media_Play_Pause}
-return
+LWin & '::Return
+RWin & '::Return
+LWin & ' Up::
+RWin & ' Up::
+Send {Media_Play_Pause Down}{Media_Play_Pause Up}
+Return
 
 #if !GameMode
 
-#F4:
-Winget,ProcessName,ProcessName,A
-if !ErrorLevel
-{
-    if ProcessName!=explorer.exe
-    {
-        msgbox,0x40031,Power Keys,确定终止 %ProcessName%？
-        ifmsgbox,ok
-        Process, Close, %ProcessName%
-    }
-    else
-    {
-        msgbox,0x40031,Power Keys,确定关机？
-    }
-}
-return
+LWin & `::#Tab
+RWin & `::#Tab
 
-#F5:
-msgbox,0x40031,Power Keys,确定重启 explorer？
-ifmsgbox,ok
-Process,close,explorer.exe
-return
+LWin & Enter::Return
+RWin & Enter::Return
+LWin & Enter Up::
+RWin & Enter Up::
+Send {Ctrl Down}{LWin Down}{d Down}{d Up}{LWin Up}{Ctrl Up}
+Return
 
-Lwin & `::#Tab
-Rwin & `::#Tab
+LWin & bs::Return
+RWin & bs::Return
+LWin & bs Up::
+RWin & bs Up::
+Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{LWin Up}{Ctrl Up}
+Return
 
-Lwin & Enter::return
-Rwin & Enter::return
-Lwin & Enter Up::
-Rwin & Enter Up::
-Send ^#d
-return
-
-Lwin & bs::return
-Rwin & bs::return
-Lwin & bs Up::
-Rwin & bs Up::
-Send ^#{f4}
-return
-
-#F1::return
+#F1::Return
 #F1 Up::
 Gosub, Help
-return
+Return
 
-#0::return
+#0::Return
 #0 Up::
-toRun="%A_WinDir%\system32\calc.exe"
-ShellRun(toRun)
-return
+calc="%A_WinDir%\system32\calc.exe"
+ShellRun(calc)
+Return
 
 #Delete::Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
 
@@ -136,25 +113,25 @@ ifmsgbox,ok
 {
     FileRecycleEmpty
 }
-return
+Return
 
 LWin & End::
 RWin & End::
-keywait,LWin
-keywait,Rwin
+Keywait,LWin
+Keywait,RWin
 DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
-return
+Return
 
 #+PrintScreen::
-toRun="%A_WinDir%\system32\snippingtool.exe"
-ShellRun(toRun)
-return
+snippingtool="%A_WinDir%\system32\snippingtool.exe"
+ShellRun(snippingtool)
+Return
 
 #if
 
 #if GameMode
 
-LWin::return
-RWin::return
+LWin::Return
+RWin::Return
 
 #if

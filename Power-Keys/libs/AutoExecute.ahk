@@ -3,8 +3,8 @@
 if ((A_Is64bitOS+1)*4!=A_PtrSize)
 {
     msgbox,0x40010,Power Keys,%_Require64%
-    shellrun(HelpLink)
-    exitapp
+    shellRun(HelpLink)
+    Exitapp
 }
 
 if !A_IsAdmin
@@ -57,4 +57,4 @@ RegDelete, HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run,
 Gosub, Createtray
 Gosub, CreateGUI
 
-return
+Return

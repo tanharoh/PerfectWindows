@@ -1,68 +1,68 @@
-﻿#if !flaunch&&spaceenabled&&!SpaceDisabled&&!GameMode
+﻿#if !flaunch&&Spaceenabled&&!SpaceDisabled&&!GameMode
 
-space::
-settimer,spacetimer,%delay1%,2018
-settimer,spaceDisabler,%delay2%,1009
+Space::
+settimer,Spacetimer,%delay1%,2018
+settimer,SpaceDisabler,%delay2%,1009
 oneenabled=0
 twoenabled=0
-spacesent=0
-space1=0
-space3=0
-space2=1
+Spacesent=0
+Space1=0
+Space3=0
+Space2=1
 isenabled2=0
-keywait,space
-settimer,spacetimer,delete
-settimer,spaceDisabler,delete
-if (!spacesent)
-send {space Down}{space Up}
-space1=0 
-space2=0
-space3=0
-spacesent=1
+Keywait,Space
+settimer,Spacetimer,delete
+settimer,SpaceDisabler,delete
+if (!Spacesent)
+Send {Space Down}{Space Up}
+Space1=0 
+Space2=0
+Space3=0
+Spacesent=1
 isenabled2=1
 oneenabled=1
 twoenabled=1
-return
+Return
 
-spacetimer:
-settimer,spacetimer,delete
-space2=0
-space3=0
-space1=1
-return
+Spacetimer:
+settimer,Spacetimer,delete
+Space2=0
+Space3=0
+Space1=1
+Return
 
-spaceDisabler:
-settimer,spaceDisabler,delete
-spacesent=1
-return
+SpaceDisabler:
+settimer,SpaceDisabler,delete
+Spacesent=1
+Return
 
 #If
 
-#if space1|space3
+#if Space1|Space3
 
 A::
 KeyWait, `;
-spacesent=1
-space1=0
-space3=1
+Spacesent=1
+Space1=0
+Space3=1
 KeyWait, a
-space3=0
-space1=1
-return
+Space3=0
+Space1=1
+Return
 
 `;::
 KeyWait, a
-spacesent=1
-space1=0
-space3=1
+Spacesent=1
+Space1=0
+Space3=1
 KeyWait, `;
-space3=0
-space1=1
-return
+Space3=0
+Space1=1
+Return
 
 #if
 
-#if space1
+#if Space1
 F1::
 Gosub,ShowPowerSpaceLayout
 KeyWait,F1
@@ -104,8 +104,8 @@ O::Send ^+{,}
 P::Send ^+{.}
 =::Send ^{WheelUp}
 -::Send ^{WheelDown}
-Ctrl::Send {Backspace}
-CapsLock::Send {Backspace}
+Ctrl::Send {BackSpace}
+CapsLock::Send {BackSpace}
 Shift::Space
 ]::Send {Tab}
 [::Send +{Tab}
@@ -115,38 +115,38 @@ Q::Send ^{s}
 8::Send +{8}
 /::Send ^{Enter}
 Enter::Send +{Enter}
-Backspace::Send {Delete}
-Esc::return
-1::return
-2::return
-4::return
-LWin::return
-RWin::return
-F2::return
-F3::return
-F4::return
-F5::return
-F6::return
-F7::return
-F8::return
-F9::return
-F10::return
-F11::return
-F12::return
-Insert::return
-Home::return
-End::return
-Delete::return
-PgUp::return
-PgDn::return
-Up::return
-Down::return
-Left::return
-Right::return
-PrintScreen::return
+BackSpace::Send {Delete}
+Esc::Return
+1::Return
+2::Return
+4::Return
+LWin::Return
+RWin::Return
+F2::Return
+F3::Return
+F4::Return
+F5::Return
+F6::Return
+F7::Return
+F8::Return
+F9::Return
+F10::Return
+F11::Return
+F12::Return
+Insert::Return
+Home::Return
+End::Return
+Delete::Return
+PgUp::Return
+PgDn::Return
+Up::Return
+Down::Return
+Left::Return
+Right::Return
+PrintScreen::Return
 #if
 
-#if space3
+#if Space3
 F::Send +{Left}
 J::Send +{Right}
 D::Send ^+{Left}
@@ -182,8 +182,8 @@ O::Send ^+{,}
 P::Send ^+{.}
 =::Send ^{WheelUp}
 -::Send ^{WheelDown}
-Ctrl::Send {Backspace}
-CapsLock::Send {Backspace}
+Ctrl::Send {BackSpace}
+CapsLock::Send {BackSpace}
 Shift::Space
 ]::Send {Tab}
 [::Send +{Tab}
@@ -193,40 +193,40 @@ Q::Send ^{s}
 8::Send +{8}
 /::Send ^{Enter}
 Enter::Send +{Enter}
-Backspace::Send {Delete}
+BackSpace::Send {Delete}
 Esc::Send !{F4}
-1::return
-2::return
-4::return
-LWin::return
-RWin::return
-F1::return
-F2::return
-F3::return
-F4::return
-F5::return
-F6::return
-F7::return
-F8::return
-F9::return
-F10::return
-F11::return
-F12::return
-Insert::return
-Home::return
-End::return
-Delete::return
-PgUp::return
-PgDn::return
-Up::return
-Down::return
-Left::return
-Right::return
-PrintScreen::return
+1::Return
+2::Return
+4::Return
+LWin::Return
+RWin::Return
+F1::Return
+F2::Return
+F3::Return
+F4::Return
+F5::Return
+F6::Return
+F7::Return
+F8::Return
+F9::Return
+F10::Return
+F11::Return
+F12::Return
+Insert::Return
+Home::Return
+End::Return
+Delete::Return
+PgUp::Return
+PgDn::Return
+Up::Return
+Down::Return
+Left::Return
+Right::Return
+PrintScreen::Return
 
 #if
 
-#if space2&(spacesent=0)
+#if Space2&(Spacesent=0)
 
 a::
 b::
@@ -274,7 +274,7 @@ z::
 -::
 =::
 Enter::
-Backspace::
+BackSpace::
 Delete::
 Insert::
 Home::
@@ -286,21 +286,21 @@ Down::
 Left::
 Right::
 PrintScreen::
-settimer,spacetimer,delete
-spacesent=1
+settimer,Spacetimer,delete
+Spacesent=1
 Send {Space Down}{%A_ThisLabel% Down}{Space Up}{%A_ThisLabel% Up}
-return
+Return
 
 `::
-settimer,spacetimer,delete
-spacesent=1
+settimer,Spacetimer,delete
+Spacesent=1
 Send {Space Down}{`` Down}{Space Up}{`` Up}
-return
+Return
 
 `;::
-settimer,spacetimer,delete
-spacesent=1
+settimer,Spacetimer,delete
+Spacesent=1
 Send {Space Down}{; Down}{Space Up}{; Up}
-return
+Return
 
 #if

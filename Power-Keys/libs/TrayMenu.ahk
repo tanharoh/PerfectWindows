@@ -34,7 +34,7 @@ Return
 Author:
 About:
 License:
-return
+Return
 
 EnableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,1
@@ -54,7 +54,7 @@ menu,tray,add
 menu,tray,add,%_DisableGameMode%,DisableGameMode
 menu,tray,default,%_DisableGameMode%
 Gosub,GameModeEnabled
-return
+Return
 
 DisableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,0
@@ -64,7 +64,7 @@ Hotkey,Alt & Tab,On
 Hotkey,`` & Tab,On
 Gosub,CreateTray
 Gosub,GameModeDisabled
-return
+Return
 
 Startup:
 if Startup
@@ -79,7 +79,7 @@ else
     StartUp=1
     menu,tray,check,%_StartUp%
 }
-return
+Return
 
 ToggleSpace:
 if SpaceDisabled
@@ -87,38 +87,38 @@ if SpaceDisabled
     SpaceDisabled=0
     RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,SpaceDisabled,0
     menu,tray,rename,%_EnableSpace%,%_DisableSpace%
-    gosub,SpaceEnabled
+    Gosub,SpaceEnabled
 }
 else
 {
     SpaceDisabled=1
     RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,SpaceDisabled,1
     menu,tray,rename,%_DisableSpace%,%_EnableSpace%
-    gosub,SpaceDisabled
+    Gosub,SpaceDisabled
 }
-return
+Return
 
 Help:
 ShellRun(HelpLink)
-return
+Return
 
 Feedback:
 ShellRun(FeedbackLink)
-return
+Return
 
 Restart:
 FileRemoveDir,%ProgramFilesDir%,1
-run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
-exitapp
-return
+Run,"%A_ScriptFullPath%" /restart,,UseErrorLevel
+Exitapp
+Return
 
 Update:
 FileRemoveDir,%ProgramFilesDir%,1
 FileCreateDir, %ProgramFilesDir%
 FileCopy, %A_ScriptFullPath%, %ProgramFilesDir%\Power-Keys-Updater.exe,1
-run,%ProgramFilesDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
-exitapp
-return
+Run,%ProgramFilesDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
+Exitapp
+Return
 
 Config:
 FileCreateDir,F1
@@ -133,10 +133,10 @@ FileCreateDir,F9
 FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
-run,%A_WorkingDir%
-return
+Run,%A_WorkingDir%
+Return
 
 Exit:
 FileRemoveDir,%ProgramFilesDir%,1
-exitapp
+Exitapp
 Return

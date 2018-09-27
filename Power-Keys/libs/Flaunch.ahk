@@ -1,4 +1,4 @@
-﻿#if !GameMode&&!space1&&!space2&&!space3
+﻿#if !GameMode&&!Space1&&!Space2&&!Space3
 
 F1::
 F2::
@@ -16,30 +16,48 @@ settimer,disablefn,500,2018
 fn=%A_ThisLabel%
 flaunch=1
 launchcode=null
-keywait,%fn%
-keywait,%launchcode%
+Keywait,%fn%
+Keywait,%launchcode%
 flaunch=0
 if (launchcode="null")
 {
     SendCtrlW=0
-    send {%fn%}
-    return
+    Send {%fn% Down}{%fn% Up}
+    Return
 }
 else if (launchcode="terminate")
 {
     SendCtrlW=0
-    return
+    Return
 }
 else
 {
     lnk=%A_workingdir%\%fn%\%launchcode%.lnk
     url=%A_workingdir%\%fn%\%launchcode%.url
     FileGetAttrib,temp,%lnk%
-    if !errorlevel
+    if !ErrorLevel
     {
         SendCtrlW=0
         settimer,disableCtrlW,delete
-        ShellRun(lnk)
+        FileGetAttrib,temp,%url%
+        if !ErrorLevel
+        {
+            FileCreateDir,F1
+            FileCreateDir,F2
+            FileCreateDir,F3
+            FileCreateDir,F4
+            FileCreateDir,F5
+            FileCreateDir,F6
+            FileCreateDir,F7
+            FileCreateDir,F8
+            FileCreateDir,F9
+            FileCreateDir,F10
+            FileCreateDir,F11
+            FileCreateDir,F12
+            Run,%fn%
+        } else {
+            ShellRun(lnk)
+        }
     }
     else
     {
@@ -64,11 +82,11 @@ else
             FileCreateDir,F10
             FileCreateDir,F11
             FileCreateDir,F12
-            run,%fn%
+            Run,%fn%
         }
     }
 }
-return
+Return
 
 #if
 
@@ -117,7 +135,7 @@ z::
 \::
 -::
 =::
-Backspace::
+BackSpace::
 Delete::
 Insert::
 Home::
@@ -130,30 +148,30 @@ Left::
 Right::
 Gosub, disablefn
 launchcode=%A_ThisLabel%
-return
+Return
 
 `;::
 Gosub, disablefn
 launchcode=`;
-return
+Return
 
 `::
 Gosub, disablefn
 launchcode=``
-return
+Return
 
-space::
+Space::
 Gosub, disablefn
 if SendCtrlW
 {
-    send ^w
+    Send {Ctrl Down}{w Down}{w Up}{Ctrl Up}
     SendCtrlW=0
 }
 else
 {
-    send !{F4}
+    Send {Alt Down}{F4 Down}{F4 Up}{Alt Up}
 }
-return
+Return
 
 enter::
 Gosub, disablefn
@@ -169,22 +187,22 @@ FileCreateDir,F9
 FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
-run,%A_workingdir%\%fn%
-return
+Run,%A_workingdir%\%fn%
+Return
 
 PrintScreen::
 Gosub, disablefn
-send ^+!{%fn%}
-return
+Send {Ctrl Down}{Shift Down}{Alt Down}{%fn% Down}{%fn% Up}{Alt Up}{Shift Up}{Ctrl Up}
+Return
 
 Esc::
 Gosub, disablefn
-return
+Return
 
 CapsLock::
 Gosub, disablefn
-winset,AlwaysOnTop,, A
-return
+Winset,AlwaysOnTop,, A
+Return
 
 F1 & Shift::F1
 F2 & Shift::F2
@@ -204,9 +222,9 @@ F12 & Shift::F12
 disablefn:
 settimer,disablefn,delete
 launchcode=terminate
-return
+Return
 
 disableCtrlW:
 settimer,disableCtrlW,delete
 SendCtrlW=0
-return
+Return

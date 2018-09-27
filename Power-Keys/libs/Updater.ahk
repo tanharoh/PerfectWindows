@@ -25,6 +25,6 @@ Return
 
 ExitUpdater:
 FileDelete, %ProgramFilesDir%\latest-Power-Keys.exe
-run,%2%
+Run,%2%
 ExitApp
 Return
