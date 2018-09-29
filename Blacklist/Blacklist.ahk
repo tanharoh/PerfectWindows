@@ -5,9 +5,13 @@
 #NoTrayIcon
 #NoEnv
 
-EnvGet, OSDrive, systemdrive
+EnvGet, SystemRoot, SystemRoot
+EnvGet, SystemDrive, SystemDrive
+EnvGet, LocalAppData, LocalAppData
+EnvGet, AppData, AppData
+EnvGet, Temp, Temp
 
-version:="1.7"
+version:="1.8"
 BlacklistStatus=%_WillBeDisabled%
 WDStatus=%_WillBeEnabled%
 HelpLink="https://WindowsBlacklist.github.io"
@@ -16,16 +20,16 @@ if !A_IsAdmin
 {
     Try
     {
-        Run *RunAs "%A_ScriptFullPath%" /restart
+        Run *RunAs "%A_ScriptFullPath%" /restart,,UseErrorLevel
     }
     ExitApp
 }
 
-SetWorkingDir, %A_WinDir%\system32
-FileCreateDir, %OSDrive%:\Blacklist
+SetWorkingDir, %SystemRoot%\system32
+FileCreateDir, %SystemDrive%:\Blacklist
 RegDelete,HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System,DisableRegistryTools
-Runwait,takeown.exe /F regini.exe /A,,hide
-Runwait,takeown.exe /F mshta.exe /A,,hide
+Runwait,takeown.exe /F regini.exe /A,,hide UseErrorLevel
+Runwait,takeown.exe /F mshta.exe /A,,hide UseErrorLevel
 Runwait,icacls.exe regini.exe /reset,,hide UseErrorLevel
 if ErrorLevel
 {

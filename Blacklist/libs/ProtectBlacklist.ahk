@@ -13,7 +13,7 @@ HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command [2 8 19]
 HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer [2 8 19]
 
 ),Protect.Blacklist
-RunWait,regini.exe Protect.Blacklist,,Hide
+RunWait,regini.exe Protect.Blacklist,,Hide UseErrorLevel
 if ErrorLevel
 {
     MsgBox,0x40010,Blacklist,%_RuntimeError%
