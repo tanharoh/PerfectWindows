@@ -270,6 +270,11 @@ Tab & Left::Send {Ctrl Down}{Alt Down}{Left Down}{Left Up}{Alt Up}{Ctrl Up}
 Tab & Right::Send {Ctrl Down}{Alt Down}{Right Down}{Right Up}{Alt Up}{Ctrl Up}
 Tab & PrintScreen::Send {Ctrl Down}{Alt Down}{PrintScreen Down}{PrintScreen Up}{Alt Up}{Ctrl Up}
 
+Esc & CapsLock::
+WinSet,Transparent,255,A
+WinSet,AlwaysOnTop,Off,A
+Return
+
 Esc::Send {Esc Down}{Esc Up}
 ^Esc::Send {Ctrl Down}{Esc Down}{Esc Up}
 +Esc::Send {Shift Down}{Esc Down}{Esc Up}
@@ -282,7 +287,6 @@ Esc & Ctrl::Return
 Esc & Alt::Return
 Esc & LWin::Return
 Esc & RWin::Return
-Esc & CapsLock::Return
 Esc & Shift::Esc
 Esc & `::Send {LWin Down}{LWin Up}
 Esc & a::Send {Ctrl Down}{Shift Down}{a Down}{a Up}{Shift Up}{Ctrl Up}

@@ -201,7 +201,9 @@ Return
 
 CapsLock::
 Gosub, disablefn
-Winset,AlwaysOnTop,, A
+WinSet,AlwaysOnTop,On,A
+Transparent:=(13-SubStr(fn,2))*21.25
+WinSet,Transparent,%Transparent%,A
 Return
 
 F1 & Shift::F1
