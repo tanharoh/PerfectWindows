@@ -47,36 +47,27 @@ u::Send {8 Down}{8 Up}
 i::Send {9 Down}{9 Up}
 Space::Send {0 Down}{0 Up}
 Alt::Send {. Down}{. Up}
-.::Send {. Down}{. Up}
+Ctrl::Send {Enter Down}{Enter Up}
+.::Send {Enter Down}{Enter Up}
 Enter::Send {Enter Down}{Enter Up}
 l::Send {Shift Down}{= Down}{= Up}{Shift Up}
 o::Send {Shift Down}{= Down}{= Up}{Shift Up}
 =::Send {Shift Down}{= Down}{= Up}{Shift Up}
+9::Send {- Down}{- Up}
 -::Send {- Down}{- Up}
+8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}
+7::Send {/ Down}{/ Up}
 /::Send {/ Down}{/ Up}
 BackSpace::Send {BackSpace Down}{Backspace Up}
+
 `::
 Send {1 Down}{`` Down}{1 Up}{`` Up}
 onesent=1
 Return
 
-c::Send {Delete Down}{Delete Up}
-
 2::
 Send {1 Down}{2 Down}{1 Up}{2 Up}
 onesent=1
-Return
-
-3::
-4::
-5::
-6::
-7::
-8::
-9::
-0::
-\::
-Send {Shift Down}{%A_ThisLabel% Down}{%A_ThisLabel% Up}{Shift Up}
 Return
 
 #if
