@@ -258,7 +258,6 @@ Tab & Space::Send {Ctrl Down}{Alt Down}{Space Down}{Space Up}{Alt Up}{Ctrl Up}
 Tab & Esc::Send {Ctrl Down}{Alt Down}{Esc Down}{Esc Up}{Alt Up}{Ctrl Up}
 Tab & Enter::Send {Ctrl Down}{Alt Down}{Enter Down}{Enter Up}{Alt Up}{Ctrl Up}
 Tab & BackSpace::Send {Ctrl Down}{Alt Down}{BackSpace Down}{BackSpace Up}{Alt Up}{Ctrl Up}
-Tab & Delete::Send {Ctrl Down}{Alt Down}{Delete Down}{Delete Up}{Alt Up}{Ctrl Up}
 Tab & Insert::Send {Ctrl Down}{Alt Down}{Insert Down}{Insert Up}{Alt Up}{Ctrl Up}
 Tab & Home::Send {Ctrl Down}{Alt Down}{Home Down}{Home Up}{Alt Up}{Ctrl Up}
 Tab & End::Send {Ctrl Down}{Alt Down}{End Down}{End Up}{Alt Up}{Ctrl Up}
@@ -269,6 +268,10 @@ Tab & Down::Send {Ctrl Down}{Alt Down}{Down Down}{Down Up}{Alt Up}{Ctrl Up}
 Tab & Left::Send {Ctrl Down}{Alt Down}{Left Down}{Left Up}{Alt Up}{Ctrl Up}
 Tab & Right::Send {Ctrl Down}{Alt Down}{Right Down}{Right Up}{Alt Up}{Ctrl Up}
 Tab & PrintScreen::Send {Ctrl Down}{Alt Down}{PrintScreen Down}{PrintScreen Up}{Alt Up}{Ctrl Up}
+Tab & Delete::
+taskmgr=%A_WinDir%\system32\taskmgr.exe
+ShellRun(taskmgr)
+Return
 
 Esc & CapsLock::
 WinSet,Transparent,255,A
