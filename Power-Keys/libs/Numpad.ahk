@@ -2,7 +2,7 @@
 
 1::
 settimer,onetimer,300,2018
-settimer,oneDisabler,500,1009
+settimer,oneDisabler,450,1009
 Spaceenabled=0
 onesent=0
 one1=0
