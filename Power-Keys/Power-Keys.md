@@ -60,25 +60,11 @@
 
 <br>
 
-## 媒体报道
-
-<br>
-
-[**Power Keys - 让键盘党爽爆的免费开源一键启动软件利器 (全局快捷键工具)**](https://www.iplaysoft.com/power-keys.html) 
-> **异次元软件世界文章**
-
-<br>
-
-[**如何彻底提升码字效率？**](https://zhuanlan.zhihu.com/p/37346660)
-> **作者知乎文章**
-
-<br>
-
 ## 下载与帮助
 
 <br>
 
-> [**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+> [**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**手册**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
 
 <br>
 
