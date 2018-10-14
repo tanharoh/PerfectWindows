@@ -1,4 +1,41 @@
-﻿#if !flaunch&&Spaceenabled&&!SpaceDisabled&&!GameMode
+﻿IncreaseFont:
+if OneNoteDesktop()||OneNoteUWP()||WordPad()
+Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
+else if Word()||PowerPoint()||Outlook()
+Send {Ctrl Down}{] Down}{] Up}{Ctrl Up}
+else if Excel()
+Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
+else
+Send {Ctrl Down}{= Down}{= Up}{Ctrl Up}
+Return
+
+DecreaseFont:
+if OneNoteDesktop()||OneNoteUWP()||WordPad()
+Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
+else if Word()||PowerPoint()||Outlook()
+Send {Ctrl Down}{[ Down}{[ Up}{Ctrl Up}
+else if Excel()
+Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
+else
+Send {Ctrl Down}{- Down}{- Up}{Ctrl Up}
+Return
+
+AlignLeft:
+if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()
+Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
+Return
+
+AlignCenter:
+if Word()||PowerPoint()||Outlook()||WordPad()
+Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
+Return
+
+AlignRight:
+if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()
+Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
+Return
+
+#if !flaunch&&Spaceenabled&&!SpaceDisabled&&!GameMode
 
 Space::
 settimer,Spacetimer,%delay1%,2018
@@ -69,6 +106,13 @@ KeyWait,F1
 Gosub,HidePowerSpaceLayout
 Return
 
+5::Gosub,AlignLeft
+6::Gosub,AlignCenter
+7::Gosub,AlignRight
+O::Gosub,DecreaseFont
+P::Gosub,IncreaseFont
+M::Send {Down Down}{Down Up}
+R::Send {Up Down}{Up Up}
 F::Send {Left Down}{Left Up}
 J::Send {Right Down}{Right Up}
 D::Send {Ctrl Down}{Left Down}{Left Up}{Ctrl Up}
@@ -82,10 +126,8 @@ S::Send {Home Down}{Home Up}
 L::Send {End Down}{End Up}
 W::Send {Ctrl Down}{Home Down}{Home Up}{Ctrl Up}
 .::Send {Ctrl Down}{End Down}{End Up}{Ctrl Up}
-R::Send {Up Down}{Up Up}
 T::Send {PgUp Down}{PgDn Up}
 E::Send {Ctrl Down}{Up Down}{Up Up}{Ctrl Up}
-M::Send {Down Down}{Down Up}
 N::Send {PgDn Down}{PgDn Up}
 ,::Send {Ctrl Down}{Down Down}{Down Up}{Ctrl Up}
 B::Send {Ctrl Down}{b Down}{b Up}{Ctrl Up}
@@ -96,12 +138,7 @@ X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
 C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
 V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
 Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
-5::Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
-6::Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
-7::Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
 Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
-O::Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
-P::Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
 =::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
 -::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}
@@ -147,6 +184,13 @@ PrintScreen::Return
 #if
 
 #if Space3
+5::Gosub,AlignLeft
+6::Gosub,AlignCenter
+7::Gosub,AlignRight
+O::Gosub,DecreaseFont
+P::Gosub,IncreaseFont
+R::Send {Shift Down}{Up Down}{Up Up}{Shift Up}
+M::Send {Shift Down}{Down Down}{Down Up}{Shift Up}
 F::Send {Shift Down}{Left Down}{Left Up}{Shift Up}
 J::Send {Shift Down}{Right Down}{Right Up}{Shift Up}
 D::Send {Ctrl Down}{Shift Down}{Left Down}{Left Up}{Shift Up}{Ctrl Up}
@@ -160,10 +204,8 @@ S::Send {Shift Down}{Home Down}{Home Up}{Shift Up}
 L::Send {Shift Down}{End Down}{End Up}{Shift Up}
 W::Send {Ctrl Down}{Shift Down}{Home Down}{Home Up}{Shift Up}{Ctrl Up}
 .::Send {Ctrl Down}{Shift Down}{End Down}{End Up}{Shift Up}{Ctrl Up}
-R::Send {Shift Down}{Up Down}{Up Up}{Shift Up}
 T::Send {Shift Down}{PgUp Down}{PgDn Up}{Shift Up}
 E::Send {Ctrl Down}{Shift Down}{Up Down}{Up Up}{Shift Up}{Ctrl Up}
-M::Send {Shift Down}{Down Down}{Down Up}{Shift Up}
 N::Send {Shift Down}{PgDn Down}{PgDn Up}{Shift Up}
 ,::Send {Ctrl Down}{Shift Down}{Down Down}{Down Up}{Shift Up}{Ctrl Up}
 B::Send {Ctrl Down}{b Down}{b Up}{Ctrl Up}
@@ -174,12 +216,7 @@ X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
 C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
 V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
 Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
-5::Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
-6::Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
-7::Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
 Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
-O::Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
-P::Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
 =::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
 -::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}

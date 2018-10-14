@@ -13,8 +13,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapslockMode, off
 
-v:="9.1.2"
-CurrentVersion=912
+v:="9.2.0"
+CurrentVersion=920
 
 FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io
@@ -66,6 +66,7 @@ Return
 #Include libs\AutoExecute.ahk
 #Include libs\Flaunch.ahk
 #Include libs\ShellRun.ahk
+#Include libs\WinActive.ahk
 #Include libs\Space.ahk
 #Include libs\SimpHotkeys.ahk
 #Include libs\WinHotkeys.ahk
