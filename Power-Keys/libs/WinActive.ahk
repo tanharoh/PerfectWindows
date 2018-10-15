@@ -6,7 +6,7 @@
 }
 
 OneNoteUWP(){
-    If OneNoteDesktop()
+    If OneNoteDesktop() or !WinActive("ahk_exe ApplicationFrameHost.exe")
     Return 0
     WinGetTitle,Title,A
     if Title contains OneNote
