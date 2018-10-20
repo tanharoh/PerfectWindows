@@ -323,19 +323,16 @@ Down::
 Left::
 Right::
 PrintScreen::
-settimer,Spacetimer,delete
 Spacesent=1
 Send {Space Down}{%A_ThisLabel% Down}{Space Up}{%A_ThisLabel% Up}
 Return
 
 `::
-settimer,Spacetimer,delete
 Spacesent=1
 Send {Space Down}{`` Down}{Space Up}{`` Up}
 Return
 
 `;::
-settimer,Spacetimer,delete
 Spacesent=1
 Send {Space Down}{; Down}{Space Up}{; Up}
 Return

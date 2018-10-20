@@ -132,19 +132,16 @@ Down::
 Left::
 Right::
 PrintScreen::
-settimer,onetimer,delete
 onesent=1
 Send {1 Down}{%A_ThisLabel% Down}{1 Up}{%A_ThisLabel% Up}
 Return
 
 `::
-settimer,onetimer,delete
 onesent=1
 Send {1 Down}{`` Down}{1 Up}{`` Up}
 Return
 
 `;::
-settimer,onetimer,delete
 onesent=1
 Send {1 Down}{; Down}{1 Up}{; Up}
 Return
