@@ -20,11 +20,12 @@
     global _GameModeEnabled="已启用游戏模式"
     global _GameModeDisabled="已禁用游戏模式"
     global _PoorNetwork="与 GitHub 连接不畅！请稍后再试。"
+    global _ConfirmExit="遇到问题？请尝试下列解决方法！`n`n1. 阅读帮助文档`n2. 启用游戏模式`n3. 重启 Power Keys`n4. 更新 Power Keys`n5. 反馈您的问题`n`n仍然退出 Power Keys？"
 }
 else
 {
     global _Author="szzhiyang"
-    global _Exit="Quit Power Keys"
+    global _Exit="Exit Power Keys"
     global _Restart="Restart Power Keys"
     global _Update="Update Power Keys"
     global _Updating="Updating Power Keys"
@@ -43,4 +44,5 @@ else
     global _GameModeEnabled="Game Mode Enabled"
     global _GameModeDisabled="Game Mode Disabled"
     global _PoorNetwork="Poor connection with GitHub! Please try again later."
+    global _ConfirmExit="Encountered an issue? Please try these solutions!`n`n1. Read the help file`n2. Enable Game Mode`n3. Restart Power Keys`n4. Update Power Keys`n5. Report the issue`n`nExit Power Keys anyway?"
 }

@@ -138,5 +138,7 @@ Return
 
 Exit:
 FileRemoveDir,%ProgramFilesDir%,1
+MsgBox,0x40134,Power Keys,%_ConfirmExit%
+IfMsgBox, Yes
 Exitapp
 Return
