@@ -37,15 +37,11 @@ Magnify=1
 Send {LWin Down}{- Down}{- Up}{LWin Up}
 Return
 
-LWin & =::
-RWin & =::
-Send {Volume_Up Down}{Volume_Up Up}
-Return
+LWin & =::Volume_Up
+RWin & =::Volume_Up
 
-LWin & -::
-RWin & -::
-Send {Volume_Down Down}{Volume_Down Up}
-Return
+LWin & -::Volume_Down
+RWin & -::Volume_Down
 
 LWin & \::Return
 RWin & \::Return
