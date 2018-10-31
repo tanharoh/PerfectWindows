@@ -1,5 +1,5 @@
 ﻿IncreaseFont:
-if OneNoteDesktop()||OneNoteUWP()||WordPad()
+if OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
 Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
 else if Word()||PowerPoint()||Outlook()
 Send {Ctrl Down}{] Down}{] Up}{Ctrl Up}
@@ -10,7 +10,7 @@ Send {Ctrl Down}{= Down}{= Up}{Ctrl Up}
 Return
 
 DecreaseFont:
-if OneNoteDesktop()||OneNoteUWP()||WordPad()
+if OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
 Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
 else if Word()||PowerPoint()||Outlook()
 Send {Ctrl Down}{[ Down}{[ Up}{Ctrl Up}
@@ -21,18 +21,25 @@ Send {Ctrl Down}{- Down}{- Up}{Ctrl Up}
 Return
 
 AlignLeft:
-if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()
+if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()||StickyNote()
 Send {Ctrl Down}{l Down}{l Up}{Ctrl Up}
 Return
 
 AlignCenter:
-if Word()||PowerPoint()||Outlook()||WordPad()
+if Word()||PowerPoint()||Outlook()||WordPad()||StickyNote()
 Send {Ctrl Down}{e Down}{e Up}{Ctrl Up}
 Return
 
 AlignRight:
-if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()
+if OneNoteDesktop()||OneNoteUWP()||Word()||PowerPoint()||Outlook()||WordPad()||StickyNote()
 Send {Ctrl Down}{r Down}{r Up}{Ctrl Up}
+Return
+
+Save:
+if OneNoteDesktop()||OneNoteUWP()
+Send {F9 Down}{F9 Up}
+else
+Send {Ctrl Down}{s Down}{s Up}{Ctrl Up}
 Return
 
 #if !flaunch&&Spaceenabled&&!SpaceDisabled&&!GameMode
@@ -146,7 +153,7 @@ CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
 ]::Send {Tab Down}{Tab Up}
 [::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
-Q::Send {Ctrl Down}{s Down}{s Up}{Ctrl Up}
+Q::Gosub,Save
 3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
 `::Send {`` Down}{`` Up}
 8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}
@@ -224,7 +231,7 @@ CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
 ]::Send {Tab Down}{Tab Up}
 [::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
-Q::Send {Ctrl Down}{s Down}{s Up}{Ctrl Up}
+Q::Gosub,Save
 3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
 `::Send {`` Down}{`` Up}
 8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}

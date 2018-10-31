@@ -48,3 +48,10 @@ WordPad(){
     else
     Return 0
 }
+
+StickyNote(){
+    If WinActive("ahk_exe StikyNot.exe")
+    Return 1
+    else
+    Return 0
+}
