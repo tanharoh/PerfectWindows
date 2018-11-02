@@ -1,8 +1,6 @@
 ﻿IncreaseFont:
-if OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
+if Word()||PowerPoint()||Outlook()||OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
 Send {Ctrl Down}{Shift Down}{. Down}{. Up}{Shift Up}{Ctrl Up}
-else if Word()||PowerPoint()||Outlook()
-Send {Ctrl Down}{] Down}{] Up}{Ctrl Up}
 else if Excel()
 Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
 else
@@ -10,10 +8,8 @@ Send {Ctrl Down}{= Down}{= Up}{Ctrl Up}
 Return
 
 DecreaseFont:
-if OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
+if Word()||PowerPoint()||Outlook()||OneNoteDesktop()||OneNoteUWP()||WordPad()||StickyNote()
 Send {Ctrl Down}{Shift Down}{, Down}{, Up}{Shift Up}{Ctrl Up}
-else if Word()||PowerPoint()||Outlook()
-Send {Ctrl Down}{[ Down}{[ Up}{Ctrl Up}
 else if Excel()
 Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
 else

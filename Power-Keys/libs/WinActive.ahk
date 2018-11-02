@@ -15,21 +15,21 @@ OneNoteUWP(){
 }
 
 Word(){
-    If WinActive("ahk_exe WinWord.exe")
+    If WinActive("ahk_exe WinWord.exe") or WinActive("ahk_exe wps.exe")
     Return 1
     else
     Return 0
 }
 
 Excel(){
-    If WinActive("ahk_exe Excel.exe")
+    If WinActive("ahk_exe Excel.exe") or WinActive("ahk_exe et.exe")
     Return 1
     else
     Return 0
 }
 
 PowerPoint(){
-    If WinActive("ahk_exe PowerPnt.exe")
+    If WinActive("ahk_exe PowerPnt.exe") or WinActive("ahk_exe wpp.exe")
     Return 1
     else
     Return 0
