@@ -1,6 +1,7 @@
 ﻿$#Esc::Return
 $#Esc Up::
-if WinExist("ahk_exe Magnify.exe")
+Process,Exist,Magnify.exe
+if ErrorLevel
 {
     Send {LWin Down}{Esc Down}{Esc Up}{LWin Up}
 }
