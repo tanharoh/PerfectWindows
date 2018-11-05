@@ -16,7 +16,8 @@ Alt & Tab::AltTab
 Ctrl & CapsLock::Send {Ctrl Down}{Shift Down}{Tab Down}{Tab Up}{Shift Up}
 Ctrl & Tab::Send {Ctrl Down}{Tab Down}{Tab Up}
 
-CapsLock & Space::Gosub,ToggleSpace
+CapsLock & Space::Return
+CapsLock & Space Up::Gosub,ToggleSpace
 CapsLock & LWin::Return
 CapsLock & RWin::Return
 CapsLock & Alt::Return

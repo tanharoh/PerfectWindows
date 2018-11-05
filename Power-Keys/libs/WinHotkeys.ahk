@@ -1,10 +1,9 @@
-﻿LWin & Esc::
-RWin & Esc::
-if Magnify
-    {
-        Send {LWin Down}{Esc Down}{Esc Up}{LWin Up}
-        Magnify=0
-    }
+﻿$#Esc::Return
+$#Esc Up::
+if WinExist("ahk_exe Magnify.exe")
+{
+    Send {LWin Down}{Esc Down}{Esc Up}{LWin Up}
+}
 Else
 {
     if GameMode
@@ -25,85 +24,42 @@ Run,"%A_ScriptFullPath%" /restart silent,,UseErrorLevel
 ExitApp
 Return
 
-LWin & PgUp::
-RWin & PgUp::
-Magnify=1
-Send {LWin Down}{= Down}{= Up}{LWin Up}
-Return
+$#=::Volume_Up
+$#-::Volume_Down
 
-LWin & PgDn::
-RWin & PgDn::
-Magnify=1
-Send {LWin Down}{- Down}{- Up}{LWin Up}
-Return
+$#\::Return
+$#\ Up::Send {Volume_Mute}
 
-LWin & =::Volume_Up
-RWin & =::Volume_Up
+$#[::Return
+$#[ Up::Send {Media_Prev}
 
-LWin & -::Volume_Down
-RWin & -::Volume_Down
+$#]::Return
+$#] Up::Send {Media_Next}
 
-LWin & \::Return
-RWin & \::Return
-LWin & \ Up::
-RWin & \ Up::
-Send {Volume_Mute Down}{Volume_Mute Up}
-Return
-
-RWin & [::Return
-LWin & [::Return
-LWin & [ Up::
-RWin & [ Up::
-Send {Media_Prev Down}{Media_Prev Up}
-Return
-
-RWin & ]::Return
-LWin & ]::Return
-LWin & ] Up::
-RWin & ] Up::
-Send {Media_Next Down}{Media_Next Up}
-Return
-
-LWin & '::Return
-RWin & '::Return
-LWin & ' Up::
-RWin & ' Up::
-Send {Media_Play_Pause Down}{Media_Play_Pause Up}
-Return
+$#'::Return
+$#' Up::Send {Media_Play_Pause}
 
 #if !GameMode
 
-LWin & `::#Tab
-RWin & `::#Tab
+$#`::#Tab
 
-LWin & Enter::Return
-RWin & Enter::Return
-LWin & Enter Up::
-RWin & Enter Up::
-Send {Ctrl Down}{LWin Down}{d Down}{d Up}{Ctrl Up}
-Return
+$#PgUp::#=
+$#PgDn::#-
 
-LWin & bs::Return
-RWin & bs::Return
-LWin & bs Up::
-RWin & bs Up::
-Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{Ctrl Up}
-Return
+$#Enter::Return
+$#Enter Up::Send {Ctrl Down}{LWin Down}{d Down}{d Up}{LWin Up}{Ctrl Up}
 
-#F1::Return
-#F1 Up::
-Gosub, Help
-Return
+$#bs::Return
+$#bs Up::Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{LWin Up}{Ctrl Up}
 
-#0::Return
-#0 Up::
-calc="%A_WinDir%\system32\calc.exe"
-ShellRun(calc)
-Return
+$#F1::Return
+$#F1 Up::Gosub, Help
 
-#Delete::Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
+$#Delete::Return
+$#Delete Up::Run ::{645ff040-5081-101b-9f08-00aa002f954e},,UseErrorLevel
 
-#+Delete::
+$#+Delete::Return
+$#+Delete Up::
 msgbox,0x40131,Power Keys,%_ConfirmEmptyRecycleBin%
 ifmsgbox,ok
 {
@@ -111,16 +67,22 @@ ifmsgbox,ok
 }
 Return
 
-LWin & End::
-RWin & End::
+$#0::Return
+$#0 Up::
+calc="%A_WinDir%\system32\calc.exe"
+ShellRun(calc)
+Return
+
+$#+PrintScreen::Return
+$#+PrintScreen Up::
+snippingtool="%A_WinDir%\system32\snippingtool.exe"
+ShellRun(snippingtool)
+Return
+
+$#End::
 Keywait,LWin
 Keywait,RWin
 DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 1)
-Return
-
-#+PrintScreen::
-snippingtool="%A_WinDir%\system32\snippingtool.exe"
-ShellRun(snippingtool)
 Return
 
 #if
