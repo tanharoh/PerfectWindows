@@ -64,13 +64,18 @@
 
 <br>
 
-> [**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**手册**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
-
-<br>
-
 > **仅需在浏览器地址栏中键入 `PowerKeys.GitHub.io` 即可直达本页面！**
 
+> **Power Keys 暂不支持 Windows XP。**
+
+> **请务必将 Power Keys 添加至防病毒软件的白名单以确保其正常运作。**
+
 <br>
+
+>[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
+
+<br>
+
 
 ## 支持作者
 
