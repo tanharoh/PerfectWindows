@@ -75,12 +75,3 @@
 >[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
 
 <br>
-
-
-## 支持作者
-
-<br>
-
-**如果 Power Keys 提升了您的 Windows 使用效率，不妨请我喝杯咖啡 :coffee:，想必也是非常愉悦的事情！** :pray::heart:
-
-![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
