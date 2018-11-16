@@ -141,7 +141,7 @@ X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
 C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
 V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
 Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
-Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
+Tab::Send {Tab Down}{Tab Up}
 =::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
 -::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}
@@ -156,6 +156,7 @@ Q::Gosub,Save
 /::Send {Ctrl Down}{Enter Down}{Enter Up}{Ctrl Up}
 Enter::Send {Shift Down}{Enter Down}{Enter Up}{Shift Up}
 BackSpace::Send {Delete Down}{Delete Up}
+\::Send {Shift Down}{\ Down}{\ Up}{Shift Up}
 Esc::Return
 1::Return
 2::Return
@@ -219,7 +220,7 @@ X::Send {Ctrl Down}{x Down}{x Up}{Ctrl Up}
 C::Send {Ctrl Down}{c Down}{c Up}{Ctrl Up}
 V::Send {Ctrl Down}{v Down}{v Up}{Ctrl Up}
 Y::Send {Ctrl Down}{y Down}{y Up}{Ctrl Up}
-Tab::Send {Ctrl Down}{a Down}{a Up}{Ctrl Up}
+Tab::Send {Tab Down}{Tab Up}
 =::Send {Ctrl Down}{WheelUp Down}{WheelUp Up}{Ctrl Up}
 -::Send {Ctrl Down}{WheelDown Down}{WheelDown Up}{Ctrl Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}
@@ -234,6 +235,7 @@ Q::Gosub,Save
 /::Send {Ctrl Down}{Enter Down}{Enter Up}{Ctrl Up}
 Enter::Send {Shift Down}{Enter Down}{Enter Up}{Shift Up}
 BackSpace::Send {Delete Down}{Delete Up}
+\::Send {Shift Down}{\ Down}{\ Up}{Shift Up}
 Esc::Return
 1::Return
 2::Return
@@ -313,6 +315,7 @@ z::
 \::
 -::
 =::
+Tab::
 Enter::
 BackSpace::
 Delete::

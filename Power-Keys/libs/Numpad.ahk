@@ -118,6 +118,7 @@ z::
 /::
 -::
 =::
+Tab::
 Space::
 Enter::
 BackSpace::

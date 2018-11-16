@@ -146,6 +146,7 @@ Up::
 Down::
 Left::
 Right::
+Tab::
 Gosub, disablefn
 launchcode=%A_ThisLabel%
 Return
