@@ -147,8 +147,8 @@ Tab::Send {Tab Down}{Tab Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}
 CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
-]::Send {Tab Down}{Tab Up}
 [::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
+]::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
 Q::Gosub,Save
 3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
 `::Send {`` Down}{`` Up}
@@ -226,8 +226,8 @@ Tab::Send {Tab Down}{Tab Up}
 Ctrl::Send {BackSpace Down}{BackSpace Up}
 CapsLock::Send {BackSpace Down}{BackSpace Up}
 Shift::Space
-]::Send {Tab Down}{Tab Up}
 [::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
+]::Send {Shift Down}{Tab Down}{Tab Up}{Shift Up}
 Q::Gosub,Save
 3::Send {Shift Down}{3 Down}{3 Up}{Shift Up}
 `::Send {`` Down}{`` Up}
