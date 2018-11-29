@@ -283,7 +283,11 @@ Esc::Send {Esc Down}{Esc Up}
 ^Esc::Send {Ctrl Down}{Esc Down}{Esc Up}
 +Esc::Send {Shift Down}{Esc Down}{Esc Up}
 !Esc::Send {Alt Down}{Esc Down}{Esc Up}
-^+Esc::Send {Ctrl Down}{Shift Down}{Esc Down}{Esc Up}
+^+Esc::
+taskmgr=%A_WinDir%\system32\taskmgr.exe
+ShellRun(taskmgr)
+Return
+
 ^!Esc::Send {Ctrl Down}{Alt Down}{Esc Down}{Esc Up}
 +!Esc::Send {Shift Down}{Alt Down}{Esc Down}{Esc Up}
 ^!+Esc::Send {Ctrl Down}{Shift Down}{Alt Down}{Esc Down}{Esc Up}
