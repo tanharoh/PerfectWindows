@@ -64,7 +64,7 @@
 
 <br>
 
-> **仅需在浏览器地址栏中键入 `PowerKeys.GitHub.io` 即可直达本页面！**
+> **您可以通过 `https://PowerKeys.GitHub.io` 直达本页面！**
 
 > **Power Keys 暂不支持 Windows XP。**
 
