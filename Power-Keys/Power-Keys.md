@@ -60,18 +60,6 @@
 
 <br>
 
-## 软件截图
-
-![demo](https://user-images.githubusercontent.com/30952626/49336569-9d771600-f63f-11e8-87b3-c4d4b9f0dde9.png)
----
-![demo](https://user-images.githubusercontent.com/30952626/49336660-a1a43300-f641-11e8-883b-21a68787d9a0.png)
----
-![demo](https://user-images.githubusercontent.com/30952626/48669284-3e43dc80-eb3c-11e8-89ab-2669c4ee4058.png)
----
-![demo](https://user-images.githubusercontent.com/30952626/49337320-b4703500-f64c-11e8-9c14-1e7a309c05f2.png)
-
-<br>
-
 ## 下载与帮助
 
 <br>
@@ -81,6 +69,12 @@
 > **Power Keys 暂不支持 Windows XP。**
 
 > **请务必将 Power Keys 添加至防病毒软件的白名单以确保其正常运作。**
+
+> **Power Keys 的各个选项均位于其任务栏托盘图标的菜单中：**
+
+<br>
+
+> ![tray](https://user-images.githubusercontent.com/30952626/49337320-b4703500-f64c-11e8-9c14-1e7a309c05f2.png)
 
 <br>
 
