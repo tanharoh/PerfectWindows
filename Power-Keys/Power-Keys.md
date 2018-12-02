@@ -60,6 +60,18 @@
 
 <br>
 
+## 软件截图
+
+![demo](https://user-images.githubusercontent.com/30952626/49336569-9d771600-f63f-11e8-87b3-c4d4b9f0dde9.png)
+---
+![demo](https://user-images.githubusercontent.com/30952626/49336660-a1a43300-f641-11e8-883b-21a68787d9a0.png)
+---
+![demo](https://user-images.githubusercontent.com/30952626/48669284-3e43dc80-eb3c-11e8-89ab-2669c4ee4058.png)
+---
+![demo](https://user-images.githubusercontent.com/30952626/49336338-5a1aa880-f63b-11e8-91ee-7d3cc3089a71.png)
+
+<br>
+
 ## 下载与帮助
 
 <br>
@@ -72,6 +84,6 @@
 
 <br>
 
->[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe) [**帮助**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
+>[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)  **|**   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)  **|**  [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)  **|**  [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
 
 <br>
