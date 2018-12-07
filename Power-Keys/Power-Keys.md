@@ -81,3 +81,5 @@
 >[**32 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)  **|**   [**64 位**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)  **|**  [**帮助文档**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)  **|**  [**源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
 
 <br>
+
+> **Power Keys 官方 QQ 交流群：959910853**
