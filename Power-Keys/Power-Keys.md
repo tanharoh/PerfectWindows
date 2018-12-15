@@ -8,14 +8,20 @@
 
 <br>
 
-|[**光速启动**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**空格编辑**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**徽标键增强**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**多任务处理**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
-|:--|:--|:--|:--|
-|[**数字秒输**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**游戏伴侣**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**截图键增强**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)|[**复杂热键终结者**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+|[**光速启动**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)| [**空格编辑**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) 
+|:-:|:-:|
+||
+|[**数字秒输**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) | [**游戏模式**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+||
+|[**徽标键增强**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)| [**截图键增强**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)
+||
+|[**多任务处理**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys)| [**快捷键简化**](https://github.com/szzhiyang/PerfectWindows/wiki/Power-Keys) 
 
 <br>
 
-[**下载 32 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)|[**下载 64 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)|[**获取源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)|
-|:--|:--|:--|
+|[**下载 32 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)
+|:-:|:-:|
+|[**下载 64 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)
 
 <br>
 
