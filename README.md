@@ -1,6 +1,6 @@
 # PerfectWindows 软件家族
 
-> Windows 本该如此！
+> Make Windows Great Again!
 
 <br>
 
