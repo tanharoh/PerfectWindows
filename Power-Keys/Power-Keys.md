@@ -22,6 +22,7 @@
 |[**下载 32 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x86.exe)|
 |:-:|
 |[**下载 64 位主程序**](https://github.com/szzhiyang/PerfectWindows/raw/master/Power-Keys/Power-Keys-x64.exe)|
+|[**获取源代码**](https://github.com/szzhiyang/PerfectWindows/tree/master/Power-Keys)
 
 <br>
 
