@@ -16,12 +16,6 @@
 
 <br>
 
-## Blacklist
+## [Blacklist](https://windowsblacklist.github.io)
 
 > **零漏毒、零误杀、零占用的新型防病毒解决方案！**
-
-<br>
-
-## Control Panel Plus
-
-> **最简洁的系统优化工具！**
