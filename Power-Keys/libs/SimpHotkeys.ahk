@@ -5,15 +5,32 @@ Keywait,Tab
 Send {LCtrl Down}{LWin Down}{Right Down}{Right Up}{LCtrl Up}{LWin Up}
 Return
 
+RWin & Tab::
+Keywait,Tab
+Send {RCtrl Down}{RWin Down}{Right Down}{Right Up}{RCtrl Up}{RWin Up}
+Return
+
 LWin & CapsLock::
 Keywait,CapsLock
 Send {LCtrl Down}{LWin Down}{Left Down}{Left Up}{LCtrl Up}{LWin Up}
 Return
 
+RWin & CapsLock::
+Keywait,CapsLock
+Send {RCtrl Down}{RWin Down}{Left Down}{Left Up}{RCtrl Up}{RWin Up}
+Return
+
 LAlt & CapsLock::ShiftAltTab
+RAlt & CapsLock::ShiftAltTab
+
 LAlt & Tab::AltTab
+RAlt & Tab::AltTab
+
 LCtrl & CapsLock::Send {LCtrl Down}{LShift Down}{Tab Down}{Tab Up}{LShift Up}
+RCtrl & CapsLock::Send {RCtrl Down}{RShift Down}{Tab Down}{Tab Up}{RShift Up}
+
 LCtrl & Tab::Send {LCtrl Down}{Tab Down}{Tab Up}
+RCtrl & Tab::Send {RCtrl Down}{Tab Down}{Tab Up}
 
 CapsLock & Space::Return
 CapsLock & Space Up::Gosub,ToggleSpace
