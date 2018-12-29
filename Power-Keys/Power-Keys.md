@@ -26,7 +26,7 @@
 
 <br>
 
-> ![tray](https://user-images.githubusercontent.com/30952626/49337320-b4703500-f64c-11e8-9c14-1e7a309c05f2.png)
+> ![tray](https://user-images.githubusercontent.com/30952626/50532844-70dcee00-0b5a-11e9-8447-b6989ffb8f86.png)
 
 <br>
 

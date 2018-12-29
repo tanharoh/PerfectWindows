@@ -48,10 +48,10 @@ $#PgUp::#=
 $#PgDn::#-
 
 $#Enter::Return
-$#Enter Up::Send {Ctrl Down}{LWin Down}{d Down}{d Up}{LWin Up}{Ctrl Up}
+$#Enter Up::Send {LCtrl Down}{LWin Down}{d Down}{d Up}{LWin Up}{LCtrl Up}
 
 $#bs::Return
-$#bs Up::Send {Ctrl Down}{LWin Down}{F4 Down}{F4 Up}{LWin Up}{Ctrl Up}
+$#bs Up::Send {LCtrl Down}{LWin Down}{F4 Down}{F4 Up}{LWin Up}{LCtrl Up}
 
 $#F1::Return
 $#F1 Up::Gosub, Help

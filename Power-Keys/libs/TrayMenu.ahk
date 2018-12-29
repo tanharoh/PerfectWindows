@@ -39,8 +39,8 @@ Return
 EnableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,1
 GameMode=1
-Hotkey,Alt & CapsLock,Off
-Hotkey,Alt & Tab,Off
+Hotkey,LAlt & CapsLock,Off
+Hotkey,LAlt & Tab,Off
 Hotkey,`` & Tab,Off
 menu,tray,icon,,,1
 menu,tray,DeleteAll
@@ -59,8 +59,8 @@ Return
 DisableGameMode:
 RegWrite, REG_dword, HKLM\Software\szzhiyang\Power Keys,GameMode,0
 GameMode=0
-Hotkey,Alt & CapsLock,On
-Hotkey,Alt & Tab,On
+Hotkey,LAlt & CapsLock,On
+Hotkey,LAlt & Tab,On
 Hotkey,`` & Tab,On
 Gosub,CreateTray
 Gosub,GameModeDisabled
@@ -103,7 +103,7 @@ ShellRun(HelpLink)
 Return
 
 Feedback:
-ShellRun(FeedbackLink)
+MsgBox,0x40040,Power Keys,%_OfficialQQ%
 Return
 
 Restart:

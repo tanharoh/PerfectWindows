@@ -47,15 +47,15 @@ u::Send {8 Down}{8 Up}
 i::Send {9 Down}{9 Up}
 Space::Send {0 Down}{0 Up}
 Alt::Send {. Down}{. Up}
-Ctrl::Send {Enter Down}{Enter Up}
+RCtrl::Send {Enter Down}{Enter Up}
 .::Send {Enter Down}{Enter Up}
 Enter::Send {Enter Down}{Enter Up}
-l::Send {Shift Down}{= Down}{= Up}{Shift Up}
-o::Send {Shift Down}{= Down}{= Up}{Shift Up}
-=::Send {Shift Down}{= Down}{= Up}{Shift Up}
+l::Send {LShift Down}{= Down}{= Up}{LShift Up}
+o::Send {LShift Down}{= Down}{= Up}{LShift Up}
+=::Send {LShift Down}{= Down}{= Up}{LShift Up}
 9::Send {- Down}{- Up}
 -::Send {- Down}{- Up}
-8::Send {Shift Down}{8 Down}{8 Up}{Shift Up}
+8::Send {LShift Down}{8 Down}{8 Up}{LShift Up}
 7::Send {/ Down}{/ Up}
 /::Send {/ Down}{/ Up}
 BackSpace::Send {BackSpace Down}{Backspace Up}

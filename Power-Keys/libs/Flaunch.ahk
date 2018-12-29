@@ -165,12 +165,12 @@ Space::
 Gosub, disablefn
 if SendCtrlW
 {
-    Send {Ctrl Down}{w Down}{w Up}{Ctrl Up}
+    Send {LCtrl Down}{w Down}{w Up}{LCtrl Up}
     SendCtrlW=0
 }
 else
 {
-    Send {Alt Down}{F4 Down}{F4 Up}{Alt Up}
+    Send {LAlt Down}{F4 Down}{F4 Up}{LAlt Up}
 }
 Return
 
@@ -193,7 +193,7 @@ Return
 
 PrintScreen::
 Gosub, disablefn
-Send {Ctrl Down}{Shift Down}{Alt Down}{%fn% Down}{%fn% Up}{Alt Up}{Shift Up}{Ctrl Up}
+Send {LCtrl Down}{LShift Down}{LAlt Down}{%fn% Down}{%fn% Up}{LAlt Up}{LShift Up}{LCtrl Up}
 Return
 
 Esc::
@@ -207,18 +207,31 @@ Transparent:=(13-SubStr(fn,2))*21.25
 WinSet,Transparent,%Transparent%,A
 Return
 
-F1 & Shift::F1
-F2 & Shift::F2
-F3 & Shift::F3
-F4 & Shift::F4
-F5 & Shift::F5
-F6 & Shift::F6
-F7 & Shift::F7
-F8 & Shift::F8
-F9 & Shift::F9
-F10 & Shift::F10
-F11 & Shift::F11
-F12 & Shift::F12
+F1 & LShift::F1
+F2 & LShift::F2
+F3 & LShift::F3
+F4 & LShift::F4
+F5 & LShift::F5
+F6 & LShift::F6
+F7 & LShift::F7
+F8 & LShift::F8
+F9 & LShift::F9
+F10 & LShift::F10
+F11 & LShift::F11
+F12 & LShift::F12
+
+F1 & RShift::F1
+F2 & RShift::F2
+F3 & RShift::F3
+F4 & RShift::F4
+F5 & RShift::F5
+F6 & RShift::F6
+F7 & RShift::F7
+F8 & RShift::F8
+F9 & RShift::F9
+F10 & RShift::F10
+F11 & RShift::F11
+F12 & RShift::F12
 
 #if
 
