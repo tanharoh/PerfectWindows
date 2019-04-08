@@ -13,9 +13,8 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapslockMode, off
 
-v:="9.3.6"
+v:="9.3.7"
 
-FeedbackLink=https://github.com/szzhiyang/PerfectWindows/issues
 HelpLink=https://PowerKeys.GitHub.io
 ProgramFilesDir=%A_ProgramFiles%\szzhiyang\Power Keys
 isenabled=1
