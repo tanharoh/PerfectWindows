@@ -20,7 +20,7 @@
     global _GameModeEnabled="已启用游戏模式"
     global _GameModeDisabled="已禁用游戏模式"
     global _PoorNetwork="与 GitHub 连接不畅！请稍后再试。"
-    global _ConfirmExit="遇到问题？`n`n请逐一尝试下列解决方法！`n`n1. 禁用杀毒软件`n2. 通读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 加入 QQ 群 959910853 反馈问题`n`n仍然退出 Power Keys？"
+    global _ConfirmExit="遇到问题？`n`n请逐一尝试下列解决方法！`n`n1. 退出杀毒软件`n2. 仔细通读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 加入 QQ 群 959910853 反馈问题`n`n仍然退出 Power Keys？"
     global _ConfirmFeedback="请逐一尝试下列解决方法！`n`n1. 退出杀毒软件`n2. 仔细通读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 加入 QQ 群 959910853 反馈问题"
 }
 else
@@ -45,6 +45,6 @@ else
     global _GameModeEnabled="Game Mode Enabled"
     global _GameModeDisabled="Game Mode Disabled"
     global _PoorNetwork="Poor connection with GitHub! Please try again later."
-    global _ConfirmExit="Encountered an issue? `n`nPlease try these solutions one by one!`n`n1. Disable the anti-malware software`n2. Read the help file throughly`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue`n`nExit Power Keys anyway?"
-    global _ConfirmFeedback="Please try these solutions one by one!`n`n1. Disable the anti-malware software`n2. Read the help file throughly`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue"
+    global _ConfirmExit="Encountered an issue? `n`nPlease try these solutions one by one!`n`n1. Shut down the anti-malware software`n2. Read the help file throughly and carefully`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue`n`nExit Power Keys anyway?"
+    global _ConfirmFeedback="Please try these solutions one by one!`n`n1. Shut down the anti-malware software`n2. Read the help file throughly and carefully`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue"
 }
