@@ -39,6 +39,11 @@ FileCreateDir,%AppDataLocal%\Power Keys
 FileCreateDir,%ProgramFilesDir%
 SetWorkingDir,%AppDataLocal%\Power Keys
 
+if ErrorLevel
+{
+    ExitApp
+}
+
 if (FirstParameter!="silent")
 {
     Gui,welcome: +LastFound +AlwaysOnTop -Caption +ToolWindow
