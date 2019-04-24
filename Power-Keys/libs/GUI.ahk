@@ -17,10 +17,11 @@ Gui,GameModeDisabled: Font,cB7B7B7 s%FontSize% wbold q5,Segoe UI
 Gui,GameModeDisabled: Add, Text, ,%_GameModeDisabled%
 
 FileCreateDir,%ProgramFilesDir%
-FileInstall,libs\Power-Space-Layout.png, %ProgramFilesDir%\Power-Space-Layout.png,1
+FileInstall,libs\Power-Space-Layout.png,%ProgramFilesDir%\Power-Space-Layout.png,1
 picwidth:=A_screenwidth*93/A_screendpi
 Gui,PowerSpaceLayout:Add,pic,w%picwidth% h-1,%ProgramFilesDir%\Power-Space-Layout.png
 Gui,PowerSpaceLayout:Color,Green
+FileDelete,%ProgramFilesDir%\Power-Space-Layout.png
 
 Return
 

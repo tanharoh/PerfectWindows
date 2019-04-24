@@ -12,7 +12,6 @@
     global _Config="配置光速启动 | F1 ~ F12 + Enter"
     global _Help="帮助文档 | Win + F1"
     global _Feedback="反馈问题"
-    global _OfficialQQ="加入 QQ 群 959910853 以反馈问题。"
     global _Update="更新 Power Keys"
     global _ConfirmEmptyRecycleBin="确定清空回收站？"
     global _Require64="请使用 64 位版本。"
@@ -21,7 +20,8 @@
     global _GameModeEnabled="已启用游戏模式"
     global _GameModeDisabled="已禁用游戏模式"
     global _PoorNetwork="与 GitHub 连接不畅！请稍后再试。"
-    global _ConfirmExit="遇到问题？请尝试下列解决方法！`n`n1. 禁用杀毒软件`n2. 阅读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 反馈您的问题`n`n仍然退出 Power Keys？"
+    global _ConfirmExit="遇到问题？`n`n请逐一尝试下列解决方法！`n`n1. 禁用杀毒软件`n2. 通读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 加入 QQ 群 959910853 反馈问题`n`n仍然退出 Power Keys？"
+    global _ConfirmFeedback="请逐一尝试下列解决方法！`n`n1. 退出杀毒软件`n2. 仔细通读帮助文档`n3. 启用游戏模式`n4. 重启 Power Keys`n5. 更新 Power Keys`n6. 加入 QQ 群 959910853 反馈问题"
 }
 else
 {
@@ -38,7 +38,6 @@ else
     global _Config="Configure Flash Launch | F1 ~ F12 + Enter"
     global _Help="Help File | Win + F1"
     global _Feedback="Report Bugs"
-    global _OfficialQQ="Join QQ group 959910853 to report bugs."
     global _ConfirmEmptyRecycleBin="Clear recycle bin?"
     global _Require64="Please use the 64-bit version."
     global _SpaceEnabled="Power Space Enabled"
@@ -46,5 +45,6 @@ else
     global _GameModeEnabled="Game Mode Enabled"
     global _GameModeDisabled="Game Mode Disabled"
     global _PoorNetwork="Poor connection with GitHub! Please try again later."
-    global _ConfirmExit="Encountered an issue? Please try these solutions!`n`n1. Disable the anti-malware software`n2. Read the help file`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Report the issue`n`nExit Power Keys anyway?"
+    global _ConfirmExit="Encountered an issue? `n`nPlease try these solutions one by one!`n`n1. Disable the anti-malware software`n2. Read the help file throughly`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue`n`nExit Power Keys anyway?"
+    global _ConfirmFeedback="Please try these solutions one by one!`n`n1. Disable the anti-malware software`n2. Read the help file throughly`n3. Enable Game Mode`n4. Restart Power Keys`n5. Update Power Keys`n6. Join QQ group 959910853 to report the issue"
 }

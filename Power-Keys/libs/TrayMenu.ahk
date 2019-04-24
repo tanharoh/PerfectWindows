@@ -107,7 +107,7 @@ ShellRun(HelpLink)
 Return
 
 Feedback:
-MsgBox,0x40040,Power Keys,%_OfficialQQ%
+MsgBox,0x40040,Power Keys,%_ConfirmFeedback%
 Return
 
 Restart:

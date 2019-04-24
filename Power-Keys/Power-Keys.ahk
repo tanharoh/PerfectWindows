@@ -13,7 +13,7 @@ Process, Priority, , High
 Suspend, on
 SetStoreCapslockMode, off
 
-v:="9.3.8"
+v:="9.3.9"
 
 HelpLink=https://PowerKeys.GitHub.io
 ProgramFilesDir=%A_ProgramFiles%\szzhiyang\Power Keys
