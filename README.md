@@ -4,18 +4,12 @@
 
 <br>
 
-## [Power Keys](https://PowerKeys.github.io)
+## [Power Keys](https://PowerKeys.GitHub.io)
 
-> **键盘流效率软件中的瑞士军刀！**
-
-<br>
-
-## [Blacklist](https://windowsblacklist.github.io)
-
-> **零漏毒、零误杀、零占用的新型防病毒解决方案！**
+> **彻底提升 Windows 的使用效率！**
 
 <br>
 
-## [Anti Windows Update](Anti-Windows-Update/Anti-Windows-Update.md)
+## [Control Panel Plus](https://ControlPanelPlus.GitHub.io)
 
-> **Windows 自动更新的完美克星！**
+> **轻松调整 Windows 的隐藏设置！**
