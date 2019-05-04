@@ -54,7 +54,7 @@ else
             FileCreateDir,F10
             FileCreateDir,F11
             FileCreateDir,F12
-            Run,%fn%
+            Run,%fn%,,UseErrorLevel
         } else {
             ShellRun(lnk)
         }
@@ -82,7 +82,7 @@ else
             FileCreateDir,F10
             FileCreateDir,F11
             FileCreateDir,F12
-            Run,%fn%
+            Run,%fn%,,UseErrorLevel
         }
     }
 }
@@ -188,7 +188,7 @@ FileCreateDir,F9
 FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
-Run,%A_workingdir%\%fn%
+Run,%A_workingdir%\%fn%,,UseErrorLevel
 Return
 
 PrintScreen::

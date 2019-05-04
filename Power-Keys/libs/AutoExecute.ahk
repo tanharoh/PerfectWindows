@@ -11,7 +11,7 @@ if !A_IsAdmin
 {
     try
     {
-        Run *RunAs "%A_ScriptFullPath%" /restart
+        Run *RunAs "%A_ScriptFullPath%" /restart,,UseErrorLevel
     }
     ExitApp
 }

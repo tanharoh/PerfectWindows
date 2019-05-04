@@ -25,6 +25,6 @@ Return
 
 ExitUpdater:
 FileDelete, %ProgramFilesDir%\latest-Power-Keys.exe
-Run,%2%
+Run,%2%,,UseErrorLevel
 ExitApp
 Return

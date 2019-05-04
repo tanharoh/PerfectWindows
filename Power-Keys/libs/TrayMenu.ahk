@@ -120,7 +120,7 @@ Update:
 FileRemoveDir,%ProgramFilesDir%,1
 FileCreateDir, %ProgramFilesDir%
 FileCopy, %A_ScriptFullPath%, %ProgramFilesDir%\Power-Keys-Updater.exe,1
-Run,%ProgramFilesDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%"
+Run,%ProgramFilesDir%\Power-Keys-Updater.exe update "%A_ScriptFullPath%",,UseErrorLevel
 Exitapp
 Return
 
@@ -137,7 +137,7 @@ FileCreateDir,F9
 FileCreateDir,F10
 FileCreateDir,F11
 FileCreateDir,F12
-Run,%A_WorkingDir%
+Run,%A_WorkingDir%,,UseErrorLevel
 Return
 
 Exit:
